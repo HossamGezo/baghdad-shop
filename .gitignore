@@ -145,3 +145,6 @@ vite.config.ts.timestamp-*
 
 # Husky internal directory
 .husky/_/
+
+# Server : Images
+server/images/
