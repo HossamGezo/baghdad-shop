@@ -5,6 +5,8 @@ import bcrypt from "bcryptjs";
 
 // --- Models
 import User from "@models/User.js";
+
+// --- Modules
 import {
   validateLogin,
   validateRegister,
