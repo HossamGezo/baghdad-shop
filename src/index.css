@@ -1,1 +1,24 @@
 @import "tailwindcss";
+
+@theme {
+  /* Break Points */
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+  --breakpoint-xxl: 1400px;
+  /* Fonts */
+  --font-jetbrains: "JetBrains Mono", monospace;
+  /* Colors */
+  --color-primary: #34465b;
+  --color-secondary: #3ead50;
+  --color-body: #f1f1f1;
+}
+
+.custom-container {
+  @apply mx-auto px-3 w-full sm:w-135 md:w-180 lg:w-240 xl:w-285 xxl:w-330;
+}
+
+body {
+  @apply bg-body;
+}
