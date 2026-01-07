@@ -4,7 +4,6 @@ import clsx from "clsx";
 
 // --- Types
 type CustomLinkProps = NavLinkProps & {
-  to: string;
   text: string;
 };
 
@@ -16,10 +15,10 @@ const CustomLink = ({to, text, className, ...props}: CustomLinkProps) => {
         to={to}
         className={({isActive}) =>
           clsx(
-            "text-primary font-medium flex items-center justify-center px-5 py-2.5 h-full transition-colors duration-300",
+            "text-primary font-medium flex items-center justify-center px-5 py-2.5 h-full transition-colors duration-300 cursor-pointer",
             isActive
-              ? "bg-green-600 text-white"
-              : "bg-green-500 hover:bg-green-700 active:bg-green-500",
+              ? "bg-amber-500"
+              : "bg-warning hover:bg-amber-500 active:bg-amber-400",
             className
           )
         }
