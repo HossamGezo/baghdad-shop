@@ -10,6 +10,7 @@ import ProductDetails from "../pages/product-details/ProductDetails";
 import SpecialOffers from "../pages/special-offers/SpecialOffers";
 import Cart from "../pages/cart/Cart";
 import Error from "../pages/error/Error";
+import Login from "../pages/auth/Login";
 
 //--- Router
 const router = createBrowserRouter([
@@ -22,6 +23,7 @@ const router = createBrowserRouter([
       {path: "products/:id", Component: ProductDetails},
       {path: "special-offers/:id", Component: SpecialOffers},
       {path: "cart", Component: Cart},
+      {path: "login", Component: Login},
       {path: "*", Component: Error},
     ],
   },

@@ -10,13 +10,19 @@
   /* Fonts */
   --font-jetbrains: "JetBrains Mono", monospace;
   /* Colors */
+  --color-body: #f1f1f1;
   --color-primary: #34465b;
   --color-secondary: #3ead50;
-  --color-body: #f1f1f1;
+  --color-light-red: #e74c3c;
+  --color-warning: #ffc107;
+  /* Box Shadows */
+  --shadow-primary: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  --shadow-secondary: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 }
 
 .custom-container {
-  @apply mx-auto px-3 w-full sm:w-135 md:w-180 lg:w-240 xl:w-285 xxl:w-330;
+  @apply mx-auto px-2 sm:px-0 w-full sm:w-135 md:w-180 lg:w-240 xl:w-285 xxl:w-330;
 }
 
 body {

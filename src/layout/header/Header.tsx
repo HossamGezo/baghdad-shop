@@ -2,9 +2,9 @@
 import {useState, useEffect} from "react";
 
 // --- Local Components
-import HeaderTop from "./components/HeaderTop";
-import HeaderMiddle from "./components/HeaderMiddle";
-import HeaderNavBar from "./components/HeaderNavBar";
+import TopHeader from "./components/TopHeader";
+import MiddleHeader from "./components/MiddleHeader";
+import Navbar from "./components/Navbar";
 
 // --- Header (Main Component)
 const Header = () => {
@@ -27,11 +27,7 @@ const Header = () => {
 
   // --- 1. Prevent body scroll when menu is open
   useEffect(() => {
-    if (toggleBurger) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
+    document.body.style.overflow = toggleBurger ? "hidden" : "unset";
     return () => {
       document.body.style.overflow = "unset";
     };
@@ -53,16 +49,16 @@ const Header = () => {
     <header className="header bg-primary pb-5 select-none">
       <div className="custom-container">
         {/* Header Top */}
-        <HeaderTop handleToggle={handleToggle}>
+        <TopHeader handleToggle={handleToggle}>
           {/* Header NavBar */}
-          <HeaderNavBar
+          <Navbar
             toggleBurger={toggleBurger}
             handleNavBarClose={handleNavBarClose}
             handleClose={handleClose}
           />
-        </HeaderTop>
+        </TopHeader>
         {/* Header Middle */}
-        <HeaderMiddle />
+        <MiddleHeader />
       </div>
     </header>
   );

@@ -1,6 +1,10 @@
+// --- Local Components
+import HeroSection from "./hero-section/HeroSection";
+
 // --- Home (Main Component)
 const Home = () => {
-  return <h1>Home</h1>;
+  // --- Return JSX
+  return <HeroSection />;
 };
 
 export default Home;
