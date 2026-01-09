@@ -29,13 +29,18 @@ const TopHeader = ({handleToggle, children}: HeaderTopProps) => {
           <GiHamburgerMenu />
         </button>
         <div className="header-head-logo w-10 lg:w-12.5">
-          <Link to="/">
+          <Link to="/" className="flex gap-3">
             <img
               src={logo}
               alt="logo"
               className="object-contain select-none"
               draggable={false}
             />
+            <span className="text-2xl font-bold flex items-center text-shadow-[#333] text-shadow-2xs self-end">
+              <span className="text-warning">Ba</span>
+              <span className="text-white">ghdad</span>
+              <span className="bg-warning w-2 h-2 rounded-full ml-1 mt-2.5 shadow-2xs shadow-[#333]"></span>
+            </span>
           </Link>
         </div>
       </div>

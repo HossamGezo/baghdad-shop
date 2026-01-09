@@ -4,7 +4,7 @@ import clsx from "clsx";
 
 // --- React Icons
 import {GrCart} from "react-icons/gr";
-import {FaRegCircleUser} from "react-icons/fa6";
+// import {FaRegCircleUser} from "react-icons/fa6";
 
 // --- MiddleHeader (Main Component)
 const MiddleHeader = () => {
@@ -42,14 +42,13 @@ const MiddleHeader = () => {
             to="login"
             className={({isActive}) =>
               clsx(
-                "flex items-center gap-1.5 text-xl lg:text-2xl transition-colors duration-300 cursor-pointer",
+                "inline-block text-center text-xl lg:text-2xl transition-colors duration-150 cursor-pointer w-25 h-10 rounded-[40px]",
                 isActive
-                  ? "text-warning"
-                  : "text-white hover:text-amber-400 active:text-amber-500"
+                  ? "border-2 bg-warning text-primary"
+                  : "border-2 text-white border-warning hover:text-primary hover:bg-warning active:bg-amber-500"
               )
             }
           >
-            <FaRegCircleUser />
             Login
           </NavLink>
         </div>
