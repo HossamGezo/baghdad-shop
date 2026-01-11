@@ -7,7 +7,7 @@ import RootLayout from "../layout/RootLayout";
 import Home from "../pages/home/Home";
 import Products from "../pages/products/Products";
 import ProductDetails from "../pages/product-details/ProductDetails";
-import SpecialOffers from "../pages/special-offers/SpecialOffers";
+import SpecialOffers from "../pages/home/special-offers/SpecialOffers";
 import Cart from "../pages/cart/Cart";
 import Error from "../pages/error/Error";
 import Login from "../pages/auth/Login";
