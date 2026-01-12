@@ -10,7 +10,7 @@ type CustomLinkProps = NavLinkProps & {
 // --- CustomLink (Main Component)
 const CustomLink = ({to, text, className, ...props}: CustomLinkProps) => {
   return (
-    <li className="header-navbar-list-item max-lg:w-full lg:h-full select-none text-base">
+    <li className="header-navbar-list-item max-lg:w-full lg:h-full select-none">
       <NavLink
         to={to}
         className={({isActive}) =>

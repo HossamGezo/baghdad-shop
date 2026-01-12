@@ -4,7 +4,7 @@ import clsx from "clsx";
 
 // --- React Icons
 import {GrCart} from "react-icons/gr";
-import {FaRegCircleUser} from "react-icons/fa6";
+import {FaUser} from "react-icons/fa";
 
 // --- MiddleHeader (Main Component)
 const MiddleHeader = () => {
@@ -15,7 +15,7 @@ const MiddleHeader = () => {
 
   // --- Return JSX
   return (
-    <div className="header-middle flex items-center gap-5">
+    <div className="header-middle flex items-center gap-5 md:gap-2.5">
       {/* --- Header Search */}
       <form
         onSubmit={handleSubmit}
@@ -35,40 +35,53 @@ const MiddleHeader = () => {
         />
       </form>
       {/* Header Middle Login & Cart */}
-      <div className="header-middle-login-cart max-sm:absolute top-6 right-5 flex items-center gap-5">
+      <div className="header-middle-login-cart max-sm:absolute top-6 right-5 flex items-center gap-3 xl:mt-1.5">
         {/* --- Login */}
         <div className="header-middle-login">
           <NavLink
             to="login"
             className={({isActive}) =>
               clsx(
-                "flex items-center gap-1.5 text-xl lg:text-2xl transition-colors duration-300 cursor-pointer",
+                "flex items-center justify-center text-center text-lg sm:text-xl lg:text-xl transition-colors duration-150 cursor-pointer w-25 h-8 md:h-9 lg:h-10 rounded-[40px] max-sm:hidden",
                 isActive
-                  ? "text-warning"
-                  : "text-white hover:text-amber-400 active:text-amber-500"
+                  ? "border-2 bg-warning text-primary"
+                  : "border-2 text-white border-warning hover:text-primary hover:bg-warning active:bg-amber-500"
               )
             }
           >
-            <FaRegCircleUser />
             Login
+          </NavLink>
+          <NavLink
+            to="login"
+            className={({isActive}) =>
+              clsx(
+                "text-xl transition-colors duration-150 cursor-pointer sm:hidden",
+                isActive
+                  ? "text-warning"
+                  : "text-white hover:text-warning active:text-amber-500"
+              )
+            }
+          >
+            <FaUser />
           </NavLink>
         </div>
         {/* --- Cart */}
-        <div className="header-middle-cart relative text-xl lg:text-2xl">
+        <div className="header-middle-cart">
           <NavLink
             to="cart"
             className={({isActive}) =>
               clsx(
-                "flex items-center gap-1.5 text-xl lg:text-2xl transition-colors duration-300 cursor-pointer",
+                "relative flex items-end gap-1 xl:gap-0.5 transition-colors duration-300 cursor-pointer",
                 isActive
                   ? "text-warning"
                   : "text-white hover:text-amber-400 active:text-amber-500"
               )
             }
           >
-            <GrCart />
-            <span className="header-middle-cart-number absolute max-sm:-top-6 -top-8 max-sm:left-4 left-1/2 -translate-x-1/2 font-jetbrains">
-              17
+            <GrCart className="text-2xl lg:text-3xl" />
+            <span className="text:lg lg:text:xl font-jetbrains">
+              Cart
+              <span className="absolute -top-5 xl:-top-3 right-2.5">17</span>
             </span>
           </NavLink>
         </div>
