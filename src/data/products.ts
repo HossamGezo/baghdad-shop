@@ -7,6 +7,8 @@ export const products = [
     rating: 4.5,
     reviews: "900",
     isLaptop: true,
+    description:
+      "A reliable business laptop featuring a sleek design, solid performance, and long battery life—perfect for professionals and everyday productivity.",
   },
   {
     id: 2,
@@ -16,6 +18,8 @@ export const products = [
     rating: 3.8,
     reviews: "250",
     isLaptop: true,
+    description:
+      "A powerful gaming laptop built with high-performance hardware to handle demanding games and multitasking with ease.",
   },
   {
     id: 3,
@@ -25,6 +29,8 @@ export const products = [
     rating: 4.6,
     reviews: "1,200",
     isLaptop: true,
+    description:
+      "A premium laptop with a stunning display, fast performance, and a lightweight design—ideal for work, study, and creativity.",
   },
   {
     id: 4,
@@ -34,6 +40,8 @@ export const products = [
     rating: 4.1,
     reviews: "7,548",
     isLaptop: true,
+    description:
+      "A gaming-focused laptop delivering smooth graphics, fast processing, and immersive gameplay for serious gamers.",
   },
   {
     id: 5,
@@ -43,6 +51,8 @@ export const products = [
     rating: 4.5,
     reviews: "2,200",
     isLaptop: true,
+    description:
+      "Built for durability and performance, this laptop is perfect for gaming and heavy workloads with reliable cooling and power.",
   },
   {
     id: 6,
@@ -52,6 +62,8 @@ export const products = [
     rating: 4.8,
     reviews: "5,500",
     isLaptop: true,
+    description:
+      "A high-end gaming laptop offering top-tier performance, fast refresh rates, and a bold design for competitive players.",
   },
   {
     id: 7,
@@ -61,6 +73,8 @@ export const products = [
     rating: 4.2,
     reviews: "850",
     isLaptop: true,
+    description:
+      "A versatile 2-in-1 laptop with a flexible touchscreen design, perfect for students, professionals, and everyday use.",
   },
   {
     id: 8,
@@ -70,6 +84,8 @@ export const products = [
     rating: 4.7,
     reviews: "8,200",
     isLaptop: true,
+    description:
+      "A compact and portable touchscreen device designed for productivity on the go with a premium Microsoft experience.",
   },
   {
     id: 9,
@@ -79,6 +95,8 @@ export const products = [
     rating: 4.1,
     reviews: "1,895",
     isLaptop: true,
+    description:
+      "A powerful 2-in-1 laptop combining tablet flexibility with laptop performance, ideal for work and creative tasks.",
   },
   {
     id: 10,
@@ -88,6 +106,8 @@ export const products = [
     rating: 3.5,
     reviews: "8,124",
     isLaptop: true,
+    description:
+      "A large-screen laptop offering comfortable viewing, solid performance, and everyday reliability for home and office use.",
   },
   {
     id: 11,
@@ -97,6 +117,8 @@ export const products = [
     rating: 4.9,
     reviews: "8,240",
     isLaptop: false,
+    description:
+      "A flagship smartphone with a powerful processor, stunning camera quality, and a sleek premium design.",
   },
   {
     id: 12,
@@ -106,6 +128,8 @@ export const products = [
     rating: 4.5,
     reviews: "9,014",
     isLaptop: false,
+    description:
+      "A reliable smartphone offering long battery life, smooth performance, and excellent value for everyday use.",
   },
   {
     id: 13,
@@ -115,6 +139,8 @@ export const products = [
     rating: 3.5,
     reviews: "7,784",
     isLaptop: false,
+    description:
+      "A budget-friendly dual SIM smartphone with a vibrant display and dependable performance.",
   },
   {
     id: 14,
@@ -124,6 +150,8 @@ export const products = [
     rating: 4.5,
     reviews: "2,401",
     isLaptop: false,
+    description:
+      "A performance-driven smartphone featuring a smooth display, fast charging, and a modern design.",
   },
   {
     id: 15,
@@ -133,6 +161,8 @@ export const products = [
     rating: 3.0,
     reviews: "420",
     isLaptop: false,
+    description:
+      "An affordable smartphone designed for basic daily needs with a simple and practical user experience.",
   },
   {
     id: 16,
@@ -142,6 +172,8 @@ export const products = [
     rating: 5,
     reviews: "1,500",
     isLaptop: false,
+    description:
+      "A premium smartphone with large storage capacity, smooth performance, and a stylish blue finish.",
   },
   {
     id: 17,
@@ -151,6 +183,8 @@ export const products = [
     rating: 4.5,
     reviews: "4,540",
     isLaptop: false,
+    description:
+      "A powerful iPhone featuring a sleek design, excellent camera performance, and long-term software support.",
   },
   {
     id: 18,
@@ -160,6 +194,8 @@ export const products = [
     rating: 4.5,
     reviews: "17,124",
     isLaptop: false,
+    description:
+      "A practical dual SIM smartphone offering flexibility, reliable performance, and great value.",
   },
   {
     id: 19,
@@ -169,6 +205,8 @@ export const products = [
     rating: 4.0,
     reviews: "4,700",
     isLaptop: false,
+    description:
+      "A budget-friendly smartphone with a large battery and smooth performance for everyday tasks.",
   },
   {
     id: 20,
@@ -178,6 +216,8 @@ export const products = [
     rating: 5,
     reviews: "2,300",
     isLaptop: false,
+    description:
+      "A premium mid-range smartphone delivering excellent performance, display quality, and battery life.",
   },
   {
     id: 21,
@@ -187,6 +227,8 @@ export const products = [
     rating: 4.1,
     reviews: "850",
     isLaptop: false,
+    description:
+      "An ultra-affordable smartphone ideal for basic communication and essential daily use.",
   },
   {
     id: 22,
@@ -196,6 +238,8 @@ export const products = [
     rating: 5,
     reviews: "7,500",
     isLaptop: false,
+    description:
+      "A stylish smartphone offering smooth performance, a clean design, and excellent user experience.",
   },
   {
     id: 23,
@@ -205,6 +249,8 @@ export const products = [
     rating: 3.5,
     reviews: "1,784",
     isLaptop: false,
+    description:
+      "A sleek smartphone designed for photography lovers with a modern look and smooth performance.",
   },
   {
     id: 24,
@@ -214,5 +260,7 @@ export const products = [
     rating: 4.1,
     reviews: "8,102",
     isLaptop: false,
+    description:
+      "A 5G-ready smartphone offering fast connectivity, solid performance, and great value for money.",
   },
 ];
