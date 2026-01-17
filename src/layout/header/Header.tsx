@@ -2,9 +2,9 @@
 import {useState, useEffect} from "react";
 
 // --- Local Components
-import TopHeader from "./components/TopHeader";
-import MiddleHeader from "./components/MiddleHeader";
-import Navbar from "./components/Navbar";
+import HeaderTop from "./components/HeaderTop";
+import HeaderMiddle from "./components/HeaderMiddle";
+import HeaderNavbar from "./components/HeaderNavbar";
 
 // --- Header (Main Component)
 const Header = () => {
@@ -49,16 +49,16 @@ const Header = () => {
     <header className="header bg-primary pb-5 select-none">
       <div className="custom-container">
         {/* Header Top */}
-        <TopHeader handleToggle={handleToggle}>
+        <HeaderTop handleToggle={handleToggle}>
           {/* Header NavBar */}
-          <Navbar
+          <HeaderNavbar
             toggleBurger={toggleBurger}
             handleNavBarClose={handleNavBarClose}
             handleClose={handleClose}
           />
-        </TopHeader>
+        </HeaderTop>
         {/* Header Middle */}
-        <MiddleHeader />
+        <HeaderMiddle />
       </div>
     </header>
   );

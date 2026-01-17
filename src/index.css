@@ -26,6 +26,10 @@
   @apply mx-auto px-2 sm:px-0 w-full sm:w-135 md:w-180 lg:w-240 xl:w-285 xxl:w-330;
 }
 
+html {
+  @apply scroll-smooth;
+}
+
 body {
   @apply bg-body;
 }
