@@ -1,0 +1,17 @@
+.brands-wrapper {
+  width: max-content;
+  animation: infinite-slider 20s infinite linear;
+}
+
+.brands-wrapper:hover {
+  animation-play-state: paused;
+}
+
+@keyframes infinite-slider {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
