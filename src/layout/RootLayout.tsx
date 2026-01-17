@@ -10,10 +10,8 @@ const RootLayout = () => {
   return (
     <>
       <Header />
-      <div className="custom-container">
-        <Outlet />
-        <Footer />
-      </div>
+      <Outlet />
+      <Footer />
     </>
   );
 };
