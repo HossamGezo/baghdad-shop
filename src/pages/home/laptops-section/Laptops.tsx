@@ -1,5 +1,5 @@
 // --- Local Components
-import ProductCard from "../../../components/product-card/ProductCard";
+import ProductCard from "../../../components/ui/card/product-card/ProductCard";
 import ProductSlider from "../../../components/product-slider/ProductSlider";
 
 // --- Data

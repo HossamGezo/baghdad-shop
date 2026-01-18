@@ -12,14 +12,6 @@ type ProductSliderProps = {
   children: React.ReactNode;
 };
 
-/**
- * xl: 1140
- * products count: 24
- * products width: 319.5
- * products gap  : 13
- * (products width + products gap) - screen = ((24 * 319.5) + (23 * 13)) - 1140 = 6827
- */
-
 // --- ProductSlider (Main Component)
 const ProductSlider = ({productsCount, children}: ProductSliderProps) => {
   // --- viewport
@@ -39,14 +31,14 @@ const ProductSlider = ({productsCount, children}: ProductSliderProps) => {
   // --- available Scroll
 
   // - Constants
-  const CARD_WIDTH = 319.5;
-  const GAP = 13;
+  const CARD_WIDTH = 300; // 319.5
+  const GAP = 15; // 13
   const MOVE_PER_CLICK = CARD_WIDTH + GAP;
 
   // - Variables
   const containerWidth = viewport >= 1200 && viewport < 1400 ? 1140 : 1320;
   const totalProductsWidth = productsCount * CARD_WIDTH;
-  const totalGapsWidth = (productsCount - 1) * GAP;
+  const totalGapsWidth = (productsCount - 1) * GAP + 30;
 
   // - Result (Available Scroll)
   const availableScroll = totalProductsWidth + totalGapsWidth - containerWidth;
@@ -81,15 +73,15 @@ const ProductSlider = ({productsCount, children}: ProductSliderProps) => {
         onClick={handlePrev}
         className={clsx(
           "absolute z-50 top-1/2 -translate-y-1/2 left-3 text-5xl border border-warning rounded-full p-1.5 text-amber-500 cursor-pointer hover:bg-warning hover:text-white active:border-amber-300 active:bg-amber-300 active:scale-[0.98] select-none max-xl:hidden transition-all duration-200",
-          isAtStart ? "opacity-0 pointer-events-none" : "opacity-100"
+          isAtStart ? "opacity-0 pointer-events-none" : "opacity-100",
         )}
       />
 
       {/* Slider Track */}
       <div
-        style={{transform: `translateX(${finalMove}px)`}}
+        style={{transform: `translateX(${finalMove}px)`, gap: `${GAP}px`}}
         className={clsx(
-          "product-slider-products flex gap-3.25 transition-transform duration-700 ease-in-out"
+          `product-slider-products flex transition-transform duration-700 ease-in-out`,
         )}
       >
         {children}
@@ -100,7 +92,7 @@ const ProductSlider = ({productsCount, children}: ProductSliderProps) => {
         onClick={handleNext}
         className={clsx(
           "absolute z-50 top-1/2 -translate-y-1/2 right-3 text-5xl border border-warning rounded-full p-1.5 text-amber-500 cursor-pointer hover:bg-warning hover:text-white active:border-amber-300 active:bg-amber-300 active:scale-[0.98] select-none max-xl:hidden transition-all duration-200",
-          isAtEnd ? "opacity-0 pointer-events-none" : "opacity-100"
+          isAtEnd ? "opacity-0 pointer-events-none" : "opacity-100",
         )}
       />
     </div>
