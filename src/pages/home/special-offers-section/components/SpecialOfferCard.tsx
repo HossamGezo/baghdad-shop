@@ -2,8 +2,8 @@
 import {Link} from "react-router";
 
 // --- Local Components
-import Discount from "./Discount";
-import RatingAndViews from "./RatingAndViews";
+import Discount from "../../../../components/ui/card/components/discount/Discount";
+import RatingAndViews from "../../../../components/ui/card/components/rating-and-views/RatingAndViews";
 
 // --- Types
 type SpecialOfferProps = {
@@ -64,7 +64,10 @@ const SpecialOfferCard = (specialOffer: SpecialOfferProps) => {
           type="button"
           className="special-offer-card-details-see-more bg-primary text-white w-32 h-9 rounded-tr-lg rounded-bl-lg cursor-pointer absolute bottom-3 sm:left-5 right-5"
         >
-          <Link className="block" to={`/products/${specialOffer.id}`}>
+          <Link
+            className="block"
+            to={`/products/special-offers/${specialOffer.id}`}
+          >
             See More ...
           </Link>
         </button>

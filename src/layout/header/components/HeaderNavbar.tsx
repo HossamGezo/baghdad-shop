@@ -27,7 +27,7 @@ const Navbar = ({
         "header-head-navbar max-lg:absolute max-lg:top-0 max-lg:left-0 max-lg:flex-col max-lg:items-start max-lg:bg-black/40 max-lg:h-dvh max-lg:w-screen duration-500 transition-[clip-path] z-50",
         toggleBurger
           ? "max-lg:[clip-path:polygon(0_0,100%_0,100%_100%,0_100%)]"
-          : "max-lg:[clip-path:polygon(0_0,0_0,0_100%,0_100%)]"
+          : "max-lg:[clip-path:polygon(0_0,0_0,0_100%,0_100%)]",
       )}
       onClick={(e) => handleNavBarClose(e)}
     >
@@ -47,7 +47,7 @@ const Navbar = ({
           onClick={handleClose}
         />
         <CustomLink
-          to="products"
+          to="electronics"
           text="Electronics & Mobiles"
           className="border-b lg:border-r border-amber-500"
           onClick={handleClose}
