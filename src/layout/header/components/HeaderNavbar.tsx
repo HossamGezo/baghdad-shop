@@ -24,7 +24,7 @@ const Navbar = ({
   return (
     <nav
       className={clsx(
-        "header-head-navbar max-lg:absolute max-lg:top-0 max-lg:left-0 max-lg:flex-col max-lg:items-start max-lg:bg-black/40 max-lg:h-dvh max-lg:w-screen duration-500 transition-[clip-path] z-50",
+        "header-head-navbar max-lg:absolute max-lg:top-0 max-lg:left-0 max-lg:flex-col max-lg:items-start max-lg:bg-black/40 max-lg:h-dvh max-lg:w-full duration-500 transition-[clip-path] z-50",
         toggleBurger
           ? "max-lg:[clip-path:polygon(0_0,100%_0,100%_100%,0_100%)]"
           : "max-lg:[clip-path:polygon(0_0,0_0,0_100%,0_100%)]",
@@ -43,25 +43,25 @@ const Navbar = ({
         <CustomLink
           to="/"
           text="Home"
-          className="border-b lg:border-r border-amber-500 lg:rounded-tl-md lg:rounded-bl-md"
+          className="max-lg:border-b lg:border-r border-amber-500 lg:rounded-tl-md lg:rounded-bl-md"
           onClick={handleClose}
         />
         <CustomLink
           to="electronics"
-          text="Electronics & Mobiles"
-          className="border-b lg:border-r border-amber-500"
+          text="Electronics"
+          className="max-lg:border-b lg:border-r border-amber-500"
           onClick={handleClose}
         />
         <CustomLink
           to="kitchen"
-          text="Home & Kitchen"
-          className="border-b lg:border-r border-amber-500"
+          text="Home"
+          className="max-lg:border-b lg:border-r border-amber-500"
           onClick={handleClose}
         />
         <CustomLink
           to="men"
           text="Men's"
-          className="border-b lg:border-r border-amber-500"
+          className="max-lg:border-b lg:border-r border-amber-500"
           onClick={handleClose}
         />
         <CustomLink

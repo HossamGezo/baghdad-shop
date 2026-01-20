@@ -8,6 +8,6 @@ export type ProductProps = {
   discount: number;
   rating: number;
   reviews: string;
-  category?: string;
+  category: string;
   description: string;
 };

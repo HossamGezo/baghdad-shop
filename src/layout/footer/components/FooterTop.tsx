@@ -12,7 +12,7 @@ const TopFooter = () => {
   // --- Return JSX
   return (
     <div className="top-footer bg-primary text-white">
-      <div className="footer-head flex max-sm:flex-col items-center justify-between gap-5 custom-container py-5">
+      <div className="footer-head flex max-md:flex-col items-center justify-between gap-5 custom-container py-5">
         {/* - Logo */}
         <div className="footer-head-logo" onClick={toTop}>
           <Link
@@ -27,7 +27,7 @@ const TopFooter = () => {
           </Link>
         </div>
         {/* - Greeting */}
-        <div className="footer-head-greeting max-sm:flex max-sm:flex-col max-sm:items-center max-sm:gap-2.5 text-2xl font-bold tracking-tight text-warning font-jetbrains select-none">
+        <div className="footer-head-greeting max-md:flex max-md:flex-col max-md:items-center max-md:gap-2.5 text-[22px] sm:text-2xl font-bold tracking-tight text-warning font-jetbrains select-none">
           Always here to help you
           <div className="flex items-center gap-2.5 text-lg text-white">
             baghdad@fakeemail.com <MdEmail />

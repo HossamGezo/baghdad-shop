@@ -19,7 +19,7 @@ const CustomLink = ({to, text, className, ...props}: CustomLinkProps) => {
             isActive
               ? "bg-amber-500"
               : "bg-warning hover:bg-amber-500 active:bg-amber-400",
-            className
+            className,
           )
         }
         {...props}

@@ -67,7 +67,7 @@ const ProductSlider = ({productsCount, children}: ProductSliderProps) => {
 
   // --- Return JSX
   return (
-    <div className="product-slider relative py-5 overflow-x-auto xl:overflow-hidden">
+    <div className="product-slider w-full max-w-full relative py-5 overflow-x-auto xl:overflow-hidden">
       {/* Left Button */}
       <LiaAngleDoubleLeftSolid
         onClick={handlePrev}
