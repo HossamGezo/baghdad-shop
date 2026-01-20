@@ -4,7 +4,7 @@ import {FaPhoneAlt} from "react-icons/fa";
 
 // --- Images
 import logo from "/logo.svg";
-import Logo from "../../../components/ui/card/components/discount/logo/Logo";
+import Logo from "../../../components/ui/logo/Logo";
 
 // --- Types
 type HeaderTopProps = {

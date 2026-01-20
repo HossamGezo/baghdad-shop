@@ -1,24 +1,15 @@
 // --- Libraries
 import {Link} from "react-router";
 
+// --- Types
+import type {ProductProps} from "../../../../utils/types";
+
 // --- Local Components
 import Discount from "../../../../components/ui/card/components/discount/Discount";
 import RatingAndViews from "../../../../components/ui/card/components/rating-and-views/RatingAndViews";
 
-// --- Types
-type SpecialOfferProps = {
-  id: number;
-  title: string;
-  firstImage: string;
-  secondImage: string;
-  price: number;
-  discount: number;
-  rating: number;
-  reviews: string;
-};
-
 // --- SpecialCard (Main Component)
-const SpecialOfferCard = (specialOffer: SpecialOfferProps) => {
+const SpecialOfferCard = (specialOffer: ProductProps) => {
   // --- Return JSX
   return (
     <div className="special-offer-card relative bg-white shadow-special rounded-md px-5 pt-5 pb-2.5 min-h-75 max-sm:h-115">

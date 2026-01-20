@@ -19,7 +19,7 @@ const MiddleHeader = () => {
       {/* --- Header Search */}
       <form
         onSubmit={handleSubmit}
-        className="header-middle-search w-200 h-10 lg:h-12.5 flex items-center flex-1 bg-green-50 my-5 max-sm:my-2.5 rounded-md overflow-hidden"
+        className="header-middle-search w-full h-10 lg:h-12.5 flex items-center flex-1 bg-green-50 my-5 max-sm:my-2.5 rounded-md overflow-hidden"
       >
         <button
           className="header-middle-search-btn bg-warning text-primary h-full cursor-pointer px-5 font-medium text-lg select-none hover:bg-amber-500 active:bg-amber-400 duration-300 transition-colors"
@@ -45,7 +45,7 @@ const MiddleHeader = () => {
                 "flex items-center justify-center text-center text-lg sm:text-xl lg:text-xl transition-colors duration-150 cursor-pointer w-25 h-8 md:h-9 lg:h-10 rounded-[40px] max-sm:hidden",
                 isActive
                   ? "border-2 bg-warning text-primary"
-                  : "border-2 text-white border-warning hover:text-primary hover:bg-warning active:bg-amber-500"
+                  : "border-2 text-white border-warning hover:text-primary hover:bg-warning active:bg-amber-500",
               )
             }
           >
@@ -58,7 +58,7 @@ const MiddleHeader = () => {
                 "text-xl transition-colors duration-150 cursor-pointer sm:hidden",
                 isActive
                   ? "text-warning"
-                  : "text-white hover:text-warning active:text-amber-500"
+                  : "text-white hover:text-warning active:text-amber-500",
               )
             }
           >
@@ -71,17 +71,17 @@ const MiddleHeader = () => {
             to="cart"
             className={({isActive}) =>
               clsx(
-                "relative flex items-end gap-1 xl:gap-0.5 transition-colors duration-300 cursor-pointer",
-                isActive
-                  ? "text-warning"
-                  : "text-white hover:text-amber-400 active:text-amber-500"
+                "relative text-white flex items-end gap-1 xl:gap-0.5 cursor-pointer  border-b-2 border-dotted pb-1 hover:border-b-warning/50",
+                isActive ? "border-b-warning/50" : "border-b-transparent",
               )
             }
           >
             <GrCart className="text-2xl lg:text-3xl" />
-            <span className="text:lg lg:text:xl font-jetbrains">
+            <span className="text:lg lg:text-xl font-jetbrains">
               Cart
-              <span className="absolute -top-5 xl:-top-3 right-2.5">17</span>
+              <span className="absolute text-[12px] -top-3 left-2 lg:-top-2.5 lg:left-3.5 border-2 border-primary bg-warning rounded-full w-6 h-6 flex items-center justify-center">
+                1
+              </span>
             </span>
           </NavLink>
         </div>
