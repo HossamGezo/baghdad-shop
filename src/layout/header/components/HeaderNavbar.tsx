@@ -54,7 +54,7 @@ const Navbar = ({
         />
         <CustomLink
           to="kitchen"
-          text="Home"
+          text="kitchen"
           className="max-lg:border-b lg:border-r border-amber-500"
           onClick={handleClose}
         />
