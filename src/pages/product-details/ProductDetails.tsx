@@ -6,21 +6,16 @@ import Discount from "../../components/ui/card/components/discount/Discount";
 import RatingAndViews from "../../components/ui/card/components/rating-and-views/RatingAndViews";
 import ProductImages from "../../components/ui/card/components/product-images/ProductImages";
 
-// --- Data
-import {specialOffers} from "../../data/special-offers";
-import {laptops} from "../../data/laptops";
-import {mobiles} from "../../data/mobiles";
+// --- Custom Hooks
+import useFetchProduct from "../../hooks/useFetchProduct";
 
 // --- ProductDetails (Main Component)
 const ProductDetails = () => {
   // --- Find Product Logic
   const params = useParams();
-  const product =
-    params.category === "laptops"
-      ? laptops.find((laptop) => laptop.id === +params.id!)
-      : params.category === "mobiles"
-        ? mobiles.find((mobile) => mobile.id === +params.id!)
-        : specialOffers.find((offer) => offer.id === +params.id!);
+
+  // --- Prepare Data
+  const product = useFetchProduct(`${params.category}`, `${params.id}`);
 
   // --- Return JSX (Not Found Product)
   if (!product) {
