@@ -105,11 +105,11 @@ type SingleProductProps = {
   category: string;
   id: string;
 };
-export const fetchProductById = createAsyncThunk<
+export const fetchSingleProduct = createAsyncThunk<
   ProductProps, // Return Type
   SingleProductProps, // Argument Type
   {rejectValue: string} // ThunkConfig
->("products/fetchProductById", async ({category, id}, {rejectWithValue}) => {
+>("products/fetchSingleProduct", async ({category, id}, {rejectWithValue}) => {
   try {
     const response = await axios(`${baseUrl}/${category}/${id}`);
     const product = response.data;
@@ -123,7 +123,11 @@ export const fetchProductById = createAsyncThunk<
 const productsSlice = createSlice({
   name: "products",
   initialState,
-  reducers: {},
+  reducers: {
+    clearSingleProduct: (state) => {
+      state.singleProduct = null;
+    },
+  },
   extraReducers: (builder) => {
     // ----- Fetch Laptops
     builder.addCase(fetchLaptops.pending, (state) => {
@@ -171,15 +175,15 @@ const productsSlice = createSlice({
     });
 
     // --- Fetch Product By Id
-    builder.addCase(fetchProductById.pending, (state) => {
+    builder.addCase(fetchSingleProduct.pending, (state) => {
       state.loading = true;
     });
-    builder.addCase(fetchProductById.fulfilled, (state, action) => {
+    builder.addCase(fetchSingleProduct.fulfilled, (state, action) => {
       state.loading = false;
       state.singleProduct = action.payload;
       state.error = "";
     });
-    builder.addCase(fetchProductById.rejected, (state, action) => {
+    builder.addCase(fetchSingleProduct.rejected, (state, action) => {
       state.loading = false;
       state.singleProduct = null;
       state.error = action.payload as string;
@@ -187,4 +191,5 @@ const productsSlice = createSlice({
   },
 });
 
+export const {clearSingleProduct} = productsSlice.actions;
 export default productsSlice.reducer;
