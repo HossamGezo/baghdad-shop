@@ -1,10 +1,12 @@
 // --- Libraries
 import {Outlet} from "react-router";
 
+// --- Local Files
+import ScrollToTop from "../components/scroll-to-top/ScrollToTop";
+
 // --- Components
 import Header from "./header/Header";
 import Footer from "./footer/Footer";
-import ScrollToTop from "../components/scroll-to-top/ScrollToTop";
 
 // --- RootLayout (Main Component)
 const RootLayout = () => {
