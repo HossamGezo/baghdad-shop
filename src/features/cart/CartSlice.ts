@@ -4,6 +4,14 @@ import {createSlice} from "@reduxjs/toolkit";
 // --- Types
 import type {CartProps} from "../../types";
 
+// --- localStorage
+const storedCart = localStorage.getItem("cart");
+const cart: CartProps[] = storedCart ? JSON.parse(storedCart) : [];
+
+const setCartToLocalStorage = (cartItems: CartProps[]) => {
+  localStorage.setItem("cart", JSON.stringify(cartItems));
+};
+
 // --- InitialStateProps (Types)
 
 type InitialStateProps = {
@@ -12,7 +20,7 @@ type InitialStateProps = {
 
 // --- initialState
 const initialState: InitialStateProps = {
-  cart: [],
+  cart: cart,
 };
 
 const cartSlice = createSlice({
@@ -32,27 +40,35 @@ const cartSlice = createSlice({
       );
       // --- Logic
       if (product) {
-        product.count++;
+        product.count += action.payload.count;
       } else {
         state.cart.push(action.payload);
       }
+      // --- Update localStorage
+      setCartToLocalStorage(state.cart);
     },
     increaseQuantity: (state, action: {payload: number}) => {
       const product = state.cart.find(
         (product) => product.id === action.payload,
       );
       if (product) product.count++;
+      // --- Update localStorage
+      setCartToLocalStorage(state.cart);
     },
     decreaseQuantity: (state, action: {payload: number}) => {
       const product = state.cart.find(
         (product) => product.id === action.payload,
       );
       if (product) product.count--;
+      // --- Update localStorage
+      setCartToLocalStorage(state.cart);
     },
     removeFromCart: (state, action: {payload: number}) => {
       state.cart = state.cart.filter(
         (product) => product.id !== action.payload,
       );
+      // --- Update localStorage
+      setCartToLocalStorage(state.cart);
     },
   },
 });
