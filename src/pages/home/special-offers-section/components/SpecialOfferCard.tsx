@@ -2,7 +2,7 @@
 import {Link} from "react-router";
 
 // --- Types
-import type {ProductProps} from "../../../../utils/types";
+import type {ProductProps} from "../../../../types";
 
 // --- Local Components
 import Discount from "../../../../components/ui/card/components/discount/Discount";
@@ -18,7 +18,7 @@ const SpecialOfferCard = (specialOffer: ProductProps) => {
         {specialOffer.discount}% OFF
       </div>
       {/* Card Details */}
-      <div className="special-offer-card-details flex max-sm:flex-col items-center sm:items-center justify-center">
+      <div className="special-offer-card-details flex max-sm:flex-col items-center justify-center max-md:w-full max-lg:w-4/5 max-xl:w-3/5 mx-auto">
         {/* Product Image */}
         <div className="special-offer-card-image relative w-50 h-50 group">
           {/* --- 1st Image */}
@@ -35,8 +35,8 @@ const SpecialOfferCard = (specialOffer: ProductProps) => {
           ></div>
         </div>
         {/* Product Description */}
-        <div className="special-offer-card-details-desc flex flex-col flex-1 xl:pl-10">
-          <h3 className="special-offer-card-details-title text-primary max-xl:text-xl text-2xl font-medium">
+        <div className="special-offer-card-details-desc flex max-sm:items-center flex-col flex-1 xl:pl-5">
+          <h3 className="special-offer-card-details-title text-primary max-xl:text-xl text-2xl font-medium line-clamp-1">
             {specialOffer.title}
           </h3>
           {/* --- Rating And Reviews */}

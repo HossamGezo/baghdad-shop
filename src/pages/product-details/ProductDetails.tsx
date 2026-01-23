@@ -1,5 +1,5 @@
 // --- Liraries
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import {useParams} from "react-router";
 
 // --- Local Files
@@ -15,23 +15,30 @@ import RatingAndViews from "../../components/ui/card/components/rating-and-views
 import ProductImages from "../../components/ui/card/components/product-images/ProductImages";
 import Spinner from "../../components/ui/spinner/Spinner";
 import ErrorHandler from "../../components/ui/error-handler/ErrorHandler";
+import {addToCart} from "../../features/cart/CartSlice";
+import type {ProductProps} from "../../types";
 
 // --- ProductDetails (Main Component)
 const ProductDetails = () => {
-  // --- Find Product Logic
   const params = useParams();
-
-  // --- Prepare Data
+  const [count, setCount] = useState<number>(1);
+  // --- RTK Custom Hooks
   const {loading, singleProduct, error} = useAppSelector(
     (state) => state.products,
   );
   const dispatch = useAppDispatch();
+  // --- Fetch Data
   useEffect(() => {
     dispatch(fetchSingleProduct({category: params.category!, id: params.id!}));
     return () => {
       dispatch(clearSingleProduct());
     };
   }, [dispatch, params.category, params.id]);
+
+  // --- Add To Cart Logic
+  const addToCartFunc = (product: ProductProps) => {
+    dispatch(addToCart({...product, count: count}));
+  };
 
   // --- Return JSX (Product)
   return (
@@ -79,13 +86,15 @@ const ProductDetails = () => {
                 <div className="product-details-card-quantity flex items-center gap-5 mt-5">
                   <input
                     type="number"
+                    onChange={(e) => setCount(Number(e.currentTarget.value))}
                     className="border border-primary w-20 rounded-sm p-1"
-                    defaultValue="1"
+                    value={count}
                     min={1}
                     max={25}
                   />
                   <button
                     type="button"
+                    onClick={() => addToCartFunc(singleProduct)}
                     className="bg-warning text-primary px-2 py-1 rounded-sm cursor-pointer hover:bg-amber-300 active:bg-warning active:scale-[0.98] transition-all duration-150"
                   >
                     Add to cart
