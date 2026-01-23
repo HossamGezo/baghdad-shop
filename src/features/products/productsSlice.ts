@@ -3,7 +3,7 @@ import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import axios from "axios";
 
 // --- Types
-import type {ProductProps} from "../../utils/types";
+import type {ProductProps} from "../../types";
 
 // --- Base Url
 const baseUrl = "http://localhost:5100";
@@ -15,7 +15,7 @@ const errorMsg = (error: unknown) => {
   return message;
 };
 
-// --- Initial State (Types)
+// --- InitialStateProps (Types)
 type InitialStateProps = {
   loading: boolean;
   laptops: ProductProps[];
@@ -25,7 +25,7 @@ type InitialStateProps = {
   error: string;
 };
 
-// - Initial State
+// --- initialState
 const initialState: InitialStateProps = {
   loading: false,
   laptops: [],
@@ -109,7 +109,7 @@ export const fetchSingleProduct = createAsyncThunk<
   ProductProps, // Return Type
   SingleProductProps, // Argument Type
   {rejectValue: string} // ThunkConfig
->("products/fetchSingleProduct", async ({category, id}, {rejectWithValue}) => {
+>("products/singleProduct", async ({category, id}, {rejectWithValue}) => {
   try {
     const response = await axios(`${baseUrl}/${category}/${id}`);
     const product = response.data;

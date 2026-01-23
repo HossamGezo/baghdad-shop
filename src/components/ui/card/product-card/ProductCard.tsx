@@ -1,5 +1,5 @@
 // --- Types
-import type {ProductProps} from "../../../../utils/types";
+import type {ProductProps} from "../../../../types";
 
 // --- Local Components
 import {useNavigate} from "react-router";

@@ -6,12 +6,18 @@ import clsx from "clsx";
 import {GrCart} from "react-icons/gr";
 import {FaUser} from "react-icons/fa";
 
+// --- Import Files
+import {useAppSelector} from "../../../app/hooks";
+
 // --- MiddleHeader (Main Component)
 const MiddleHeader = () => {
   // --- Handle Submit
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
   };
+
+  // --- Cart
+  const {cart} = useAppSelector((state) => state.cart);
 
   // --- Return JSX
   return (
@@ -29,7 +35,7 @@ const MiddleHeader = () => {
         </button>
         <input
           className="header-middle-search-input w-full h-full px-2.5 caret-warning outline-0 select-none"
-          type="text"
+          type="search"
           aria-label="Search products"
           placeholder="What are you looking for?"
         />
@@ -79,9 +85,11 @@ const MiddleHeader = () => {
             <GrCart className="text-2xl lg:text-3xl" />
             <span className="text:lg lg:text-xl font-jetbrains">
               Cart
-              <span className="absolute text-[12px] -top-3 left-2 lg:-top-2.5 lg:left-3.5 border-2 border-primary bg-warning rounded-full w-6 h-6 flex items-center justify-center">
-                1
-              </span>
+              {cart.length !== 0 && (
+                <span className="absolute text-[12px] -top-3 left-2 lg:-top-2.5 lg:left-3.5 border-2 border-primary bg-warning rounded-full w-6 h-6 flex items-center justify-center">
+                  {cart.length}
+                </span>
+              )}
             </span>
           </NavLink>
         </div>

@@ -11,3 +11,7 @@ export type ProductProps = {
   category: string;
   description: string;
 };
+
+export type CartProps = ProductProps & {
+  count: number;
+};
