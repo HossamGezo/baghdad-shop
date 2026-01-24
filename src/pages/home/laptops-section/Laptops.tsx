@@ -39,7 +39,11 @@ const Laptops = () => {
       {!loading && !error && (
         <ProductSlider productsCount={laptops.length}>
           {laptops.map((laptop) => (
-            <ProductCard key={laptop.id} {...laptop} />
+            <ProductCard
+              className="first-of-type:ml-3.75 last-of-type:mr-3.75"
+              key={laptop.id}
+              {...laptop}
+            />
           ))}
         </ProductSlider>
       )}

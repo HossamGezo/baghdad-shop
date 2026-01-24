@@ -2,7 +2,7 @@
 import {Outlet} from "react-router";
 
 // --- Local Files
-import ScrollToTop from "../components/scroll-to-top/ScrollToTop";
+import ScrollToTop from "../utils/ScrollToTop";
 
 // --- Components
 import Header from "./header/Header";

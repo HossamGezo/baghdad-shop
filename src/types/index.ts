@@ -1,5 +1,5 @@
 export type ProductProps = {
-  id: number;
+  id: string;
   title: string;
   firstImage: string;
   secondImage: string;

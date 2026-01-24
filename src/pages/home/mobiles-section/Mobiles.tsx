@@ -39,7 +39,11 @@ const Mobiles = () => {
       {!loading && !error && (
         <ProductSlider productsCount={mobiles.length}>
           {mobiles.map((mobile) => (
-            <ProductCard key={mobile.id} {...mobile} />
+            <ProductCard
+              className="first-of-type:ml-3.75 last-of-type:mr-3.75"
+              key={mobile.id}
+              {...mobile}
+            />
           ))}
         </ProductSlider>
       )}
