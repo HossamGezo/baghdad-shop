@@ -23,6 +23,7 @@ const Offers = () => {
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
     };
   }, [index]);
+  
   // --- Return JSX
   return (
     <div className="offer-images col-span-12 xl:col-span-8 rounded-md overflow-hidden shadow-secondary relative">

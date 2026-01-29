@@ -30,7 +30,7 @@ const Pagination = ({
 
   // --- Styles
   const baseStyle =
-    "flex items-center justify-center font-bold w-20 h-10 text-warning border-r cursor-pointer select-none hover:bg-primary active:bg-primary/95";
+    "flex items-center justify-center font-bold max-sm:w-11 w-20 h-10 text-warning border-r cursor-pointer select-none hover:bg-primary active:bg-primary/95";
   const btnStyle =
     "bg-primary border-r-0 disabled:opacity-50 disabled:cursor-no-drop disabled:active:bg-primary text-3xl";
 
