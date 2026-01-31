@@ -21,6 +21,7 @@
     rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
     rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
   --shadow-special: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  --shadow-box: rgba(0, 0, 0, 0.09) 0px 3px 12px;
   --shadow-btn:
     rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
 }

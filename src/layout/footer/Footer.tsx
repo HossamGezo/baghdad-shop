@@ -6,7 +6,7 @@ import FooterBottom from "./components/FooterBottom";
 // --- Footer (Main Component)
 const Footer = () => {
   return (
-    <footer className="footer">
+    <footer className="footer mt-20">
       {/* Top Footer */}
       <FooterTop />
 

@@ -2,7 +2,7 @@
 import {Outlet} from "react-router";
 
 // --- Local Files
-import ScrollToTop from "../components/scroll-to-top/ScrollToTop";
+import ScrollToTop from "../utils/ScrollToTop";
 
 // --- Components
 import Header from "./header/Header";
@@ -14,7 +14,7 @@ const RootLayout = () => {
     <div className="min-h-screen flex flex-col w-full">
       <ScrollToTop />
       <Header />
-      <main className="custom-container flex-1">
+      <main className="custom-container min-h-[calc(100vh-180px)]">
         <Outlet />
       </main>
       <Footer />
