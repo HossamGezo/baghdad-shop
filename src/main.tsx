@@ -1,18 +1,21 @@
 // --- Libraries
-import {createRoot} from "react-dom/client";
-import {Provider} from "react-redux";
+import { createRoot } from "react-dom/client";
+import { StrictMode } from "react";
+import { Provider } from "react-redux";
 
 // --- Components
-import AppRouter from "./routes/AppRouter";
+import AppRouter from "@routes/AppRouter";
 
 // --- Local Files
-import store from "./app/store";
+import store from "@app/store";
 
 // --- Styles
 import "./index.css";
 
 createRoot(document.getElementById("root")!).render(
   <Provider store={store}>
-    <AppRouter />
+    <StrictMode>
+      <AppRouter />
+    </StrictMode>
   </Provider>,
 );
