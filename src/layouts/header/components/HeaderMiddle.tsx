@@ -1,15 +1,15 @@
 // --- Libraries
-import {NavLink} from "react-router";
-import clsx from "clsx";
+import { NavLink } from "react-router";
+import { cn } from "@utils/cn";
 
 // --- React Icons
-import {GrCart} from "react-icons/gr";
-import {FaUser} from "react-icons/fa";
+import { GrCart } from "react-icons/gr";
+import { FaUser } from "react-icons/fa";
 
 // --- Import Files
-import {useAppSelector} from "../../../app/hooks";
+import { useAppSelector } from "@app/hooks";
 
-// --- MiddleHeader (Main Component)
+// --- Main Component
 const MiddleHeader = () => {
   // --- Handle Submit
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -17,37 +17,38 @@ const MiddleHeader = () => {
   };
 
   // --- Cart
-  const {cart} = useAppSelector((state) => state.cart);
+  const { cart } = useAppSelector((state) => state.cart);
 
   // --- Return JSX
   return (
-    <div className="header-middle flex items-center gap-5 md:gap-2.5">
+    <div className="flex items-center gap-5 md:gap-2.5">
       {/* --- Header Search */}
       <form
         onSubmit={handleSubmit}
-        className="header-middle-search w-full h-10 lg:h-12.5 flex items-center flex-1 bg-green-50 my-5 max-sm:my-2.5 rounded-md overflow-hidden"
+        className="w-full h-10 lg:h-12.5 flex items-center flex-1 bg-green-50 my-5 max-sm:my-2.5 rounded-md overflow-hidden"
       >
         <button
-          className="header-middle-search-btn bg-warning text-primary h-full cursor-pointer px-5 font-medium text-lg select-none hover:bg-amber-500 active:bg-amber-400 duration-300 transition-colors"
+          aria-label="Submit search"
+          className="bg-warning text-primary h-full cursor-pointer px-5 font-medium text-lg select-none hover:bg-amber-500 active:bg-amber-400 duration-300 transition-colors"
           type="submit"
         >
           Search
         </button>
         <input
-          className="header-middle-search-input w-full h-full px-2.5 caret-warning outline-0 select-none"
+          className="w-full h-full px-2.5 caret-warning outline-0 select-none"
           type="search"
           aria-label="Search products"
           placeholder="What are you looking for?"
         />
       </form>
       {/* Header Middle Login & Cart */}
-      <div className="header-middle-login-cart max-sm:absolute top-6 right-5 flex items-center gap-3 xl:mt-1.5">
+      <div className="max-sm:absolute top-6 right-5 flex items-center gap-3 xl:mt-1.5">
         {/* --- Login */}
-        <div className="header-middle-login">
+        <div>
           <NavLink
             to="login"
-            className={({isActive}) =>
-              clsx(
+            className={({ isActive }) =>
+              cn(
                 "flex items-center justify-center text-center text-lg sm:text-xl lg:text-xl transition-colors duration-150 cursor-pointer w-25 h-8 md:h-9 lg:h-10 rounded-[40px] max-sm:hidden",
                 isActive
                   ? "border-2 bg-warning text-primary"
@@ -59,8 +60,8 @@ const MiddleHeader = () => {
           </NavLink>
           <NavLink
             to="login"
-            className={({isActive}) =>
-              clsx(
+            className={({ isActive }) =>
+              cn(
                 "text-xl transition-colors duration-150 cursor-pointer sm:hidden",
                 isActive
                   ? "text-warning"
@@ -72,18 +73,18 @@ const MiddleHeader = () => {
           </NavLink>
         </div>
         {/* --- Cart */}
-        <div className="header-middle-cart">
+        <div>
           <NavLink
             to="cart"
-            className={({isActive}) =>
-              clsx(
+            className={({ isActive }) =>
+              cn(
                 "relative text-white flex items-end gap-1 xl:gap-0.5 cursor-pointer  border-b-2 border-dotted pb-1 hover:border-b-warning/50",
                 isActive ? "border-b-warning/50" : "border-b-transparent",
               )
             }
           >
             <GrCart className="text-2xl lg:text-3xl" />
-            <span className="text:lg lg:text-xl font-jetbrains">
+            <span className="text-lg lg:text-xl font-jetbrains">
               Cart
               {cart.length !== 0 && (
                 <span className="absolute text-[12px] -top-3 left-2 lg:-top-2.5 lg:left-3.5 border-2 border-primary bg-warning rounded-full w-6 h-6 flex items-center justify-center">

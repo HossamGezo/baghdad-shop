@@ -1,5 +1,5 @@
 // --- Local Component
-import FooterLinks from "./FooterLinks";
+import FooterLinks from "@layouts/footer/components/FooterLinks";
 
 // ------ Producsts Link Arraies
 const electronics = [
@@ -39,7 +39,7 @@ const beauty = [
   "Health Care Products",
 ];
 
-// --- MiddleFooter (Main Component)
+// --- Main Component
 const MiddleFooter = () => {
   return (
     <div className="middle-footer bg-primary/80 text-white">

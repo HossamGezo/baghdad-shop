@@ -1,9 +1,9 @@
 // --- Local Components
-import FooterTop from "./components/FooterTop";
-import FooterMiddle from "./components/FooterMiddle";
-import FooterBottom from "./components/FooterBottom";
+import FooterTop from "@layouts/footer/components/FooterTop";
+import FooterMiddle from "@layouts/footer/components/FooterMiddle";
+import FooterBottom from "@layouts/footer/components/FooterBottom";
 
-// --- Footer (Main Component)
+// --- Main Component
 const Footer = () => {
   return (
     <footer className="footer mt-20">

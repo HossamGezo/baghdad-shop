@@ -1,11 +1,11 @@
 // --- Libraries
-import clsx from "clsx";
+import { cn } from "@utils/cn";
 
 // --- React Icons
-import {RiCloseLargeLine} from "react-icons/ri";
+import { RiCloseLargeLine } from "react-icons/ri";
 
 // --- Local Components
-import CustomLink from "../../../components/custom-link/CustomLink";
+import CustomLink from "@components/custom-link/CustomLink";
 
 // --- Types
 type NavbarProps = {
@@ -14,7 +14,7 @@ type NavbarProps = {
   handleClose: () => void;
 };
 
-// --- Navbar (Main Component)
+// --- Main Component
 const Navbar = ({
   toggleBurger,
   handleNavBarClose,
@@ -23,8 +23,8 @@ const Navbar = ({
   // --- Return JSX
   return (
     <nav
-      className={clsx(
-        "header-head-navbar max-lg:absolute max-lg:top-0 max-lg:left-0 max-lg:flex-col max-lg:items-start max-lg:bg-black/40 max-lg:h-dvh max-lg:w-full duration-500 transition-[clip-path] z-50",
+      className={cn(
+        "max-lg:absolute max-lg:top-0 max-lg:left-0 max-lg:flex-col max-lg:items-start max-lg:bg-black/40 max-lg:h-dvh max-lg:w-full duration-500 transition-[clip-path] ease-in-out z-50",
         toggleBurger
           ? "max-lg:[clip-path:polygon(0_0,100%_0,100%_100%,0_100%)]"
           : "max-lg:[clip-path:polygon(0_0,0_0,0_100%,0_100%)]",
@@ -34,12 +34,12 @@ const Navbar = ({
       <button
         type="button"
         aria-label="Close Menu"
-        className="header-head-navbar-close-icon absolute top-5 right-5 text-white text-3xl hover:text-red-500 active:text-red-400 lg:hidden"
+        className="absolute top-5 right-5 text-white text-3xl hover:text-red-500 active:text-red-400 lg:hidden"
         onClick={handleClose}
       >
         <RiCloseLargeLine />
       </button>
-      <ul className="header-head-navbar-list flex items-center mx-auto max-lg:absolute max-lg:top-0 max-lg:left-0 max-lg:flex-col max-lg:items-start max-lg:bg-primary max-lg:h-dvh w-[80%] md:w-[50%] lg:w-fit">
+      <ul className="flex items-center mx-auto max-lg:absolute max-lg:top-0 max-lg:left-0 max-lg:flex-col max-lg:items-start max-lg:bg-primary max-lg:h-dvh w-[80%] md:w-[50%] lg:w-fit">
         <CustomLink
           to="/"
           text="Home"

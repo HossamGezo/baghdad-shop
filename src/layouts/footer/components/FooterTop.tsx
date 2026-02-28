@@ -1,10 +1,10 @@
 // --- Libraries
-import {Link} from "react-router";
+import { Link } from "react-router";
 
 // --- React Icons
-import {MdEmail} from "react-icons/md";
+import { MdEmail } from "react-icons/md";
 
-// --- FopFooter (Main Component)
+// --- Main Component
 const TopFooter = () => {
   const toTop = () => {
     window.scrollTo(0, 0);

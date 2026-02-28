@@ -1,7 +1,7 @@
 // --- Libraries
-import {Link} from "react-router";
+import { Link } from "react-router";
 
-// --- FooterBottom (Main Component)
+// --- Main Component
 const FooterBottom = () => {
   // --- CopyRight Date
   const date = new Date().getFullYear();

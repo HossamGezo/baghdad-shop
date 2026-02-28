@@ -1,12 +1,12 @@
 // --- Libraries
-import {useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 
 // --- Local Components
-import HeaderTop from "./components/HeaderTop";
-import HeaderMiddle from "./components/HeaderMiddle";
-import HeaderNavbar from "./components/HeaderNavbar";
+import HeaderTop from "@layouts/header/components/HeaderTop";
+import HeaderMiddle from "@layouts/header/components/HeaderMiddle";
+import HeaderNavbar from "@layouts/header/components/HeaderNavbar";
 
-// --- Header (Main Component)
+// --- Main Component
 const Header = () => {
   const [toggleBurger, setToggleBurger] = useState(false);
 
@@ -46,7 +46,7 @@ const Header = () => {
 
   // --- Return JSX
   return (
-    <header className="header bg-primary pb-5 select-none">
+    <header className="bg-primary pb-5 select-none">
       <div className="custom-container">
         {/* Header Top */}
         <HeaderTop handleToggle={handleToggle}>
