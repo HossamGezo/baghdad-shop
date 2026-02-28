@@ -1,10 +1,10 @@
 // --- Libraries
-import {useEffect, useState} from "react";
-import clsx from "clsx";
+import { useEffect, useState } from "react";
+import { cn } from "@utils/cn";
 
 // --- React Icons
-import {LiaAngleDoubleRightSolid} from "react-icons/lia";
-import {LiaAngleDoubleLeftSolid} from "react-icons/lia";
+import { LiaAngleDoubleRightSolid } from "react-icons/lia";
+import { LiaAngleDoubleLeftSolid } from "react-icons/lia";
 
 // --- Types
 type ProductSliderProps = {
@@ -12,8 +12,8 @@ type ProductSliderProps = {
   children: React.ReactNode;
 };
 
-// --- ProductSlider (Main Component)
-const ProductSlider = ({productsCount, children}: ProductSliderProps) => {
+// --- Main Component
+const ProductSlider = ({ productsCount, children }: ProductSliderProps) => {
   // --- viewport
   const [viewport, setViewport] = useState(window.innerWidth);
   useEffect(() => {
@@ -71,7 +71,7 @@ const ProductSlider = ({productsCount, children}: ProductSliderProps) => {
       {/* Left Button */}
       <LiaAngleDoubleLeftSolid
         onClick={handlePrev}
-        className={clsx(
+        className={cn(
           "absolute z-50 top-1/2 -translate-y-1/2 left-3 text-5xl border border-warning rounded-full p-1.5 text-amber-500 cursor-pointer hover:bg-warning hover:text-white active:border-amber-300 active:bg-amber-300 active:scale-[0.98] select-none max-xl:hidden transition-all duration-200",
           isAtStart ? "opacity-0 pointer-events-none" : "opacity-100",
         )}
@@ -79,8 +79,8 @@ const ProductSlider = ({productsCount, children}: ProductSliderProps) => {
 
       {/* Slider Track */}
       <div
-        style={{transform: `translateX(${finalMove}px)`, gap: `${GAP}px`}}
-        className={clsx(
+        style={{ transform: `translateX(${finalMove}px)`, gap: `${GAP}px` }}
+        className={cn(
           `product-slider-products flex transition-transform duration-700 ease-in-out`,
         )}
       >
@@ -90,7 +90,7 @@ const ProductSlider = ({productsCount, children}: ProductSliderProps) => {
       {/* Right Button */}
       <LiaAngleDoubleRightSolid
         onClick={handleNext}
-        className={clsx(
+        className={cn(
           "absolute z-50 top-1/2 -translate-y-1/2 right-3 text-5xl border border-warning rounded-full p-1.5 text-amber-500 cursor-pointer hover:bg-warning hover:text-white active:border-amber-300 active:bg-amber-300 active:scale-[0.98] select-none max-xl:hidden transition-all duration-200",
           isAtEnd ? "opacity-0 pointer-events-none" : "opacity-100",
         )}

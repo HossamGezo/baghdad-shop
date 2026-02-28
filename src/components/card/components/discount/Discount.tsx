@@ -4,8 +4,8 @@ type DiscountProps = {
   discount: number;
 };
 
-// --- Discount (Main Component)
-const Discount = ({price, discount}: DiscountProps) => {
+// --- Main Component
+const Discount = ({ price, discount }: DiscountProps) => {
   // --- Return JSX
   return (
     <div className="product-details-card-details-price-and-discount flex items-center gap-2.5 mt-5">

@@ -1,9 +1,9 @@
 // --- Libraries
-import clsx from "clsx";
+import { cn } from "@utils/cn";
 
 // --- React Icons
-import {FaAngleDoubleRight} from "react-icons/fa";
-import {FaAngleDoubleLeft} from "react-icons/fa";
+import { FaAngleDoubleRight } from "react-icons/fa";
+import { FaAngleDoubleLeft } from "react-icons/fa";
 
 // --- Types
 type PaginationProps = React.ComponentPropsWithoutRef<"section"> & {
@@ -12,7 +12,7 @@ type PaginationProps = React.ComponentPropsWithoutRef<"section"> & {
   setPage: React.Dispatch<React.SetStateAction<number>>;
 };
 
-// --- Pagination (Main Component)
+// --- Main Component
 const Pagination = ({
   pages,
   page,
@@ -36,14 +36,14 @@ const Pagination = ({
 
   // --- Return JSX
   return (
-    <section {...props} className={clsx("pagination", className)}>
+    <section {...props} className={cn("pagination", className)}>
       <div className="pagination-controllers flex items-center w-fit mx-auto">
         {/* Previous Button */}
         <button
           type="button"
           onClick={prevPage}
           disabled={page === 0 ? true : false}
-          className={clsx(baseStyle, btnStyle)}
+          className={cn(baseStyle, btnStyle)}
         >
           <FaAngleDoubleLeft />
         </button>
@@ -56,7 +56,7 @@ const Pagination = ({
               <span
                 key={index}
                 onClick={() => setPage(index)}
-                className={clsx(
+                className={cn(
                   baseStyle,
                   page === index ? "bg-primary" : "bg-primary/75",
                 )}
@@ -71,7 +71,7 @@ const Pagination = ({
           type="button"
           onClick={nextPage}
           disabled={page === pages - 1 ? true : false}
-          className={clsx(baseStyle, btnStyle)}
+          className={cn(baseStyle, btnStyle)}
         >
           <FaAngleDoubleRight />
         </button>

@@ -1,13 +1,13 @@
 // --- Libraries
-import {Link} from "react-router";
+import { Link } from "react-router";
 
 // --- Types
 type LogoProps = {
   children?: React.ReactNode;
 };
 
-// --- Logo (Main Component)
-const Logo = ({children}: LogoProps) => {
+// --- Main Component
+const Logo = ({ children }: LogoProps) => {
   return (
     <div className="header-head-logo">
       <Link

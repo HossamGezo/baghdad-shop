@@ -1,14 +1,14 @@
 // --- React Icons
-import {FaStar} from "react-icons/fa6";
+import { FaStar } from "react-icons/fa6";
 
 // --- types
 type RatingAndViewsProps = {
   rating: number;
-  reviews: string;
+  reviews: number;
 };
 
-// --- RatingAndViews (Main Component)
-const RatingAndViews = ({rating, reviews}: RatingAndViewsProps) => {
+// --- Main Component
+const RatingAndViews = ({ rating, reviews }: RatingAndViewsProps) => {
   // --- Return JSX
   return (
     <div className="product-details-card-details-rating-and-reviews flex items-center gap-2.5 mt-2.5">

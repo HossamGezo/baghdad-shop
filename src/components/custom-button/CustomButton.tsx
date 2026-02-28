@@ -1,4 +1,4 @@
-// --- CustomButton (Main Component)
+// --- Main Component
 const CustomButton = () => {
   return <button>Custom Button</button>;
 };

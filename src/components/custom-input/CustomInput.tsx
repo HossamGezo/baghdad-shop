@@ -1,4 +1,4 @@
-// --- CustomInput (Main Component)
+// --- Main Component
 const CustomInput = () => {
   return <input type="text" />;
 };

@@ -1,6 +1,6 @@
 // --- Libraries
-import {useState} from "react";
-import clsx from "clsx";
+import { useState } from "react";
+import { cn } from "@utils/cn";
 
 // --- Types
 type ProductImagesProps = {
@@ -8,8 +8,8 @@ type ProductImagesProps = {
   title: string;
 };
 
-// --- ProductImages (Main Component)
-const ProductImages = ({images, title}: ProductImagesProps) => {
+// --- Main Component
+const ProductImages = ({ images, title }: ProductImagesProps) => {
   // --- Product Images Logic
   const [currentImage, setCurrentImage] = useState<number>(0);
 
@@ -32,7 +32,7 @@ const ProductImages = ({images, title}: ProductImagesProps) => {
             src={img}
             alt={title}
             key={index}
-            className={clsx(
+            className={cn(
               "w-14 h-14 sm:w-18 sm:h-18 xl:w-20 xl:h-20 object-contain hover:border-gray-300 hover:p-0.5 transition-colors duration-150 cursor-pointer",
               currentImage === index
                 ? "border border-gray-300 p-0.5"
