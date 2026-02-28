@@ -1,15 +1,15 @@
 // --- Styles
-import "./brands.css";
+import "@pages/home/brands/brands.css";
 
 // --- Data
-import {brands} from "../../../data/brands";
+import { brands } from "@data/brands";
 
 // --- BrandsLogos Component
 const BrandsLogos = () => {
   return brands.map((brand) => (
     <div
       key={brand.id}
-      className="brands-image-wrapper mr-5 px-5 w-60 h-20 bg-white rounded-xl shadow-special shrink-0 flex items-center justify-center hover:scale-[1.08] hover:shadow-secondary transition-all duration-500"
+      className="brands-image-wrapper mr-5 px-5 w-60 h-20 bg-white rounded-xl shadow-soft shrink-0 flex items-center justify-center hover:scale-[1.08] hover:shadow-deep transition-all duration-500"
     >
       <img
         src={brand.image}
@@ -20,7 +20,7 @@ const BrandsLogos = () => {
   ));
 };
 
-// --- Brands (Main Component)
+// --- Main Component
 const Brands = () => {
   // --- Return JSx
   return (

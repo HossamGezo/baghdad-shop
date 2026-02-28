@@ -1,19 +1,19 @@
 // --- Libraries
-import {useEffect} from "react";
+import { useEffect } from "react";
 
 // --- Local Files
-import {useAppDispatch, useAppSelector} from "../../../app/hooks";
-import {fetchSpecialOffers} from "../../../features/products/productsSlice";
+import { useAppDispatch, useAppSelector } from "@app/hooks";
+import { fetchSpecialOffers } from "@features/products/productsSlice";
 
 // --- Local Components
-import SpecialOfferCard from "./components/SpecialOfferCard";
-import Spinner from "../../../components/ui/spinner/Spinner";
-import ErrorHandler from "../../../components/ui/error-handler/ErrorHandler";
+import SpecialOfferCard from "@pages/home/special-offers/components/SpecialOfferCard";
+import Spinner from "@components/spinner/Spinner";
+import ErrorHandler from "@components/error-handler/ErrorHandler";
 
-// --- SpecialOffers (Main Component)
+// --- Main Component
 const SpecialOffers = () => {
   // --- Fetch SpecialOffers
-  const {loading, specialOffers, error} = useAppSelector(
+  const { loading, specialOffers, error } = useAppSelector(
     (state) => state.products,
   );
   const dispatch = useAppDispatch();

@@ -1,11 +1,11 @@
 // --- Local Components
-import HeroSection from "./hero-section/HeroSection";
-import SpecialOffers from "./special-offers-section/SpecialOffers";
-import Laptops from "./laptops-section/Laptops";
-import Mobiles from "./mobiles-section/Mobiles";
-import Brands from "./brands-section/Brands";
+import HeroSection from "@pages/home/hero/HeroSection";
+import SpecialOffers from "@pages/home/special-offers/SpecialOffers";
+import Laptops from "@pages/home/laptops/Laptops";
+import Mobiles from "@pages/home/mobiles/Mobiles";
+import Brands from "@pages/home/brands/Brands";
 
-// --- Home (Main Component)
+// --- Main Component
 const Home = () => {
   // --- Return JSX
   return (

@@ -1,7 +1,7 @@
 // --- Data
-import {categories} from "../../../../data/categories";
+import { categories } from "@data/categories";
 
-// --- Category (Main Component)
+// --- Main Component
 const Category = () => {
   // --- Return JSX
   return (
@@ -13,7 +13,7 @@ const Category = () => {
         {categories.map((category) => (
           <li
             key={category.id}
-            className="categories-list-item flex flex-col items-center justify-center gap-2.5 bg-body hover:scale-[1.01] hover:shadow-primary transition-[transform,box-shadow] duration-300 cursor-pointer rounded-sm p-1"
+            className="categories-list-item flex flex-col items-center justify-center gap-2.5 bg-body hover:scale-[1.01] hover:shadow-strong transition-[transform,box-shadow] duration-300 cursor-pointer rounded-sm p-1"
           >
             <img
               src={category.image}

@@ -1,13 +1,13 @@
 // --- React Icons
-import {IoSettingsSharp} from "react-icons/io5";
-import {GiTakeMyMoney} from "react-icons/gi";
+import { IoSettingsSharp } from "react-icons/io5";
+import { GiTakeMyMoney } from "react-icons/gi";
 
-// --- Sellers (Main Component)
+// --- Main Component
 const Sellers = () => {
   return (
     <div className="baghdad-sellers hidden xl:grid col-span-4 select-none">
       {/* --- Seller Promotion */}
-      <div className="seller-promotion bg-white/10 p-2.5 flex flex-col gap-2 rounded-md shadow-secondary">
+      <div className="seller-promotion bg-white/10 p-2.5 flex flex-col gap-2 rounded-md shadow-deep">
         <div className="seller-partner flex items-center gap-3.5 border-b border-amber-400 pb-1.5 px-3">
           <img
             src="/logo.svg"
@@ -44,7 +44,7 @@ const Sellers = () => {
         </div>
       </div>
       {/* --- Seller Christmas Gif */}
-      <div className="seller-christmas-gif mt-5 rounded-md overflow-hidden h-55 shadow-secondary">
+      <div className="seller-christmas-gif mt-5 rounded-md overflow-hidden h-55 shadow-deep">
         <img
           src="/images/gifs/christmas.gif"
           alt="CHRISTMAS"

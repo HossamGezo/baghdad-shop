@@ -1,20 +1,20 @@
 // --- Libraries
-import {useEffect} from "react";
+import { useEffect } from "react";
 
 // --- Local Files
-import {useAppDispatch, useAppSelector} from "../../../app/hooks";
-import {fetchMobiles} from "../../../features/products/productsSlice";
+import { useAppDispatch, useAppSelector } from "@app/hooks";
+import { fetchMobiles } from "@features/products/productsSlice";
 
 // --- Local Components
-import ProductCard from "../../../components/ui/card/product-card/ProductCard";
-import ProductSlider from "../../../components/product-slider/ProductSlider";
-import Spinner from "../../../components/ui/spinner/Spinner";
-import ErrorHandler from "../../../components/ui/error-handler/ErrorHandler";
+import ProductCard from "@components/card/ProductCard";
+import ProductSlider from "@components/product-slider/ProductSlider";
+import Spinner from "@components/spinner/Spinner";
+import ErrorHandler from "@components/error-handler/ErrorHandler";
 
-// --- Mobiles (Main Component)
+// --- Main Component
 const Mobiles = () => {
   // --- Fetch Mobiles
-  const {loading, mobiles, error} = useAppSelector((state) => state.products);
+  const { loading, mobiles, error } = useAppSelector((state) => state.products);
   const dispatch = useAppDispatch();
   useEffect(() => {
     if (mobiles.length === 0) dispatch(fetchMobiles());

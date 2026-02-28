@@ -1,18 +1,18 @@
 // --- Libraries
-import {Link} from "react-router";
+import { Link } from "react-router";
 
 // --- Types
-import type {ProductProps} from "../../../../types";
+import type { ProductType } from "@/types";
 
 // --- Local Components
-import Discount from "../../../../components/ui/card/components/discount/Discount";
-import RatingAndViews from "../../../../components/ui/card/components/rating-and-views/RatingAndViews";
+import Discount from "@components/card/components/discount/Discount";
+import RatingAndViews from "@components/card/components/rating-and-reviews/RatingAndReviews";
 
-// --- SpecialCard (Main Component)
-const SpecialOfferCard = (specialOffer: ProductProps) => {
+// --- Main Component
+const SpecialOfferCard = (specialOffer: ProductType) => {
   // --- Return JSX
   return (
-    <div className="special-offer-card relative bg-white shadow-special rounded-md px-5 pt-5 pb-2.5 min-h-75 max-sm:h-115">
+    <div className="special-offer-card relative bg-white shadow-soft rounded-md px-5 pt-5 pb-2.5 min-h-75 max-sm:h-115">
       {/* Card Discount */}
       <div className="special-offer-card-discount bg-secondary/75 text-white text-xl py-1 sm:w-37.5 text-center rounded-full sm:ml-auto">
         {specialOffer.discount}% OFF
@@ -31,7 +31,7 @@ const SpecialOfferCard = (specialOffer: ProductProps) => {
           {/* --- 2nd Image */}
           <div
             className="bg-contain bg-no-repeat absolute inset-0 opacity-0 group-hover:opacity-100"
-            style={{backgroundImage: `url(${specialOffer.secondImage})`}}
+            style={{ backgroundImage: `url(${specialOffer.secondImage})` }}
           ></div>
         </div>
         {/* Product Description */}

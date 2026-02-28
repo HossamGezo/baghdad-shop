@@ -1,9 +1,9 @@
 // --- Local Components
-import Offers from "./components/Offers";
-import Sellers from "./components/Sellers";
-import Category from "./components/Category";
+import Offers from "@pages/home/hero/components/Offers";
+import Sellers from "@pages/home/hero/components/Sellers";
+import Category from "@pages/home/hero/components/Category";
 
-// --- HeroSection (Main Component)
+// --- Main Component
 const HeroSection = () => {
   // --- Return JSX
   return (
