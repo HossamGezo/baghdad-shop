@@ -1,25 +1,21 @@
 // --- Libraries
-import {createSlice} from "@reduxjs/toolkit";
+import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
 // --- Types
-import type {CartProps} from "../../types";
+import type { CartType } from "@/types";
 
 // --- localStorage
-const storedCart = localStorage.getItem("cart");
-const cart: CartProps[] = storedCart ? JSON.parse(storedCart) : [];
+const cart: CartType[] = JSON.parse(
+  globalThis.localStorage.getItem("cart") || "[]",
+);
 
-const setCartToLocalStorage = (cartItems: CartProps[]) => {
-  localStorage.setItem("cart", JSON.stringify(cartItems));
-};
-
-// --- InitialStateProps (Types)
-
-type InitialStateProps = {
-  cart: CartProps[];
+// --- CartState (Types)
+export type CartState = {
+  cart: CartType[];
 };
 
 // --- initialState
-const initialState: InitialStateProps = {
+const initialState: CartState = {
   cart: cart,
 };
 
@@ -27,7 +23,7 @@ const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    addToCart: (state, action: {payload: CartProps}) => {
+    addToCart: (state, action: PayloadAction<CartType>) => {
       /**
        * ===============
        * Important Note:
@@ -44,37 +40,29 @@ const cartSlice = createSlice({
       } else {
         state.cart.push(action.payload);
       }
-      // --- Update localStorage
-      setCartToLocalStorage(state.cart);
     },
-    increaseQuantity: (state, action: {payload: number}) => {
+    increaseQuantity: (state, action: PayloadAction<string>) => {
       const product = state.cart.find(
         (product) => product.id === action.payload,
       );
       if (product) product.count++;
-      // --- Update localStorage
-      setCartToLocalStorage(state.cart);
     },
-    decreaseQuantity: (state, action: {payload: number}) => {
+    decreaseQuantity: (state, action: PayloadAction<string>) => {
       const product = state.cart.find(
         (product) => product.id === action.payload,
       );
       if (product) product.count--;
-      // --- Update localStorage
-      setCartToLocalStorage(state.cart);
     },
-    removeFromCart: (state, action: {payload: number}) => {
+    removeFromCart: (state, action: PayloadAction<string>) => {
       state.cart = state.cart.filter(
         (product) => product.id !== action.payload,
       );
-      // --- Update localStorage
-      setCartToLocalStorage(state.cart);
     },
   },
 });
 
 // --- actions
-export const {addToCart, increaseQuantity, decreaseQuantity, removeFromCart} =
+export const { addToCart, increaseQuantity, decreaseQuantity, removeFromCart } =
   cartSlice.actions;
 
 export default cartSlice.reducer;
