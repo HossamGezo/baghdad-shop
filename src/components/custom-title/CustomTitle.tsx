@@ -3,9 +3,11 @@ import { Link } from "react-router";
 
 // --- React Icons
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
+import { MdLocalOffer } from "react-icons/md";
 
 // --- Utils
 import { cn } from "@/utils/cn";
+import CountDown from "@components/count-down/CountDown";
 
 // --- Types
 type CustomTitleProps = React.ComponentProps<"h2"> & {
@@ -31,16 +33,20 @@ const CustomTitle = ({
       )}
       {...rest}
     >
-      <h2>{title}</h2>
+      <h2 className="flex items-center gap-1.5">
+        {offer && <MdLocalOffer className="text-yellow-300" />}
+        {title}
+      </h2>
       {!offer && to && (
         <Link
           aria-label={`See all ${title}`}
           to={to}
-          className="text-white text-[16px] cursor-pointer flex items-center font-jetbrains hover:underline transition-colors duration-300 [word-spacing:0.5px] font-extrabold"
+          className="text-white text-[16px] cursor-pointer flex items-center font-jetbrains hover:text-primary transition-colors duration-300 [word-spacing:0.5px] font-extrabold"
         >
           See All <MdOutlineKeyboardArrowRight size={24} />
         </Link>
       )}
+      {offer && <CountDown hours={24} />}
     </div>
   );
 };

@@ -12,7 +12,7 @@ import cart, {
   decreaseQuantity,
   increaseQuantity,
   removeFromCart,
-} from "@features/cart/cartSlice";
+} from "@/features/cart/cartSlice";
 
 // --- Custom Middlewares
 const cartListener = createListenerMiddleware();
