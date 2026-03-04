@@ -1,12 +1,13 @@
 export const formatCurrency = (
   value: number | string | undefined | null,
-  currency: string = "USD",
+  currency: string = "EGP",
 ) => {
   const amount = Number(value) || 0;
 
-  return new Intl.NumberFormat("en-US", {
+  return new Intl.NumberFormat("en-EG", {
     style: "currency",
     currency: currency,
+    currencyDisplay: "code",
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   }).format(amount);

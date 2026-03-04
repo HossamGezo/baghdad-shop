@@ -13,7 +13,7 @@ import RatingAndViews from "@components/card/components/rating-and-reviews/Ratin
 
 // --- Types
 type ProductCardProps = ProductType &
-  React.ComponentPropsWithoutRef<"div"> & {
+  React.ComponentProps<"div"> & {
     category: string;
   };
 
@@ -32,14 +32,13 @@ const ProductCard = ({ className, ...product }: ProductCardProps) => {
         <img
           src={product.firstImage}
           alt={product.title}
+          loading="lazy"
           className="w-full h-full object-contain"
         />
       </div>
       <div className="font-medium">{product.title}</div>
       <RatingAndViews rating={product.rating} reviews={product.reviews} />
-      <div className="text-xl font-medium">
-        USD {formatCurrency(product.price)}
-      </div>
+      <div className="text-xl font-medium">{formatCurrency(product.price)}</div>
     </Link>
   );
 };

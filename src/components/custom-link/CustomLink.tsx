@@ -10,23 +10,21 @@ type CustomLinkProps = NavLinkProps & {
 // --- Main Component
 const CustomLink = ({ to, text, className, ...props }: CustomLinkProps) => {
   return (
-    <li className="header-navbar-list-item max-lg:w-full lg:h-full select-none">
-      <NavLink
-        to={to}
-        className={({ isActive }) =>
-          cn(
-            "text-primary font-medium flex items-center justify-center px-5 py-2.5 h-full transition-colors duration-300 cursor-pointer",
-            isActive
-              ? "bg-amber-500"
-              : "bg-warning hover:bg-amber-500 active:bg-amber-400",
-            className,
-          )
-        }
-        {...props}
-      >
-        <span className="inline-block max-lg:w-[75%]">{text}</span>
-      </NavLink>
-    </li>
+    <NavLink
+      to={to}
+      className={({ isActive }) =>
+        cn(
+          "text-primary font-medium flex items-center justify-center px-5 py-2.5 h-full transition-colors duration-300 cursor-pointer",
+          isActive
+            ? "bg-amber-500"
+            : "bg-warning hover:bg-amber-500 active:bg-amber-400",
+          className,
+        )
+      }
+      {...props}
+    >
+      <span className="inline-block max-lg:w-[75%]">{text}</span>
+    </NavLink>
   );
 };
 

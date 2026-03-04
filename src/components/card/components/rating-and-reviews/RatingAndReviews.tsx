@@ -11,7 +11,7 @@ type RatingAndViewsProps = {
 const RatingAndViews = ({ rating, reviews }: RatingAndViewsProps) => {
   // --- Return JSX
   return (
-    <div className="product-details-card-details-rating-and-reviews flex items-center gap-2.5 mt-2.5">
+    <div className="flex items-center gap-2.5 mt-2.5">
       <span className="bg-secondary text-white flex items-center gap-2.5 px-2.5 py-0.5 rounded-sm font-medium my-2.5">
         {rating} <FaStar className="text-[13px]" />
       </span>
