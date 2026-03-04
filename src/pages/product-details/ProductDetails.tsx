@@ -15,7 +15,7 @@ import RatingAndViews from "@components/card/components/rating-and-reviews/Ratin
 import ProductImages from "@components/card/components/product-images/ProductImages";
 import Spinner from "@components/spinner/Spinner";
 import ErrorHandler from "@components/error-handler/ErrorHandler";
-import { addToCart } from "@features/cart/cartSlice";
+import { addToCart } from "@/features/cart/cartSlice";
 import type { ProductType } from "@/types";
 
 // --- Main Component
