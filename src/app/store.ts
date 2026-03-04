@@ -1,9 +1,33 @@
 // --- Libraries
-import {configureStore} from "@reduxjs/toolkit";
+import {
+  configureStore,
+  createListenerMiddleware,
+  isAnyOf,
+} from "@reduxjs/toolkit";
 
-// --- Slices
-import products from "../features/products/productsSlice";
-import cart from "../features/cart/CartSlice";
+// --- Reducers & Actions
+import products from "@features/products/productsSlice";
+import cart, {
+  addToCart,
+  decreaseQuantity,
+  increaseQuantity,
+  removeFromCart,
+} from "@features/cart/cartSlice";
+
+// --- Custom Middlewares
+const cartListener = createListenerMiddleware();
+cartListener.startListening({
+  matcher: isAnyOf(
+    addToCart,
+    increaseQuantity,
+    decreaseQuantity,
+    removeFromCart,
+  ),
+  effect: (_action, listenerApi) => {
+    const state = listenerApi.getState() as RootState;
+    globalThis.localStorage.setItem("cart", JSON.stringify(state.cart.cart));
+  },
+});
 
 // --- Store
 const store = configureStore({
@@ -11,6 +35,8 @@ const store = configureStore({
     products,
     cart,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().prepend(cartListener.middleware),
 });
 
 // --- Store Types
