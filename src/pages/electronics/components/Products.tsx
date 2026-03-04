@@ -1,33 +1,42 @@
 // --- Libraries
-import {useEffect, useMemo, useState} from "react";
+import { useEffect, useMemo, useState } from "react";
 
 // --- Local Files
-import {useAppDispatch, useAppSelector} from "../../../app/hooks";
-import {
-  fetchLaptops,
-  fetchMobiles,
-} from "../../../features/products/productsSlice";
+import { useAppDispatch } from "@app/hooks";
+import { fetchLaptops, fetchMobiles } from "@features/products/productsSlice";
 
 // --- Local Components
-import ProductCard from "../../../components/ui/card/product-card/ProductCard";
-import Pagination from "../../../components/ui/pagination/Pagination";
+import ProductCard from "@components/card/ProductCard";
+import Pagination from "@components/pagination/Pagination";
+import ErrorHandler from "@components/error-handler/ErrorHandler";
 
 // --- Types
-import type {CurrentElectronicsProps, CurrentPriceProps} from "../../../types";
+import type {
+  CurrentElectronicsType,
+  CurrentPriceType,
+  ProductType,
+} from "@/types";
+import Spinner from "@/components/spinner/Spinner";
 
 // --- Types
 type ProductsProps = {
-  currentPrice: CurrentPriceProps;
-  currentElectronics: CurrentElectronicsProps;
+  loading: boolean;
+  error: string;
+  laptops: ProductType[];
+  mobiles: ProductType[];
+  currentPrice: CurrentPriceType;
+  currentElectronics: CurrentElectronicsType;
 };
 
-// --- Products (Main Component)
+// --- Main Component
 const Products = ({
   currentPrice = "no-sorting",
   currentElectronics = "all-products",
+  loading,
+  error,
+  laptops,
+  mobiles,
 }: ProductsProps) => {
-  // --- Fetching Data
-  const {loading, laptops, mobiles} = useAppSelector((state) => state.products);
   const dispatch = useAppDispatch();
   useEffect(() => {
     if (laptops.length === 0) {
@@ -49,9 +58,9 @@ const Products = ({
 
     // --- Sorting
     if (currentPrice === "low-to-high") {
-      result.sort((a, b) => a.price - b.price);
+      return result.toSorted((a, b) => a.price - b.price);
     } else if (currentPrice === "high-to-low") {
-      result.sort((a, b) => b.price - a.price);
+      return result.toSorted((a, b) => b.price - a.price);
     }
 
     return result;
@@ -66,23 +75,35 @@ const Products = ({
 
   // --- Return JSX
   return (
-    <section className="products lg:relative col-span-5 sm:col-span-3 lg:col-span-4">
-      {!loading && (
-        <>
-          <div className="products-wrapper grid grid-cols-1 lg:grid-cols-2 xxl:grid-cols-3 gap-4 px-2.5">
-            {paginatedItems.map((product) => (
-              <ProductCard key={product.id} {...product} />
-            ))}
-          </div>
-          <Pagination
-            pages={pages as number}
-            page={page}
-            setPage={setPage}
-            className="absolute -bottom-20 left-1/2 -translate-x-1/2"
-          />
-        </>
+    <>
+      {loading && (
+        <div className="flex items-center justify-center min-h-165 col-span-4">
+          <Spinner />
+        </div>
       )}
-    </section>
+      {!loading && error && (
+        <div className="flex items-center justify-center col-span-4">
+          <ErrorHandler error={error} />
+        </div>
+      )}
+      {!loading && !error && (
+        <section className="lg:relative col-span-5 sm:col-span-3 lg:col-span-4">
+          <>
+            <div className="grid grid-cols-1 lg:grid-cols-2 xxl:grid-cols-3 gap-4 px-2.5">
+              {paginatedItems.map((product) => (
+                <ProductCard key={product.id} {...product} />
+              ))}
+            </div>
+            <Pagination
+              pages={pages as number}
+              page={page}
+              setPage={setPage}
+              className="absolute -bottom-20 left-1/2 -translate-x-1/2"
+            />
+          </>
+        </section>
+      )}
+    </>
   );
 };
 

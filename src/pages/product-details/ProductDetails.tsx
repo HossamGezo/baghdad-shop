@@ -1,89 +1,99 @@
 // --- Liraries
-import {useEffect, useState} from "react";
-import {useParams} from "react-router";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router";
 
 // --- Local Files
-import {useAppDispatch, useAppSelector} from "../../app/hooks";
+import { useAppDispatch, useAppSelector } from "@app/hooks";
 import {
   clearSingleProduct,
   fetchSingleProduct,
-} from "../../features/products/productsSlice";
+} from "@features/products/productsSlice";
 
 // --- Local Components
-import Discount from "../../components/ui/card/components/discount/Discount";
-import RatingAndViews from "../../components/ui/card/components/rating-and-views/RatingAndViews";
-import ProductImages from "../../components/ui/card/components/product-images/ProductImages";
-import Spinner from "../../components/ui/spinner/Spinner";
-import ErrorHandler from "../../components/ui/error-handler/ErrorHandler";
-import {addToCart} from "../../features/cart/CartSlice";
-import type {ProductProps} from "../../types";
+import Discount from "@components/card/components/discount/Discount";
+import RatingAndViews from "@components/card/components/rating-and-reviews/RatingAndReviews";
+import ProductImages from "@components/card/components/product-images/ProductImages";
+import Spinner from "@components/spinner/Spinner";
+import ErrorHandler from "@components/error-handler/ErrorHandler";
+import { addToCart } from "@features/cart/cartSlice";
+import type { ProductType } from "@/types";
 
-// --- ProductDetails (Main Component)
+// --- Main Component
 const ProductDetails = () => {
   const params = useParams();
   const [count, setCount] = useState<number>(1);
+
   // --- RTK Custom Hooks
-  const {loading, singleProduct, error} = useAppSelector(
+  const { loading, singleProduct, error } = useAppSelector(
     (state) => state.products,
   );
   const dispatch = useAppDispatch();
+
   // --- Fetch Data
   useEffect(() => {
-    dispatch(fetchSingleProduct({category: params.category!, id: params.id!}));
+    dispatch(
+      fetchSingleProduct({ category: params.category!, id: params.id! }),
+    );
     return () => {
       dispatch(clearSingleProduct());
     };
   }, [dispatch, params.category, params.id]);
 
   // --- Add To Cart Logic
-  const addToCartFunc = (product: ProductProps) => {
-    dispatch(addToCart({...product, count: count}));
+  const addToCartFunc = (product: ProductType) => {
+    dispatch(addToCart({ ...product, count: count }));
   };
 
-  // --- Return JSX (Product)
+  // --- Return JSX
   return (
-    <div className="product-details-page ">
+    <div>
       {loading && (
         <div className="flex items-center justify-center my-5">
           <Spinner />
         </div>
       )}
+
       {!loading && error && (
         <div className="flex items-center justify-center my-5">
           <ErrorHandler error={error} />
         </div>
       )}
+
       {!loading && !error && singleProduct && (
-        <div className="product-details-card bg-primary/10 my-5 sm:p-5 rounded-lg">
+        <div className="bg-primary/10 my-5 sm:p-5 rounded-lg">
           {/* --- Product Details Wrapper */}
-          <div className="product-details-wrapper bg-white shadow-primary lg:w-3/4 mx-auto grid grid-cols-4 p-5 rounded-md">
+          <div className="bg-white shadow-strong lg:w-3/4 mx-auto grid grid-cols-4 p-5 rounded-md">
             {/* Product Images */}
             <ProductImages
               images={singleProduct.images}
               title={singleProduct.title}
             />
+
             {/* Card Details */}
-            <div className="product-details-card-details col-span-4 md:col-span-2">
+            <div className="col-span-4 md:col-span-2">
               {/* Product Description */}
-              <div className="product-details-card-details-desc">
-                <h3 className="product-details-card-details-title text-primary text-[22px] font-medium underline decoration-warning mb-2.5">
+              <div>
+                <h1 className="text-primary text-[22px] font-medium underline decoration-warning mb-2.5">
                   {singleProduct.title}
-                </h3>
-                <p className="product-details-card-details-full-desc text-primary text-[14px] xl:text-base text-justify">
+                </h1>
+                <p className="text-primary text-[14px] xl:text-base text-justify">
                   {singleProduct.description}
                 </p>
+
                 {/* --- Rating And Reviews */}
                 <RatingAndViews
                   rating={singleProduct.rating}
                   reviews={singleProduct.reviews}
                 />
+
                 {/* --- Price And Discount */}
                 <Discount
                   price={singleProduct.price}
                   discount={singleProduct.discount}
                 />
+
                 {/* Quantity */}
-                <div className="product-details-card-quantity flex items-center gap-5 mt-5">
+                <div className="flex items-center gap-5 mt-5">
                   <input
                     type="number"
                     onChange={(e) => setCount(Number(e.currentTarget.value))}
@@ -94,6 +104,7 @@ const ProductDetails = () => {
                   />
                   <button
                     type="button"
+                    aria-label="Add to cart"
                     onClick={() => addToCartFunc(singleProduct)}
                     className="bg-warning text-primary px-2 py-1 rounded-sm cursor-pointer hover:bg-amber-300 active:bg-warning active:scale-[0.98] transition-all duration-150"
                   >

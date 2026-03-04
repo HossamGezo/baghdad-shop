@@ -1,5 +1,5 @@
 // --- Types
-type CustomRadioProps = React.ComponentPropsWithoutRef<"input"> & {
+type CustomRadioProps = React.ComponentProps<"input"> & {
   text: string;
   radioName: string;
   radioId: string;
@@ -7,7 +7,7 @@ type CustomRadioProps = React.ComponentPropsWithoutRef<"input"> & {
   radioChecked: string;
 };
 
-// --- CustomRadio (Main Component)
+// --- Main Component
 const CustomRadio = ({
   text,
   radioName,

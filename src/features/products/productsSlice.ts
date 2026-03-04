@@ -1,12 +1,11 @@
 // --- Libraries
-import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import axios from "axios";
+import { createAsyncThunk, createSlice, isAnyOf } from "@reduxjs/toolkit";
+
+// --- Utils
+import api from "@utils/api";
 
 // --- Types
-import type {ProductProps} from "../../types";
-
-// --- Base Url
-const baseUrl = "http://localhost:5100";
+import type { ProductType } from "@/types";
 
 // --- Error Message
 const errorMsg = (error: unknown) => {
@@ -15,18 +14,18 @@ const errorMsg = (error: unknown) => {
   return message;
 };
 
-// --- InitialStateProps (Types)
-type InitialStateProps = {
+// --- ProductsState (Types)
+type ProductsState = {
   loading: boolean;
-  laptops: ProductProps[];
-  mobiles: ProductProps[];
-  specialOffers: ProductProps[];
-  singleProduct: ProductProps | null;
+  laptops: ProductType[];
+  mobiles: ProductType[];
+  specialOffers: ProductType[];
+  singleProduct: ProductType | null;
   error: string;
 };
 
 // --- initialState
-const initialState: InitialStateProps = {
+const initialState: ProductsState = {
   loading: false,
   laptops: [],
   mobiles: [],
@@ -42,12 +41,12 @@ const initialState: InitialStateProps = {
  * @access public
  */
 export const fetchLaptops = createAsyncThunk<
-  ProductProps[], // Return Type
+  ProductType[], // Return Type
   void, // Argument Type
-  {rejectValue: string} // ThunkConfig
->("products/laptops", async (_, {rejectWithValue}) => {
+  { rejectValue: string } // ThunkConfig
+>("products/laptops", async (_, { rejectWithValue }) => {
   try {
-    const response = await axios(`${baseUrl}/laptops`);
+    const response = await api.get(`/laptops`);
     const laptops = response.data;
     return laptops;
   } catch (error) {
@@ -62,12 +61,12 @@ export const fetchLaptops = createAsyncThunk<
  * @access public
  */
 export const fetchMobiles = createAsyncThunk<
-  ProductProps[], // Return Type
+  ProductType[], // Return Type
   void, // Argument Type
-  {rejectValue: string} // ThunkConfig
->("products/mobiles", async (_, {rejectWithValue}) => {
+  { rejectValue: string } // ThunkConfig
+>("products/mobiles", async (_, { rejectWithValue }) => {
   try {
-    const response = await axios(`${baseUrl}/mobiles`);
+    const response = await api.get(`/mobiles`);
     const mobiles = response.data;
     return mobiles;
   } catch (error) {
@@ -82,12 +81,12 @@ export const fetchMobiles = createAsyncThunk<
  * @access public
  */
 export const fetchSpecialOffers = createAsyncThunk<
-  ProductProps[], // Return Type
+  ProductType[], // Return Type
   void, // Argument Type
-  {rejectValue: string} // ThunkConfig
->("products/specialOffers", async (_, {rejectWithValue}) => {
+  { rejectValue: string } // ThunkConfig
+>("products/special-offers", async (_, { rejectWithValue }) => {
   try {
-    const response = await axios(`${baseUrl}/special-offers`);
+    const response = await api.get(`/special-offers`);
     const specialOffers = response.data;
     return specialOffers;
   } catch (error) {
@@ -101,17 +100,17 @@ export const fetchSpecialOffers = createAsyncThunk<
  * @method GET
  * @access public
  */
-type SingleProductProps = {
+type SingleProductType = {
   category: string;
   id: string;
 };
 export const fetchSingleProduct = createAsyncThunk<
-  ProductProps, // Return Type
-  SingleProductProps, // Argument Type
-  {rejectValue: string} // ThunkConfig
->("products/singleProduct", async ({category, id}, {rejectWithValue}) => {
+  ProductType, // Return Type
+  SingleProductType, // Argument Type
+  { rejectValue: string } // ThunkConfig
+>("products/single-product", async ({ category, id }, { rejectWithValue }) => {
   try {
-    const response = await axios(`${baseUrl}/${category}/${id}`);
+    const response = await api.get(`/${category}/${id}`);
     const product = response.data;
     return product;
   } catch (error) {
@@ -130,66 +129,62 @@ const productsSlice = createSlice({
   },
   extraReducers: (builder) => {
     // ----- Fetch Laptops
-    builder.addCase(fetchLaptops.pending, (state) => {
-      state.loading = true;
-    });
     builder.addCase(fetchLaptops.fulfilled, (state, action) => {
       state.loading = false;
       state.laptops = action.payload;
       state.error = "";
     });
-    builder.addCase(fetchLaptops.rejected, (state, action) => {
-      state.loading = false;
-      state.laptops = [];
-      state.error = action.payload as string;
-    });
 
     // ----- Fetch Mobiles
-    builder.addCase(fetchMobiles.pending, (state) => {
-      state.loading = true;
-    });
     builder.addCase(fetchMobiles.fulfilled, (state, action) => {
       state.loading = false;
       state.mobiles = action.payload;
       state.error = "";
     });
-    builder.addCase(fetchMobiles.rejected, (state, action) => {
-      state.loading = false;
-      state.mobiles = [];
-      state.error = action.payload as string;
-    });
 
     // --- Fetch Special Offers
-    builder.addCase(fetchSpecialOffers.pending, (state) => {
-      state.loading = true;
-    });
     builder.addCase(fetchSpecialOffers.fulfilled, (state, action) => {
       state.loading = false;
       state.specialOffers = action.payload;
       state.error = "";
     });
-    builder.addCase(fetchSpecialOffers.rejected, (state, action) => {
-      state.loading = false;
-      state.specialOffers = [];
-      state.error = action.payload as string;
-    });
 
     // --- Fetch Product By Id
-    builder.addCase(fetchSingleProduct.pending, (state) => {
-      state.loading = true;
-    });
     builder.addCase(fetchSingleProduct.fulfilled, (state, action) => {
       state.loading = false;
       state.singleProduct = action.payload;
       state.error = "";
     });
-    builder.addCase(fetchSingleProduct.rejected, (state, action) => {
-      state.loading = false;
-      state.singleProduct = null;
-      state.error = action.payload as string;
-    });
+
+    // ----- Pending Case
+    builder.addMatcher(
+      isAnyOf(
+        fetchLaptops.pending,
+        fetchMobiles.pending,
+        fetchSpecialOffers.pending,
+        fetchSingleProduct.pending,
+      ),
+      (state) => {
+        state.loading = true;
+        state.error = "";
+      },
+    );
+
+    // ----- Rejected Case
+    builder.addMatcher(
+      isAnyOf(
+        fetchLaptops.rejected,
+        fetchMobiles.rejected,
+        fetchSpecialOffers.rejected,
+        fetchSingleProduct.rejected,
+      ),
+      (state, action) => {
+        state.loading = false;
+        state.error = action.payload || "An unexpected error occurred";
+      },
+    );
   },
 });
 
-export const {clearSingleProduct} = productsSlice.actions;
+export const { clearSingleProduct } = productsSlice.actions;
 export default productsSlice.reducer;

@@ -1,29 +1,31 @@
 @import "tailwindcss";
 
 @theme {
-  /* Break Points */
+  /* Breakpoints */
   --breakpoint-sm: 576px;
   --breakpoint-md: 768px;
   --breakpoint-lg: 992px;
   --breakpoint-xl: 1200px;
   --breakpoint-xxl: 1400px;
+
   /* Fonts */
   --font-jetbrains: "JetBrains Mono", monospace;
+
   /* Colors */
   --color-body: #f1f1f2;
   --color-primary: #34465b;
   --color-secondary: #3ead50;
-  --color-light-red: #e74c3c;
   --color-warning: #ffc107;
+  --color-offer: #e61601;
+
   /* Box Shadows */
-  --shadow-primary: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  --shadow-secondary:
+  --shadow-soft: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  --shadow-standard:
+    rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+  --shadow-strong: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  --shadow-deep:
     rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
     rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
-  --shadow-special: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  --shadow-box: rgba(0, 0, 0, 0.09) 0px 3px 12px;
-  --shadow-btn:
-    rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
 }
 
 .custom-container {
@@ -36,4 +38,9 @@ html {
 
 body {
   @apply bg-body;
+}
+
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-warning) transparent;
 }

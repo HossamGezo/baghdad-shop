@@ -1,7 +1,7 @@
 {
   "laptops": [
     {
-      "id": 1,
+      "id": "1",
       "title": "HP EliteBook 2nd Gen",
       "firstImage": "/images/products/laptops/l1.jpg",
       "secondImage": "/images/products/laptops/l1.jpg",
@@ -9,12 +9,12 @@
       "price": 750,
       "discount": 0,
       "rating": 4.5,
-      "reviews": "900",
+      "reviews": 900,
       "category": "laptops",
       "description": "A reliable business laptop featuring a sleek design, solid performance, and long battery life—perfect for professionals and everyday productivity."
     },
     {
-      "id": 2,
+      "id": "2",
       "title": "Acer Nitro 515-5 Laptop",
       "firstImage": "/images/products/laptops/l2.jpg",
       "secondImage": "/images/products/laptops/l2.jpg",
@@ -22,12 +22,12 @@
       "price": 600,
       "discount": 0,
       "rating": 3.8,
-      "reviews": "250",
+      "reviews": 250,
       "category": "laptops",
       "description": "A powerful gaming laptop built with high-performance hardware to handle demanding games and multitasking with ease."
     },
     {
-      "id": 3,
+      "id": "3",
       "title": "Huawei MateBook 14 Laptop",
       "firstImage": "/images/products/laptops/l3.jpg",
       "secondImage": "/images/products/laptops/l3.jpg",
@@ -35,12 +35,12 @@
       "price": 800,
       "discount": 0,
       "rating": 4.6,
-      "reviews": "1,200",
+      "reviews": 1200,
       "category": "laptops",
       "description": "A premium laptop with a stunning display, fast performance, and a lightweight design—ideal for work, study, and creativity."
     },
     {
-      "id": 4,
+      "id": "4",
       "title": "Asus Gaming Laptop 571GT",
       "firstImage": "/images/products/laptops/l4.jpg",
       "secondImage": "/images/products/laptops/l4.jpg",
@@ -48,12 +48,12 @@
       "price": 950,
       "discount": 0,
       "rating": 4.1,
-      "reviews": "7,548",
+      "reviews": 7548,
       "category": "laptops",
       "description": "A gaming-focused laptop delivering smooth graphics, fast processing, and immersive gameplay for serious gamers."
     },
     {
-      "id": 5,
+      "id": "5",
       "title": "Asus TUF 15 Laptop",
       "firstImage": "/images/products/laptops/l1.jpg",
       "secondImage": "/images/products/laptops/l1.jpg",
@@ -61,12 +61,12 @@
       "price": 700,
       "discount": 0,
       "rating": 4.5,
-      "reviews": "2,200",
+      "reviews": 2200,
       "category": "laptops",
       "description": "Built for durability and performance, this laptop is perfect for gaming and heavy workloads with reliable cooling and power."
     },
     {
-      "id": 6,
+      "id": "6",
       "title": "Asus F15 Gaming Laptop",
       "firstImage": "/images/products/laptops/l6.jpg",
       "secondImage": "/images/products/laptops/l6.jpg",
@@ -74,12 +74,12 @@
       "price": 990,
       "discount": 0,
       "rating": 4.8,
-      "reviews": "5,500",
+      "reviews": 5500,
       "category": "laptops",
       "description": "A high-end gaming laptop offering top-tier performance, fast refresh rates, and a bold design for competitive players."
     },
     {
-      "id": 7,
+      "id": "7",
       "title": "Lenovo IdeaPad Flex 5 14\"",
       "firstImage": "/images/products/laptops/l7.jpg",
       "secondImage": "/images/products/laptops/l7.jpg",
@@ -87,12 +87,12 @@
       "price": 500,
       "discount": 0,
       "rating": 4.2,
-      "reviews": "850",
+      "reviews": 850,
       "category": "laptops",
       "description": "A versatile 2-in-1 laptop with a flexible touchscreen design, perfect for students, professionals, and everyday use."
     },
     {
-      "id": 8,
+      "id": "8",
       "title": "Microsoft Surface Go 2 Touchscreen",
       "firstImage": "/images/products/laptops/l8.jpg",
       "secondImage": "/images/products/laptops/l8.jpg",
@@ -100,12 +100,12 @@
       "price": 850,
       "discount": 0,
       "rating": 4.7,
-      "reviews": "8,200",
+      "reviews": 8200,
       "category": "laptops",
       "description": "A compact and portable touchscreen device designed for productivity on the go with a premium Microsoft experience."
     },
     {
-      "id": 9,
+      "id": "9",
       "title": "Microsoft Surface Pro 8 13\"",
       "firstImage": "/images/products/laptops/l8.jpg",
       "secondImage": "/images/products/laptops/l8.jpg",
@@ -113,12 +113,12 @@
       "price": 900,
       "discount": 0,
       "rating": 4.1,
-      "reviews": "1,895",
+      "reviews": 1895,
       "category": "laptops",
       "description": "A powerful 2-in-1 laptop combining tablet flexibility with laptop performance, ideal for work and creative tasks."
     },
     {
-      "id": 10,
+      "id": "10",
       "title": "Asus VivoBook 17 Laptop",
       "firstImage": "/images/products/laptops/l10.jpg",
       "secondImage": "/images/products/laptops/l10.jpg",
@@ -126,14 +126,14 @@
       "price": 680,
       "discount": 0,
       "rating": 3.5,
-      "reviews": "8,124",
+      "reviews": 8124,
       "category": "laptops",
       "description": "A large-screen laptop offering comfortable viewing, solid performance, and everyday reliability for home and office use."
     }
   ],
   "mobiles": [
     {
-      "id": 1,
+      "id": "11",
       "title": "Apple iPhone 13",
       "firstImage": "/images/products/mobiles/m1.jpg",
       "secondImage": "/images/products/mobiles/m1.jpg",
@@ -141,12 +141,12 @@
       "price": 800,
       "discount": 0,
       "rating": 4.9,
-      "reviews": "8,240",
+      "reviews": 8240,
       "category": "mobiles",
       "description": "A flagship smartphone with a powerful processor, stunning camera quality, and a sleek premium design."
     },
     {
-      "id": 2,
+      "id": "12",
       "title": "Samsung Galaxy M33 Smartphone",
       "firstImage": "/images/products/mobiles/m2.jpg",
       "secondImage": "/images/products/mobiles/m2.jpg",
@@ -154,12 +154,12 @@
       "price": 350,
       "discount": 0,
       "rating": 4.5,
-      "reviews": "9,014",
+      "reviews": 9014,
       "category": "mobiles",
       "description": "A reliable smartphone offering long battery life, smooth performance, and excellent value for everyday use."
     },
     {
-      "id": 3,
+      "id": "13",
       "title": "Samsung Galaxy M32 Dual SIM",
       "firstImage": "/images/products/mobiles/m3.jpg",
       "secondImage": "/images/products/mobiles/m3.jpg",
@@ -167,12 +167,12 @@
       "price": 200,
       "discount": 0,
       "rating": 3.5,
-      "reviews": "7,784",
+      "reviews": 7784,
       "category": "mobiles",
       "description": "A budget-friendly dual SIM smartphone with a vibrant display and dependable performance."
     },
     {
-      "id": 4,
+      "id": "14",
       "title": "Poco X4 Pro Smartphone",
       "firstImage": "/images/products/mobiles/m4.jpg",
       "secondImage": "/images/products/mobiles/m4.jpg",
@@ -180,12 +180,12 @@
       "price": 250,
       "discount": 0,
       "rating": 4.5,
-      "reviews": "2,401",
+      "reviews": 2401,
       "category": "mobiles",
       "description": "A performance-driven smartphone featuring a smooth display, fast charging, and a modern design."
     },
     {
-      "id": 5,
+      "id": "15",
       "title": "Samsung Galaxy F4 4G",
       "firstImage": "/images/products/mobiles/m5.jpg",
       "secondImage": "/images/products/mobiles/m5.jpg",
@@ -193,12 +193,12 @@
       "price": 290,
       "discount": 0,
       "rating": 3.0,
-      "reviews": "420",
+      "reviews": 420,
       "category": "mobiles",
       "description": "An affordable smartphone designed for basic daily needs with a simple and practical user experience."
     },
     {
-      "id": 6,
+      "id": "16",
       "title": "Vivo XDS 256GB Blue",
       "firstImage": "/images/products/mobiles/m6.jpg",
       "secondImage": "/images/products/mobiles/m6.jpg",
@@ -206,12 +206,12 @@
       "price": 750,
       "discount": 0,
       "rating": 5,
-      "reviews": "1,500",
+      "reviews": 1500,
       "category": "mobiles",
       "description": "A premium smartphone with large storage capacity, smooth performance, and a stylish blue finish."
     },
     {
-      "id": 7,
+      "id": "17",
       "title": "Apple iPhone 12",
       "firstImage": "/images/products/mobiles/m7.jpg",
       "secondImage": "/images/products/mobiles/m7.jpg",
@@ -219,12 +219,12 @@
       "price": 700,
       "discount": 0,
       "rating": 4.5,
-      "reviews": "4,540",
+      "reviews": 4540,
       "category": "mobiles",
       "description": "A powerful iPhone featuring a sleek design, excellent camera performance, and long-term software support."
     },
     {
-      "id": 8,
+      "id": "18",
       "title": "Dual SIM Smartphone",
       "firstImage": "/images/products/mobiles/m8.jpg",
       "secondImage": "/images/products/mobiles/m8.jpg",
@@ -232,12 +232,12 @@
       "price": 500,
       "discount": 0,
       "rating": 4.5,
-      "reviews": "17,124",
+      "reviews": 17124,
       "category": "mobiles",
       "description": "A practical dual SIM smartphone offering flexibility, reliable performance, and great value."
     },
     {
-      "id": 9,
+      "id": "19",
       "title": "Xiaomi Poco C40",
       "firstImage": "/images/products/mobiles/m9.jpg",
       "secondImage": "/images/products/mobiles/m9.jpg",
@@ -245,12 +245,12 @@
       "price": 470,
       "discount": 0,
       "rating": 4.0,
-      "reviews": "4,700",
+      "reviews": 4700,
       "category": "mobiles",
       "description": "A budget-friendly smartphone with a large battery and smooth performance for everyday tasks."
     },
     {
-      "id": 10,
+      "id": "20",
       "title": "Samsung Galaxy M52 Smartphone",
       "firstImage": "/images/products/mobiles/m10.jpg",
       "secondImage": "/images/products/mobiles/m10.jpg",
@@ -258,12 +258,12 @@
       "price": 850,
       "discount": 0,
       "rating": 5,
-      "reviews": "2,300",
+      "reviews": 2300,
       "category": "mobiles",
       "description": "A premium mid-range smartphone delivering excellent performance, display quality, and battery life."
     },
     {
-      "id": 11,
+      "id": "21",
       "title": "Nokia A12",
       "firstImage": "/images/products/mobiles/m11.jpg",
       "secondImage": "/images/products/mobiles/m11.jpg",
@@ -271,12 +271,12 @@
       "price": 40,
       "discount": 0,
       "rating": 4.1,
-      "reviews": "850",
+      "reviews": 850,
       "category": "mobiles",
       "description": "An ultra-affordable smartphone ideal for basic communication and essential daily use."
     },
     {
-      "id": 12,
+      "id": "22",
       "title": "Samsung Galaxy M13 Lite",
       "firstImage": "/images/products/mobiles/m12.jpg",
       "secondImage": "/images/products/mobiles/m12.jpg",
@@ -284,12 +284,12 @@
       "price": 620,
       "discount": 0,
       "rating": 5,
-      "reviews": "7,500",
+      "reviews": 7500,
       "category": "mobiles",
       "description": "A stylish smartphone offering smooth performance, a clean design, and excellent user experience."
     },
     {
-      "id": 13,
+      "id": "23",
       "title": "Huawei Nova 9",
       "firstImage": "/images/products/mobiles/m13.jpg",
       "secondImage": "/images/products/mobiles/m13.jpg",
@@ -297,12 +297,12 @@
       "price": 250,
       "discount": 0,
       "rating": 3.5,
-      "reviews": "1,784",
+      "reviews": 1784,
       "category": "mobiles",
       "description": "A sleek smartphone designed for photography lovers with a modern look and smooth performance."
     },
     {
-      "id": 14,
+      "id": "24",
       "title": "Samsung Galaxy M32 5G Smartphone",
       "firstImage": "/images/products/mobiles/m14.jpg",
       "secondImage": "/images/products/mobiles/m14.jpg",
@@ -310,14 +310,14 @@
       "price": 320,
       "discount": 0,
       "rating": 4.1,
-      "reviews": "8,102",
+      "reviews": 8102,
       "category": "mobiles",
       "description": "A 5G-ready smartphone offering fast connectivity, solid performance, and great value for money."
     }
   ],
   "special-offers": [
     {
-      "id": 100,
+      "id": "25",
       "title": "Pioneer DJ Headphones",
       "firstImage": "/images/products/special-offers/s1.jpg",
       "secondImage": "/images/products/special-offers/s2.jpg",
@@ -330,12 +330,12 @@
       "price": 50,
       "discount": 30,
       "rating": 4.1,
-      "reviews": "4,521",
+      "reviews": 4521,
       "category": "special-offers",
       "description": "Pioneer DJ Headphones are designed to deliver powerful, clear sound with deep bass, making them ideal for DJs and music lovers. They feature a comfortable over-ear design for long listening sessions and are now available with a 30% discount for a limited time."
     },
     {
-      "id": 101,
+      "id": "26",
       "title": "Hoco In-Ear Earphones",
       "firstImage": "/images/products/special-offers/s3.jpg",
       "secondImage": "/images/products/special-offers/s4.jpg",
@@ -348,12 +348,12 @@
       "price": 40,
       "discount": 20,
       "rating": 4.1,
-      "reviews": "1,870",
+      "reviews": 1870,
       "category": "special-offers",
       "description": "Hoco In-Ear Earphones provide clear sound with balanced audio and enhanced bass. Their lightweight, ergonomic design makes them perfect for daily use, and they are currently offered with a 20% discount for great value."
     },
     {
-      "id": 102,
+      "id": "27",
       "title": "Samsung Tablet",
       "firstImage": "/images/products/special-offers/s5.jpg",
       "secondImage": "/images/products/special-offers/s6.jpg",
@@ -364,12 +364,12 @@
       "price": 200,
       "discount": 40,
       "rating": 4.5,
-      "reviews": "584",
+      "reviews": 584,
       "category": "special-offers",
       "description": "Samsung Tablet is a versatile device for entertainment, studying, and everyday productivity. It offers a clear display, smooth performance, and long battery life, and is now available with a 40% discount for a limited-time offer."
     },
     {
-      "id": 103,
+      "id": "28",
       "title": "Samsung Galaxy Smartphone",
       "firstImage": "/images/products/special-offers/s7.jpg",
       "secondImage": "/images/products/special-offers/s8.jpg",
@@ -380,7 +380,7 @@
       "price": 550,
       "discount": 20,
       "rating": 4.8,
-      "reviews": "8,170",
+      "reviews": 8170,
       "category": "special-offers",
       "description": "Samsung Galaxy Smartphone delivers a premium mobile experience with a high-quality display, powerful performance, and advanced camera system. It is currently available with a 20% discount, making it an excellent choice for everyday use."
     }

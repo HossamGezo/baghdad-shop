@@ -1,26 +1,26 @@
 // --- Libraries
-import type {Dispatch, SetStateAction} from "react";
+import type { Dispatch, SetStateAction } from "react";
 
 // --- Local Components
-import CustomRadio from "./CustomRadio";
+import CustomRadio from "@pages/electronics/components/CustomRadio";
 
 // --- Types
-import type {CurrentElectronicsProps, CurrentPriceProps} from "../../../types";
+import type { CurrentElectronicsType, CurrentPriceType } from "@/types";
 
 // --- Types
-type PriceProps = SetStateAction<CurrentPriceProps>;
-type ElectronicsProps = SetStateAction<CurrentElectronicsProps>;
+type PriceProps = SetStateAction<CurrentPriceType>;
+type ElectronicsProps = SetStateAction<CurrentElectronicsType>;
 type SetCurrentPriceProps = Dispatch<PriceProps>;
 type setCurrentElectronicsProps = Dispatch<ElectronicsProps>;
 
 type FilterPanelProps = {
-  currentPrice: CurrentPriceProps;
+  currentPrice: CurrentPriceType;
   setCurrentPrice: SetCurrentPriceProps;
-  currentElectronics: CurrentElectronicsProps;
+  currentElectronics: CurrentElectronicsType;
   setCurrentElectronics: setCurrentElectronicsProps;
 };
 
-// --- FilterPanel (Main Component)
+// --- Main Component
 const FilterPanel = ({
   currentPrice,
   setCurrentPrice,
@@ -29,14 +29,14 @@ const FilterPanel = ({
 }: FilterPanelProps) => {
   // --- Return JSX
   return (
-    <section className="filter-panel col-span-5 sm:col-span-2 lg:col-span-1">
-      <div className="filter-panel-wrapper bg-white p-2.5 shadow-secondary rounded-md sticky top-2.5">
+    <section className="col-span-5 sm:col-span-2 lg:col-span-1">
+      <div className="bg-white p-2.5 shadow-deep rounded-md sticky top-2.5">
         {/* Sort By Price */}
-        <div className="sort-price">
+        <div>
           <h3 className="text-primary font-medium text-lg mb-2.5 border-b pb-1">
             Sort by Price
           </h3>
-          <div className="filter-wrapper flex flex-col gap-1">
+          <div className="flex flex-col gap-1">
             <CustomRadio
               text={"No Sorting"}
               radioName={"price"}
@@ -64,11 +64,11 @@ const FilterPanel = ({
           </div>
         </div>
         {/* Filter By Category */}
-        <div className="filter-category mt-2.5">
+        <div className="mt-2.5">
           <h3 className="text-primary font-medium text-lg mb-2.5 border-b pb-1">
             Filter by Category
           </h3>
-          <div className="filter-wrapper flex flex-col gap-1">
+          <div className="flex flex-col gap-1">
             <CustomRadio
               text={"All Products"}
               radioName={"electronics"}
