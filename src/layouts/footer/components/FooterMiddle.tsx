@@ -42,8 +42,8 @@ const beauty = [
 // --- Main Component
 const MiddleFooter = () => {
   return (
-    <div className="middle-footer bg-primary/80 text-white">
-      <div className="footer-desc custom-container py-5 grid grid-cols-1 sm:grid-cols-2 gap-5 xxl:grid-cols-4">
+    <div className="bg-primary/80 text-white">
+      <div className="custom-container py-5 grid grid-cols-1 sm:grid-cols-2 gap-5 xxl:grid-cols-4">
         {/* Electronics */}
         <FooterLinks title={"Electronics"} productsLink={electronics} />
 

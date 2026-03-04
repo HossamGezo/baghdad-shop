@@ -35,13 +35,15 @@ const Header = () => {
 
   // --- 2. Close menu on large screens
   useEffect(() => {
-    const resize = () => {
-      if (window.innerWidth > 991) setToggleBurger(false);
+    const mediaQuery = globalThis.matchMedia("(min-width: 992px)");
+
+    const handleMediaChange = (e: MediaQueryListEvent) => {
+      if (e.matches) setToggleBurger(false);
     };
-    window.addEventListener("resize", resize);
-    return () => {
-      window.removeEventListener("resize", resize);
-    };
+
+    mediaQuery.addEventListener("change", handleMediaChange);
+
+    return () => mediaQuery.removeEventListener("change", handleMediaChange);
   }, []);
 
   // --- Return JSX

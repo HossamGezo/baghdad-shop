@@ -31,7 +31,8 @@ const HeaderTop = ({ handleToggle, children }: HeaderTopProps) => {
           <div className="w-10 lg:w-12.5 max-sm:hidden">
             <img
               src={logo}
-              alt="logo"
+              alt="Logo"
+              loading="lazy"
               className="object-contain select-none"
               draggable={false}
             />

@@ -19,6 +19,9 @@ const MiddleHeader = () => {
   // --- Cart
   const { cart } = useAppSelector((state) => state.cart);
 
+  // --- Cart total calculations
+  const totalItems = cart.reduce((acc, cur) => acc + cur.count, 0);
+
   // --- Return JSX
   return (
     <div className="flex items-center gap-5 md:gap-2.5">
@@ -51,8 +54,8 @@ const MiddleHeader = () => {
               cn(
                 "flex items-center justify-center text-center text-lg sm:text-xl lg:text-xl transition-colors duration-150 cursor-pointer w-25 h-8 md:h-9 lg:h-10 rounded-[40px] max-sm:hidden",
                 isActive
-                  ? "border-2 bg-warning text-primary"
-                  : "border-2 text-white border-warning hover:text-primary hover:bg-warning active:bg-amber-500",
+                  ? "border-2 border-warning bg-warning text-primary"
+                  : "border-2 border-warning text-white hover:text-primary hover:bg-warning active:bg-amber-500",
               )
             }
           >
@@ -86,9 +89,9 @@ const MiddleHeader = () => {
             <GrCart className="text-2xl lg:text-3xl" />
             <span className="text-lg lg:text-xl font-jetbrains">
               Cart
-              {cart.length !== 0 && (
-                <span className="absolute text-[12px] -top-3 left-2 lg:-top-2.5 lg:left-3.5 border-2 border-primary bg-warning rounded-full w-6 h-6 flex items-center justify-center">
-                  {cart.length}
+              {totalItems > 0 && (
+                <span className="absolute text-[12px] font-bold text-primary -top-3 left-2 lg:-top-2.5 lg:left-3.5 border-2 border-primary bg-warning rounded-full w-6 h-6 flex items-center justify-center">
+                  {totalItems}
                 </span>
               )}
             </span>

@@ -40,36 +40,46 @@ const Navbar = ({
         <RiCloseLargeLine />
       </button>
       <ul className="flex items-center mx-auto max-lg:absolute max-lg:top-0 max-lg:left-0 max-lg:flex-col max-lg:items-start max-lg:bg-primary max-lg:h-dvh w-[80%] md:w-[50%] lg:w-fit">
-        <CustomLink
-          to="/"
-          text="Home"
-          className="max-lg:border-b lg:border-r border-amber-500 lg:rounded-tl-md lg:rounded-bl-md"
-          onClick={handleClose}
-        />
-        <CustomLink
-          to="electronics"
-          text="Electronics"
-          className="max-lg:border-b lg:border-r border-amber-500"
-          onClick={handleClose}
-        />
-        <CustomLink
-          to="kitchen"
-          text="kitchen"
-          className="max-lg:border-b lg:border-r border-amber-500"
-          onClick={handleClose}
-        />
-        <CustomLink
-          to="men"
-          text="Men's"
-          className="max-lg:border-b lg:border-r border-amber-500"
-          onClick={handleClose}
-        />
-        <CustomLink
-          to="women"
-          text="Women's"
-          className="lg:rounded-tr-md lg:rounded-br-md"
-          onClick={handleClose}
-        />
+        <li className="header-navbar-list-item max-lg:w-full lg:h-full select-none">
+          <CustomLink
+            to="/"
+            text="Home"
+            className="max-lg:border-b lg:border-r border-amber-500 lg:rounded-tl-md lg:rounded-bl-md"
+            onClick={handleClose}
+          />
+        </li>
+        <li className="header-navbar-list-item max-lg:w-full lg:h-full select-none">
+          <CustomLink
+            to="electronics"
+            text="Electronics"
+            className="max-lg:border-b lg:border-r border-amber-500"
+            onClick={handleClose}
+          />
+        </li>
+        <li className="header-navbar-list-item max-lg:w-full lg:h-full select-none">
+          <CustomLink
+            to="kitchen"
+            text="kitchen"
+            className="max-lg:border-b lg:border-r border-amber-500"
+            onClick={handleClose}
+          />
+        </li>
+        <li className="header-navbar-list-item max-lg:w-full lg:h-full select-none">
+          <CustomLink
+            to="men"
+            text="Men's"
+            className="max-lg:border-b lg:border-r border-amber-500"
+            onClick={handleClose}
+          />
+        </li>
+        <li className="header-navbar-list-item max-lg:w-full lg:h-full select-none">
+          <CustomLink
+            to="women"
+            text="Women's"
+            className="lg:rounded-tr-md lg:rounded-br-md"
+            onClick={handleClose}
+          />
+        </li>
       </ul>
     </nav>
   );
