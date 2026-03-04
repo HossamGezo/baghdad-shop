@@ -14,6 +14,7 @@ export type ProductType = {
 
 export type BrandType = {
   id: string;
+  name: string;
   image: string;
 };
 
