@@ -1,23 +1,31 @@
 // --- Libraries
-import {useState} from "react";
+import { useState } from "react";
 
 // --- Local Components
-import FilterPanel from "./components/FilterPanel";
-import Products from "./components/Products";
+import FilterPanel from "@pages/electronics/components/FilterPanel";
+import Products from "@pages/electronics/components/Products";
+
+// --- Custom Hooks
+import { useAppSelector } from "@/app/hooks";
 
 // --- Types
-import type {CurrentElectronicsProps, CurrentPriceProps} from "../../types";
+import type { CurrentElectronicsType, CurrentPriceType } from "@/types";
 
-// --- Electronics (Main Component)
+// --- Main Component
 const Electronics = () => {
   const [currentPrice, setCurrentPrice] =
-    useState<CurrentPriceProps>("no-sorting");
+    useState<CurrentPriceType>("no-sorting");
   const [currentElectronics, setCurrentElectronics] =
-    useState<CurrentElectronicsProps>("all-products");
+    useState<CurrentElectronicsType>("all-products");
+
+  // --- Fetching Data
+  const { loading, error, laptops, mobiles } = useAppSelector(
+    (state) => state.products,
+  );
 
   // --- Return JSX
   return (
-    <div className="electronics-page relative grid grid-cols-5 gap-5 my-5">
+    <div className="relative grid grid-cols-5 gap-5 my-5">
       <FilterPanel
         currentPrice={currentPrice}
         setCurrentPrice={setCurrentPrice}
@@ -26,6 +34,10 @@ const Electronics = () => {
       />
       <Products
         key={`${currentElectronics}-${currentPrice}`}
+        loading={loading}
+        error={error}
+        laptops={laptops}
+        mobiles={mobiles}
         currentPrice={currentPrice}
         currentElectronics={currentElectronics}
       />

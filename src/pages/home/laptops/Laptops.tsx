@@ -10,6 +10,7 @@ import ProductCard from "@components/card/ProductCard";
 import ProductSlider from "@components/product-slider/ProductSlider";
 import Spinner from "@components/spinner/Spinner";
 import ErrorHandler from "@components/error-handler/ErrorHandler";
+import CustomTitle from "@/components/custom-title/CustomTitle";
 
 // --- Main Component
 const Laptops = () => {
@@ -17,15 +18,13 @@ const Laptops = () => {
   const { loading, laptops, error } = useAppSelector((state) => state.products);
   const dispatch = useAppDispatch();
   useEffect(() => {
-    if (laptops.length == 0) dispatch(fetchLaptops());
+    if (laptops.length === 0) dispatch(fetchLaptops());
   }, [dispatch, laptops.length]);
 
   // --- Return JSX
   return (
-    <section className="laptops-section mt-10">
-      <h1 className="bg-warning px-5 py-2.5 max-sm:text-xl text-2xl max-sm:text-center rounded-md text-primary">
-        Latest Laptops
-      </h1>
+    <section>
+      <CustomTitle to="/electronics" title="Latest Laptops" className="my-5" />
       {loading && (
         <div className="flex items-center justify-center my-5">
           <Spinner />

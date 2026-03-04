@@ -13,7 +13,9 @@ const offerImages = [
 // --- Main Component
 const Offers = () => {
   // --- Auto Carousel Animation Logic
-  const timeoutRef = useRef<number | undefined>(undefined);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | undefined>(
+    undefined,
+  );
   const [index, setIndex] = useState(0);
   useEffect(() => {
     timeoutRef.current = setTimeout(() => {
@@ -26,11 +28,12 @@ const Offers = () => {
 
   // --- Return JSX
   return (
-    <div className="offer-images col-span-12 xl:col-span-8 rounded-md overflow-hidden shadow-deep relative">
+    <div className="col-span-12 xl:col-span-8 rounded-md overflow-hidden shadow-deep relative">
       {offerImages.map((offer, i) => (
         <img
           src={offer.url}
-          alt="OFFER"
+          alt="Special offer banner"
+          loading="lazy"
           key={i}
           className={`w-full h-full absolute object-cover ${
             offer.direction

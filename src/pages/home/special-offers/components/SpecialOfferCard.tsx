@@ -12,31 +12,33 @@ import RatingAndViews from "@components/card/components/rating-and-reviews/Ratin
 const SpecialOfferCard = (specialOffer: ProductType) => {
   // --- Return JSX
   return (
-    <div className="special-offer-card relative bg-white shadow-soft rounded-md px-5 pt-5 pb-2.5 min-h-75 max-sm:h-115">
+    <div className="relative bg-white shadow-soft rounded-md px-5 pt-5 pb-2.5 min-h-75 max-sm:h-115 hover:shadow-standard hover:scale-[1.01] transition-all duration-300">
       {/* Card Discount */}
-      <div className="special-offer-card-discount bg-secondary/75 text-white text-xl py-1 sm:w-37.5 text-center rounded-full sm:ml-auto">
+      <div className="bg-secondary/75 text-white text-xl py-1 sm:w-37.5 text-center rounded-full sm:ml-auto">
         {specialOffer.discount}% OFF
       </div>
       {/* Card Details */}
-      <div className="special-offer-card-details flex max-sm:flex-col items-center justify-center max-md:w-full max-lg:w-4/5 max-xl:w-3/5 mx-auto">
+      <div className="flex max-sm:flex-col items-center justify-center max-md:w-full max-lg:w-4/5 max-xl:w-3/5 mx-auto">
         {/* Product Image */}
-        <div className="special-offer-card-image relative w-50 h-50 group">
+        <div className="relative w-50 h-50 group">
           {/* --- 1st Image */}
-          <div
-            className="h-full w-full bg-contain bg-no-repeat"
-            style={{
-              backgroundImage: `url(${specialOffer.firstImage})`,
-            }}
-          ></div>
+          <img
+            src={`${specialOffer.firstImage}`}
+            alt={`First Image : ${specialOffer.title}`}
+            loading="lazy"
+            className="h-full w-full object-contain"
+          />
           {/* --- 2nd Image */}
-          <div
-            className="bg-contain bg-no-repeat absolute inset-0 opacity-0 group-hover:opacity-100"
-            style={{ backgroundImage: `url(${specialOffer.secondImage})` }}
-          ></div>
+          <img
+            src={`${specialOffer.secondImage}`}
+            alt={`Second Image : ${specialOffer.title}`}
+            loading="lazy"
+            className="object-contain absolute inset-0 opacity-0 group-hover:opacity-100"
+          />
         </div>
         {/* Product Description */}
-        <div className="special-offer-card-details-desc flex max-sm:items-center flex-col flex-1 xl:pl-5">
-          <h3 className="special-offer-card-details-title text-primary max-xl:text-xl text-2xl font-medium line-clamp-1">
+        <div className="flex max-sm:items-center flex-col flex-1 xl:pl-5">
+          <h3 className="text-primary max-xl:text-xl text-2xl font-medium line-clamp-1">
             {specialOffer.title}
           </h3>
           {/* --- Rating And Reviews */}
@@ -51,17 +53,13 @@ const SpecialOfferCard = (specialOffer: ProductType) => {
           />
         </div>
         {/* --- See More Button */}
-        <button
-          type="button"
-          className="special-offer-card-details-see-more bg-primary text-white w-32 h-9 rounded-tr-lg rounded-bl-lg cursor-pointer absolute bottom-3 sm:left-5 right-5"
+        <Link
+          aria-label={`see more about ${specialOffer.title}`}
+          className="flex justify-center items-center bg-primary text-white w-32 h-9 rounded-tr-lg rounded-bl-lg cursor-pointer absolute bottom-3 sm:left-5 right-5 hover:bg-warning transition-colors duration-150"
+          to={`/products/special-offers/${specialOffer.id}`}
         >
-          <Link
-            className="block"
-            to={`/products/special-offers/${specialOffer.id}`}
-          >
-            See More ...
-          </Link>
-        </button>
+          See More ...
+        </Link>
       </div>
     </div>
   );

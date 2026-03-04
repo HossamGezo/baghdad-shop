@@ -7,12 +7,10 @@ import Category from "@pages/home/hero/components/Category";
 const HeroSection = () => {
   // --- Return JSX
   return (
-    <div className="hero-section mt-5">
+    <div className="mt-5">
       {/* Hero Section Offers */}
-      <section className="hero-section-offers h-55 sm:h-62.5 md:h-85 lg:h-100 xl:h-110 grid grid-cols-12 gap-5 mb-10">
-        {/* -- Offer Images */}
+      <section className="h-55 sm:h-62.5 md:h-85 lg:h-100 xl:h-110 grid grid-cols-12 gap-5 mb-10">
         <Offers />
-        {/* -- Baghdad Sellers */}
         <Sellers />
       </section>
       {/* Hero Section Categories */}

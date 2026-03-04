@@ -9,6 +9,7 @@ import { fetchSpecialOffers } from "@features/products/productsSlice";
 import SpecialOfferCard from "@pages/home/special-offers/components/SpecialOfferCard";
 import Spinner from "@components/spinner/Spinner";
 import ErrorHandler from "@components/error-handler/ErrorHandler";
+import CustomTitle from "@/components/custom-title/CustomTitle";
 
 // --- Main Component
 const SpecialOffers = () => {
@@ -23,30 +24,30 @@ const SpecialOffers = () => {
 
   // --- Return JSX
   return (
-    specialOffers.length !== 0 && (
-      <div className="special-offers mt-24">
-        <h1 className="bg-warning px-5 py-2.5 mb-5 max-sm:text-xl text-2xl max-sm:text-center rounded-md text-primary">
-          Massive Deals Today – Only for 24 Hours
-        </h1>
-        {loading && (
-          <div className="flex items-center justify-center my-5">
-            <Spinner />
-          </div>
-        )}
-        {!loading && error && (
-          <div className="flex items-center justify-center my-5">
-            <ErrorHandler error={error} />
-          </div>
-        )}
-        {!loading && !error && (
-          <div className="special-offers-cards grid grid-cols-1 xl:grid-cols-2 gap-5">
-            {specialOffers.map((specialOffer) => (
-              <SpecialOfferCard key={specialOffer.id} {...specialOffer} />
-            ))}
-          </div>
-        )}
-      </div>
-    )
+    <div className="mt-24 mb-10">
+      <CustomTitle
+        title="Massive Deals Today – Only for 24 Hours"
+        offer={true}
+        className="mb-10"
+      />
+      {loading && (
+        <div className="flex items-center justify-center my-5">
+          <Spinner />
+        </div>
+      )}
+      {!loading && error && (
+        <div className="flex items-center justify-center my-5">
+          <ErrorHandler error={error} />
+        </div>
+      )}
+      {!loading && !error && (
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-5">
+          {specialOffers.map((specialOffer) => (
+            <SpecialOfferCard key={specialOffer.id} {...specialOffer} />
+          ))}
+        </div>
+      )}
+    </div>
   );
 };
 
