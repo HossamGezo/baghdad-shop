@@ -25,7 +25,7 @@ const BrandsLogos = () => {
 const Brands = () => {
   // --- Return JSx
   return (
-    <section className="py-5 rounded-md overflow-hidden">
+    <section className="py-5 rounded-md overflow-hidden mb-20">
       <div className="w-full max-w-full overflow-hidden rounded-md py-5 bg-white/30 relative">
         <div className="absolute top-1/2 -translate-y-1/2 left-0 h-20 w-20 bg-linear-to-r from-white to-transparent z-10"></div>
         <div className="brands-wrapper flex items-center">

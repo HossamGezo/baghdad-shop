@@ -10,7 +10,7 @@ import ProductCard from "@components/card/ProductCard";
 import ProductSlider from "@components/product-slider/ProductSlider";
 import Spinner from "@components/spinner/Spinner";
 import ErrorHandler from "@components/error-handler/ErrorHandler";
-import CustomTitle from "@/components/custom-title/CustomTitle";
+import CustomTitle from "@components/custom-title/CustomTitle";
 
 // --- Main Component
 const Laptops = () => {
