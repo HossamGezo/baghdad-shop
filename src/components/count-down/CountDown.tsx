@@ -1,4 +1,4 @@
-import { cn } from "@/utils/cn";
+import { cn } from "@utils/cn";
 import { useEffect, useRef, useState } from "react";
 
 // --- Types
@@ -36,7 +36,7 @@ const CountDown = ({ hours, className, ...rest }: CountDownProps) => {
     <div
       role="timer"
       aria-live="polite"
-      className={cn("flex gap-1.5 select-none font-bold", className)}
+      className={cn("flex gap-1.5 select-none font-extrabold", className)}
       {...rest}
     >
       <span className="w-14 text-center">

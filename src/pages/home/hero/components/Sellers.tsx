@@ -53,7 +53,6 @@ const Sellers = () => {
         <img
           src="/images/gifs/christmas.gif"
           alt="Christmas"
-          loading="lazy"
           draggable="false"
           className="w-full h-full object-cover object-top-right"
         />

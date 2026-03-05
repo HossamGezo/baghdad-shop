@@ -18,8 +18,8 @@ import {
   decreaseQuantity,
   increaseQuantity,
   removeFromCart,
-} from "@/features/cart/cartSlice";
-import { calculateDiscount } from "@/utils/calculateDiscount";
+} from "@features/cart/cartSlice";
+import { calculateDiscount } from "@utils/calculateDiscount";
 
 // --- Main Component
 const CartProduct = (product: CartType) => {

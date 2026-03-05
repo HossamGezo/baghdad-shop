@@ -52,7 +52,7 @@ const MiddleHeader = () => {
             to="login"
             className={({ isActive }) =>
               cn(
-                "flex items-center justify-center text-center text-lg sm:text-xl lg:text-xl transition-colors duration-150 cursor-pointer w-25 h-8 md:h-9 lg:h-10 rounded-[40px] max-sm:hidden",
+                "flex items-center justify-center text-center text-lg sm:text-xl lg:text-xl transition-colors duration-150 cursor-pointer w-25 h-8 md:h-9 lg:h-10 rounded-md max-sm:hidden",
                 isActive
                   ? "border-2 border-warning bg-warning text-primary"
                   : "border-2 border-warning text-white hover:text-primary hover:bg-warning active:bg-amber-500",

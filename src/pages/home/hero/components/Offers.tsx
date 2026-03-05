@@ -33,7 +33,6 @@ const Offers = () => {
         <img
           src={offer.url}
           alt="Special offer banner"
-          loading="lazy"
           key={i}
           className={`w-full h-full absolute object-cover ${
             offer.direction

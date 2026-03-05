@@ -6,7 +6,7 @@ import FilterPanel from "@pages/electronics/components/FilterPanel";
 import Products from "@pages/electronics/components/Products";
 
 // --- Custom Hooks
-import { useAppSelector } from "@/app/hooks";
+import { useAppSelector } from "@app/hooks";
 
 // --- Types
 import type { CurrentElectronicsType, CurrentPriceType } from "@/types";

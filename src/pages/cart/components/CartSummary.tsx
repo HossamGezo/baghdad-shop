@@ -1,9 +1,13 @@
+// --- Libraries
+import { useNavigate } from "react-router";
+
 // --- Local Files
-import { calculateDiscount } from "@/utils/calculateDiscount";
+import { calculateDiscount } from "@utils/calculateDiscount";
 import { useAppSelector } from "@app/hooks";
 
 // Utils
 import { formatCurrency } from "@utils/formatCurrency";
+import CustomButton from "@/components/custom-button/CustomButton";
 
 // --- Main Component
 const CartSummary = () => {
@@ -12,6 +16,10 @@ const CartSummary = () => {
     (acc, cur) => acc + cur.count * calculateDiscount(cur.price, cur.discount),
     0,
   );
+
+  // --- Navigation
+  const navigate = useNavigate();
+
   // --- Return JSX
   return (
     <div className="max-md:order-first col-span-5 md:col-span-2 xl:col-span-1">
@@ -29,13 +37,14 @@ const CartSummary = () => {
         </p>
         {/* --- */}
         <div className="p-5">
-          <button
+          <CustomButton
             type="button"
             aria-label="Checkout"
-            className="bg-warning w-fit h-13 px-5 rounded-md shadow-standard flex items-center justify-center select-none cursor-pointer hover:bg-amber-400 active:bg-warning active:scale-[0.99] transition-all duration-75 font-medium mx-auto md:text-[14px] lg:text-[14px] xxl:text-[16px]"
+            onClick={() => navigate("/login")}
+            className="w-fit h-13 px-5  mx-auto md:text-[14px] lg:text-[14px] xxl:text-[16px]"
           >
             Checkout ({formatCurrency(total, "EGP")})
-          </button>
+          </CustomButton>
         </div>
       </div>
     </div>

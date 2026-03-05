@@ -6,14 +6,9 @@ import FooterBottom from "@layouts/footer/components/FooterBottom";
 // --- Main Component
 const Footer = () => {
   return (
-    <footer className="footer mt-20">
-      {/* Top Footer */}
+    <footer>
       <FooterTop />
-
-      {/* Middle Footer */}
       <FooterMiddle />
-
-      {/* Bottom Footer */}
       <FooterBottom />
     </footer>
   );

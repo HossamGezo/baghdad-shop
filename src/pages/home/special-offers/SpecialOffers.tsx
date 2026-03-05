@@ -9,7 +9,7 @@ import { fetchSpecialOffers } from "@features/products/productsSlice";
 import SpecialOfferCard from "@pages/home/special-offers/components/SpecialOfferCard";
 import Spinner from "@components/spinner/Spinner";
 import ErrorHandler from "@components/error-handler/ErrorHandler";
-import CustomTitle from "@/components/custom-title/CustomTitle";
+import CustomTitle from "@components/custom-title/CustomTitle";
 
 // --- Main Component
 const SpecialOffers = () => {
@@ -26,7 +26,7 @@ const SpecialOffers = () => {
   return (
     <div className="mt-24 mb-10">
       <CustomTitle
-        title="Massive Deals Today – Only for 24 Hours"
+        title="Massive Deals Today – Only For 24 Hours"
         offer={true}
         className="mb-10"
       />

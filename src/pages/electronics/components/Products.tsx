@@ -16,7 +16,7 @@ import type {
   CurrentPriceType,
   ProductType,
 } from "@/types";
-import Spinner from "@/components/spinner/Spinner";
+import Spinner from "@components/spinner/Spinner";
 
 // --- Types
 type ProductsProps = {
