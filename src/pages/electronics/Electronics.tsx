@@ -25,7 +25,7 @@ const Electronics = () => {
 
   // --- Return JSX
   return (
-    <div className="relative grid grid-cols-5 gap-5 my-5">
+    <div className="relative grid grid-cols-5 gap-5 mt-5 mb-35 min-h-165">
       <FilterPanel
         currentPrice={currentPrice}
         setCurrentPrice={setCurrentPrice}
