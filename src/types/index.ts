@@ -30,4 +30,13 @@ export type CartType = ProductType & {
 
 export type CurrentPriceType = "no-sorting" | "low-to-high" | "high-to-low";
 
-export type CurrentElectronicsType = "all-products" | "laptops" | "mobiles";
+export type CurrentProductsType =
+  | "all-products"
+  | "laptops"
+  | "mobiles"
+  | "shirts"
+  | "shoes"
+  | "dresses"
+  | "handbags"
+  | "appliances"
+  | "cookware";
