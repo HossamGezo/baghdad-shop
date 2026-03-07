@@ -6,7 +6,9 @@ import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { MdLocalOffer } from "react-icons/md";
 
 // --- Utils
-import { cn } from "@/utils/cn";
+import { cn } from "@utils/cn";
+
+// --- Local Components
 import CountDown from "@components/count-down/CountDown";
 
 // --- Types
