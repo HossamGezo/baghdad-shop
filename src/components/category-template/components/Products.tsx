@@ -12,7 +12,7 @@ import ErrorHandler from "@components/error-handler/ErrorHandler";
 
 // --- Types
 import type {
-  CurrentElectronicsType,
+  CurrentProductsType,
   CurrentPriceType,
   ProductType,
 } from "@/types";
@@ -25,13 +25,13 @@ type ProductsProps = {
   laptops: ProductType[];
   mobiles: ProductType[];
   currentPrice: CurrentPriceType;
-  currentElectronics: CurrentElectronicsType;
+  currentProducts: CurrentProductsType;
 };
 
 // --- Main Component
 const Products = ({
   currentPrice = "no-sorting",
-  currentElectronics = "all-products",
+  currentProducts = "all-products",
   loading,
   error,
   laptops,
@@ -52,8 +52,8 @@ const Products = ({
     let result = [];
 
     // --- Filtering
-    if (currentElectronics === "laptops") result = [...laptops];
-    else if (currentElectronics === "mobiles") result = [...mobiles];
+    if (currentProducts === "laptops") result = [...laptops];
+    else if (currentProducts === "mobiles") result = [...mobiles];
     else result = [...laptops, ...mobiles];
 
     // --- Sorting
@@ -64,7 +64,7 @@ const Products = ({
     }
 
     return result;
-  }, [laptops, mobiles, currentElectronics, currentPrice]);
+  }, [laptops, mobiles, currentProducts, currentPrice]);
 
   // --- Pagination Calculations
   const [page, setPage] = useState<number>(0);
