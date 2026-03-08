@@ -2,35 +2,36 @@
 import type { Dispatch, SetStateAction } from "react";
 
 // --- Local Components
-import CustomRadio from "@pages/electronics/components/CustomRadio";
+import CustomRadio from "@components/category-template/components/CustomRadio";
+
+// --- Data
+import { categoryConfigs } from "@data/categoryConfigs";
 
 // --- Types
-import type { CurrentElectronicsType, CurrentPriceType } from "@/types";
-
-// --- Types
-type PriceProps = SetStateAction<CurrentPriceType>;
-type ElectronicsProps = SetStateAction<CurrentElectronicsType>;
-type SetCurrentPriceProps = Dispatch<PriceProps>;
-type setCurrentElectronicsProps = Dispatch<ElectronicsProps>;
+import type { CurrentProductsType, CurrentPriceType } from "@/types";
 
 type FilterPanelProps = {
   currentPrice: CurrentPriceType;
-  setCurrentPrice: SetCurrentPriceProps;
-  currentElectronics: CurrentElectronicsType;
-  setCurrentElectronics: setCurrentElectronicsProps;
+  setCurrentPrice: Dispatch<SetStateAction<CurrentPriceType>>;
+  currentProducts: CurrentProductsType;
+  setCurrentProducts: Dispatch<SetStateAction<CurrentProductsType>>;
+  currentCategoryKey: keyof typeof categoryConfigs;
 };
 
 // --- Main Component
 const FilterPanel = ({
   currentPrice,
   setCurrentPrice,
-  currentElectronics,
-  setCurrentElectronics,
+  currentProducts,
+  setCurrentProducts,
+  currentCategoryKey,
 }: FilterPanelProps) => {
+  const config = categoryConfigs[currentCategoryKey];
+
   // --- Return JSX
   return (
     <section className="col-span-5 sm:col-span-2 lg:col-span-1">
-      <div className="bg-white p-2.5 shadow-deep rounded-md sticky top-2.5">
+      <div className="bg-white p-2.5 max-sm:shadow-standard shadow-deep rounded-md sticky top-2.5">
         {/* Sort By Price */}
         <div>
           <h3 className="text-primary font-medium text-lg mb-2.5 border-b pb-1">
@@ -69,30 +70,19 @@ const FilterPanel = ({
             Filter by Category
           </h3>
           <div className="flex flex-col gap-1">
-            <CustomRadio
-              text={"All Products"}
-              radioName={"electronics"}
-              radioId={"all-products"}
-              radioValue="all-products"
-              radioChecked={currentElectronics}
-              onChange={() => setCurrentElectronics("all-products")}
-            />
-            <CustomRadio
-              text={"Laptops"}
-              radioName={"electronics"}
-              radioId={"laptops"}
-              radioValue="laptops"
-              radioChecked={currentElectronics}
-              onChange={() => setCurrentElectronics("laptops")}
-            />
-            <CustomRadio
-              text={"Mobiles"}
-              radioName={"electronics"}
-              radioId={"mobiles"}
-              radioValue="mobiles"
-              radioChecked={currentElectronics}
-              onChange={() => setCurrentElectronics("mobiles")}
-            />
+            {config.subCategories.map((item) => (
+              <CustomRadio
+                key={item.id}
+                text={item.label}
+                radioName={currentCategoryKey}
+                radioId={item.id}
+                radioValue={item.id}
+                radioChecked={currentProducts}
+                onChange={() =>
+                  setCurrentProducts(item.id as CurrentProductsType)
+                }
+              />
+            ))}
           </div>
         </div>
       </div>

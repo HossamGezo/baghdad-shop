@@ -1,5 +1,8 @@
 // --- Libraries
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
+
+// --- Utils
+import { cn } from "@utils/cn";
 
 // --- Local Files
 import { useAppDispatch, useAppSelector } from "@app/hooks";
@@ -12,8 +15,13 @@ import Spinner from "@components/spinner/Spinner";
 import ErrorHandler from "@components/error-handler/ErrorHandler";
 import CustomTitle from "@components/custom-title/CustomTitle";
 
+// --- Types
+type LaptopsOffersProps = React.ComponentProps<"section"> & {
+  excludeId?: string;
+};
+
 // --- Main Component
-const Laptops = () => {
+const Laptops = ({ excludeId, className }: LaptopsOffersProps) => {
   // --- Fetch Laptops
   const { loading, laptops, error } = useAppSelector((state) => state.products);
   const dispatch = useAppDispatch();
@@ -21,9 +29,13 @@ const Laptops = () => {
     if (laptops.length === 0) dispatch(fetchLaptops());
   }, [dispatch, laptops.length]);
 
+  const displayProducts = useMemo(() => {
+    return laptops.filter((item) => item.id !== excludeId);
+  }, [excludeId, laptops]);
+
   // --- Return JSX
   return (
-    <section>
+    <section className={cn(className)}>
       <CustomTitle to="/electronics" title="Latest Laptops" className="my-5" />
       {loading && (
         <div className="flex items-center justify-center my-5">
@@ -36,8 +48,8 @@ const Laptops = () => {
         </div>
       )}
       {!loading && !error && (
-        <ProductSlider productsCount={laptops.length}>
-          {laptops.map((laptop) => (
+        <ProductSlider productsCount={displayProducts.length}>
+          {displayProducts.map((laptop) => (
             <ProductCard
               className="first-of-type:ml-3.75 last-of-type:mr-3.75"
               key={laptop.id}
