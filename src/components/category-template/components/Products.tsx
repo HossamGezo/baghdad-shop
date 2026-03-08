@@ -1,14 +1,11 @@
 // --- Libraries
-import { useEffect, useMemo, useState } from "react";
-
-// --- Local Files
-import { useAppDispatch } from "@app/hooks";
-import { fetchLaptops, fetchMobiles } from "@features/products/productsSlice";
+import { useMemo, useState } from "react";
 
 // --- Local Components
 import ProductCard from "@components/card/ProductCard";
 import Pagination from "@components/pagination/Pagination";
 import ErrorHandler from "@components/error-handler/ErrorHandler";
+import Spinner from "@components/spinner/Spinner";
 
 // --- Types
 import type {
@@ -16,14 +13,12 @@ import type {
   CurrentPriceType,
   ProductType,
 } from "@/types";
-import Spinner from "@components/spinner/Spinner";
 
 // --- Types
 type ProductsProps = {
   loading: boolean;
   error: string;
-  laptops: ProductType[];
-  mobiles: ProductType[];
+  items: ProductType[];
   currentPrice: CurrentPriceType;
   currentProducts: CurrentProductsType;
 };
@@ -34,37 +29,24 @@ const Products = ({
   currentProducts = "all-products",
   loading,
   error,
-  laptops,
-  mobiles,
+  items,
 }: ProductsProps) => {
-  const dispatch = useAppDispatch();
-  useEffect(() => {
-    if (laptops.length === 0) {
-      dispatch(fetchLaptops());
-    }
-    if (mobiles.length === 0) {
-      dispatch(fetchMobiles());
-    }
-  }, [dispatch, laptops.length, mobiles.length]);
-
   // --- Derived State (Filtering & Sorting)
   const filteredProducts = useMemo(() => {
-    let result = [];
-
     // --- Filtering
-    if (currentProducts === "laptops") result = [...laptops];
-    else if (currentProducts === "mobiles") result = [...mobiles];
-    else result = [...laptops, ...mobiles];
+    const result =
+      currentProducts === "all-products"
+        ? items
+        : items.filter((product) => product.category === currentProducts);
 
     // --- Sorting
-    if (currentPrice === "low-to-high") {
+    if (currentPrice === "low-to-high")
       return result.toSorted((a, b) => a.price - b.price);
-    } else if (currentPrice === "high-to-low") {
+    if (currentPrice === "high-to-low")
       return result.toSorted((a, b) => b.price - a.price);
-    }
 
     return result;
-  }, [laptops, mobiles, currentProducts, currentPrice]);
+  }, [currentProducts, items, currentPrice]);
 
   // --- Pagination Calculations
   const [page, setPage] = useState<number>(0);
@@ -95,7 +77,7 @@ const Products = ({
               ))}
             </div>
             <Pagination
-              pages={pages as number}
+              pages={pages}
               page={page}
               setPage={setPage}
               className="absolute -bottom-20 left-1/2 -translate-x-1/2"

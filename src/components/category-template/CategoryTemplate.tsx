@@ -2,24 +2,28 @@
 import { useState } from "react";
 
 // --- Local Components
-import FilterPanel from "@pages/electronics/components/FilterPanel";
-import Products from "@pages/electronics/components/Products";
+import FilterPanel from "@components/category-template/components/FilterPanel";
+import Products from "@components/category-template/components/Products";
 import CategoryPoster from "@components/category-poster/CategoryPoster";
-
-// --- Custom Hooks
-import { useAppSelector } from "@app/hooks";
 
 // --- Data
 import { categoryConfigs } from "@data/categoryConfigs";
 
 // --- Types
-import type { CurrentProductsType, CurrentPriceType } from "@/types";
+import type {
+  CurrentProductsType,
+  CurrentPriceType,
+  ProductType,
+} from "@/types";
 
 type CategoryTemplateProps = {
   imageSrc: string;
   altText: string;
   title: string;
   currentCategoryKey: keyof typeof categoryConfigs;
+  loading: boolean;
+  error: string;
+  items: ProductType[];
 };
 
 // --- Main Component
@@ -28,16 +32,14 @@ const CategoryTemplate = ({
   altText,
   title,
   currentCategoryKey,
+  loading,
+  error,
+  items,
 }: CategoryTemplateProps) => {
   const [currentPrice, setCurrentPrice] =
     useState<CurrentPriceType>("no-sorting");
   const [currentProducts, setCurrentProducts] =
     useState<CurrentProductsType>("all-products");
-
-  // --- Fetching Data
-  const { loading, error, laptops, mobiles } = useAppSelector(
-    (state) => state.products,
-  );
 
   // --- Return JSX
   return (
@@ -58,8 +60,7 @@ const CategoryTemplate = ({
           key={`${currentProducts}-${currentPrice}`}
           loading={loading}
           error={error}
-          laptops={laptops}
-          mobiles={mobiles}
+          items={items}
           currentPrice={currentPrice}
           currentProducts={currentProducts}
         />

@@ -2,7 +2,7 @@
 import type { Dispatch, SetStateAction } from "react";
 
 // --- Local Components
-import CustomRadio from "@pages/electronics/components/CustomRadio";
+import CustomRadio from "@components/category-template/components/CustomRadio";
 
 // --- Data
 import { categoryConfigs } from "@data/categoryConfigs";
