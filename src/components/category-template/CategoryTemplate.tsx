@@ -45,7 +45,7 @@ const CategoryTemplate = ({
   return (
     <div>
       <CategoryPoster className="my-5" imageSrc={imageSrc} altText={altText} />
-      <h1 className="md:hidden text-center text-2xl font-bold text-primary my-5 font-jetbrains">
+      <h1 className="relative w-fit mx-auto md:hidden text-center text-2xl font-bold text-primary my-5 font-jetbrains before:absolute before:w-[120%] before:h-0.75 before:bg-amber-400 before:rounded-[100%] before:left-1/2 before:-bottom-1 before:-translate-x-1/2">
         {title}
       </h1>
       <div className="relative grid grid-cols-5 gap-5 mt-5 mb-35">
