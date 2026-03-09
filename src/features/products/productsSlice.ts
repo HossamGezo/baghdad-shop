@@ -1,5 +1,5 @@
 // --- Libraries
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, isAnyOf } from "@reduxjs/toolkit";
 
 // --- Utils
 import api from "@utils/api";
@@ -104,13 +104,7 @@ const productsSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    // ----- Pending Case
-    builder.addCase(fetchProductsByCategory.pending, (state) => {
-      state.loading = true;
-      state.error = "";
-    });
-
-    // ----- Fulfilled Case
+    // --- Fetch All Products By Category
     builder.addCase(fetchProductsByCategory.fulfilled, (state, action) => {
       state.loading = false;
 
@@ -122,11 +116,30 @@ const productsSlice = createSlice({
       state.error = "";
     });
 
-    // ----- Rejected Case
-    builder.addCase(fetchProductsByCategory.rejected, (state, action) => {
+    // --- Fetch Product By Id
+    builder.addCase(fetchSingleProduct.fulfilled, (state, action) => {
       state.loading = false;
-      state.error = action.payload || "An unexpected error occurred";
+      state.singleProduct = action.payload;
+      state.error = "";
     });
+
+    // ----- Pending Case
+    builder.addMatcher(
+      isAnyOf(fetchProductsByCategory.pending, fetchSingleProduct.pending),
+      (state) => {
+        state.loading = true;
+        state.error = "";
+      },
+    );
+
+    // ----- Rejected Case
+    builder.addMatcher(
+      isAnyOf(fetchProductsByCategory.rejected, fetchSingleProduct.rejected),
+      (state, action) => {
+        state.loading = false;
+        state.error = action.payload || "An unexpected error occurred";
+      },
+    );
   },
 });
 
