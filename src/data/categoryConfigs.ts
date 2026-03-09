@@ -22,7 +22,7 @@ export const categoryConfigs = {
     poster: "/images/posters/men-poster.png",
     subCategories: [
       { id: "all-products", label: "All Men's" },
-      { id: "shirts", label: "Shirts" },
+      { id: "clothing", label: "Clothing" },
       { id: "shoes", label: "Shoes" },
     ],
   },
