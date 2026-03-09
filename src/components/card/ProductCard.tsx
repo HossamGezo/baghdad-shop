@@ -36,7 +36,7 @@ const ProductCard = ({ className, ...product }: ProductCardProps) => {
           className="w-full h-full object-contain"
         />
       </div>
-      <div className="font-medium">{product.title}</div>
+      <div className="font-medium line-clamp-1">{product.title}</div>
       <RatingAndViews rating={product.rating} reviews={product.reviews} />
       <div className="text-xl font-medium">{formatCurrency(product.price)}</div>
     </Link>

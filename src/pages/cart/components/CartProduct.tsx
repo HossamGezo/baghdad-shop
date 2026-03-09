@@ -8,18 +8,20 @@ import { HiMinus } from "react-icons/hi";
 
 // Utils
 import { formatCurrency } from "@utils/formatCurrency";
+import { calculateDiscount } from "@utils/calculateDiscount";
 
 // --- Local Files
 import { useAppDispatch } from "@app/hooks";
 
 // --- Types
 import type { CartType } from "@/types";
+
+// --- Redux Features
 import {
   decreaseQuantity,
   increaseQuantity,
   removeFromCart,
 } from "@features/cart/cartSlice";
-import { calculateDiscount } from "@utils/calculateDiscount";
 
 // --- Main Component
 const CartProduct = (product: CartType) => {

@@ -16,27 +16,33 @@ import ErrorHandler from "@components/error-handler/ErrorHandler";
 import CustomTitle from "@components/custom-title/CustomTitle";
 
 // --- Types
-type MobilesOffersProps = React.ComponentProps<"section"> & {
+type CookwareProps = React.ComponentProps<"section"> & {
   excludeId?: string;
 };
 
 // --- Main Component
-const Mobiles = ({ excludeId, className }: MobilesOffersProps) => {
-  // --- Fetch Mobiles
-  const { loading, mobiles, error } = useAppSelector((state) => state.products);
+const Cookware = ({ excludeId, className }: CookwareProps) => {
+  // --- Fetch Cookwares
+  const { loading, cookware, error } = useAppSelector(
+    (state) => state.products,
+  );
   const dispatch = useAppDispatch();
   useEffect(() => {
-    if (mobiles.length === 0) dispatch(fetchProductsByCategory("mobiles"));
-  }, [dispatch, mobiles.length]);
+    if (cookware.length === 0) dispatch(fetchProductsByCategory("cookware"));
+  }, [dispatch, cookware.length]);
 
   const displayProducts = useMemo(() => {
-    return mobiles.filter((item) => item.id !== excludeId);
-  }, [excludeId, mobiles]);
+    return cookware.filter((item) => item.id !== excludeId);
+  }, [excludeId, cookware]);
 
   // --- Return JSX
   return (
     <section className={cn(className)}>
-      <CustomTitle to="/electronics" title="Latest Mobiles" className="my-5" />
+      <CustomTitle
+        to="/kitchen"
+        title="Kitchen Cookware Collection"
+        className="my-5"
+      />
       {loading && (
         <div className="flex items-center justify-center my-5">
           <Spinner />
@@ -49,11 +55,11 @@ const Mobiles = ({ excludeId, className }: MobilesOffersProps) => {
       )}
       {!loading && !error && (
         <ProductSlider productsCount={displayProducts.length}>
-          {displayProducts.map((mobile) => (
+          {displayProducts.map((cookware) => (
             <ProductCard
               className="first-of-type:ml-3.75 last-of-type:mr-3.75"
-              key={mobile.id}
-              {...mobile}
+              key={cookware.id}
+              {...cookware}
             />
           ))}
         </ProductSlider>
@@ -62,4 +68,4 @@ const Mobiles = ({ excludeId, className }: MobilesOffersProps) => {
   );
 };
 
-export default Mobiles;
+export default Cookware;

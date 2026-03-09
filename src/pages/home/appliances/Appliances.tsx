@@ -16,27 +16,34 @@ import ErrorHandler from "@components/error-handler/ErrorHandler";
 import CustomTitle from "@components/custom-title/CustomTitle";
 
 // --- Types
-type MobilesOffersProps = React.ComponentProps<"section"> & {
+type AppliancesProps = React.ComponentProps<"section"> & {
   excludeId?: string;
 };
 
 // --- Main Component
-const Mobiles = ({ excludeId, className }: MobilesOffersProps) => {
-  // --- Fetch Mobiles
-  const { loading, mobiles, error } = useAppSelector((state) => state.products);
+const Appliances = ({ excludeId, className }: AppliancesProps) => {
+  // --- Fetch Appliances
+  const { loading, appliances, error } = useAppSelector(
+    (state) => state.products,
+  );
   const dispatch = useAppDispatch();
   useEffect(() => {
-    if (mobiles.length === 0) dispatch(fetchProductsByCategory("mobiles"));
-  }, [dispatch, mobiles.length]);
+    if (appliances.length === 0)
+      dispatch(fetchProductsByCategory("appliances"));
+  }, [dispatch, appliances.length]);
 
   const displayProducts = useMemo(() => {
-    return mobiles.filter((item) => item.id !== excludeId);
-  }, [excludeId, mobiles]);
+    return appliances.filter((item) => item.id !== excludeId);
+  }, [excludeId, appliances]);
 
   // --- Return JSX
   return (
     <section className={cn(className)}>
-      <CustomTitle to="/electronics" title="Latest Mobiles" className="my-5" />
+      <CustomTitle
+        to="/kitchen"
+        title="Smart Home Appliances"
+        className="my-5"
+      />
       {loading && (
         <div className="flex items-center justify-center my-5">
           <Spinner />
@@ -49,11 +56,11 @@ const Mobiles = ({ excludeId, className }: MobilesOffersProps) => {
       )}
       {!loading && !error && (
         <ProductSlider productsCount={displayProducts.length}>
-          {displayProducts.map((mobile) => (
+          {displayProducts.map((appliance) => (
             <ProductCard
               className="first-of-type:ml-3.75 last-of-type:mr-3.75"
-              key={mobile.id}
-              {...mobile}
+              key={appliance.id}
+              {...appliance}
             />
           ))}
         </ProductSlider>
@@ -62,4 +69,4 @@ const Mobiles = ({ excludeId, className }: MobilesOffersProps) => {
   );
 };
 
-export default Mobiles;
+export default Appliances;
