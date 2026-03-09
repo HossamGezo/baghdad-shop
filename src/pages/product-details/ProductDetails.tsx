@@ -15,17 +15,24 @@ import RatingAndViews from "@components/card/components/rating-and-reviews/Ratin
 import ProductImages from "@components/card/components/product-images/ProductImages";
 import Spinner from "@components/spinner/Spinner";
 import ErrorHandler from "@components/error-handler/ErrorHandler";
-import { addToCart } from "@features/cart/cartSlice";
-import type { ProductType } from "@/types";
 import Mobiles from "@pages/home/mobiles/Mobiles";
 import Laptops from "@pages/home/laptops/Laptops";
 import SpecialOffers from "@pages/home/special-offers/SpecialOffers";
+import Appliances from "@pages/home/appliances/Appliances";
+import Cookware from "@pages/home/cookware/Cookware";
+
+// --- Redux Features
+import { addToCart } from "@features/cart/cartSlice";
+
+// --- Types
+import type { ProductType } from "@/types";
 
 // --- Main Component
 const ProductDetails = () => {
   const { category, id } = useParams();
   const [count, setCount] = useState<number>(1);
-
+  const currentCategory =
+    category === "special-offers" ? "specialOffers" : category;
   // --- RTK Custom Hooks
   const { loading, singleProduct, error } = useAppSelector(
     (state) => state.products,
@@ -34,11 +41,11 @@ const ProductDetails = () => {
 
   // --- Fetch Data
   useEffect(() => {
-    dispatch(fetchSingleProduct({ category: category!, id: id! }));
+    dispatch(fetchSingleProduct({ category: currentCategory!, id: id! }));
     return () => {
       dispatch(clearSingleProduct());
     };
-  }, [dispatch, category, id]);
+  }, [dispatch, currentCategory, id]);
 
   // --- Add To Cart Logic
   const addToCartFunc = (product: ProductType) => {
@@ -118,11 +125,13 @@ const ProductDetails = () => {
             </div>
           </div>
           <div>
-            {category === "laptops" && <Laptops excludeId={id} />}
-            {category === "mobiles" && <Mobiles excludeId={id} />}
-            {category === "special-offers" && (
+            {currentCategory === "specialOffers" && (
               <SpecialOffers className="mt-0" excludeId={id} />
             )}
+            {currentCategory === "laptops" && <Laptops excludeId={id} />}
+            {currentCategory === "mobiles" && <Mobiles excludeId={id} />}
+            {currentCategory === "appliances" && <Appliances excludeId={id} />}
+            {currentCategory === "cookware" && <Cookware excludeId={id} />}
           </div>
         </div>
       )}
