@@ -6,7 +6,7 @@ import CategoryTemplate from "@components/category-template/CategoryTemplate";
 
 // --- Custom Hooks & Actions
 import { useAppDispatch, useAppSelector } from "@app/hooks";
-import { fetchLaptops, fetchMobiles } from "@features/products/productsSlice";
+import { fetchProductsByCategory } from "@features/products/productsSlice";
 
 // --- Main Component
 const Electronics = () => {
@@ -19,10 +19,10 @@ const Electronics = () => {
   const dispatch = useAppDispatch();
   useEffect(() => {
     if (laptops.length === 0) {
-      dispatch(fetchLaptops());
+      dispatch(fetchProductsByCategory("laptops"));
     }
     if (mobiles.length === 0) {
-      dispatch(fetchMobiles());
+      dispatch(fetchProductsByCategory("mobiles"));
     }
   }, [dispatch, laptops.length, mobiles.length]);
 

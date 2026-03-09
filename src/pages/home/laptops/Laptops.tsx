@@ -6,7 +6,7 @@ import { cn } from "@utils/cn";
 
 // --- Local Files
 import { useAppDispatch, useAppSelector } from "@app/hooks";
-import { fetchLaptops } from "@features/products/productsSlice";
+import { fetchProductsByCategory } from "@features/products/productsSlice";
 
 // --- Local Components
 import ProductCard from "@components/card/ProductCard";
@@ -26,7 +26,7 @@ const Laptops = ({ excludeId, className }: LaptopsOffersProps) => {
   const { loading, laptops, error } = useAppSelector((state) => state.products);
   const dispatch = useAppDispatch();
   useEffect(() => {
-    if (laptops.length === 0) dispatch(fetchLaptops());
+    if (laptops.length === 0) dispatch(fetchProductsByCategory("laptops"));
   }, [dispatch, laptops.length]);
 
   const displayProducts = useMemo(() => {

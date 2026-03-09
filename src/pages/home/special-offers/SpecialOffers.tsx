@@ -6,7 +6,7 @@ import { cn } from "@utils/cn";
 
 // --- Local Files
 import { useAppDispatch, useAppSelector } from "@app/hooks";
-import { fetchSpecialOffers } from "@features/products/productsSlice";
+import { fetchProductsByCategory } from "@features/products/productsSlice";
 
 // --- Local Components
 import SpecialOfferCard from "@pages/home/special-offers/components/SpecialOfferCard";
@@ -27,7 +27,8 @@ const SpecialOffers = ({ excludeId, className }: SpecialOffersProps) => {
   );
   const dispatch = useAppDispatch();
   useEffect(() => {
-    if (specialOffers.length === 0) dispatch(fetchSpecialOffers());
+    if (specialOffers.length === 0)
+      dispatch(fetchProductsByCategory("specialOffers"));
   }, [dispatch, specialOffers.length]);
 
   const displayProducts = useMemo(() => {
