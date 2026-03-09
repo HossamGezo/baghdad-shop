@@ -9,6 +9,8 @@ import Appliances from "@pages/home/appliances/Appliances";
 import Cookware from "@pages/home/cookware/Cookware";
 import Clothing from "@pages/home/clothing/Clothing";
 import Shoes from "@pages/home/shoes/Shoes";
+import Dresses from "@pages/home/dresses/Dresses";
+import Handbags from "@pages/home/handbags/Handbags";
 
 // --- Main Component
 const Home = () => {
@@ -49,6 +51,16 @@ const Home = () => {
       />
       <Clothing />
       <Shoes />
+
+      {/* Women */}
+      <CategoryPoster
+        imageSrc="/images/posters/women-poster.png"
+        altText="Women Poster"
+        to="/women"
+        className={baseStyle}
+      />
+      <Dresses />
+      <Handbags />
 
       <Brands />
     </>
