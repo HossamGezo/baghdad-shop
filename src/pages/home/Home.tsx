@@ -7,6 +7,8 @@ import Mobiles from "@pages/home/mobiles/Mobiles";
 import Brands from "@pages/home/brands/Brands";
 import Appliances from "@pages/home/appliances/Appliances";
 import Cookware from "@pages/home/cookware/Cookware";
+import Clothing from "@pages/home/clothing/Clothing";
+import Shoes from "@pages/home/shoes/Shoes";
 
 // --- Main Component
 const Home = () => {
@@ -17,6 +19,8 @@ const Home = () => {
     <>
       <HeroSection />
       <SpecialOffers />
+
+      {/* Electronics */}
       <CategoryPoster
         imageSrc="/images/posters/electronics-poster.png"
         altText="Electronics Poster"
@@ -25,6 +29,8 @@ const Home = () => {
       />
       <Laptops />
       <Mobiles />
+
+      {/* Kitchen */}
       <CategoryPoster
         imageSrc="/images/posters/kitchen-poster.png"
         altText="Kitchen Poster"
@@ -33,6 +39,17 @@ const Home = () => {
       />
       <Appliances />
       <Cookware />
+
+      {/* Men */}
+      <CategoryPoster
+        imageSrc="/images/posters/men-poster.png"
+        altText="Men Poster"
+        to="/men"
+        className={baseStyle}
+      />
+      <Clothing />
+      <Shoes />
+
       <Brands />
     </>
   );

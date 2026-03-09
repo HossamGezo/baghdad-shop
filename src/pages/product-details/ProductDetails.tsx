@@ -20,6 +20,8 @@ import Laptops from "@pages/home/laptops/Laptops";
 import SpecialOffers from "@pages/home/special-offers/SpecialOffers";
 import Appliances from "@pages/home/appliances/Appliances";
 import Cookware from "@pages/home/cookware/Cookware";
+import Clothing from "@pages/home/clothing/Clothing";
+import Shoes from "@pages/home/shoes/Shoes";
 
 // --- Redux Features
 import { addToCart } from "@features/cart/cartSlice";
@@ -132,6 +134,8 @@ const ProductDetails = () => {
             {currentCategory === "mobiles" && <Mobiles excludeId={id} />}
             {currentCategory === "appliances" && <Appliances excludeId={id} />}
             {currentCategory === "cookware" && <Cookware excludeId={id} />}
+            {currentCategory === "clothing" && <Clothing excludeId={id} />}
+            {currentCategory === "shoes" && <Shoes excludeId={id} />}
           </div>
         </div>
       )}
