@@ -8,6 +8,15 @@ export const categoryConfigs = {
       { id: "mobiles", label: "Mobiles" },
     ],
   },
+  kitchen: {
+    title: "Kitchen & Dining",
+    poster: "/images/posters/kitchen-poster.png",
+    subCategories: [
+      { id: "all-products", label: "All Kitchen" },
+      { id: "appliances", label: "Appliances" },
+      { id: "cookware", label: "Cookware" },
+    ],
+  },
   men: {
     title: "Men's Fashion",
     poster: "/images/posters/men-poster.png",
@@ -24,15 +33,6 @@ export const categoryConfigs = {
       { id: "all-products", label: "All Women's" },
       { id: "dresses", label: "Dresses" },
       { id: "handbags", label: "Handbags" },
-    ],
-  },
-  kitchen: {
-    title: "Kitchen & Dining",
-    poster: "/images/posters/kitchen-poster.png",
-    subCategories: [
-      { id: "all-products", label: "All Kitchen" },
-      { id: "appliances", label: "Appliances" },
-      { id: "cookware", label: "Cookware" },
     ],
   },
 };
