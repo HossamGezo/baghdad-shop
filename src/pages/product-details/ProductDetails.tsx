@@ -15,21 +15,28 @@ import RatingAndViews from "@components/card/components/rating-and-reviews/Ratin
 import ProductImages from "@components/card/components/product-images/ProductImages";
 import Spinner from "@components/spinner/Spinner";
 import ErrorHandler from "@components/error-handler/ErrorHandler";
-import Mobiles from "@pages/home/mobiles/Mobiles";
-import Laptops from "@pages/home/laptops/Laptops";
 import SpecialOffers from "@pages/home/special-offers/SpecialOffers";
-import Appliances from "@pages/home/appliances/Appliances";
-import Cookware from "@pages/home/cookware/Cookware";
-import Clothing from "@pages/home/clothing/Clothing";
-import Shoes from "@pages/home/shoes/Shoes";
-import Dresses from "@pages/home/dresses/Dresses";
-import Handbags from "@pages/home/handbags/Handbags";
+import HomeProductsSection from "@components/home-products-section/HomeProductsSection";
 
 // --- Redux Features
 import { addToCart } from "@features/cart/cartSlice";
 
+// --- data
+import database from "~/@/db.json";
+
 // --- Types
 import type { ProductType } from "@/types";
+
+const categoryToPath: Record<string, string> = {
+  laptops: "/electronics",
+  mobiles: "/electronics",
+  appliances: "/kitchen",
+  cookware: "/kitchen",
+  clothing: "/men",
+  shoes: "/men",
+  dresses: "/women",
+  handbags: "/women",
+};
 
 // --- Main Component
 const ProductDetails = () => {
@@ -132,14 +139,14 @@ const ProductDetails = () => {
             {currentCategory === "specialOffers" && (
               <SpecialOffers className="mt-0" excludeId={id} />
             )}
-            {currentCategory === "laptops" && <Laptops excludeId={id} />}
-            {currentCategory === "mobiles" && <Mobiles excludeId={id} />}
-            {currentCategory === "appliances" && <Appliances excludeId={id} />}
-            {currentCategory === "cookware" && <Cookware excludeId={id} />}
-            {currentCategory === "clothing" && <Clothing excludeId={id} />}
-            {currentCategory === "shoes" && <Shoes excludeId={id} />}
-            {currentCategory === "dresses" && <Dresses excludeId={id} />}
-            {currentCategory === "handbags" && <Handbags excludeId={id} />}
+            {currentCategory !== "specialOffers" && (
+              <HomeProductsSection
+                title={"Recommended For You"}
+                excludeId={id}
+                categoryKey={currentCategory as keyof typeof database}
+                to={categoryToPath[currentCategory as keyof typeof database]}
+              />
+            )}
           </div>
         </div>
       )}

@@ -7,12 +7,24 @@ import type { ProductType } from "@/types";
 // --- Local Components
 import Discount from "@components/card/components/discount/Discount";
 import RatingAndViews from "@components/card/components/rating-and-reviews/RatingAndReviews";
+import { cn } from "@/utils/cn";
+
+// --- Types
+type SpecialOfferCardProps = {
+  specialOffer: ProductType;
+  isOdd: boolean;
+};
 
 // --- Main Component
-const SpecialOfferCard = (specialOffer: ProductType) => {
+const SpecialOfferCard = ({ specialOffer, isOdd }: SpecialOfferCardProps) => {
   // --- Return JSX
   return (
-    <div className="relative bg-white shadow-soft rounded-md px-5 pt-5 pb-2.5 min-h-75 max-sm:h-115 hover:shadow-standard hover:scale-[1.01] transition-all duration-300">
+    <div
+      className={cn(
+        "relative bg-white shadow-soft rounded-md px-5 pt-5 pb-2.5 min-h-75 max-sm:h-115 hover:shadow-standard hover:scale-[1.01] transition-all duration-300",
+        isOdd && "xl:last:col-span-2",
+      )}
+    >
       {/* Card Discount */}
       <div className="bg-secondary/75 text-white text-xl py-1 sm:w-37.5 text-center rounded-full sm:ml-auto">
         {specialOffer.discount}% OFF
