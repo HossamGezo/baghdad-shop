@@ -22,6 +22,7 @@ export type CategoryType = {
   id: string;
   title: string;
   image: string;
+  to: string;
 };
 
 export type CartType = ProductType & {
