@@ -15,51 +15,66 @@ import Spinner from "@components/spinner/Spinner";
 import ErrorHandler from "@components/error-handler/ErrorHandler";
 import CustomTitle from "@components/custom-title/CustomTitle";
 
+// --- Data
+import database from "~/@/db.json";
+
 // --- Types
-type CookwareProps = React.ComponentProps<"section"> & {
+type HomeProductsSectionProps = React.ComponentProps<"section"> & {
   excludeId?: string;
+  categoryKey: keyof typeof database;
+  to: string;
+  title: string;
 };
 
 // --- Main Component
-const Cookware = ({ excludeId, className }: CookwareProps) => {
-  // --- Fetch Cookwares
-  const { loading, cookware, error } = useAppSelector(
-    (state) => state.products,
-  );
+const HomeProductsSection = ({
+  excludeId,
+  categoryKey,
+  to,
+  title,
+  className,
+}: HomeProductsSectionProps) => {
+  // --- Fetch Data
+  const state = useAppSelector((state) => state.products);
+  const loading = state.loading;
+  const products = state[categoryKey];
+  const error = state.error;
+
+  // --- Dispatch
   const dispatch = useAppDispatch();
   useEffect(() => {
-    if (cookware.length === 0) dispatch(fetchProductsByCategory("cookware"));
-  }, [dispatch, cookware.length]);
+    if (products.length === 0) dispatch(fetchProductsByCategory(categoryKey));
+  }, [categoryKey, dispatch, products, products.length]);
 
+  // --- Filtering Data
   const displayProducts = useMemo(() => {
-    return cookware.filter((item) => item.id !== excludeId);
-  }, [excludeId, cookware]);
+    return products.filter((item) => item.id !== excludeId);
+  }, [excludeId, products]);
 
   // --- Return JSX
   return (
     <section className={cn(className)}>
-      <CustomTitle
-        to="/kitchen"
-        title="Kitchen Cookware Collection"
-        className="my-5"
-      />
+      <CustomTitle to={to} title={title} className="my-5" />
+
       {loading && (
         <div className="flex items-center justify-center my-5">
           <Spinner />
         </div>
       )}
+
       {!loading && error && (
         <div className="flex items-center justify-center my-5">
           <ErrorHandler error={error} />
         </div>
       )}
+
       {!loading && !error && (
         <ProductSlider productsCount={displayProducts.length}>
-          {displayProducts.map((cookware) => (
+          {displayProducts.map((item) => (
             <ProductCard
               className="first-of-type:ml-3.75 last-of-type:mr-3.75"
-              key={cookware.id}
-              {...cookware}
+              key={item.id}
+              {...item}
             />
           ))}
         </ProductSlider>
@@ -68,4 +83,4 @@ const Cookware = ({ excludeId, className }: CookwareProps) => {
   );
 };
 
-export default Cookware;
+export default HomeProductsSection;

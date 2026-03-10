@@ -20,7 +20,11 @@ type SpecialOffersProps = React.ComponentProps<"div"> & {
 };
 
 // --- Main Component
-const SpecialOffers = ({ excludeId, className }: SpecialOffersProps) => {
+const SpecialOffers = ({
+  excludeId,
+  className,
+  ...rest
+}: SpecialOffersProps) => {
   // --- Fetch SpecialOffers
   const { loading, specialOffers, error } = useAppSelector(
     (state) => state.products,
@@ -37,7 +41,7 @@ const SpecialOffers = ({ excludeId, className }: SpecialOffersProps) => {
 
   // --- Return JSX
   return (
-    <div className={cn("mt-24 mb-10", className)}>
+    <div className={cn("mt-24 mb-10", className)} {...rest}>
       <CustomTitle
         title="Massive Deals Today – Only For 24 Hours"
         offer={true}
@@ -56,7 +60,11 @@ const SpecialOffers = ({ excludeId, className }: SpecialOffersProps) => {
       {!loading && !error && (
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-5">
           {displayProducts.map((specialOffer) => (
-            <SpecialOfferCard key={specialOffer.id} {...specialOffer} />
+            <SpecialOfferCard
+              key={specialOffer.id}
+              specialOffer={specialOffer}
+              isOdd={displayProducts.length % 2 !== 0}
+            />
           ))}
         </div>
       )}
