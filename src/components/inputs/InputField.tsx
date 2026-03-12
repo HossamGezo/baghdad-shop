@@ -3,7 +3,7 @@ import { cn } from "@utils/cn";
 import type { Path, UseFormRegister, FieldValues } from "react-hook-form";
 
 // --- Types
-type InputOptionType = "text" | "email" | "password";
+type InputOptionType = "text" | "email" | "password" | "tel";
 
 // --- Main Type
 type InputFieldProps<T extends FieldValues> = {
@@ -22,13 +22,17 @@ const InputField = <T extends FieldValues>({
   label,
   error,
   className,
+  disabled,
   ...props
 }: InputFieldProps<T>) => {
   const baseStyles =
-    "w-full sm:w-[325px] h-[45px] bg-white border border-primary/25 focus:border-primary outline-0 px-1.5 py-2 caret-primary rounded-sm placeholder:text-primary/50 placeholder:text-sm";
+    "w-full sm:w-[325px] h-[50px] bg-white border border-primary/25 focus:border-primary outline-0 px-1.5 py-2 caret-primary rounded-sm placeholder:text-primary/50 placeholder:text-sm";
   return (
-    <div className="flex flex-col gap-1">
-      <label htmlFor={name} className="mb-1.5 cursor-pointer text-primary">
+    <div className="relative w-full flex flex-col gap-2.5">
+      <label
+        htmlFor={name}
+        className="absolute bg-white text-primary/50 px-2.5 text-[12px] left-3.5 -top-2"
+      >
         {label}
       </label>
       <input
@@ -36,7 +40,8 @@ const InputField = <T extends FieldValues>({
         type={type}
         {...props}
         {...register(name)}
-        className={cn(baseStyles, className)}
+        disabled={disabled}
+        className={cn(baseStyles, disabled ? "text-primary/50" : "", className)}
       />
       {error && <span className="text-sm text-red-500/85">{error}</span>}
     </div>

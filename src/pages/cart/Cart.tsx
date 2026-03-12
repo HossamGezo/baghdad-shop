@@ -2,7 +2,7 @@
 import { useAppSelector } from "@app/hooks";
 
 // --- Local Components
-import CartEmpty from "@pages/cart/components/CartEmpty";
+import EmptyState from "@components/empty-state/EmptyState";
 import CartProduct from "@pages/cart/components/CartProduct";
 import CartSummary from "@pages/cart/components/CartSummary";
 
@@ -12,7 +12,12 @@ const Cart = () => {
 
   // --- Empty Cart
   if (cart.length === 0) {
-    return <CartEmpty />;
+    return (
+      <EmptyState
+        title={"Your cart is empty!"}
+        desc={"Browse our categories and discover our best deals!"}
+      />
+    );
   }
 
   // --- Cart total calculations
