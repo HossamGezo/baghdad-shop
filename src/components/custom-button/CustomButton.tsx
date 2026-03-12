@@ -1,5 +1,7 @@
-// --- Libraries
+// --- Utils
 import { cn } from "@utils/cn";
+
+// --- Local Components
 import Spinner from "@components/spinner/Spinner";
 
 // --- Types

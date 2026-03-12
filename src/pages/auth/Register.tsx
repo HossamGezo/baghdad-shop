@@ -64,7 +64,7 @@ const Register = () => {
           Register
         </h2>
         <form
-          className="shadow-lg flex flex-col gap-3 max-sm:p-5 sm:px-10 sm:pb-10 rounded-lg"
+          className="shadow-lg flex flex-col gap-5 max-sm:p-5 sm:px-10 sm:pb-10 rounded-lg"
           onSubmit={handleSubmit(onSubmit)}
         >
           <InputField
