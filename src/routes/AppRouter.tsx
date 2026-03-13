@@ -30,6 +30,7 @@ const AddressBookEdit = React.lazy(
 const AccountDetailsEdit = React.lazy(
   () => import("@pages/profile/AccountDetailsEdit"),
 );
+const Checkout = React.lazy(() => import("@pages/checkout/Checkout"));
 
 //--- Router
 const router = createBrowserRouter([
@@ -61,6 +62,8 @@ const router = createBrowserRouter([
           { path: "account/edit", Component: AccountDetailsEdit },
         ],
       },
+      // - Checkout
+      { path: "checkout", Component: Checkout },
       // --- NotFound Page
       { path: "*", Component: NotFound },
     ],
