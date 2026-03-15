@@ -41,6 +41,7 @@ const AdminLayout = React.lazy(() => import("@pages/admin/AdminLayout"));
 const ProductsList = React.lazy(() => import("@pages/admin/ProductsList"));
 const Orders = React.lazy(() => import("@pages/admin/Orders"));
 const Users = React.lazy(() => import("@pages/admin/Users"));
+const AddProduct = React.lazy(() => import("@pages/admin/AddProduct"));
 
 //--- Router
 const router = createBrowserRouter([
@@ -84,6 +85,7 @@ const router = createBrowserRouter([
     Component: AdminLayout,
     children: [
       { index: true, Component: ProductsList },
+      { path: "add-product", Component: AddProduct },
       { path: "products", Component: ProductsList },
       { path: "orders", Component: Orders },
       { path: "users", Component: Users },
