@@ -1,18 +1,24 @@
 // --- Libraries
 import { Link } from "react-router";
 
+// --- Utils
+import { cn } from "@utils/cn";
+
 // --- Types
-type LogoProps = {
+type LogoProps = React.ComponentProps<"div"> & {
   children?: React.ReactNode;
 };
 
 // --- Main Component
-const Logo = ({ children }: LogoProps) => {
+const Logo = ({ className, children }: LogoProps) => {
   return (
     <div>
       <Link
         to="/"
-        className="flex items-center lg:flex-col xl:flex-row max-lg:gap-2.5 xl:gap-3"
+        className={cn(
+          "flex items-center xl:flex-row gap-2.5 xl:gap-3",
+          className,
+        )}
       >
         {children}
         <span className="text-2xl font-bold flex items-center text-shadow-neutral-700 text-shadow-2xs self-end">
