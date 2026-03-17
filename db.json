@@ -1332,5 +1332,158 @@
       "category": "handbags",
       "description": "The perfect travel companion. This waterproof PU leather toiletry pouch features a flat opening design for easy access to all your cosmetics and accessories."
     }
+  ],
+  "users": [
+    {
+      "id": "USR-001",
+      "fullName": "Hossam Gouda",
+      "email": "hossam@baghdad.com",
+      "phone": "+201111182665",
+      "role": "Admin",
+      "joinDate": "2023-01-15T10:30:00Z",
+      "avatar": "/images/avatar/avatar1.png",
+      "status": "Active",
+      "totalOrders": 15
+    },
+    {
+      "id": "USR-002",
+      "fullName": "Ahmed Ali",
+      "email": "ahmed.ali@mail.com",
+      "phone": "+201023456789",
+      "role": "Customer",
+      "joinDate": "2024-05-10T14:20:00Z",
+      "avatar": "/images/avatar/default.png",
+      "status": "Active",
+      "totalOrders": 3
+    },
+    {
+      "id": "USR-003",
+      "fullName": "Sara Mahmoud",
+      "email": "sara.m22@test.com",
+      "phone": "+201288877766",
+      "role": "Customer",
+      "joinDate": "2024-08-22T09:15:00Z",
+      "avatar": "/images/avatar/default.png",
+      "status": "Active",
+      "totalOrders": 8
+    },
+    {
+      "id": "USR-004",
+      "fullName": "Mona Adel",
+      "email": "mona.design@example.com",
+      "phone": "+201555444333",
+      "role": "Customer",
+      "joinDate": "2024-09-01T16:45:00Z",
+      "avatar": "/images/avatar/default.png",
+      "status": "Inactive",
+      "totalOrders": 0
+    },
+    {
+      "id": "USR-005",
+      "fullName": "Youssef Tarek",
+      "email": "y.tarek@company.com",
+      "phone": "+201112223334",
+      "role": "Customer",
+      "joinDate": "2024-10-05T11:20:00Z",
+      "avatar": "/images/avatar/default.png",
+      "status": "Active",
+      "totalOrders": 12
+    }
+  ],
+  "orders": [
+    {
+      "id": "ORD-7721",
+      "customerName": "Hossam Gouda",
+      "email": "hossam@baghdad.com",
+      "date": "2025-01-27T16:39:53Z",
+      "shippingAddress": "Al Rehab 1, Cairo, Egypt",
+      "itemsCount": 2,
+      "totalAmount": 4850,
+      "paymentMethod": "Credit Card",
+      "status": "Delivered",
+      "items": [
+        {
+          "productId": "1",
+          "title": "HP EliteBook 2nd Gen",
+          "price": 750,
+          "qty": 1
+        },
+        {
+          "productId": "29",
+          "title": "Black+Decker Air Fryer",
+          "price": 4100,
+          "qty": 1
+        }
+      ]
+    },
+    {
+      "id": "ORD-8842",
+      "customerName": "Ahmed Ali",
+      "email": "ahmed.ali@mail.com",
+      "date": "2025-02-10T12:15:00Z",
+      "shippingAddress": "Nasr City, Cairo, Egypt",
+      "itemsCount": 1,
+      "totalAmount": 1250,
+      "paymentMethod": "Cash on Delivery",
+      "status": "Pending",
+      "items": [
+        {
+          "productId": "69",
+          "title": "Shamwazit Oxford Shoes",
+          "price": 1250,
+          "qty": 1
+        }
+      ]
+    },
+    {
+      "id": "ORD-9915",
+      "customerName": "Sara Mahmoud",
+      "email": "sara.m22@test.com",
+      "date": "2025-02-15T09:00:00Z",
+      "shippingAddress": "Smouha, Alexandria, Egypt",
+      "itemsCount": 3,
+      "totalAmount": 8500,
+      "paymentMethod": "Credit Card",
+      "status": "Shipped",
+      "items": [
+        {
+          "productId": "3",
+          "title": "Huawei MateBook 14",
+          "price": 800,
+          "qty": 1
+        },
+        {
+          "productId": "77",
+          "title": "American Eagle Dress",
+          "price": 1800,
+          "qty": 1
+        },
+        {
+          "productId": "37",
+          "title": "Arshia Rice Cooker",
+          "price": 5900,
+          "qty": 1
+        }
+      ]
+    },
+    {
+      "id": "ORD-1102",
+      "customerName": "Youssef Tarek",
+      "email": "y.tarek@company.com",
+      "date": "2025-03-01T11:20:00Z",
+      "shippingAddress": "Maadi, Cairo, Egypt",
+      "itemsCount": 1,
+      "totalAmount": 3500,
+      "paymentMethod": "Cash on Delivery",
+      "status": "Cancelled",
+      "items": [
+        {
+          "productId": "58",
+          "title": "American Eagle Jeans",
+          "price": 3500,
+          "qty": 1
+        }
+      ]
+    }
   ]
 }
