@@ -25,6 +25,17 @@ export type CategoryType = {
   to: string;
 };
 
+export type CategoriesType =
+  | "laptops"
+  | "mobiles"
+  | "specialOffers"
+  | "appliances"
+  | "cookware"
+  | "clothing"
+  | "shoes"
+  | "dresses"
+  | "handbags";
+
 export type CartType = ProductType & {
   count: number;
 };
