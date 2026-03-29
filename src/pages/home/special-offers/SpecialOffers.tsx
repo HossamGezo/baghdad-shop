@@ -31,9 +31,9 @@ const SpecialOffers = ({
   );
   const dispatch = useAppDispatch();
   useEffect(() => {
-    if (specialOffers.length === 0)
+    if (!loading && specialOffers.length === 0)
       dispatch(fetchProductsByCategory("specialOffers"));
-  }, [dispatch, specialOffers.length]);
+  }, [dispatch, specialOffers.length, loading]);
 
   const displayProducts = useMemo(() => {
     return specialOffers.filter((item) => item.id !== excludeId);

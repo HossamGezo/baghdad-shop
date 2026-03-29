@@ -2,7 +2,7 @@
 import { Link } from "react-router";
 
 // --- Types
-import type { ProductType } from "@/types";
+import type { ProductType } from "@/types/types";
 
 // --- Local Components
 import Discount from "@components/card/components/discount/Discount";

@@ -15,13 +15,13 @@ import Spinner from "@components/spinner/Spinner";
 import ErrorHandler from "@components/error-handler/ErrorHandler";
 import CustomTitle from "@components/custom-title/CustomTitle";
 
-// --- Data
-import database from "~/@/db.json";
+// --- Types
+import type { CategoriesType, ProductType } from "@/types/types";
 
 // --- Types
 type HomeProductsSectionProps = React.ComponentProps<"section"> & {
   excludeId?: string;
-  categoryKey: keyof typeof database;
+  categoryKey: CategoriesType;
   to: string;
   title: string;
 };
@@ -33,6 +33,7 @@ const HomeProductsSection = ({
   to,
   title,
   className,
+  ...rest
 }: HomeProductsSectionProps) => {
   // --- Fetch Data
   const state = useAppSelector((state) => state.products);
@@ -43,8 +44,9 @@ const HomeProductsSection = ({
   // --- Dispatch
   const dispatch = useAppDispatch();
   useEffect(() => {
-    if (products.length === 0) dispatch(fetchProductsByCategory(categoryKey));
-  }, [categoryKey, dispatch, products, products.length]);
+    if (!loading && products.length === 0)
+      dispatch(fetchProductsByCategory(categoryKey));
+  }, [categoryKey, dispatch, products, products.length, loading]);
 
   // --- Filtering Data
   const displayProducts = useMemo(() => {
@@ -53,7 +55,7 @@ const HomeProductsSection = ({
 
   // --- Return JSX
   return (
-    <section className={cn(className)}>
+    <section {...rest} className={cn(className)}>
       <CustomTitle to={to} title={title} className="my-5" />
 
       {loading && (
@@ -70,11 +72,11 @@ const HomeProductsSection = ({
 
       {!loading && !error && (
         <ProductSlider productsCount={displayProducts.length}>
-          {displayProducts.map((item) => (
+          {displayProducts.map((item: ProductType) => (
             <ProductCard
               className="first-of-type:ml-3.75 last-of-type:mr-3.75"
               key={item.id}
-              {...item}
+              product={{ ...item }}
             />
           ))}
         </ProductSlider>

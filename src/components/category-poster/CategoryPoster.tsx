@@ -17,6 +17,7 @@ const CategoryPoster = ({
   altText,
   to,
   className,
+  ...rest
 }: CategoryPosterProps) => {
   const imageElement = (
     <img
@@ -27,6 +28,7 @@ const CategoryPoster = ({
   );
   return (
     <div
+      {...rest}
       className={cn(
         "w-full overflow-hidden max-md:hidden shadow-lg bg-white p-3 rounded-md",
         className,
