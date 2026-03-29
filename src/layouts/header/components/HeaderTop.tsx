@@ -2,9 +2,11 @@
 import { GiHamburgerMenu } from "react-icons/gi";
 import { FaPhoneAlt } from "react-icons/fa";
 
+// --- Local Components
+import Logo from "@components/logo/Logo";
+
 // --- Images
 import logo from "/logo.svg";
-import Logo from "@components/logo/Logo";
 
 // --- Types
 type HeaderTopProps = {
@@ -14,7 +16,6 @@ type HeaderTopProps = {
 
 // --- Main Component
 const HeaderTop = ({ handleToggle, children }: HeaderTopProps) => {
-  // --- Return JSX
   return (
     <div className="flex items-center lg:items-end justify-between gap-3 xl:gap-5 py-2.5 max-sm:py-5 z-50">
       <div className="flex items-center gap-2.5 sm:gap-5">
