@@ -3,7 +3,9 @@ import { useNavigate } from "react-router";
 
 // --- React Icons
 import { MdEdit } from "react-icons/md";
-import { cn } from "~/@/src/utils/cn";
+
+// --- Utils
+import { cn } from "@utils/cn";
 
 // --- Types
 type BoxProps = React.ComponentProps<"div"> & {

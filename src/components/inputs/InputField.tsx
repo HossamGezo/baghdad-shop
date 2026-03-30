@@ -3,7 +3,7 @@ import { cn } from "@utils/cn";
 import type { Path, UseFormRegister, FieldValues } from "react-hook-form";
 
 // --- Types
-type InputOptionType = "text" | "email" | "password" | "tel";
+type InputOptionType = "text" | "email" | "password" | "tel" | "number";
 
 // --- Main Type
 type InputFieldProps<T extends FieldValues> = {
@@ -23,10 +23,11 @@ const InputField = <T extends FieldValues>({
   error,
   className,
   disabled,
+  readOnly,
   ...props
 }: InputFieldProps<T>) => {
   const baseStyles =
-    "w-full sm:w-[325px] h-[50px] bg-white border border-primary/25 focus:border-primary outline-0 px-1.5 py-2 caret-primary rounded-sm placeholder:text-primary/50 placeholder:text-sm";
+    "w-full sm:w-[325px] h-[50px] bg-white border border-gray-300 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-sm px-1.5 py-2 caret-primary rounded-md placeholder:text-primary/50 placeholder:text-sm transition-[border-color,box-shadow] duration-500 ease-in-out pl-2.5";
   return (
     <div className="relative w-full flex flex-col gap-2.5">
       <label
@@ -41,7 +42,14 @@ const InputField = <T extends FieldValues>({
         {...props}
         {...register(name)}
         disabled={disabled}
-        className={cn(baseStyles, disabled ? "text-primary/50" : "", className)}
+        readOnly={readOnly}
+        className={cn(
+          baseStyles,
+          readOnly || disabled
+            ? "bg-gray-50 text-primary/50 cursor-not-allowed focus:ring-0 focus:border-gray-300"
+            : "",
+          className,
+        )}
       />
       {error && <span className="text-sm text-red-500/85">{error}</span>}
     </div>
