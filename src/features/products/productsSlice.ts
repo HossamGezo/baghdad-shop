@@ -4,11 +4,8 @@ import { createAsyncThunk, createSlice, isAnyOf } from "@reduxjs/toolkit";
 // --- Utils
 import api from "@utils/api";
 
-// --- Json
-import database from "~/@/db.json";
-
 // --- Types
-import type { ProductType } from "@/types";
+import type { CategoriesType, ProductType } from "@/types/types";
 
 // --- Error Message
 const errorMsg = (error: unknown) => {
@@ -56,10 +53,9 @@ const initialState: ProductsState = {
  * @method GET
  * @access public
  */
-type CategoryType = keyof typeof database;
 export const fetchProductsByCategory = createAsyncThunk<
   { data: ProductType[]; category: string }, // Payload/Return Type
-  CategoryType, // Argument Type
+  CategoriesType, // Argument Type
   { rejectValue: string } // ThunkConfig
 >("products/category", async (category, { rejectWithValue }) => {
   try {
@@ -109,9 +105,8 @@ const productsSlice = createSlice({
       state.loading = false;
 
       const { category, data } = action.payload;
-      const key = category as keyof ProductsState;
-      if (key !== "loading" && key !== "error" && key !== "singleProduct")
-        state[key] = data;
+
+      state[category as CategoriesType] = data;
 
       state.error = "";
     });
