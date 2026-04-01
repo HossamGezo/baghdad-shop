@@ -20,8 +20,11 @@ const CountDown = ({ hours, className, ...rest }: CountDownProps) => {
         return 0;
       });
     };
+
     timerRef.current = setTimeout(handleTime, 1000);
+
     if (seconds === 0) clearTimeout(timerRef.current);
+
     return () => {
       if (timerRef.current) clearTimeout(timerRef.current);
     };
