@@ -25,7 +25,7 @@ const AddressSchema = z.object({
     .string()
     .min(11, "Phone Number must be at least 11 digits")
     .trim(),
-  address: z.string().min(11, "Address must be at least 50 characters").trim(),
+  address: z.string().min(50, "Address must be at least 50 characters").trim(),
 });
 type AddressSchemaType = z.infer<typeof AddressSchema>;
 
@@ -42,6 +42,12 @@ const AddressBookEdit = () => {
   } = useForm<AddressSchemaType>({
     mode: "onBlur",
     resolver: zodResolver(AddressSchema),
+    defaultValues: {
+      firstName: "John",
+      lastName: "Doe",
+      phoneNumber: "123-456-789",
+      address: "Cairo / El-Rehab",
+    },
   });
 
   // --- OnSubmit Function
@@ -78,7 +84,6 @@ const AddressBookEdit = () => {
               error={errors.firstName?.message}
               autoComplete="firstName"
               className="sm:w-full"
-              defaultValue={"John"}
             />
             <InputField
               type="text"
@@ -89,7 +94,6 @@ const AddressBookEdit = () => {
               error={errors.lastName?.message}
               autoComplete="lastName"
               className="sm:w-full"
-              defaultValue={"Doe"}
             />
             <InputField
               type="tel"
@@ -100,7 +104,6 @@ const AddressBookEdit = () => {
               error={errors.phoneNumber?.message}
               autoComplete="phoneNumber"
               className="sm:w-full"
-              defaultValue={"123-456-789"}
             />
             <InputField
               type="text"
@@ -111,7 +114,6 @@ const AddressBookEdit = () => {
               error={errors.address?.message}
               autoComplete="address"
               className="sm:w-full"
-              defaultValue={"Cairo / El-Rehab"}
             />
           </div>
           <CustomButton

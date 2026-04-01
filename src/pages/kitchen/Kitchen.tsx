@@ -18,13 +18,13 @@ const Kitchen = () => {
   // --- Dispatch Data
   const dispatch = useAppDispatch();
   useEffect(() => {
-    if (appliances.length === 0) {
+    if (!loading && appliances.length === 0) {
       dispatch(fetchProductsByCategory("appliances"));
     }
-    if (cookware.length === 0) {
+    if (!loading && cookware.length === 0) {
       dispatch(fetchProductsByCategory("cookware"));
     }
-  }, [appliances.length, cookware.length, dispatch]);
+  }, [appliances.length, cookware.length, dispatch, loading]);
 
   return (
     <div>
