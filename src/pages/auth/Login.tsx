@@ -1,8 +1,8 @@
 // --- Libraries
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Link } from "react-router";
 import { z } from "zod";
+import { Link } from "react-router";
 
 // --- Components
 import InputField from "@components/inputs/InputField";

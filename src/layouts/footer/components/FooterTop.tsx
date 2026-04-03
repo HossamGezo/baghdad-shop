@@ -7,8 +7,9 @@ import { MdEmail } from "react-icons/md";
 // --- Main Component
 const TopFooter = () => {
   const toTop = () => {
-    globalThis.scrollTo(0, 0);
+    window.scrollTo(0, 0);
   };
+
   // --- Return JSX
   return (
     <div className="bg-primary text-white">
