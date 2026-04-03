@@ -12,6 +12,18 @@ export type ProductType = {
   readonly description: string;
 };
 
+export type UserType = {
+  readonly fullName: string;
+  readonly id: string;
+  readonly email: string;
+  readonly phone: string;
+  readonly role: "customer" | "admin";
+  readonly joinDate: string;
+  readonly avatar: string;
+  readonly status: string;
+  readonly totalOrders: number;
+};
+
 export type BrandType = {
   id: string;
   name: string;

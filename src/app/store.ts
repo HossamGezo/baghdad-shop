@@ -24,7 +24,7 @@ cartListener.startListening({
   ),
   effect: (_action, listenerApi) => {
     const state = listenerApi.getState() as RootState;
-    globalThis.localStorage.setItem("cart", JSON.stringify(state.cart.cart));
+    window.localStorage.setItem("cart", JSON.stringify(state.cart.cart));
   },
 });
 
