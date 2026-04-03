@@ -12,7 +12,10 @@ import type {
   CurrentProductsType,
   CurrentPriceType,
   ProductType,
-} from "@/types";
+} from "@/types/types";
+
+// --- Utils
+import { calculateDiscount } from "@utils/calculateDiscount";
 
 // --- Types
 type ProductsProps = {
@@ -41,9 +44,18 @@ const Products = ({
 
     // --- Sorting
     if (currentPrice === "low-to-high")
-      return result.toSorted((a, b) => a.price - b.price);
+      return result.toSorted(
+        (a, b) =>
+          calculateDiscount(a.price, a.discount) -
+          calculateDiscount(b.price, b.discount),
+      );
+
     if (currentPrice === "high-to-low")
-      return result.toSorted((a, b) => b.price - a.price);
+      return result.toSorted(
+        (a, b) =>
+          calculateDiscount(b.price, b.discount) -
+          calculateDiscount(a.price, a.discount),
+      );
 
     return result;
   }, [currentProducts, items, currentPrice]);
@@ -73,7 +85,7 @@ const Products = ({
           <>
             <div className="grid grid-cols-1 lg:grid-cols-2 xxl:grid-cols-3 gap-4 px-2.5">
               {paginatedItems.map((product) => (
-                <ProductCard key={product.id} {...product} />
+                <ProductCard key={product.id} product={{ ...product }} />
               ))}
             </div>
             <Pagination

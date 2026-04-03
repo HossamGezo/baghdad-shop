@@ -81,7 +81,7 @@ const AccountDetailsEdit = () => {
               error={errors.email?.message}
               autoComplete="email"
               className="sm:w-full"
-              disabled
+              readOnly
             />
           </div>
           <CustomButton

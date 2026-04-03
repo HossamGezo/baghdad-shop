@@ -18,7 +18,7 @@ const Category = () => {
             <div>
               <img
                 src={category.image}
-                alt={category.title}
+                alt="Category Icon"
                 loading="lazy"
                 draggable="false"
                 className="max-md:w-35 lg:w-40"

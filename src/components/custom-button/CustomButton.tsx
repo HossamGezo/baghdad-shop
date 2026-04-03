@@ -20,6 +20,7 @@ const CustomButton = ({
 }: CustomButtonProps) => {
   return (
     <button
+      {...rest}
       disabled={isLoading || disabled}
       className={cn(
         "bg-warning shadow-standard font-medium text-primary py-1.5 rounded-md cursor-pointer transition-all duration-75 flex items-center justify-center select-none h-9",
@@ -28,7 +29,6 @@ const CustomButton = ({
           : "hover:bg-amber-400 active:scale-[0.99] active:bg-warning",
         className,
       )}
-      {...rest}
     >
       {isLoading ? <Spinner className="w-4 h-4" /> : children}
     </button>

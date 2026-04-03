@@ -8,7 +8,7 @@ import CustomRadio from "@components/category-template/components/CustomRadio";
 import { categoryConfigs } from "@data/categoryConfigs";
 
 // --- Types
-import type { CurrentProductsType, CurrentPriceType } from "@/types";
+import type { CurrentProductsType, CurrentPriceType } from "@/types/types";
 
 type FilterPanelProps = {
   currentPrice: CurrentPriceType;

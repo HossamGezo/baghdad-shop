@@ -18,13 +18,13 @@ const Men = () => {
   // --- Dispatch Data
   const dispatch = useAppDispatch();
   useEffect(() => {
-    if (clothing.length === 0) {
+    if (!loading && clothing.length === 0) {
       dispatch(fetchProductsByCategory("clothing"));
     }
-    if (shoes.length === 0) {
+    if (!loading && shoes.length === 0) {
       dispatch(fetchProductsByCategory("shoes"));
     }
-  }, [clothing.length, dispatch, shoes.length]);
+  }, [clothing.length, dispatch, loading, shoes.length]);
 
   return (
     <div>

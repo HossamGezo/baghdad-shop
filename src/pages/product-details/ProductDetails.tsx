@@ -21,11 +21,8 @@ import HomeProductsSection from "@components/home-products-section/HomeProductsS
 // --- Redux Features
 import { addToCart } from "@features/cart/cartSlice";
 
-// --- data
-import database from "~/@/db.json";
-
 // --- Types
-import type { ProductType } from "@/types";
+import type { CategoriesType, ProductType } from "@/types/types";
 
 const categoryToPath: Record<string, string> = {
   laptops: "/electronics",
@@ -44,6 +41,7 @@ const ProductDetails = () => {
   const [count, setCount] = useState<number>(1);
   const currentCategory =
     category === "special-offers" ? "specialOffers" : category;
+
   // --- RTK Custom Hooks
   const { loading, singleProduct, error } = useAppSelector(
     (state) => state.products,
@@ -61,6 +59,14 @@ const ProductDetails = () => {
   // --- Add To Cart Logic
   const addToCartFunc = (product: ProductType) => {
     dispatch(addToCart({ ...product, count: count }));
+  };
+
+  // --- Handle Count Change Function
+  const handleCountChange = (value: string) => {
+    const num = Number(value);
+
+    if (num >= 1 && num <= 25) setCount(num);
+    else setCount(1);
   };
 
   // --- Return JSX
@@ -116,7 +122,7 @@ const ProductDetails = () => {
                   <div className="flex items-center gap-5 mt-5">
                     <input
                       type="number"
-                      onChange={(e) => setCount(Number(e.currentTarget.value))}
+                      onChange={(e) => handleCountChange(e.currentTarget.value)}
                       className="border border-primary w-20 rounded-sm p-1"
                       value={count}
                       min={1}
@@ -143,8 +149,8 @@ const ProductDetails = () => {
               <HomeProductsSection
                 title={"Recommended For You"}
                 excludeId={id}
-                categoryKey={currentCategory as keyof typeof database}
-                to={categoryToPath[currentCategory as keyof typeof database]}
+                categoryKey={currentCategory as CategoriesType}
+                to={categoryToPath[currentCategory as CategoriesType]}
               />
             )}
           </div>

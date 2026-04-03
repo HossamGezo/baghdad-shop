@@ -8,7 +8,7 @@ const FooterBottom = () => {
 
   // --- toTop Func
   const toTop = () => {
-    globalThis.scrollTo(0, 0);
+    window.scrollTo(0, 0);
   };
 
   // --- Return JSX

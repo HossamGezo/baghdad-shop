@@ -2,11 +2,11 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
 // --- Types
-import type { CartType } from "@/types";
+import type { CartType } from "@/types/types";
 
 // --- localStorage
 const cart: CartType[] = JSON.parse(
-  globalThis.localStorage.getItem("cart") || "[]",
+  window.localStorage.getItem("cart") || "[]",
 );
 
 // --- CartState (Types)

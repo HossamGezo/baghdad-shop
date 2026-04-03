@@ -24,7 +24,7 @@ const AddressSchema = z.object({
     .string()
     .min(11, "Phone Number must be at least 11 digits")
     .trim(),
-  address: z.string().min(11, "Address must be at least 50 characters").trim(),
+  address: z.string().min(50, "Address must be at least 50 characters").trim(),
   cardNumber: z
     .string()
     .regex(/[0-9\s]{13,19}/, {
@@ -62,7 +62,7 @@ const PaymentDetails = () => {
   return (
     <div className="p-2.5 rounded-md bg-white shadow-md text-neutral-800">
       <h2 className="relative w-fit text-primary/60 text-2xl font-jetbrains select-none mb-5 before:-bottom-1 before:absolute before:w-full before:h-0.5 before:bg-warning before:rounded-[100%]">
-        ChECKOUT
+        CHECKOUT
       </h2>
       <form
         className="max-sm:p-5 sm:px-10 sm:pb-10 rounded-lg mt-10"
@@ -133,7 +133,7 @@ const PaymentDetails = () => {
             placeholder="xxxx xxxx xxxx xxxx"
             register={register}
             label="Card Number"
-            error={errors.firstName?.message}
+            error={errors.cardNumber?.message}
             autoComplete="cc-number"
             className="sm:w-full"
           />

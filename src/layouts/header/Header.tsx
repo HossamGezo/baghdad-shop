@@ -35,7 +35,7 @@ const Header = () => {
 
   // --- 2. Close menu on large screens
   useEffect(() => {
-    const mediaQuery = globalThis.matchMedia("(min-width: 992px)");
+    const mediaQuery = window.matchMedia("(min-width: 992px)");
 
     const handleMediaChange = (e: MediaQueryListEvent) => {
       if (e.matches) setToggleBurger(false);

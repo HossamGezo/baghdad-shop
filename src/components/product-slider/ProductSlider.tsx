@@ -16,11 +16,11 @@ type ProductSliderProps = {
 const ProductSlider = ({ productsCount, children }: ProductSliderProps) => {
   // --- viewport : Custom Function to specify the current screen accurately
   const viewport = () => {
-    const screen = globalThis.matchMedia(
+    const screen = window.matchMedia(
       "(min-width:1200px) and (max-width:1399px)",
     ).matches
       ? "desktop"
-      : globalThis.matchMedia("(min-width:1400px)").matches
+      : window.matchMedia("(min-width:1400px)").matches
         ? "large"
         : "mobile";
     return screen;
@@ -35,10 +35,10 @@ const ProductSlider = ({ productsCount, children }: ProductSliderProps) => {
 
   // --- Handle screen changes
   useEffect(() => {
-    const mediaDesktop = globalThis.matchMedia(
+    const mediaDesktop = window.matchMedia(
       "(min-width:1200px) and (max-width:1399px)",
     );
-    const mediaLarge = globalThis.matchMedia("(min-width:1400px)");
+    const mediaLarge = window.matchMedia("(min-width:1400px)");
 
     const handleChangeMedia = () => {
       if (mediaLarge.matches) setScreenSize("large");
@@ -70,7 +70,7 @@ const ProductSlider = ({ productsCount, children }: ProductSliderProps) => {
       ? 1140
       : screenSize === "large"
         ? 1320
-        : globalThis.innerWidth;
+        : window.innerWidth;
 
   const totalProductsWidth = productsCount * CARD_WIDTH;
   const totalGapsWidth = (productsCount - 1) * GAP + 60;

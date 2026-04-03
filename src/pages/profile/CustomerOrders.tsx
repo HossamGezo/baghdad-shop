@@ -148,7 +148,7 @@ const orders = [
 ];
 
 // --- Main Component
-const Orders = () => {
+const CustomerOrders = () => {
   // --- Return JSx
   return (
     <div>
@@ -210,4 +210,4 @@ const Orders = () => {
   );
 };
 
-export default Orders;
+export default CustomerOrders;

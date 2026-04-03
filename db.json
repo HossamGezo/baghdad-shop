@@ -1332,5 +1332,268 @@
       "category": "handbags",
       "description": "The perfect travel companion. This waterproof PU leather toiletry pouch features a flat opening design for easy access to all your cosmetics and accessories."
     }
+  ],
+  "users": [
+    {
+      "id": "USR-001",
+      "fullName": "Hossam Gouda",
+      "email": "hossam@example.com",
+      "phone": "+201111182665",
+      "role": "admin",
+      "joinDate": "2023-01-15T00:00:00Z",
+      "avatar": "/images/avatar/avatar1.png",
+      "status": "Active",
+      "totalOrders": 42
+    },
+    {
+      "id": "USR-002",
+      "fullName": "Ahmed Ali",
+      "email": "ahmed.ali@mail.com",
+      "phone": "+201000000002",
+      "role": "customer",
+      "joinDate": "2024-05-10T00:00:00Z",
+      "avatar": "/images/avatar/default.png",
+      "status": "Active",
+      "totalOrders": 1
+    },
+    {
+      "id": "USR-003",
+      "fullName": "Sara Mahmoud",
+      "email": "sara.m@test.com",
+      "phone": "+201200000003",
+      "role": "customer",
+      "joinDate": "2024-08-22T00:00:00Z",
+      "avatar": "/images/avatar/default.png",
+      "status": "Active",
+      "totalOrders": 5
+    },
+    {
+      "id": "USR-004",
+      "fullName": "Mona Adel",
+      "email": "mona.design@example.com",
+      "phone": "+201500000004",
+      "role": "customer",
+      "joinDate": "2024-09-01T00:00:00Z",
+      "avatar": "/images/avatar/default.png",
+      "status": "Inactive",
+      "totalOrders": 2
+    },
+    {
+      "id": "USR-005",
+      "fullName": "Youssef Tarek",
+      "email": "y.tarek@company.com",
+      "phone": "+201100000005",
+      "role": "customer",
+      "joinDate": "2024-10-05T00:00:00Z",
+      "avatar": "/images/avatar/default.png",
+      "status": "Active",
+      "totalOrders": 8
+    },
+    {
+      "id": "USR-006",
+      "fullName": "Omar Khaled",
+      "email": "omar.khaled@mail.com",
+      "phone": "+201200000006",
+      "role": "customer",
+      "joinDate": "2024-10-15T00:00:00Z",
+      "avatar": "/images/avatar/default.png",
+      "status": "Active",
+      "totalOrders": 3
+    },
+    {
+      "id": "USR-007",
+      "fullName": "Nour Hassan",
+      "email": "nour.hassan@mail.com",
+      "phone": "+201200000007",
+      "role": "customer",
+      "joinDate": "2024-11-01T00:00:00Z",
+      "avatar": "/images/avatar/default.png",
+      "status": "Active",
+      "totalOrders": 6
+    },
+    {
+      "id": "USR-008",
+      "fullName": "Karim Mostafa",
+      "email": "karim.mostafa@mail.com",
+      "phone": "+201200000008",
+      "role": "customer",
+      "joinDate": "2024-11-10T00:00:00Z",
+      "avatar": "/images/avatar/default.png",
+      "status": "Inactive",
+      "totalOrders": 0
+    },
+    {
+      "id": "USR-009",
+      "fullName": "Aya Ibrahim",
+      "email": "aya.ibrahim@mail.com",
+      "phone": "+201200000009",
+      "role": "customer",
+      "joinDate": "2024-11-18T00:00:00Z",
+      "avatar": "/images/avatar/default.png",
+      "status": "Active",
+      "totalOrders": 4
+    },
+    {
+      "id": "USR-010",
+      "fullName": "Mahmoud Samir",
+      "email": "mahmoud.samir@mail.com",
+      "phone": "+201200000010",
+      "role": "customer",
+      "joinDate": "2024-12-01T00:00:00Z",
+      "avatar": "/images/avatar/default.png",
+      "status": "Active",
+      "totalOrders": 7
+    },
+    {
+      "id": "USR-011",
+      "fullName": "Salma Nabil",
+      "email": "salma.nabil@mail.com",
+      "phone": "+201200000011",
+      "role": "customer",
+      "joinDate": "2024-12-10T00:00:00Z",
+      "avatar": "/images/avatar/default.png",
+      "status": "Inactive",
+      "totalOrders": 2
+    },
+    {
+      "id": "USR-012",
+      "fullName": "Ali Hany",
+      "email": "ali.hany@mail.com",
+      "phone": "+201200000012",
+      "role": "customer",
+      "joinDate": "2024-12-20T00:00:00Z",
+      "avatar": "/images/avatar/default.png",
+      "status": "Active",
+      "totalOrders": 9
+    },
+    {
+      "id": "USR-013",
+      "fullName": "Dina Fathy",
+      "email": "dina.fathy@mail.com",
+      "phone": "+201200000013",
+      "role": "customer",
+      "joinDate": "2025-01-05T00:00:00Z",
+      "avatar": "/images/avatar/default.png",
+      "status": "Active",
+      "totalOrders": 5
+    },
+    {
+      "id": "USR-014",
+      "fullName": "Hassan Adel",
+      "email": "hassan.adel@mail.com",
+      "phone": "+201200000014",
+      "role": "customer",
+      "joinDate": "2025-01-15T00:00:00Z",
+      "avatar": "/images/avatar/default.png",
+      "status": "Inactive",
+      "totalOrders": 1
+    },
+    {
+      "id": "USR-015",
+      "fullName": "Fatma Mohamed",
+      "email": "fatma.mohamed@mail.com",
+      "phone": "+201200000015",
+      "role": "customer",
+      "joinDate": "2025-01-25T00:00:00Z",
+      "avatar": "/images/avatar/default.png",
+      "status": "Active",
+      "totalOrders": 10
+    }
+  ],
+  "orders": [
+    {
+      "id": "ORD-7721",
+      "customerName": "Hossam Gouda",
+      "email": "hossam@baghdad.com",
+      "date": "2025-01-27T16:39:53Z",
+      "shippingAddress": "Al Rehab 1, Cairo, Egypt",
+      "itemsCount": 2,
+      "totalAmount": 4850,
+      "paymentMethod": "Credit Card",
+      "status": "Delivered",
+      "items": [
+        {
+          "productId": "1",
+          "title": "HP EliteBook 2nd Gen",
+          "price": 750,
+          "qty": 1
+        },
+        {
+          "productId": "29",
+          "title": "Black+Decker Air Fryer",
+          "price": 4100,
+          "qty": 1
+        }
+      ]
+    },
+    {
+      "id": "ORD-8842",
+      "customerName": "Ahmed Ali",
+      "email": "ahmed.ali@mail.com",
+      "date": "2025-02-10T12:15:00Z",
+      "shippingAddress": "Nasr City, Cairo, Egypt",
+      "itemsCount": 1,
+      "totalAmount": 1250,
+      "paymentMethod": "Cash on Delivery",
+      "status": "Pending",
+      "items": [
+        {
+          "productId": "69",
+          "title": "Shamwazit Oxford Shoes",
+          "price": 1250,
+          "qty": 1
+        }
+      ]
+    },
+    {
+      "id": "ORD-9915",
+      "customerName": "Sara Mahmoud",
+      "email": "sara.m22@test.com",
+      "date": "2025-02-15T09:00:00Z",
+      "shippingAddress": "Smouha, Alexandria, Egypt",
+      "itemsCount": 3,
+      "totalAmount": 8500,
+      "paymentMethod": "Credit Card",
+      "status": "Shipped",
+      "items": [
+        {
+          "productId": "3",
+          "title": "Huawei MateBook 14",
+          "price": 800,
+          "qty": 1
+        },
+        {
+          "productId": "77",
+          "title": "American Eagle Dress",
+          "price": 1800,
+          "qty": 1
+        },
+        {
+          "productId": "37",
+          "title": "Arshia Rice Cooker",
+          "price": 5900,
+          "qty": 1
+        }
+      ]
+    },
+    {
+      "id": "ORD-1102",
+      "customerName": "Youssef Tarek",
+      "email": "y.tarek@company.com",
+      "date": "2025-03-01T11:20:00Z",
+      "shippingAddress": "Maadi, Cairo, Egypt",
+      "itemsCount": 1,
+      "totalAmount": 3500,
+      "paymentMethod": "Cash on Delivery",
+      "status": "Cancelled",
+      "items": [
+        {
+          "productId": "58",
+          "title": "American Eagle Jeans",
+          "price": 3500,
+          "qty": 1
+        }
+      ]
+    }
   ]
 }

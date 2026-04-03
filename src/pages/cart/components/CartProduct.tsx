@@ -14,7 +14,7 @@ import { calculateDiscount } from "@utils/calculateDiscount";
 import { useAppDispatch } from "@app/hooks";
 
 // --- Types
-import type { CartType } from "@/types";
+import type { CartType } from "@/types/types";
 
 // --- Redux Features
 import {

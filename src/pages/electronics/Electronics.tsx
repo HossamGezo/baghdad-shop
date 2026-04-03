@@ -18,13 +18,13 @@ const Electronics = () => {
   // --- Dispatch Data
   const dispatch = useAppDispatch();
   useEffect(() => {
-    if (laptops.length === 0) {
+    if (!loading && laptops.length === 0) {
       dispatch(fetchProductsByCategory("laptops"));
     }
-    if (mobiles.length === 0) {
+    if (!loading && mobiles.length === 0) {
       dispatch(fetchProductsByCategory("mobiles"));
     }
-  }, [dispatch, laptops.length, mobiles.length]);
+  }, [dispatch, laptops.length, loading, mobiles.length]);
 
   return (
     <div>

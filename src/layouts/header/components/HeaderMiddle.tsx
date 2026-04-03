@@ -1,16 +1,19 @@
 // --- Libraries
+import { useMemo } from "react";
 import { NavLink } from "react-router";
-import { cn } from "@utils/cn";
 
 // --- React Icons
 import { GrCart } from "react-icons/gr";
 import { FaUser } from "react-icons/fa";
 
-// --- Import Files
+// --- Custom Hooks
 import { useAppSelector } from "@app/hooks";
 
+// --- Utils
+import { cn } from "@utils/cn";
+
 // --- Main Component
-const MiddleHeader = () => {
+const HeaderMiddle = () => {
   // --- Handle Submit
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -20,7 +23,9 @@ const MiddleHeader = () => {
   const { cart } = useAppSelector((state) => state.cart);
 
   // --- Cart total calculations
-  const totalItems = cart.reduce((acc, cur) => acc + cur.count, 0);
+  const totalItems = useMemo(() => {
+    return cart.reduce((acc, cur) => acc + cur.count, 0);
+  }, [cart]);
 
   // --- Return JSX
   return (
@@ -101,4 +106,4 @@ const MiddleHeader = () => {
     </div>
   );
 };
-export default MiddleHeader;
+export default HeaderMiddle;

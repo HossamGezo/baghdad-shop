@@ -16,7 +16,9 @@ const Offers = () => {
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | undefined>(
     undefined,
   );
+
   const [index, setIndex] = useState(0);
+
   useEffect(() => {
     timeoutRef.current = setTimeout(() => {
       setIndex((prev) => (prev === offerImages.length - 1 ? 0 : prev + 1));
@@ -37,8 +39,9 @@ const Offers = () => {
           className={`w-full h-full absolute object-cover ${
             offer.direction
           } transition-opacity duration-1000 ease-in-out ${
-            index === i ? "opacity-100" : "opacity-0"
+            index === i ? "opacity-100" : "opacity-0 pointer-events-none"
           }`}
+          aria-hidden={index !== i}
         />
       ))}
     </div>

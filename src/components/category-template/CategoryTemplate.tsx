@@ -14,7 +14,7 @@ import type {
   CurrentProductsType,
   CurrentPriceType,
   ProductType,
-} from "@/types";
+} from "@/types/types";
 
 type CategoryTemplateProps = {
   imageSrc: string;
@@ -38,6 +38,7 @@ const CategoryTemplate = ({
 }: CategoryTemplateProps) => {
   const [currentPrice, setCurrentPrice] =
     useState<CurrentPriceType>("no-sorting");
+
   const [currentProducts, setCurrentProducts] =
     useState<CurrentProductsType>("all-products");
 
