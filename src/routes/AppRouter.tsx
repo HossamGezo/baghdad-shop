@@ -38,9 +38,11 @@ const AccountDetailsEdit = React.lazy(
 const Checkout = React.lazy(() => import("@pages/checkout/Checkout"));
 // - Admin Pages
 const AdminLayout = React.lazy(() => import("@pages/admin/AdminLayout"));
-const ProductsList = React.lazy(() => import("@pages/admin/ProductsList"));
+const Dashboard = React.lazy(() => import("@pages/admin/Dashboard"));
+const ProductsList = React.lazy(() => import("@/pages/admin/ProductsList"));
 const Orders = React.lazy(() => import("@pages/admin/Orders"));
 const Users = React.lazy(() => import("@pages/admin/Users"));
+const UserEditPage = React.lazy(() => import("@pages/admin/UserEditPage"));
 const AddProduct = React.lazy(() => import("@pages/admin/AddProduct"));
 
 //--- Router
@@ -84,11 +86,13 @@ const router = createBrowserRouter([
     path: "admin",
     Component: AdminLayout,
     children: [
-      { index: true, Component: ProductsList },
-      { path: "add-product", Component: AddProduct },
+      { index: true, Component: Dashboard },
       { path: "products", Component: ProductsList },
+      { path: "add-product", Component: AddProduct },
+      { path: "products/edit/:category/:id", Component: AddProduct },
       { path: "orders", Component: Orders },
       { path: "users", Component: Users },
+      { path: "users/edit/:id", Component: UserEditPage },
       // --- NotFound Page
       { path: "*", Component: NotFound },
     ],
