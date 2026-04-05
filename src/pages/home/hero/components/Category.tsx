@@ -15,7 +15,7 @@ const Category = () => {
       <ul className="grid grid-cols-2 gap-2.5 xl:gap-8 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
         {categories.map((category) => {
           const content = (
-            <div>
+            <div className="flex flex-col items-center justify-center gap-2.5">
               <img
                 src={category.image}
                 alt="Category Icon"

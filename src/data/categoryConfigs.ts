@@ -4,8 +4,8 @@ export const categoryConfigs = {
     poster: "/images/posters/electronics-poster.png",
     subCategories: [
       { id: "all-products", label: "All Products" },
-      { id: "laptops", label: "Laptops" },
       { id: "mobiles", label: "Mobiles" },
+      { id: "laptops", label: "Laptops" },
     ],
   },
   kitchen: {
@@ -13,8 +13,8 @@ export const categoryConfigs = {
     poster: "/images/posters/kitchen-poster.png",
     subCategories: [
       { id: "all-products", label: "All Kitchen" },
-      { id: "appliances", label: "Appliances" },
       { id: "cookware", label: "Cookware" },
+      { id: "appliances", label: "Appliances" },
     ],
   },
   men: {
@@ -22,8 +22,8 @@ export const categoryConfigs = {
     poster: "/images/posters/men-poster.png",
     subCategories: [
       { id: "all-products", label: "All Men's" },
-      { id: "clothing", label: "Clothing" },
       { id: "shoes", label: "Shoes" },
+      { id: "clothing", label: "Clothing" },
     ],
   },
   women: {
@@ -31,9 +31,15 @@ export const categoryConfigs = {
     poster: "/images/posters/women-poster.png",
     subCategories: [
       { id: "all-products", label: "All Women's" },
-      { id: "dresses", label: "Dresses" },
       { id: "handbags", label: "Handbags" },
+      { id: "dresses", label: "Dresses" },
     ],
+  },
+  supermarket: {
+    subCategories: [{ id: "all-products", label: "All Grocery" }],
+  },
+  automotive: {
+    subCategories: [{ id: "all-products", label: "All Accessories" }],
   },
 };
 

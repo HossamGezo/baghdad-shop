@@ -3,7 +3,7 @@ import HomeProductsSection from "@components/home-products-section/HomeProductsS
 
 const Sections = () => {
   const categoryPosterStyle =
-    "cursor-pointer hover:scale-[0.99] border border-transparent hover:border-warning transition-all duration-300";
+    "cursor-pointer hover:scale-[0.99] border border-transparent hover:border-warning transition-all duration-300 mt-5";
 
   // --- Return JSX
   return (
@@ -60,6 +60,32 @@ const Sections = () => {
         title="Luxury Handbags & Accessories"
         categoryKey="handbags"
         to="/women"
+      />
+
+      {/* 5. Supermarket Group */}
+      <CategoryPoster
+        imageSrc="/images/posters/supermarket-poster.png"
+        altText="Supermarket Essentials"
+        to="/supermarket"
+        className={categoryPosterStyle}
+      />
+      <HomeProductsSection
+        title="Fresh Grocery & Daily Essentials"
+        categoryKey="supermarket"
+        to="/supermarket"
+      />
+
+      {/* 6. Automotive Group */}
+      <CategoryPoster
+        imageSrc="/images/posters/automotive-poster.png"
+        altText="Car Accessories & Tools"
+        to="/automotive"
+        className={categoryPosterStyle}
+      />
+      <HomeProductsSection
+        title="Top Automotive Tools & Accessories"
+        categoryKey="automotive"
+        to="/automotive"
       />
     </div>
   );

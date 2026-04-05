@@ -35,13 +35,13 @@ export const categories: CategoryType[] = [
     id: "6",
     title: "Supermarket",
     image: "/images/essentials/essential06.png",
-    to: "",
+    to: "/supermarket",
   },
   {
     id: "7",
     title: "Automotive",
     image: "/images/essentials/essential07.png",
-    to: "",
+    to: "/automotive",
   },
   {
     id: "8",

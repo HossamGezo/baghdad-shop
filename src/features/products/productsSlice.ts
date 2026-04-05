@@ -26,6 +26,8 @@ type ProductsState = {
   shoes: ProductType[];
   dresses: ProductType[];
   handbags: ProductType[];
+  supermarket: ProductType[];
+  automotive: ProductType[];
   singleProduct: ProductType | null;
   error: string;
 };
@@ -42,6 +44,8 @@ const initialState: ProductsState = {
   shoes: [],
   dresses: [],
   handbags: [],
+  supermarket: [],
+  automotive: [],
   singleProduct: null,
   error: "",
 };
