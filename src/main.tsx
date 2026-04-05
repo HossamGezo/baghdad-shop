@@ -2,6 +2,7 @@
 import { createRoot } from "react-dom/client";
 import { StrictMode } from "react";
 import { Provider } from "react-redux";
+import { Toaster } from "react-hot-toast";
 
 // --- Components
 import AppRouter from "@routes/AppRouter";
@@ -16,6 +17,7 @@ createRoot(document.getElementById("root")!).render(
   <Provider store={store}>
     <StrictMode>
       <AppRouter />
+      <Toaster />
     </StrictMode>
   </Provider>,
 );

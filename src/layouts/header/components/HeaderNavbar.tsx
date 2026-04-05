@@ -20,7 +20,6 @@ const Navbar = ({
   handleNavBarClose,
   handleClose,
 }: NavbarProps) => {
-  // --- Return JSX
   return (
     <nav
       className={cn(
