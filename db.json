@@ -192,7 +192,7 @@
       "images": ["/images/products/mobiles/m5.jpg"],
       "price": 290,
       "discount": 0,
-      "rating": 3.0,
+      "rating": 3,
       "reviews": 420,
       "category": "mobiles",
       "description": "An affordable smartphone designed for basic daily needs with a simple and practical user experience."
@@ -244,7 +244,7 @@
       "images": ["/images/products/mobiles/m9.jpg"],
       "price": 470,
       "discount": 0,
-      "rating": 4.0,
+      "rating": 4,
       "reviews": 4700,
       "category": "mobiles",
       "description": "A budget-friendly smartphone with a large battery and smooth performance for everyday tasks."
@@ -552,7 +552,7 @@
       "images": ["/images/products/kitchen/k13.jpg"],
       "price": 3789,
       "discount": 15,
-      "rating": 4.0,
+      "rating": 4,
       "reviews": 8,
       "category": "cookware",
       "description": "Lazord Granite Pro Set includes 9 essential pieces in an elegant copper finish. This premium non-stick set features various pot sizes (18/20/24/28 cm) and a 28cm frypan, designed for professional cooking results."
@@ -695,7 +695,7 @@
       "images": ["/images/products/kitchen/k24.jpg"],
       "price": 1080,
       "discount": 0,
-      "rating": 5.0,
+      "rating": 5,
       "reviews": 1,
       "category": "cookware",
       "description": "The legendary cast iron skillet for perfect searing and browning. Pre-seasoned and ready to use, this heavy-duty pan provides superior heat retention for steak, sausages, and more."
@@ -710,7 +710,7 @@
       "images": ["/images/products/men/men1.jpg"],
       "price": 285,
       "discount": 0,
-      "rating": 4.0,
+      "rating": 4,
       "reviews": 134,
       "category": "clothing",
       "description": "Premium cotton crew neck t-shirt from Nileton. Featuring a relaxed fit and soft breathable fabric, perfect for everyday comfort and casual styling."
@@ -736,7 +736,7 @@
       "images": ["/images/products/men/men3.jpg"],
       "price": 2660,
       "discount": 10,
-      "rating": 5.0,
+      "rating": 5,
       "reviews": 3,
       "category": "clothing",
       "description": "Authentic American Eagle Oxford button-up shirt. A versatile slim-fit design that transitions perfectly from office hours to evening outings."
@@ -801,7 +801,7 @@
       "images": ["/images/products/men/men8.jpg"],
       "price": 2800,
       "discount": 20,
-      "rating": 5.0,
+      "rating": 5,
       "reviews": 1,
       "category": "clothing",
       "description": "Luxurious genuine leather bomber jacket featuring a sleek stand collar and lined interior for warmth and premium style."
@@ -853,7 +853,7 @@
       "images": ["/images/products/men/men12.jpg"],
       "price": 1300,
       "discount": 0,
-      "rating": 5.0,
+      "rating": 5,
       "reviews": 3,
       "category": "clothing",
       "description": "Stay warm and stylish with the Pavone puffer jacket. Lightweight yet insulated, it's the perfect outer layer for chilly winter months."
@@ -907,7 +907,7 @@
       "images": ["/images/products/men/men16.jpg"],
       "price": 395,
       "discount": 0,
-      "rating": 1.0,
+      "rating": 1,
       "reviews": 1,
       "category": "shoes",
       "description": "Perform your best with Vinitto athletic running shoes. Designed with breathable black mesh and reflective elements for safety, these sneakers provide a textured rubber sole for maximum grip."
@@ -920,7 +920,7 @@
       "images": ["/images/products/men/men17.jpg"],
       "price": 1250,
       "discount": 0,
-      "rating": 1.0,
+      "rating": 1,
       "reviews": 1,
       "category": "shoes",
       "description": "Handcrafted for elegance, the Shamwazit Oxford shoes feature premium black leather and a comfortable semi-formal design. Ideal for business meetings and special occasions."
@@ -959,7 +959,7 @@
       "images": ["/images/products/men/men20.jpg"],
       "price": 599,
       "discount": 0,
-      "rating": 3.0,
+      "rating": 3,
       "reviews": 1,
       "category": "shoes",
       "description": "Lightweight and easy-to-wear, these genuine canvas slip-ons in gray are perfect for quick errands and casual walks. Designed for maximum breathability during summer."
@@ -972,7 +972,7 @@
       "images": ["/images/products/men/men21.jpg"],
       "price": 379,
       "discount": 0,
-      "rating": 5.0,
+      "rating": 5,
       "reviews": 2,
       "category": "shoes",
       "description": "Romba Sport brings you classic brogue styling in a comfortable formal shoe. Made from durable Havan-colored leather, these shoes are perfect for the office or formal events."
@@ -1026,7 +1026,7 @@
       "images": ["/images/products/women/women1.jpg"],
       "price": 1800,
       "discount": 0,
-      "rating": 5.0,
+      "rating": 5,
       "reviews": 12,
       "category": "dresses",
       "description": "Exquisite embroidered midi dress from American Eagle. Featuring long sleeves and a beautiful tiered design in cream, perfect for a bohemian chic look."
@@ -1130,7 +1130,7 @@
       "images": ["/images/products/women/women9.jpg"],
       "price": 799,
       "discount": 0,
-      "rating": 5.0,
+      "rating": 5,
       "reviews": 8,
       "category": "dresses",
       "description": "Luxurious printed silk satin wrap dress. Perfect for upscale events, featuring a flattering fit and a vibrant multicolored pattern for a sophisticated look."
@@ -1184,7 +1184,7 @@
       "images": ["/images/products/women/women13.jpg"],
       "price": 499,
       "discount": 0,
-      "rating": 1.0,
+      "rating": 1,
       "reviews": 1,
       "category": "handbags",
       "description": "The ultimate Misha Four collection by Kanaz. This 4-piece set includes a tote, crossbody bag, clutch, and mini purse, providing a timeless fashion solution for work and travel."
@@ -1223,7 +1223,7 @@
       "images": ["/images/products/women/women16.jpg"],
       "price": 550,
       "discount": 0,
-      "rating": 5.0,
+      "rating": 5,
       "reviews": 1,
       "category": "handbags",
       "description": "Versatile mini backpack from RG. Crafted from premium faux leather with stylish stud details, this bag easily converts to a crossbody for hands-free convenience."
@@ -1262,7 +1262,7 @@
       "images": ["/images/products/women/women19.jpg"],
       "price": 1850,
       "discount": 0,
-      "rating": 5.0,
+      "rating": 5,
       "reviews": 2,
       "category": "handbags",
       "description": "A masterpiece for your wrist. This luxury watch features a dazzling crystal flower dial, rose gold-tone bezel, and a comfortable burgundy silicone band."
@@ -1327,7 +1327,7 @@
       "images": ["/images/products/women/women24.jpg"],
       "price": 245,
       "discount": 0,
-      "rating": 5.0,
+      "rating": 5,
       "reviews": 1,
       "category": "handbags",
       "description": "The perfect travel companion. This waterproof PU leather toiletry pouch features a flat opening design for easy access to all your cosmetics and accessories."
@@ -1353,7 +1353,7 @@
       "firstImage": "/images/products/supermarket/sup2.jpg",
       "secondImage": "/images/products/supermarket/sup2.jpg",
       "images": ["/images/products/supermarket/sup2.jpg"],
-      "price": 25.0,
+      "price": 25,
       "discount": 0,
       "rating": 4.6,
       "reviews": 350,
@@ -1379,7 +1379,7 @@
       "firstImage": "/images/products/supermarket/sup4.jpg",
       "secondImage": "/images/products/supermarket/sup4.jpg",
       "images": ["/images/products/supermarket/sup4.jpg"],
-      "price": 18.0,
+      "price": 18,
       "discount": 0,
       "rating": 4.7,
       "reviews": 210,
@@ -1418,7 +1418,7 @@
       "firstImage": "/images/products/supermarket/sup7.jpg",
       "secondImage": "/images/products/supermarket/sup7.jpg",
       "images": ["/images/products/supermarket/sup7.jpg"],
-      "price": 14.0,
+      "price": 14,
       "discount": 20,
       "rating": 4.5,
       "reviews": 1200,
@@ -1431,7 +1431,7 @@
       "firstImage": "/images/products/supermarket/sup8.jpg",
       "secondImage": "/images/products/supermarket/sup8.jpg",
       "images": ["/images/products/supermarket/sup8.jpg"],
-      "price": 8.0,
+      "price": 8,
       "discount": 0,
       "rating": 4.6,
       "reviews": 95,
@@ -1472,7 +1472,7 @@
       "firstImage": "/images/products/automotive/a1.jpg",
       "secondImage": "/images/products/automotive/a1.jpg",
       "images": ["/images/products/automotive/a1.jpg"],
-      "price": 45.0,
+      "price": 45,
       "discount": 0,
       "rating": 4.8,
       "reviews": 1500,
@@ -1498,7 +1498,7 @@
       "firstImage": "/images/products/automotive/a3.jpg",
       "secondImage": "/images/products/automotive/a3.jpg",
       "images": ["/images/products/automotive/a3.jpg"],
-      "price": 55.0,
+      "price": 55,
       "discount": 0,
       "rating": 4.6,
       "reviews": 850,
@@ -1511,7 +1511,7 @@
       "firstImage": "/images/products/automotive/a4.jpg",
       "secondImage": "/images/products/automotive/a4.jpg",
       "images": ["/images/products/automotive/a4.jpg"],
-      "price": 120.0,
+      "price": 120,
       "discount": 10,
       "rating": 4.7,
       "reviews": 3200,
@@ -1524,7 +1524,7 @@
       "firstImage": "/images/products/automotive/a5.jpg",
       "secondImage": "/images/products/automotive/a5.jpg",
       "images": ["/images/products/automotive/a5.jpg"],
-      "price": 35.0,
+      "price": 35,
       "discount": 5,
       "rating": 4.4,
       "reviews": 1100,
@@ -1537,7 +1537,7 @@
       "firstImage": "/images/products/automotive/a6.jpg",
       "secondImage": "/images/products/automotive/a6.jpg",
       "images": ["/images/products/automotive/a6.jpg"],
-      "price": 49.0,
+      "price": 49,
       "discount": 0,
       "rating": 4.8,
       "reviews": 980,
@@ -1550,7 +1550,7 @@
       "firstImage": "/images/products/automotive/a7.jpg",
       "secondImage": "/images/products/automotive/a7.jpg",
       "images": ["/images/products/automotive/a7.jpg"],
-      "price": 40.0,
+      "price": 40,
       "discount": 0,
       "rating": 4.5,
       "reviews": 600,
@@ -1563,7 +1563,7 @@
       "firstImage": "/images/products/automotive/a8.jpg",
       "secondImage": "/images/products/automotive/a8.jpg",
       "images": ["/images/products/automotive/a8.jpg"],
-      "price": 110.0,
+      "price": 110,
       "discount": 20,
       "rating": 4.9,
       "reviews": 1400,
@@ -1576,7 +1576,7 @@
       "firstImage": "/images/products/automotive/a9.jpg",
       "secondImage": "/images/products/automotive/a9.jpg",
       "images": ["/images/products/automotive/a9.jpg"],
-      "price": 15.0,
+      "price": 15,
       "discount": 0,
       "rating": 4.7,
       "reviews": 3000,
@@ -1589,7 +1589,7 @@
       "firstImage": "/images/products/automotive/a10.jpg",
       "secondImage": "/images/products/automotive/a10.jpg",
       "images": ["/images/products/automotive/a10.jpg"],
-      "price": 12.0,
+      "price": 12,
       "discount": 0,
       "rating": 4.6,
       "reviews": 750,
@@ -1599,25 +1599,14 @@
   ],
   "users": [
     {
-      "id": "USR-001",
-      "fullName": "Hossam Gouda",
-      "email": "hossam@example.com",
-      "phone": "+201111182665",
-      "role": "admin",
-      "joinDate": "2023-01-15T00:00:00Z",
-      "avatar": "/images/avatar/avatar1.png",
-      "status": "Active",
-      "totalOrders": 42
-    },
-    {
       "id": "USR-002",
       "fullName": "Ahmed Ali",
       "email": "ahmed.ali@mail.com",
       "phone": "+201000000002",
-      "role": "customer",
+      "role": "admin",
       "joinDate": "2024-05-10T00:00:00Z",
       "avatar": "/images/avatar/default.png",
-      "status": "Active",
+      "status": "active",
       "totalOrders": 1
     },
     {
@@ -1628,7 +1617,7 @@
       "role": "customer",
       "joinDate": "2024-08-22T00:00:00Z",
       "avatar": "/images/avatar/default.png",
-      "status": "Active",
+      "status": "active",
       "totalOrders": 5
     },
     {
@@ -1639,7 +1628,7 @@
       "role": "customer",
       "joinDate": "2024-09-01T00:00:00Z",
       "avatar": "/images/avatar/default.png",
-      "status": "Inactive",
+      "status": "inactive",
       "totalOrders": 2
     },
     {
@@ -1650,7 +1639,7 @@
       "role": "customer",
       "joinDate": "2024-10-05T00:00:00Z",
       "avatar": "/images/avatar/default.png",
-      "status": "Active",
+      "status": "active",
       "totalOrders": 8
     },
     {
@@ -1661,7 +1650,7 @@
       "role": "customer",
       "joinDate": "2024-10-15T00:00:00Z",
       "avatar": "/images/avatar/default.png",
-      "status": "Active",
+      "status": "active",
       "totalOrders": 3
     },
     {
@@ -1672,7 +1661,7 @@
       "role": "customer",
       "joinDate": "2024-11-01T00:00:00Z",
       "avatar": "/images/avatar/default.png",
-      "status": "Active",
+      "status": "active",
       "totalOrders": 6
     },
     {
@@ -1683,7 +1672,7 @@
       "role": "customer",
       "joinDate": "2024-11-10T00:00:00Z",
       "avatar": "/images/avatar/default.png",
-      "status": "Inactive",
+      "status": "inactive",
       "totalOrders": 0
     },
     {
@@ -1694,7 +1683,7 @@
       "role": "customer",
       "joinDate": "2024-11-18T00:00:00Z",
       "avatar": "/images/avatar/default.png",
-      "status": "Active",
+      "status": "active",
       "totalOrders": 4
     },
     {
@@ -1705,19 +1694,8 @@
       "role": "customer",
       "joinDate": "2024-12-01T00:00:00Z",
       "avatar": "/images/avatar/default.png",
-      "status": "Active",
+      "status": "active",
       "totalOrders": 7
-    },
-    {
-      "id": "USR-011",
-      "fullName": "Salma Nabil",
-      "email": "salma.nabil@mail.com",
-      "phone": "+201200000011",
-      "role": "customer",
-      "joinDate": "2024-12-10T00:00:00Z",
-      "avatar": "/images/avatar/default.png",
-      "status": "Inactive",
-      "totalOrders": 2
     },
     {
       "id": "USR-012",
@@ -1727,7 +1705,7 @@
       "role": "customer",
       "joinDate": "2024-12-20T00:00:00Z",
       "avatar": "/images/avatar/default.png",
-      "status": "Active",
+      "status": "active",
       "totalOrders": 9
     },
     {
@@ -1738,7 +1716,7 @@
       "role": "customer",
       "joinDate": "2025-01-05T00:00:00Z",
       "avatar": "/images/avatar/default.png",
-      "status": "Active",
+      "status": "active",
       "totalOrders": 5
     },
     {
@@ -1749,7 +1727,7 @@
       "role": "customer",
       "joinDate": "2025-01-15T00:00:00Z",
       "avatar": "/images/avatar/default.png",
-      "status": "Inactive",
+      "status": "inactive",
       "totalOrders": 1
     },
     {
@@ -1760,7 +1738,7 @@
       "role": "customer",
       "joinDate": "2025-01-25T00:00:00Z",
       "avatar": "/images/avatar/default.png",
-      "status": "Active",
+      "status": "active",
       "totalOrders": 10
     }
   ],
