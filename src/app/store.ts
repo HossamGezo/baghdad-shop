@@ -16,14 +16,15 @@ import cart, {
   increaseQuantity,
   removeFromCart,
 } from "@features/cart/cartSlice";
+import users, { deleteUser, updateUserRole } from "@features/users/usersSlice";
 
 // --- Custom Middlewares
 
-const cartListener = createListenerMiddleware();
+const customMiddleware = createListenerMiddleware();
 
 // - localStorage
 
-cartListener.startListening({
+customMiddleware.startListening({
   matcher: isAnyOf(
     addToCart,
     increaseQuantity,
@@ -38,7 +39,7 @@ cartListener.startListening({
 
 // - toast : add to cart
 
-cartListener.startListening({
+customMiddleware.startListening({
   matcher: isAnyOf(addToCart),
   effect: () => {
     toast.success("Product has been added to cart!");
@@ -47,10 +48,28 @@ cartListener.startListening({
 
 // - toast : remove from cart
 
-cartListener.startListening({
+customMiddleware.startListening({
   matcher: isAnyOf(removeFromCart),
   effect: () => {
     toast.error("Product removed from cart");
+  },
+});
+
+// - toast : update user
+
+customMiddleware.startListening({
+  matcher: isAnyOf(updateUserRole.fulfilled),
+  effect: () => {
+    toast.success("User has been updated successfully");
+  },
+});
+
+// - toast : remove user
+
+customMiddleware.startListening({
+  matcher: isAnyOf(deleteUser.fulfilled),
+  effect: () => {
+    toast.error("User has been deleted");
   },
 });
 
@@ -60,9 +79,10 @@ const store = configureStore({
   reducer: {
     products,
     cart,
+    users,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().prepend(cartListener.middleware),
+    getDefaultMiddleware().prepend(customMiddleware.middleware),
 });
 
 // --- Store Types

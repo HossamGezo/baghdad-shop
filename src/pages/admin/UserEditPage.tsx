@@ -1,4 +1,5 @@
 // --- Libraries
+import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router";
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -10,182 +11,14 @@ import { MdOutlineKeyboardBackspace } from "react-icons/md";
 // --- Components
 import ErrorHandler from "@components/error-handler/ErrorHandler";
 import CustomButton from "@components/custom-button/CustomButton";
+import Spinner from "@components/spinner/Spinner";
 
 // --- Utils
 import { cn } from "@utils/cn";
 
-// --- Types
-import type { UserType } from "@/types/types";
-import { useEffect } from "react";
-
-// --- Mock Data
-const mockUsers: UserType[] = [
-  {
-    id: "USR-001",
-    fullName: "Hossam Gouda",
-    email: "hossam@example.com",
-    phone: "+201111182665",
-    role: "admin",
-    joinDate: "2023-01-15T00:00:00Z",
-    avatar: "/images/avatar/avatar1.png",
-    status: "Active",
-    totalOrders: 42,
-  },
-  {
-    id: "USR-002",
-    fullName: "Ahmed Ali",
-    email: "ahmed.ali@mail.com",
-    phone: "+201000000002",
-    role: "customer",
-    joinDate: "2024-05-10T00:00:00Z",
-    avatar: "/images/avatar/default.png",
-    status: "Active",
-    totalOrders: 1,
-  },
-  {
-    id: "USR-003",
-    fullName: "Sara Mahmoud",
-    email: "sara.m@test.com",
-    phone: "+201200000003",
-    role: "customer",
-    joinDate: "2024-08-22T00:00:00Z",
-    avatar: "/images/avatar/default.png",
-    status: "Active",
-    totalOrders: 5,
-  },
-  {
-    id: "USR-004",
-    fullName: "Mona Adel",
-    email: "mona.design@example.com",
-    phone: "+201500000004",
-    role: "customer",
-    joinDate: "2024-09-01T00:00:00Z",
-    avatar: "/images/avatar/default.png",
-    status: "Inactive",
-    totalOrders: 2,
-  },
-  {
-    id: "USR-005",
-    fullName: "Youssef Tarek",
-    email: "y.tarek@company.com",
-    phone: "+201100000005",
-    role: "customer",
-    joinDate: "2024-10-05T00:00:00Z",
-    avatar: "/images/avatar/default.png",
-    status: "Active",
-    totalOrders: 8,
-  },
-  {
-    id: "USR-006",
-    fullName: "Omar Khaled",
-    email: "omar.khaled@mail.com",
-    phone: "+201200000006",
-    role: "customer",
-    joinDate: "2024-10-15T00:00:00Z",
-    avatar: "/images/avatar/default.png",
-    status: "Active",
-    totalOrders: 3,
-  },
-  {
-    id: "USR-007",
-    fullName: "Nour Hassan",
-    email: "nour.hassan@mail.com",
-    phone: "+201200000007",
-    role: "customer",
-    joinDate: "2024-11-01T00:00:00Z",
-    avatar: "/images/avatar/default.png",
-    status: "Active",
-    totalOrders: 6,
-  },
-  {
-    id: "USR-008",
-    fullName: "Karim Mostafa",
-    email: "karim.mostafa@mail.com",
-    phone: "+201200000008",
-    role: "customer",
-    joinDate: "2024-11-10T00:00:00Z",
-    avatar: "/images/avatar/default.png",
-    status: "Inactive",
-    totalOrders: 0,
-  },
-  {
-    id: "USR-009",
-    fullName: "Aya Ibrahim",
-    email: "aya.ibrahim@mail.com",
-    phone: "+201200000009",
-    role: "customer",
-    joinDate: "2024-11-18T00:00:00Z",
-    avatar: "/images/avatar/default.png",
-    status: "Active",
-    totalOrders: 4,
-  },
-  {
-    id: "USR-010",
-    fullName: "Mahmoud Samir",
-    email: "mahmoud.samir@mail.com",
-    phone: "+201200000010",
-    role: "customer",
-    joinDate: "2024-12-01T00:00:00Z",
-    avatar: "/images/avatar/default.png",
-    status: "Active",
-    totalOrders: 7,
-  },
-  {
-    id: "USR-011",
-    fullName: "Salma Nabil",
-    email: "salma.nabil@mail.com",
-    phone: "+201200000011",
-    role: "customer",
-    joinDate: "2024-12-10T00:00:00Z",
-    avatar: "/images/avatar/default.png",
-    status: "Inactive",
-    totalOrders: 2,
-  },
-  {
-    id: "USR-012",
-    fullName: "Ali Hany",
-    email: "ali.hany@mail.com",
-    phone: "+201200000012",
-    role: "customer",
-    joinDate: "2024-12-20T00:00:00Z",
-    avatar: "/images/avatar/default.png",
-    status: "Active",
-    totalOrders: 9,
-  },
-  {
-    id: "USR-013",
-    fullName: "Dina Fathy",
-    email: "dina.fathy@mail.com",
-    phone: "+201200000013",
-    role: "customer",
-    joinDate: "2025-01-05T00:00:00Z",
-    avatar: "/images/avatar/default.png",
-    status: "Active",
-    totalOrders: 5,
-  },
-  {
-    id: "USR-014",
-    fullName: "Hassan Adel",
-    email: "hassan.adel@mail.com",
-    phone: "+201200000014",
-    role: "customer",
-    joinDate: "2025-01-15T00:00:00Z",
-    avatar: "/images/avatar/default.png",
-    status: "Inactive",
-    totalOrders: 1,
-  },
-  {
-    id: "USR-015",
-    fullName: "Fatma Mohamed",
-    email: "fatma.mohamed@mail.com",
-    phone: "+201200000015",
-    role: "customer",
-    joinDate: "2025-01-25T00:00:00Z",
-    avatar: "/images/avatar/default.png",
-    status: "Active",
-    totalOrders: 10,
-  },
-];
+// --- Custom Hooks & Actions
+import { useAppDispatch, useAppSelector } from "@app/hooks";
+import { fetchUserById, updateUserRole } from "@features/users/usersSlice";
 
 // --- Helper Components
 
@@ -224,6 +57,19 @@ type EditUserSchemaType = z.infer<typeof EditUserSchema>;
 
 // --- Main Component
 const UserEditPage = () => {
+  // --- Edit User
+  const navigate = useNavigate();
+  const { id } = useParams();
+
+  // --- Fetch User
+  const { loading, singleUser } = useAppSelector((state) => state.users);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    if (id && (!singleUser || singleUser.id !== id))
+      dispatch(fetchUserById({ id: id }));
+  }, [dispatch, singleUser, loading, id]);
+
   // --- Hook Form
   const { register, reset, handleSubmit } = useForm<EditUserSchemaType>({
     mode: "onBlur",
@@ -234,24 +80,27 @@ const UserEditPage = () => {
   });
 
   // --- OnSubmit Function
-  const onSubmit: SubmitHandler<EditUserSchemaType> = (data) => {
-    console.log(data);
+  const onSubmit: SubmitHandler<EditUserSchemaType> = async (data) => {
+    if (singleUser) {
+      await dispatch(
+        updateUserRole({
+          id: singleUser.id,
+          user: { ...singleUser, role: data.role },
+        }),
+      );
+
+      navigate("/admin/users");
+    }
   };
-
-  // --- Edit User
-  const navigate = useNavigate();
-  const { id } = useParams();
-
-  const user: UserType | undefined = mockUsers.find((user) => user.id === id);
 
   // --- Default Values
   useEffect(() => {
-    if (user) {
+    if (singleUser) {
       reset({
-        role: user.role,
+        role: singleUser.role,
       });
     }
-  }, [reset, user]);
+  }, [reset, singleUser]);
 
   // --- Return JSX
   return (
@@ -266,7 +115,11 @@ const UserEditPage = () => {
         </button>
         Edit User
       </h1>
-      {!user ? (
+      {loading ? (
+        <div className="flex-1 flex items-center justify-center h-full">
+          <Spinner className="w-12 h-12" />
+        </div>
+      ) : !singleUser ? (
         <div className="h-full flex items-center justify-center w-3/4 mx-auto">
           <ErrorHandler error={"User Not Found"} />
         </div>
@@ -275,27 +128,27 @@ const UserEditPage = () => {
           <div className="flex max-sm:flex-col gap-5 sm:p-7">
             <div className="border-2 w-fit mx-auto border-amber-400 hover:shadow-md transition-shadow duration-300 shadow-amber-500/25 rounded-full h-fit p-0.5 flex items-center justify-center">
               <img
-                src={user.avatar}
-                alt={user.fullName}
+                src={singleUser.avatar}
+                alt={singleUser.fullName}
                 loading="lazy"
                 className="w-20 h-20 object-contain rounded-full"
                 onError={(e) => {
                   (e.target as HTMLImageElement).src =
-                    `https://ui-avatars.com/api/?name=${user.fullName}&background=random`;
+                    `https://ui-avatars.com/api/?name=${singleUser.fullName}&background=random`;
                 }}
               />
             </div>
             <div className="flex-1 grid grid-cols-1 lg:grid-cols-2 xxl:grid-cols-3 gap-5 shadow-sm border border-gray-200 rounded-md p-5">
-              <Field title={"User Name"} description={user.fullName} />
-              <Field title={"Email"} description={user.email} />
-              <Field title={"Phone"} description={user.phone} />
+              <Field title={"User Name"} description={singleUser.fullName} />
+              <Field title={"Email"} description={singleUser.email} />
+              <Field title={"Phone"} description={singleUser.phone} />
               <Field
                 title={"Join Date"}
-                description={user.joinDate.substring(0, 10)}
+                description={singleUser.joinDate.substring(0, 10)}
               />
               <Field
                 title={"Total Orders"}
-                description={String(user.totalOrders)}
+                description={String(singleUser.totalOrders)}
               />
               <form onSubmit={handleSubmit(onSubmit)}>
                 <select
