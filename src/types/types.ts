@@ -46,7 +46,9 @@ export type CategoriesType =
   | "clothing"
   | "shoes"
   | "dresses"
-  | "handbags";
+  | "handbags"
+  | "supermarket"
+  | "automotive";
 
 export type CartType = ProductType & {
   count: number;

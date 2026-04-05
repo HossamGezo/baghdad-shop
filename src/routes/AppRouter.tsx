@@ -13,6 +13,8 @@ const Electronics = React.lazy(() => import("@pages/electronics/Electronics"));
 const Men = React.lazy(() => import("@pages/men/Men"));
 const Women = React.lazy(() => import("@pages/women/Women"));
 const Kitchen = React.lazy(() => import("@pages/kitchen/Kitchen"));
+const Supermarket = React.lazy(() => import("@pages/supermarket/Supermarket"));
+const Automotive = React.lazy(() => import("@pages/automotive/Automotive"));
 const ProductDetails = React.lazy(
   () => import("@pages/product-details/ProductDetails"),
 );
@@ -55,6 +57,8 @@ const router = createBrowserRouter([
       { index: true, Component: Home },
       { path: "electronics", Component: Electronics },
       { path: "kitchen", Component: Kitchen },
+      { path: "supermarket", Component: Supermarket },
+      { path: "automotive", Component: Automotive },
       { path: "men", Component: Men },
       { path: "women", Component: Women },
       { path: "products/:category/:id", Component: ProductDetails },
