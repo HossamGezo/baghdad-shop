@@ -1,6 +1,10 @@
 // --- Libraries
-import React from "react";
+import { lazy } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router";
+
+// --- Local Components
+import ProtectedRoute from "@components/protected-route/ProtectedRoute";
+import PublicRoute from "@components/public-route/PublicRoute";
 
 // --- Pages
 import RootLayout from "@layouts/RootLayout";
@@ -8,44 +12,38 @@ import Home from "@pages/home/Home";
 import NotFound from "@pages/error/NotFound";
 
 // --- Lazy Loading Pages
-// - Regular Pages
-const Electronics = React.lazy(() => import("@pages/electronics/Electronics"));
-const Men = React.lazy(() => import("@pages/men/Men"));
-const Women = React.lazy(() => import("@pages/women/Women"));
-const Kitchen = React.lazy(() => import("@pages/kitchen/Kitchen"));
-const Supermarket = React.lazy(() => import("@pages/supermarket/Supermarket"));
-const Automotive = React.lazy(() => import("@pages/automotive/Automotive"));
-const ProductDetails = React.lazy(
-  () => import("@pages/product-details/ProductDetails"),
-);
-const Cart = React.lazy(() => import("@pages/cart/Cart"));
+
+// - Public Pages
+const Electronics = lazy(() => import("@pages/electronics/Electronics"));
+const Men = lazy(() => import("@pages/men/Men"));
+const Women = lazy(() => import("@pages/women/Women"));
+const Kitchen = lazy(() => import("@pages/kitchen/Kitchen"));
+const Supermarket = lazy(() => import("@pages/supermarket/Supermarket"));
+const Automotive = lazy(() => import("@pages/automotive/Automotive"));
+const ProductDetails = lazy(() => import("@pages/product-details/ProductDetails"));
+const Cart = lazy(() => import("@pages/cart/Cart"));
+
 // - Auth Pages
-const Login = React.lazy(() => import("@pages/auth/Login"));
-const Register = React.lazy(() => import("@pages/auth/Register"));
-const ResetPassword = React.lazy(() => import("@pages/auth/ResetPassword"));
+const Login = lazy(() => import("@pages/auth/Login"));
+const Register = lazy(() => import("@pages/auth/Register"));
+const ResetPassword = lazy(() => import("@pages/auth/ResetPassword"));
+
 // - Profile Pages
-const ProfileLayout = React.lazy(() => import("@pages/profile/ProfileLayout"));
-const AccountOverview = React.lazy(
-  () => import("@pages/profile/AccountOverview"),
-);
-const CustomerOrders = React.lazy(
-  () => import("@pages/profile/CustomerOrders"),
-);
-const AddressBookEdit = React.lazy(
-  () => import("@pages/profile/AddressBookEdit"),
-);
-const AccountDetailsEdit = React.lazy(
-  () => import("@pages/profile/AccountDetailsEdit"),
-);
-const Checkout = React.lazy(() => import("@pages/checkout/Checkout"));
+const ProfileLayout = lazy(() => import("@pages/profile/ProfileLayout"));
+const AccountOverview = lazy(() => import("@pages/profile/AccountOverview"));
+const CustomerOrders = lazy(() => import("@pages/profile/CustomerOrders"));
+const AddressBookEdit = lazy(() => import("@pages/profile/AddressBookEdit"));
+const AccountDetailsEdit = lazy(() => import("@pages/profile/AccountDetailsEdit"));
+const Checkout = lazy(() => import("@pages/checkout/Checkout"));
+
 // - Admin Pages
-const AdminLayout = React.lazy(() => import("@pages/admin/AdminLayout"));
-const Dashboard = React.lazy(() => import("@pages/admin/Dashboard"));
-const ProductsList = React.lazy(() => import("@/pages/admin/ProductsList"));
-const Orders = React.lazy(() => import("@pages/admin/Orders"));
-const Users = React.lazy(() => import("@pages/admin/Users"));
-const UserEditPage = React.lazy(() => import("@pages/admin/UserEditPage"));
-const AddProduct = React.lazy(() => import("@pages/admin/AddProduct"));
+const AdminLayout = lazy(() => import("@pages/admin/AdminLayout"));
+const Dashboard = lazy(() => import("@pages/admin/Dashboard"));
+const ProductsList = lazy(() => import("@pages/admin/ProductsList"));
+const Orders = lazy(() => import("@pages/admin/Orders"));
+const Users = lazy(() => import("@pages/admin/Users"));
+const UserEditPage = lazy(() => import("@pages/admin/UserEditPage"));
+const AddProduct = lazy(() => import("@pages/admin/AddProduct"));
 
 //--- Router
 const router = createBrowserRouter([
@@ -63,42 +61,59 @@ const router = createBrowserRouter([
       { path: "women", Component: Women },
       { path: "products/:category/:id", Component: ProductDetails },
       { path: "cart", Component: Cart },
+
       // --- Auth Pages
-      { path: "login", Component: Login },
-      { path: "register", Component: Register },
-      { path: "reset-password", Component: ResetPassword },
-      // --- Protected Routes
-      // - Profile
       {
-        path: "profile",
-        Component: ProfileLayout,
+        element: <PublicRoute />,
         children: [
-          { index: true, Component: AccountOverview },
-          { path: "orders", Component: CustomerOrders },
-          { path: "address/edit", Component: AddressBookEdit },
-          { path: "account/edit", Component: AccountDetailsEdit },
+          { path: "login", Component: Login },
+          { path: "register", Component: Register },
+          { path: "reset-password", Component: ResetPassword },
         ],
       },
-      // - Checkout
-      { path: "checkout", Component: Checkout },
+
+      // - Profile
+      {
+        element: <ProtectedRoute />,
+        children: [
+          {
+            path: "profile",
+            Component: ProfileLayout,
+            children: [
+              { index: true, Component: AccountOverview },
+              { path: "orders", Component: CustomerOrders },
+              { path: "address/edit", Component: AddressBookEdit },
+              { path: "account/edit", Component: AccountDetailsEdit },
+            ],
+          },
+          // - Checkout
+          { path: "checkout", Component: Checkout },
+        ],
+      },
       // --- NotFound Page
       { path: "*", Component: NotFound },
     ],
   },
+
   // - Admin
   {
-    path: "admin",
-    Component: AdminLayout,
+    element: <ProtectedRoute adminOnly={true} />,
     children: [
-      { index: true, Component: Dashboard },
-      { path: "products", Component: ProductsList },
-      { path: "add-product", Component: AddProduct },
-      { path: "products/edit/:category/:id", Component: AddProduct },
-      { path: "orders", Component: Orders },
-      { path: "users", Component: Users },
-      { path: "users/edit/:id", Component: UserEditPage },
-      // --- NotFound Page
-      { path: "*", Component: NotFound },
+      {
+        path: "admin",
+        Component: AdminLayout,
+        children: [
+          { index: true, Component: Dashboard },
+          { path: "products", Component: ProductsList },
+          { path: "add-product", Component: AddProduct },
+          { path: "products/edit/:category/:id", Component: AddProduct },
+          { path: "orders", Component: Orders },
+          { path: "users", Component: Users },
+          { path: "users/edit/:id", Component: UserEditPage },
+          // --- NotFound Page
+          { path: "*", Component: NotFound },
+        ],
+      },
     ],
   },
 ]);
