@@ -47,20 +47,13 @@ const AccountDetailsEdit = () => {
   return (
     <div>
       <h1 className="border-b p-5 border-body text-xl text-[#333] font-jetbrains font-bold flex items-center gap-5">
-        <button
-          type="button"
-          aria-label="Back to profile"
-          onClick={() => navigate("/profile")}
-        >
+        <button type="button" aria-label="Back to profile" onClick={() => navigate("/profile")}>
           <MdOutlineKeyboardBackspace size={30} className="cursor-pointer" />
         </button>
         Edit Account
       </h1>
       <div className="mt-5">
-        <form
-          className="gap-4 max-sm:p-5 sm:px-10 sm:pb-10 rounded-lg"
-          onSubmit={handleSubmit(onSubmit)}
-        >
+        <form className="gap-4 max-sm:p-5 sm:px-10 sm:pb-10 rounded-lg" onSubmit={handleSubmit(onSubmit)}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
             <InputField
               type="text"
@@ -84,11 +77,7 @@ const AccountDetailsEdit = () => {
               readOnly
             />
           </div>
-          <CustomButton
-            type="submit"
-            aria-label="Save Changes"
-            className="px-5 ml-auto"
-          >
+          <CustomButton type="submit" aria-label="Save Changes" className="px-5 ml-auto">
             Save
           </CustomButton>
         </form>

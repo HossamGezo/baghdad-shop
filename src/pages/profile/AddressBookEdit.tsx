@@ -13,18 +13,9 @@ import CustomButton from "@components/custom-button/CustomButton";
 
 // --- Address Schema
 const AddressSchema = z.object({
-  firstName: z
-    .string()
-    .max(21, "First Name must not exceed 21 characters")
-    .trim(),
-  lastName: z
-    .string()
-    .max(21, "Last Name must not exceed 21 characters")
-    .trim(),
-  phoneNumber: z
-    .string()
-    .min(11, "Phone Number must be at least 11 digits")
-    .trim(),
+  firstName: z.string().max(21, "First Name must not exceed 21 characters").trim(),
+  lastName: z.string().max(21, "Last Name must not exceed 21 characters").trim(),
+  phoneNumber: z.string().min(11, "Phone Number must be at least 11 digits").trim(),
   address: z.string().min(50, "Address must be at least 50 characters").trim(),
 });
 type AddressSchemaType = z.infer<typeof AddressSchema>;
@@ -60,20 +51,13 @@ const AddressBookEdit = () => {
   return (
     <div>
       <h1 className="border-b p-5 border-body text-xl text-[#333] font-jetbrains font-bold flex items-center gap-5">
-        <button
-          type="button"
-          aria-label="Back to profile"
-          onClick={() => navigate("/profile")}
-        >
+        <button type="button" aria-label="Back to profile" onClick={() => navigate("/profile")}>
           <MdOutlineKeyboardBackspace size={30} className="cursor-pointer" />
         </button>
         Edit Address
       </h1>
       <div className="mt-5">
-        <form
-          className="gap-4 max-sm:p-5 sm:px-10 sm:pb-10 rounded-lg"
-          onSubmit={handleSubmit(onSubmit)}
-        >
+        <form className="gap-4 max-sm:p-5 sm:px-10 sm:pb-10 rounded-lg" onSubmit={handleSubmit(onSubmit)}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
             <InputField
               type="text"
@@ -116,11 +100,7 @@ const AddressBookEdit = () => {
               className="sm:w-full"
             />
           </div>
-          <CustomButton
-            type="submit"
-            aria-label="Save Changes"
-            className="px-5 ml-auto"
-          >
+          <CustomButton type="submit" aria-label="Save Changes" className="px-5 ml-auto">
             Save
           </CustomButton>
         </form>

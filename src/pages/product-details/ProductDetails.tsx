@@ -4,10 +4,7 @@ import { useParams } from "react-router";
 
 // --- Local Files
 import { useAppDispatch, useAppSelector } from "@app/hooks";
-import {
-  clearSingleProduct,
-  fetchSingleProduct,
-} from "@features/products/productsSlice";
+import { clearSingleProduct, fetchSingleProduct } from "@features/products/productsSlice";
 
 // --- Local Components
 import Discount from "@components/card/components/discount/Discount";
@@ -39,13 +36,10 @@ const categoryToPath: Record<string, string> = {
 const ProductDetails = () => {
   const { category, id } = useParams();
   const [count, setCount] = useState<number>(1);
-  const currentCategory =
-    category === "special-offers" ? "specialOffers" : category;
+  const currentCategory = category === "special-offers" ? "specialOffers" : category;
 
   // --- RTK Custom Hooks
-  const { loading, singleProduct, error } = useAppSelector(
-    (state) => state.products,
-  );
+  const { loading, singleProduct, error } = useAppSelector((state) => state.products);
   const dispatch = useAppDispatch();
 
   // --- Fetch Data
@@ -90,10 +84,7 @@ const ProductDetails = () => {
             {/* --- Product Details Wrapper */}
             <div className="bg-white shadow-strong lg:w-3/4 mx-auto grid grid-cols-4 p-5 rounded-md">
               {/* Product Images */}
-              <ProductImages
-                images={singleProduct.images}
-                title={singleProduct.title}
-              />
+              <ProductImages images={singleProduct.images} title={singleProduct.title} />
 
               {/* Card Details */}
               <div className="col-span-4 md:col-span-2">
@@ -102,21 +93,13 @@ const ProductDetails = () => {
                   <h1 className="text-primary text-[22px] font-medium underline decoration-warning mb-2.5">
                     {singleProduct.title}
                   </h1>
-                  <p className="text-primary text-[14px] xl:text-base text-justify">
-                    {singleProduct.description}
-                  </p>
+                  <p className="text-primary text-[14px] xl:text-base text-justify">{singleProduct.description}</p>
 
                   {/* --- Rating And Reviews */}
-                  <RatingAndViews
-                    rating={singleProduct.rating}
-                    reviews={singleProduct.reviews}
-                  />
+                  <RatingAndViews rating={singleProduct.rating} reviews={singleProduct.reviews} />
 
                   {/* --- Price And Discount */}
-                  <Discount
-                    price={singleProduct.price}
-                    discount={singleProduct.discount}
-                  />
+                  <Discount price={singleProduct.price} discount={singleProduct.discount} />
 
                   {/* Quantity */}
                   <div className="flex items-center gap-5 mt-5">
@@ -142,9 +125,7 @@ const ProductDetails = () => {
             </div>
           </div>
           <div>
-            {currentCategory === "specialOffers" && (
-              <SpecialOffers className="mt-0" excludeId={id} />
-            )}
+            {currentCategory === "specialOffers" && <SpecialOffers className="mt-0" excludeId={id} />}
             {currentCategory !== "specialOffers" && (
               <HomeProductsSection
                 title={"Recommended For You"}

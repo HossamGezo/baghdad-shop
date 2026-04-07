@@ -71,9 +71,7 @@ const HeaderMiddle = () => {
             className={({ isActive }) =>
               cn(
                 "text-xl transition-colors duration-150 cursor-pointer sm:hidden",
-                isActive
-                  ? "text-warning"
-                  : "text-white hover:text-warning active:text-amber-500",
+                isActive ? "text-warning" : "text-white hover:text-warning active:text-amber-500",
               )
             }
           >

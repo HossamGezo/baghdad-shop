@@ -1,3 +1,5 @@
+// --- Product Types
+
 export type ProductType = {
   readonly id: string;
   readonly title: string;
@@ -12,23 +14,13 @@ export type ProductType = {
   readonly description: string;
 };
 
-export type UserType = {
-  readonly fullName: string;
-  readonly id: string;
-  readonly email: string;
-  readonly phone: string;
-  readonly role: "customer" | "admin";
-  readonly joinDate: string;
-  readonly avatar: string;
-  readonly status: string;
-  readonly totalOrders: number;
-};
-
 export type BrandType = {
   id: string;
   name: string;
   image: string;
 };
+
+// --- Category & Navigation Types
 
 export type CategoryType = {
   id: string;
@@ -50,9 +42,13 @@ export type CategoriesType =
   | "supermarket"
   | "automotive";
 
+// --- Cart Types
+
 export type CartType = ProductType & {
   count: number;
 };
+
+// --- UI & Filtering Types
 
 export type CurrentPriceType = "no-sorting" | "low-to-high" | "high-to-low";
 
@@ -60,9 +56,41 @@ export type CurrentProductsType =
   | "all-products"
   | "laptops"
   | "mobiles"
-  | "shirts"
+  | "clothing"
   | "shoes"
   | "dresses"
   | "handbags"
   | "appliances"
-  | "cookware";
+  | "cookware"
+  | "supermarket"
+  | "automotive";
+
+// --- User & Authentication Types
+
+export type UserType = {
+  readonly fullName: string;
+  readonly id: string;
+  readonly email: string;
+  readonly password: string;
+  readonly phone: string;
+  readonly role: "customer" | "admin";
+  readonly joinDate: string;
+  readonly avatar: string;
+  readonly status: string;
+  readonly totalOrders: number;
+};
+
+export type RegisterType = {
+  fullName: string;
+  email: string;
+  password: string;
+};
+
+export type LoginType = {
+  email: string;
+  password: string;
+};
+
+export type ResetPasswordType = {
+  email: string;
+};

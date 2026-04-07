@@ -12,18 +12,9 @@ import CustomButton from "@components/custom-button/CustomButton";
 
 // --- Address Schema
 const AddressSchema = z.object({
-  firstName: z
-    .string()
-    .max(21, "First Name must not exceed 21 characters")
-    .trim(),
-  lastName: z
-    .string()
-    .max(21, "Last Name must not exceed 21 characters")
-    .trim(),
-  phoneNumber: z
-    .string()
-    .min(11, "Phone Number must be at least 11 digits")
-    .trim(),
+  firstName: z.string().max(21, "First Name must not exceed 21 characters").trim(),
+  lastName: z.string().max(21, "Last Name must not exceed 21 characters").trim(),
+  phoneNumber: z.string().min(11, "Phone Number must be at least 11 digits").trim(),
   address: z.string().min(50, "Address must be at least 50 characters").trim(),
   cardNumber: z
     .string()
@@ -64,10 +55,7 @@ const PaymentDetails = () => {
       <h2 className="relative w-fit text-primary/60 text-2xl font-jetbrains select-none mb-5 before:-bottom-1 before:absolute before:w-full before:h-0.5 before:bg-warning before:rounded-[100%]">
         CHECKOUT
       </h2>
-      <form
-        className="max-sm:p-5 sm:px-10 sm:pb-10 rounded-lg mt-10"
-        onSubmit={handleSubmit(onSubmit)}
-      >
+      <form className="max-sm:p-5 sm:px-10 sm:pb-10 rounded-lg mt-10" onSubmit={handleSubmit(onSubmit)}>
         {/* Address */}
         <h3 className="relative w-fit text-primary/60 text-lg font-jetbrains select-none mb-10 before:-bottom-1 before:absolute before:w-full before:h-0.5 before:bg-warning before:rounded-[100%]">
           1. Billing Address
@@ -137,11 +125,7 @@ const PaymentDetails = () => {
             autoComplete="cc-number"
             className="sm:w-full"
           />
-          <CustomButton
-            type="submit"
-            aria-label="Save Changes"
-            className="px-5 ml-auto mt-5"
-          >
+          <CustomButton type="submit" aria-label="Save Changes" className="px-5 ml-auto mt-5">
             Place In Order
           </CustomButton>
         </div>

@@ -50,15 +50,9 @@ const AdminHeader = ({ isOpen, setIsOpen }: SidebarTypeProps) => {
             className="cursor-pointer"
           >
             {isOpen ? (
-              <MdMenuOpen
-                className="text-white bg-blue-400/25 rounded-full p-1"
-                size={30}
-              />
+              <MdMenuOpen className="text-white bg-blue-400/25 rounded-full p-1" size={30} />
             ) : (
-              <MdOutlineMenu
-                className="text-white bg-blue-400/25 rounded-full p-1"
-                size={30}
-              />
+              <MdOutlineMenu className="text-white bg-blue-400/25 rounded-full p-1" size={30} />
             )}
           </button>
           <Logo className="max-sm:hidden md:hidden" />
@@ -78,9 +72,7 @@ const AdminHeader = ({ isOpen, setIsOpen }: SidebarTypeProps) => {
             />
             <div className="text-white flex flex-col">
               <span className="max-sm:text-[11px]">Hossam Gouda</span>
-              <span className="max-sm:text-[9px] text-[11px] text-[#d5d5d5]">
-                @Baghdadshop
-              </span>
+              <span className="max-sm:text-[9px] text-[11px] text-[#d5d5d5]">@Baghdadshop</span>
             </div>
           </div>
         </div>

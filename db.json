@@ -357,10 +357,7 @@
       "title": "Samsung Tablet",
       "firstImage": "/images/products/special-offers/s5.jpg",
       "secondImage": "/images/products/special-offers/s6.jpg",
-      "images": [
-        "/images/products/special-offers/s5.jpg",
-        "/images/products/special-offers/s6.jpg"
-      ],
+      "images": ["/images/products/special-offers/s5.jpg", "/images/products/special-offers/s6.jpg"],
       "price": 200,
       "discount": 40,
       "rating": 4.5,
@@ -373,10 +370,7 @@
       "title": "Samsung Galaxy Smartphone",
       "firstImage": "/images/products/special-offers/s7.jpg",
       "secondImage": "/images/products/special-offers/s8.jpg",
-      "images": [
-        "/images/products/special-offers/s7.jpg",
-        "/images/products/special-offers/s8.jpg"
-      ],
+      "images": ["/images/products/special-offers/s7.jpg", "/images/products/special-offers/s8.jpg"],
       "price": 550,
       "discount": 20,
       "rating": 4.8,
@@ -1740,6 +1734,18 @@
       "avatar": "/images/avatar/default.png",
       "status": "active",
       "totalOrders": 10
+    },
+    {
+      "id": "d4cd",
+      "fullName": "Hossam Hassan",
+      "email": "ha2ghossam10@gmail.com",
+      "password": "hossam1027",
+      "confirmPassword": "hossam1027",
+      "role": "admin",
+      "joinDate": "2026-04-07T14:55:07.918Z",
+      "avatar": "/images/avatar/default.png",
+      "status": "active",
+      "totalOrders": 0
     }
   ],
   "orders": [

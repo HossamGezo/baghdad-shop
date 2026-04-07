@@ -23,10 +23,7 @@ const ProfileLayout = () => {
               to="/profile"
               end
               className={({ isActive }) =>
-                cn(
-                  "flex items-center gap-2.5 p-2.5",
-                  isActive ? "bg-[#D4D4D6]" : "bg-white hover:bg-body",
-                )
+                cn("flex items-center gap-2.5 p-2.5", isActive ? "bg-[#D4D4D6]" : "bg-white hover:bg-body")
               }
             >
               <FaRegUser />
@@ -37,10 +34,7 @@ const ProfileLayout = () => {
             <NavLink
               to="orders"
               className={({ isActive }) =>
-                cn(
-                  "flex items-center gap-2.5 p-2.5",
-                  isActive ? "bg-[#D4D4D6]" : "bg-white hover:bg-body",
-                )
+                cn("flex items-center gap-2.5 p-2.5", isActive ? "bg-[#D4D4D6]" : "bg-white hover:bg-body")
               }
             >
               <BsBox2 />

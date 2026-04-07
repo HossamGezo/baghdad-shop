@@ -16,9 +16,7 @@ type ProductSliderProps = {
 const ProductSlider = ({ productsCount, children }: ProductSliderProps) => {
   // --- viewport : Custom Function to specify the current screen accurately
   const viewport = () => {
-    const screen = window.matchMedia(
-      "(min-width:1200px) and (max-width:1399px)",
-    ).matches
+    const screen = window.matchMedia("(min-width:1200px) and (max-width:1399px)").matches
       ? "desktop"
       : window.matchMedia("(min-width:1400px)").matches
         ? "large"
@@ -27,17 +25,13 @@ const ProductSlider = ({ productsCount, children }: ProductSliderProps) => {
   };
 
   // --- Hooks
-  const [screenSize, setScreenSize] = useState<"mobile" | "desktop" | "large">(
-    viewport(),
-  );
+  const [screenSize, setScreenSize] = useState<"mobile" | "desktop" | "large">(viewport());
   const [move, setMove] = useState<number>(0);
   const trackWrapperRef = useRef<HTMLDivElement>(null);
 
   // --- Handle screen changes
   useEffect(() => {
-    const mediaDesktop = window.matchMedia(
-      "(min-width:1200px) and (max-width:1399px)",
-    );
+    const mediaDesktop = window.matchMedia("(min-width:1200px) and (max-width:1399px)");
     const mediaLarge = window.matchMedia("(min-width:1400px)");
 
     const handleChangeMedia = () => {
@@ -65,12 +59,7 @@ const ProductSlider = ({ productsCount, children }: ProductSliderProps) => {
   const MOVE_PER_CLICK = CARD_WIDTH + GAP;
 
   // - Variables
-  const containerWidth =
-    screenSize === "desktop"
-      ? 1140
-      : screenSize === "large"
-        ? 1320
-        : window.innerWidth;
+  const containerWidth = screenSize === "desktop" ? 1140 : screenSize === "large" ? 1320 : window.innerWidth;
 
   const totalProductsWidth = productsCount * CARD_WIDTH;
   const totalGapsWidth = (productsCount - 1) * GAP + 60;
@@ -93,8 +82,7 @@ const ProductSlider = ({ productsCount, children }: ProductSliderProps) => {
 
   // --- Reset Slider on Large screens
   useEffect(() => {
-    if (screenSize !== "mobile" && trackWrapperRef.current)
-      trackWrapperRef.current.scrollLeft = 0;
+    if (screenSize !== "mobile" && trackWrapperRef.current) trackWrapperRef.current.scrollLeft = 0;
   }, [screenSize]);
 
   // --- Reset Slider on Mobile
@@ -121,10 +109,7 @@ const ProductSlider = ({ productsCount, children }: ProductSliderProps) => {
       </button>
 
       {/* Trakc Wrapper */}
-      <div
-        className="custom-scrollbar overflow-x-auto xl:overflow-hidden py-5"
-        ref={trackWrapperRef}
-      >
+      <div className="custom-scrollbar overflow-x-auto xl:overflow-hidden py-5" ref={trackWrapperRef}>
         {/* Slider Track */}
         <div
           style={{ transform: `translateX(${finalMove}px)`, gap: `${GAP}px` }}

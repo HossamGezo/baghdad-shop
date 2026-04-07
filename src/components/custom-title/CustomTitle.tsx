@@ -19,13 +19,7 @@ type CustomTitleProps = React.ComponentProps<"h2"> & {
 };
 
 // --- Main Component
-const CustomTitle = ({
-  to,
-  title,
-  offer = false,
-  className,
-  ...rest
-}: CustomTitleProps) => {
+const CustomTitle = ({ to, title, offer = false, className, ...rest }: CustomTitleProps) => {
   return (
     <div
       className={cn(

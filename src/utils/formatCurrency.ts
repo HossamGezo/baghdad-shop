@@ -1,7 +1,4 @@
-export const formatCurrency = (
-  value: number | string | undefined | null,
-  currency: string = "EGP",
-) => {
+export const formatCurrency = (value: number | string | undefined | null, currency: string = "EGP") => {
   const amount = Number(value) || 0;
 
   return new Intl.NumberFormat("en-EG", {

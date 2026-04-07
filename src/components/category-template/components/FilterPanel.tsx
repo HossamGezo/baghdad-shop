@@ -34,9 +34,7 @@ const FilterPanel = ({
       <div className="bg-white p-2.5 max-sm:shadow-standard shadow-deep rounded-md sticky top-2.5">
         {/* Sort By Price */}
         <div>
-          <h3 className="text-primary font-medium text-lg mb-2.5 border-b pb-1">
-            Sort by Price
-          </h3>
+          <h3 className="text-primary font-medium text-lg mb-2.5 border-b pb-1">Sort by Price</h3>
           <div className="flex flex-col gap-1">
             <CustomRadio
               text={"No Sorting"}
@@ -66,9 +64,7 @@ const FilterPanel = ({
         </div>
         {/* Filter By Category */}
         <div className="mt-2.5">
-          <h3 className="text-primary font-medium text-lg mb-2.5 border-b pb-1">
-            Filter by Category
-          </h3>
+          <h3 className="text-primary font-medium text-lg mb-2.5 border-b pb-1">Filter by Category</h3>
           <div className="flex flex-col gap-1">
             {config.subCategories.map((item) => (
               <CustomRadio
@@ -78,9 +74,7 @@ const FilterPanel = ({
                 radioId={item.id}
                 radioValue={item.id}
                 radioChecked={currentProducts}
-                onChange={() =>
-                  setCurrentProducts(item.id as CurrentProductsType)
-                }
+                onChange={() => setCurrentProducts(item.id as CurrentProductsType)}
               />
             ))}
           </div>

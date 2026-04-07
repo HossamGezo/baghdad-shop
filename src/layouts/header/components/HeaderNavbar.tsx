@@ -15,11 +15,7 @@ type NavbarProps = {
 };
 
 // --- Main Component
-const Navbar = ({
-  toggleBurger,
-  handleNavBarClose,
-  handleClose,
-}: NavbarProps) => {
+const Navbar = ({ toggleBurger, handleNavBarClose, handleClose }: NavbarProps) => {
   return (
     <nav
       className={cn(
@@ -72,12 +68,7 @@ const Navbar = ({
           />
         </li>
         <li className="header-navbar-list-item max-lg:w-full lg:h-full select-none">
-          <CustomLink
-            to="women"
-            text="Women's"
-            className="lg:rounded-tr-md lg:rounded-br-md"
-            onClick={handleClose}
-          />
+          <CustomLink to="women" text="Women's" className="lg:rounded-tr-md lg:rounded-br-md" onClick={handleClose} />
         </li>
       </ul>
     </nav>

@@ -30,10 +30,7 @@ const InputField = <T extends FieldValues>({
     "w-full h-[50px] bg-white border border-gray-300 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-sm px-1.5 py-2 caret-primary rounded-md placeholder:text-primary/50 placeholder:text-sm transition-[border-color,box-shadow] duration-500 ease-in-out pl-2.5";
   return (
     <div className="relative w-full flex flex-col gap-2.5">
-      <label
-        htmlFor={name}
-        className="absolute bg-white text-primary/50 px-2.5 text-[12px] left-3.5 -top-2"
-      >
+      <label htmlFor={name} className="absolute bg-white text-primary/50 px-2.5 text-[12px] left-3.5 -top-2">
         {label}
       </label>
       <input

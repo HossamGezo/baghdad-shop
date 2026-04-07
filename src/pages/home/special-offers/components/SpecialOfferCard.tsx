@@ -50,19 +50,11 @@ const SpecialOfferCard = ({ specialOffer, isOdd }: SpecialOfferCardProps) => {
         </div>
         {/* Product Description */}
         <div className="flex max-sm:items-center flex-col flex-1 xl:pl-5">
-          <h3 className="text-primary max-xl:text-xl text-2xl font-medium line-clamp-1">
-            {specialOffer.title}
-          </h3>
+          <h3 className="text-primary max-xl:text-xl text-2xl font-medium line-clamp-1">{specialOffer.title}</h3>
           {/* --- Rating And Reviews */}
-          <RatingAndViews
-            rating={specialOffer.rating}
-            reviews={specialOffer.reviews}
-          />
+          <RatingAndViews rating={specialOffer.rating} reviews={specialOffer.reviews} />
           {/* --- Price And Discount */}
-          <Discount
-            price={specialOffer.price}
-            discount={specialOffer.discount}
-          />
+          <Discount price={specialOffer.price} discount={specialOffer.discount} />
         </div>
         {/* --- See More Button */}
         <Link

@@ -20,19 +20,12 @@ type SpecialOffersProps = React.ComponentProps<"div"> & {
 };
 
 // --- Main Component
-const SpecialOffers = ({
-  excludeId,
-  className,
-  ...rest
-}: SpecialOffersProps) => {
+const SpecialOffers = ({ excludeId, className, ...rest }: SpecialOffersProps) => {
   // --- Fetch SpecialOffers
-  const { loading, specialOffers, error } = useAppSelector(
-    (state) => state.products,
-  );
+  const { loading, specialOffers, error } = useAppSelector((state) => state.products);
   const dispatch = useAppDispatch();
   useEffect(() => {
-    if (!loading && specialOffers.length === 0)
-      dispatch(fetchProductsByCategory("specialOffers"));
+    if (!loading && specialOffers.length === 0) dispatch(fetchProductsByCategory("specialOffers"));
   }, [dispatch, specialOffers.length, loading]);
 
   const displayProducts = useMemo(() => {
@@ -42,11 +35,7 @@ const SpecialOffers = ({
   // --- Return JSX
   return (
     <div className={cn("mt-24 mb-10", className)} {...rest}>
-      <CustomTitle
-        title="Massive Deals Today – Only For 24 Hours"
-        offer={true}
-        className="mb-10"
-      />
+      <CustomTitle title="Massive Deals Today – Only For 24 Hours" offer={true} className="mb-10" />
       {loading && (
         <div className="flex items-center justify-center my-5">
           <Spinner />

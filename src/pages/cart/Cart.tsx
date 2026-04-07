@@ -12,12 +12,7 @@ const Cart = () => {
 
   // --- Empty Cart
   if (cart.length === 0) {
-    return (
-      <EmptyState
-        title={"Your cart is empty!"}
-        desc={"Browse our categories and discover our best deals!"}
-      />
-    );
+    return <EmptyState title={"Your cart is empty!"} desc={"Browse our categories and discover our best deals!"} />;
   }
 
   // --- Cart total calculations

@@ -9,8 +9,7 @@ import type { UserType } from "@/types/types";
 
 // --- Error Message
 const errorMsg = (error: unknown) => {
-  const message =
-    error instanceof Error ? error.message : "Something went wrong!";
+  const message = error instanceof Error ? error.message : "Something went wrong!";
   return message;
 };
 
@@ -75,18 +74,17 @@ export const fetchUserById = createAsyncThunk<
  * @method PUT
  * @access private (admin)
  */
-export const updateUserRole = createAsyncThunk<
-  UserType,
-  { id: string; user: UserType },
-  { rejectValue: string }
->("users/update-role", async ({ id, user }, { rejectWithValue }) => {
-  try {
-    const response = await api.put(`/users/${id}`, user);
-    return response.data;
-  } catch (error) {
-    return rejectWithValue(errorMsg(error));
-  }
-});
+export const updateUserRole = createAsyncThunk<UserType, { id: string; user: UserType }, { rejectValue: string }>(
+  "users/update-role",
+  async ({ id, user }, { rejectWithValue }) => {
+    try {
+      const response = await api.put(`/users/${id}`, user);
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(errorMsg(error));
+    }
+  },
+);
 
 /**
  * @desc Delete User
@@ -132,9 +130,7 @@ const usersSlice = createSlice({
     builder.addCase(updateUserRole.fulfilled, (state, action) => {
       state.loading = false;
 
-      const index = state.users.findIndex(
-        (user) => user.id === action.payload.id,
-      );
+      const index = state.users.findIndex((user) => user.id === action.payload.id);
       if (index !== -1) {
         state.users[index] = action.payload;
       }
@@ -152,12 +148,7 @@ const usersSlice = createSlice({
     // --- Pending Case
 
     builder.addMatcher(
-      isAnyOf(
-        fetchUsers.pending,
-        fetchUserById.pending,
-        updateUserRole.pending,
-        deleteUser.pending,
-      ),
+      isAnyOf(fetchUsers.pending, fetchUserById.pending, updateUserRole.pending, deleteUser.pending),
       (state) => {
         state.loading = true;
         state.error = "";
@@ -167,12 +158,7 @@ const usersSlice = createSlice({
     // --- Rejected Case
 
     builder.addMatcher(
-      isAnyOf(
-        fetchUsers.rejected,
-        fetchUserById.rejected,
-        updateUserRole.rejected,
-        deleteUser.rejected,
-      ),
+      isAnyOf(fetchUsers.rejected, fetchUserById.rejected, updateUserRole.rejected, deleteUser.rejected),
       (state, action) => {
         state.loading = false;
         state.error = action.payload || "An unexpected error occurred";

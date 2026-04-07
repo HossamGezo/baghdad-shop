@@ -8,14 +8,7 @@ type CustomRadioProps = React.ComponentProps<"input"> & {
 };
 
 // --- Main Component
-const CustomRadio = ({
-  text,
-  radioName,
-  radioId,
-  radioValue,
-  radioChecked,
-  ...props
-}: CustomRadioProps) => {
+const CustomRadio = ({ text, radioName, radioId, radioValue, radioChecked, ...props }: CustomRadioProps) => {
   return (
     <label
       htmlFor={radioId}

@@ -1,6 +1,10 @@
 // --- Libraries
 import { NavLink, type NavLinkProps } from "react-router";
 
+// --- RTK
+import { useAppDispatch } from "@app/hooks";
+import { logout } from "@features/auth/authSlice";
+
 // --- React Icons
 import { MdOutlineAddToPhotos, MdOutlineDashboard } from "react-icons/md";
 import { IoListSharp } from "react-icons/io5";
@@ -47,6 +51,15 @@ type SidebarTypeProps = {
 
 // --- Main Component
 const Sidebar = ({ isOpen, setIsOpen }: SidebarTypeProps) => {
+  // --- Custom RTK Hooks
+  const dispatch = useAppDispatch();
+
+  // --- Handle Logout
+  const handleLogout = () => {
+    dispatch(logout());
+  };
+
+  // --- Return JSX
   return (
     <div
       onClick={(e) => {
@@ -97,7 +110,10 @@ const Sidebar = ({ isOpen, setIsOpen }: SidebarTypeProps) => {
           </ul>
         </nav>
 
-        <CustomButton className="absolute bottom-5 left-1/2 -translate-x-1/2 bg-red-500 text-white w-[80%] flex items-center gap-2.5 hover:bg-red-600 active:bg-red-500">
+        <CustomButton
+          onClick={handleLogout}
+          className="absolute bottom-5 left-1/2 -translate-x-1/2 bg-red-500 text-white w-[80%] flex items-center gap-2.5 hover:bg-red-600 active:bg-red-500"
+        >
           <FiLogOut /> Logout
         </CustomButton>
       </aside>

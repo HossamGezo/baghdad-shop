@@ -11,9 +11,7 @@ import { fetchProductsByCategory } from "@features/products/productsSlice";
 // --- Main Component
 const Supermarket = () => {
   // --- Fetching Data from Redux
-  const { loading, error, supermarket } = useAppSelector(
-    (state) => state.products,
-  );
+  const { loading, error, supermarket } = useAppSelector((state) => state.products);
 
   // --- Dispatch Action
   const dispatch = useAppDispatch();
