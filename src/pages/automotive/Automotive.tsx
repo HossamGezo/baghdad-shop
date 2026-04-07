@@ -11,9 +11,7 @@ import { fetchProductsByCategory } from "@features/products/productsSlice";
 // --- Main Component
 const Automotive = () => {
   // --- Fetching Data from Redux
-  const { loading, error, automotive } = useAppSelector(
-    (state) => state.products,
-  );
+  const { loading, error, automotive } = useAppSelector((state) => state.products);
 
   // --- Dispatch Action
   const dispatch = useAppDispatch();

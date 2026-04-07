@@ -15,16 +15,8 @@ const Sections = () => {
         to="/kitchen"
         className={categoryPosterStyle}
       />
-      <HomeProductsSection
-        title="Smart Home Appliances"
-        categoryKey="appliances"
-        to="/kitchen"
-      />
-      <HomeProductsSection
-        title="Professional Cookware Collection"
-        categoryKey="cookware"
-        to="/kitchen"
-      />
+      <HomeProductsSection title="Smart Home Appliances" categoryKey="appliances" to="/kitchen" />
+      <HomeProductsSection title="Professional Cookware Collection" categoryKey="cookware" to="/kitchen" />
 
       {/* 3. Men Fashion Group */}
       <CategoryPoster
@@ -33,16 +25,8 @@ const Sections = () => {
         to="/men"
         className={categoryPosterStyle}
       />
-      <HomeProductsSection
-        title="Trendy Men's Clothing"
-        categoryKey="clothing"
-        to="/men"
-      />
-      <HomeProductsSection
-        title="Comfortable & Stylish Men's Shoes"
-        categoryKey="shoes"
-        to="/men"
-      />
+      <HomeProductsSection title="Trendy Men's Clothing" categoryKey="clothing" to="/men" />
+      <HomeProductsSection title="Comfortable & Stylish Men's Shoes" categoryKey="shoes" to="/men" />
 
       {/* 4. Women Fashion Group */}
       <CategoryPoster
@@ -51,16 +35,8 @@ const Sections = () => {
         to="/women"
         className={categoryPosterStyle}
       />
-      <HomeProductsSection
-        title="Elegant Dresses for Every Occasion"
-        categoryKey="dresses"
-        to="/women"
-      />
-      <HomeProductsSection
-        title="Luxury Handbags & Accessories"
-        categoryKey="handbags"
-        to="/women"
-      />
+      <HomeProductsSection title="Elegant Dresses for Every Occasion" categoryKey="dresses" to="/women" />
+      <HomeProductsSection title="Luxury Handbags & Accessories" categoryKey="handbags" to="/women" />
 
       {/* 5. Supermarket Group */}
       <CategoryPoster
@@ -69,11 +45,7 @@ const Sections = () => {
         to="/supermarket"
         className={categoryPosterStyle}
       />
-      <HomeProductsSection
-        title="Fresh Grocery & Daily Essentials"
-        categoryKey="supermarket"
-        to="/supermarket"
-      />
+      <HomeProductsSection title="Fresh Grocery & Daily Essentials" categoryKey="supermarket" to="/supermarket" />
 
       {/* 6. Automotive Group */}
       <CategoryPoster
@@ -82,11 +54,7 @@ const Sections = () => {
         to="/automotive"
         className={categoryPosterStyle}
       />
-      <HomeProductsSection
-        title="Top Automotive Tools & Accessories"
-        categoryKey="automotive"
-        to="/automotive"
-      />
+      <HomeProductsSection title="Top Automotive Tools & Accessories" categoryKey="automotive" to="/automotive" />
     </div>
   );
 };

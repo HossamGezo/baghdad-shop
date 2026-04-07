@@ -9,8 +9,7 @@ import type { CategoriesType, ProductType } from "@/types/types";
 
 // --- Error Message
 const errorMsg = (error: unknown) => {
-  const message =
-    error instanceof Error ? error.message : "Something went wrong!";
+  const message = error instanceof Error ? error.message : "Something went wrong!";
   return message;
 };
 
@@ -123,22 +122,16 @@ const productsSlice = createSlice({
     });
 
     // ----- Pending Case
-    builder.addMatcher(
-      isAnyOf(fetchProductsByCategory.pending, fetchSingleProduct.pending),
-      (state) => {
-        state.loading = true;
-        state.error = "";
-      },
-    );
+    builder.addMatcher(isAnyOf(fetchProductsByCategory.pending, fetchSingleProduct.pending), (state) => {
+      state.loading = true;
+      state.error = "";
+    });
 
     // ----- Rejected Case
-    builder.addMatcher(
-      isAnyOf(fetchProductsByCategory.rejected, fetchSingleProduct.rejected),
-      (state, action) => {
-        state.loading = false;
-        state.error = action.payload || "An unexpected error occurred";
-      },
-    );
+    builder.addMatcher(isAnyOf(fetchProductsByCategory.rejected, fetchSingleProduct.rejected), (state, action) => {
+      state.loading = false;
+      state.error = action.payload || "An unexpected error occurred";
+    });
   },
 });
 
