@@ -17,15 +17,7 @@ type BoxProps = React.ComponentProps<"div"> & {
 };
 
 // --- Main Component
-const Box = ({
-  ariaLabel,
-  title,
-  goTo,
-  head,
-  children,
-  className,
-  ...rest
-}: BoxProps) => {
+const Box = ({ ariaLabel, title, goTo, head, children, className, ...rest }: BoxProps) => {
   const navigate = useNavigate();
 
   // --- Return JSX

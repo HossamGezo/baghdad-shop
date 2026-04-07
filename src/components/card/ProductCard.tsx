@@ -31,12 +31,7 @@ const ProductCard = ({ className, product, ...rest }: ProductCardProps) => {
       {...rest}
     >
       <div className="w-40 h-40 mb-5">
-        <img
-          src={firstImage}
-          alt={title}
-          loading="lazy"
-          className="w-full h-full object-contain"
-        />
+        <img src={firstImage} alt={title} loading="lazy" className="w-full h-full object-contain" />
       </div>
       <div className="font-medium line-clamp-1">{title}</div>
       <RatingAndViews rating={rating} reviews={reviews} />

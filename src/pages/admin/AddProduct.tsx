@@ -70,14 +70,11 @@ const AddProduct = () => {
 
   // --- Fetch Product Category Data
   useEffect(() => {
-    if (products.length == 0)
-      dispatch(fetchProductsByCategory(category as CategoriesType));
+    if (products.length == 0) dispatch(fetchProductsByCategory(category as CategoriesType));
   }, [dispatch, category, products.length]);
 
   // --- Find Product
-  const product: ProductType | undefined = products.find(
-    (item) => item.id === id,
-  );
+  const product: ProductType | undefined = products.find((item) => item.id === id);
 
   // --- Fill Form With Product Data
   useEffect(() => {
@@ -105,10 +102,7 @@ const AddProduct = () => {
           </div>
         ) : (
           <div className="bg-white p-3 rounded-xl mx-auto ">
-            <form
-              className="flex flex-col gap-5 rounded-lg"
-              onSubmit={handleSubmit(onSubmit)}
-            >
+            <form className="flex flex-col gap-5 rounded-lg" onSubmit={handleSubmit(onSubmit)}>
               <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5">
                 {/* Title */}
                 <InputField
@@ -152,14 +146,8 @@ const AddProduct = () => {
                   {product && (
                     <div className="flex items-center gap-2 text-[10px] text-gray-500">
                       <span className="font-bold">Current:</span>
-                      <img
-                        src={product.firstImage}
-                        alt="Current"
-                        className="w-8 h-8 object-contain border rounded"
-                      />
-                      <span className="truncate w-32">
-                        {product.firstImage}
-                      </span>
+                      <img src={product.firstImage} alt="Current" className="w-8 h-8 object-contain border rounded" />
+                      <span className="truncate w-32">{product.firstImage}</span>
                     </div>
                   )}
                 </div>
@@ -174,11 +162,7 @@ const AddProduct = () => {
                     placeholder="Product Description"
                     className="w-full border border-gray-300 rounded-md p-2.5 focus:outline-none focus:border-primary h-32 pt-4"
                   />
-                  {errors.description && (
-                    <span className="text-red-500 text-sm">
-                      {errors.description.message}
-                    </span>
-                  )}
+                  {errors.description && <span className="text-red-500 text-sm">{errors.description.message}</span>}
                 </div>
 
                 {/* Discount */}
@@ -209,11 +193,7 @@ const AddProduct = () => {
                 </select>
 
                 {/* (Edit / Add) Button */}
-                <CustomButton
-                  type="submit"
-                  aria-label="Submit form"
-                  className="h-12.5 lg:col-span-2 xl:col-span-1"
-                >
+                <CustomButton type="submit" aria-label="Submit form" className="h-12.5 lg:col-span-2 xl:col-span-1">
                   {product ? "Edit" : "Add"}
                 </CustomButton>
               </div>

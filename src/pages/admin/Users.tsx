@@ -71,12 +71,8 @@ const Users = () => {
 
       <div className="bg-white p-5 rounded-md shadow-sm mb-5 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
         <div>
-          <h1 className="text-xl font-bold text-primary font-jetbrains lg:text-start">
-            Users Management
-          </h1>
-          <p className="text-sm text-gray-500">
-            Manage and track registered customers ({filteredUsers.length})
-          </p>
+          <h1 className="text-xl font-bold text-primary font-jetbrains lg:text-start">Users Management</h1>
+          <p className="text-sm text-gray-500">Manage and track registered customers ({filteredUsers.length})</p>
         </div>
 
         {/* Search Bar */}
@@ -147,15 +143,9 @@ const Users = () => {
 
                           {/* User Info */}
                           <td>
-                            <p className="text-[14px] font-semibold text-primary">
-                              {user.fullName}
-                            </p>
-                            <p className="text-[11px] text-gray-500">
-                              {user.email}
-                            </p>
-                            <p className="text-[10px] text-gray-400 mt-0.5">
-                              {user.phone}
-                            </p>
+                            <p className="text-[14px] font-semibold text-primary">{user.fullName}</p>
+                            <p className="text-[11px] text-gray-500">{user.email}</p>
+                            <p className="text-[10px] text-gray-400 mt-0.5">{user.phone}</p>
                           </td>
 
                           {/* Role */}
@@ -171,16 +161,10 @@ const Users = () => {
                           </td>
 
                           {/* Orders Count */}
-                          <td className="font-medium text-[14px]">
-                            {user.totalOrders}
-                          </td>
+                          <td className="font-medium text-[14px]">{user.totalOrders}</td>
 
                           {/* Date */}
-                          <td className="text-gray-600">
-                            {new Date(user.joinDate).toLocaleDateString(
-                              "en-GB",
-                            )}
-                          </td>
+                          <td className="text-gray-600">{new Date(user.joinDate).toLocaleDateString("en-GB")}</td>
 
                           {/* Status */}
                           <td>

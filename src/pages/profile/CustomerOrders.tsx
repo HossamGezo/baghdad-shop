@@ -152,15 +152,11 @@ const CustomerOrders = () => {
   // --- Return JSx
   return (
     <div>
-      <h1 className="border-b p-5 border-body text-xl text-[#333] font-jetbrains font-bold">
-        Orders
-      </h1>
+      <h1 className="border-b p-5 border-body text-xl text-[#333] font-jetbrains font-bold">Orders</h1>
       {orders.length === 0 ? (
         <EmptyState
           title={"You have placed no orders yet!"}
-          desc={
-            "All your orders will be saved here for you to access their state anytime."
-          }
+          desc={"All your orders will be saved here for you to access their state anytime."}
         />
       ) : (
         <div className="p-2.5 overflow-x-scroll custom-scrollbar">

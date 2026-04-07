@@ -13,13 +13,7 @@ type PaginationProps = React.ComponentProps<"section"> & {
 };
 
 // --- Main Component
-const Pagination = ({
-  pages,
-  page,
-  setPage,
-  className,
-  ...props
-}: PaginationProps) => {
+const Pagination = ({ pages, page, setPage, className, ...props }: PaginationProps) => {
   // --- Controllers
   const nextPage = () => {
     setPage((prev) => prev + 1);
@@ -58,10 +52,7 @@ const Pagination = ({
                 key={index}
                 aria-label={`Go to page ${index + 1}`}
                 onClick={() => setPage(index)}
-                className={cn(
-                  baseStyle,
-                  page === index ? "bg-primary" : "bg-primary/75",
-                )}
+                className={cn(baseStyle, page === index ? "bg-primary" : "bg-primary/75")}
               >
                 {index + 1}
               </button>

@@ -23,9 +23,7 @@ const Category = () => {
                 draggable="false"
                 className="max-md:w-35 lg:w-40"
               />
-              <span className="text-[13px] sm:text-[14px] font-medium sm:font-normal">
-                {category.title}
-              </span>
+              <span className="text-[13px] sm:text-[14px] font-medium sm:font-normal">{category.title}</span>
             </div>
           );
           return (

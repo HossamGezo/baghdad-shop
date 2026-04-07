@@ -5,9 +5,7 @@ import Box from "@pages/profile/components/Box";
 const AccountOverview = () => {
   return (
     <div>
-      <h1 className="border-b p-5 border-body text-xl text-[#333] font-jetbrains font-bold">
-        Account Overview
-      </h1>
+      <h1 className="border-b p-5 border-body text-xl text-[#333] font-jetbrains font-bold">Account Overview</h1>
       <div className="pb-5 px-5 mt-5 grid grid-cols-2 gap-5">
         {/* Account Details */}
         <Box

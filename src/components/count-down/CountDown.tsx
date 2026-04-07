@@ -36,12 +36,7 @@ const CountDown = ({ hours, className, ...rest }: CountDownProps) => {
 
   // --- Return JSX
   return (
-    <div
-      role="timer"
-      aria-live="polite"
-      className={cn("flex gap-1.5 select-none font-extrabold", className)}
-      {...rest}
-    >
+    <div role="timer" aria-live="polite" className={cn("flex gap-1.5 select-none font-extrabold", className)} {...rest}>
       <span className="w-14 text-center">
         {String(hour).padStart(2, "0")}
         <span className="text-yellow-300">h</span>

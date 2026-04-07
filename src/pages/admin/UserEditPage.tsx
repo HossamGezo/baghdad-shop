@@ -31,9 +31,7 @@ const Field = ({ title, description }: FieldProps) => {
   return (
     <div>
       <div className="relative flex flex-col gap-2.5">
-        <span className="absolute bg-white text-primary/50 px-2.5 text-[12px] left-3.5 -top-2">
-          {title}
-        </span>
+        <span className="absolute bg-white text-primary/50 px-2.5 text-[12px] left-3.5 -top-2">{title}</span>
         <div
           className={cn(
             "w-full bg-white border border-gray-300 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary",
@@ -66,8 +64,7 @@ const UserEditPage = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    if (id && (!singleUser || singleUser.id !== id))
-      dispatch(fetchUserById({ id: id }));
+    if (id && (!singleUser || singleUser.id !== id)) dispatch(fetchUserById({ id: id }));
   }, [dispatch, singleUser, loading, id]);
 
   // --- Hook Form
@@ -106,11 +103,7 @@ const UserEditPage = () => {
   return (
     <div className="flex flex-col h-full">
       <h1 className="border-b p-5 border-body text-xl text-primary font-jetbrains font-bold flex items-center gap-5 bg-white rounded-md shadow-sm mb-5">
-        <button
-          type="button"
-          aria-label="Back to users management"
-          onClick={() => navigate("/admin/users")}
-        >
+        <button type="button" aria-label="Back to users management" onClick={() => navigate("/admin/users")}>
           <MdOutlineKeyboardBackspace size={30} className="cursor-pointer" />
         </button>
         Edit User
@@ -142,14 +135,8 @@ const UserEditPage = () => {
               <Field title={"User Name"} description={singleUser.fullName} />
               <Field title={"Email"} description={singleUser.email} />
               <Field title={"Phone"} description={singleUser.phone} />
-              <Field
-                title={"Join Date"}
-                description={singleUser.joinDate.substring(0, 10)}
-              />
-              <Field
-                title={"Total Orders"}
-                description={String(singleUser.totalOrders)}
-              />
+              <Field title={"Join Date"} description={singleUser.joinDate.substring(0, 10)} />
+              <Field title={"Total Orders"} description={String(singleUser.totalOrders)} />
               <form onSubmit={handleSubmit(onSubmit)}>
                 <select
                   {...register("role")}

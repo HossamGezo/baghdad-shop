@@ -16,10 +16,7 @@ const FooterBottom = () => {
     <div className="bg-primary/80 text-white">
       <div className="custom-container text-center py-6 border-t border-t-amber-300 text-2xl font-jetbrains flex flex-col items-center justify-center gap-3 select-none">
         <div onClick={toTop}>
-          <Link
-            to="/"
-            className="flex items-center lg:flex-col xl:flex-row max-lg:gap-2.5 xl:gap-3"
-          >
+          <Link to="/" className="flex items-center lg:flex-col xl:flex-row max-lg:gap-2.5 xl:gap-3">
             <span className="text-3xl font-bold font-jetbrains flex items-center text-shadow-neutral-700 text-shadow-2xs self-end">
               <span className="text-warning">Ba</span>
               <span className="text-white">ghdad</span>

@@ -22,11 +22,7 @@ const AdminLayout = () => {
       <AdminHeader isOpen={isOpen} setIsOpen={setIsOpen} />
 
       {/* --- Dashboard ---- */}
-      <div
-        className={cn(
-          "h-[calc(100%-76px)] sm:h-[calc(100%-84px)] flex relative",
-        )}
-      >
+      <div className={cn("h-[calc(100%-76px)] sm:h-[calc(100%-84px)] flex relative")}>
         {/* Side Bar */}
         <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} />
 

@@ -13,9 +13,7 @@ const offerImages = [
 // --- Main Component
 const Offers = () => {
   // --- Auto Carousel Animation Logic
-  const timeoutRef = useRef<ReturnType<typeof setTimeout> | undefined>(
-    undefined,
-  );
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
   const [index, setIndex] = useState(0);
 

@@ -15,12 +15,7 @@ const BrandsLogos = ({ ...rest }: BrandsLogosProps) => {
       key={brand.id}
       className="mr-5 px-5 w-60 h-20 bg-white rounded-xl shadow-soft shrink-0 flex items-center justify-center hover:scale-[1.08] hover:shadow-deep transition-all duration-500"
     >
-      <img
-        src={brand.image}
-        alt={brand.name}
-        loading="lazy"
-        className="w-full h-full object-contain"
-      />
+      <img src={brand.image} alt={brand.name} loading="lazy" className="w-full h-full object-contain" />
     </div>
   ));
 };

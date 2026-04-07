@@ -53,11 +53,7 @@ const Header = () => {
         {/* Header Top */}
         <HeaderTop handleToggle={handleToggle}>
           {/* Header NavBar */}
-          <HeaderNavbar
-            toggleBurger={toggleBurger}
-            handleNavBarClose={handleNavBarClose}
-            handleClose={handleClose}
-          />
+          <HeaderNavbar toggleBurger={toggleBurger} handleNavBarClose={handleNavBarClose} handleClose={handleClose} />
         </HeaderTop>
         {/* Header Middle */}
         <HeaderMiddle />

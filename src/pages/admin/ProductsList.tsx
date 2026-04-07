@@ -86,9 +86,7 @@ const ProductsList = () => {
 
   // --- Handle Modal
   const [isOpen, setIsOpen] = useState(false);
-  const [productToDelete, setProductToDelete] = useState<ProductType | null>(
-    null,
-  );
+  const [productToDelete, setProductToDelete] = useState<ProductType | null>(null);
 
   const onConfirm = () => {
     if (productToDelete) {
@@ -106,12 +104,8 @@ const ProductsList = () => {
       {/* --- Header --- */}
       <div className="bg-white p-5 rounded-md shadow-sm mb-5 flex flex-col xl:flex-row justify-between items-start xl:items-center gap-4">
         <div>
-          <h1 className="text-xl font-bold text-primary font-jetbrains">
-            Inventory Management
-          </h1>
-          <p className="text-sm text-gray-500">
-            Total Products in store: ({filteredProducts.length})
-          </p>
+          <h1 className="text-xl font-bold text-primary font-jetbrains">Inventory Management</h1>
+          <p className="text-sm text-gray-500">Total Products in store: ({filteredProducts.length})</p>
         </div>
 
         <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-3 w-full xl:w-auto">
@@ -180,10 +174,7 @@ const ProductsList = () => {
 
                     {/* Name */}
                     <td className="w-25">
-                      <p
-                        className="font-semibold text-primary text-[13px] line-clamp-1"
-                        title={product.title}
-                      >
+                      <p className="font-semibold text-primary text-[13px] line-clamp-1" title={product.title}>
                         {product.title}
                       </p>
                     </td>
@@ -196,9 +187,7 @@ const ProductsList = () => {
                     </td>
 
                     {/* Price */}
-                    <td className="font-bold text-primary">
-                      {formatCurrency(product.price)}
-                    </td>
+                    <td className="font-bold text-primary">{formatCurrency(product.price)}</td>
 
                     {/* Rating */}
                     <td>

@@ -17,11 +17,7 @@ import { useAppDispatch } from "@app/hooks";
 import type { CartType } from "@/types/types";
 
 // --- Redux Features
-import {
-  decreaseQuantity,
-  increaseQuantity,
-  removeFromCart,
-} from "@features/cart/cartSlice";
+import { decreaseQuantity, increaseQuantity, removeFromCart } from "@features/cart/cartSlice";
 
 // --- Main Component
 const CartProduct = (product: CartType) => {
@@ -85,9 +81,7 @@ const CartProduct = (product: CartType) => {
           {/* --- Discount */}
           {product.discount !== 0 && (
             <div className="flex items-center max-lg:gap-1.5 gap-2.5 max-lg:text-[14px]">
-              <span className="line-through text-[#75757A]/75">
-                {formatCurrency(product.price)}
-              </span>
+              <span className="line-through text-[#75757A]/75">{formatCurrency(product.price)}</span>
               <span className="bg-amber-100 text-amber-600 max-sm:w-10 w-12 h-7 flex items-center justify-center rounded-sm max-lg:text-[12px] text-[14px]">
                 -{product.discount}%
               </span>
@@ -104,9 +98,7 @@ const CartProduct = (product: CartType) => {
           >
             <HiMinus className="max-sm:text-[12px]" />
           </button>
-          <span className="text-lg font-medium w-5 text-center">
-            {product.count}
-          </span>
+          <span className="text-lg font-medium w-5 text-center">{product.count}</span>
           <button
             type="button"
             aria-label="Increase Quantity by 1"

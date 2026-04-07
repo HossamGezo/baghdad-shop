@@ -11,9 +11,7 @@ import { fetchProductsByCategory } from "@features/products/productsSlice";
 // --- Main Component
 const Kitchen = () => {
   // --- Fetching Data
-  const { loading, error, appliances, cookware } = useAppSelector(
-    (state) => state.products,
-  );
+  const { loading, error, appliances, cookware } = useAppSelector((state) => state.products);
 
   // --- Dispatch Data
   const dispatch = useAppDispatch();

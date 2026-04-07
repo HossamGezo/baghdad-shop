@@ -11,13 +11,7 @@ type CustomButtonProps = React.ComponentProps<"button"> & {
 };
 
 // --- Main Component
-const CustomButton = ({
-  children,
-  isLoading,
-  disabled,
-  className,
-  ...rest
-}: CustomButtonProps) => {
+const CustomButton = ({ children, isLoading, disabled, className, ...rest }: CustomButtonProps) => {
   return (
     <button
       {...rest}

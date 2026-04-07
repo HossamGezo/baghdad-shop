@@ -150,12 +150,8 @@ const Orders = () => {
   return (
     <div className="flex flex-col h-full">
       <div className="bg-white p-5 rounded-md text-primary text-xl shadow-sm shadow-primary/20 select-none mb-5">
-        <h1 className="text-xl font-bold text-primary font-jetbrains">
-          Orders Management
-        </h1>
-        <p className="text-sm text-gray-500">
-          Manage and track customer orders ({orders.length})
-        </p>
+        <h1 className="text-xl font-bold text-primary font-jetbrains">Orders Management</h1>
+        <p className="text-sm text-gray-500">Manage and track customer orders ({orders.length})</p>
       </div>
       <section className="flex-1 bg-white rounded-md shadow-sm overflow-hidden flex flex-col">
         <div className="overflow-auto custom-scrollbar flex-1">

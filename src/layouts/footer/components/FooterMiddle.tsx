@@ -2,23 +2,9 @@
 import FooterLinks from "@layouts/footer/components/FooterLinks";
 
 // ------ Producsts Link Arraies
-const electronics = [
-  "Cameras & Video Recording",
-  "Home Appliances",
-  "Phones",
-  "Headphones",
-  "Televisions",
-  "Tablets",
-];
+const electronics = ["Cameras & Video Recording", "Home Appliances", "Phones", "Headphones", "Televisions", "Tablets"];
 
-const fashion = [
-  "Men’s Fashion",
-  "Women’s Fashion",
-  "Kids’ Fashion",
-  "Glasses",
-  "Jewelry",
-  "Watches",
-];
+const fashion = ["Men’s Fashion", "Women’s Fashion", "Kids’ Fashion", "Glasses", "Jewelry", "Watches"];
 
 const homeAndKitchen = [
   "Home Décor",

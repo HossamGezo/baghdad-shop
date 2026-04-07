@@ -1,9 +1,5 @@
 // --- Libraries
-import {
-  useSelector,
-  useDispatch,
-  type TypedUseSelectorHook,
-} from "react-redux";
+import { useSelector, useDispatch, type TypedUseSelectorHook } from "react-redux";
 
 // --- Store Types
 import type { AppDispatch, RootState } from "@app/store";

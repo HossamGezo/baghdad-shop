@@ -10,11 +10,7 @@ import CategoryPoster from "@components/category-poster/CategoryPoster";
 import { categoryConfigs } from "@data/categoryConfigs";
 
 // --- Types
-import type {
-  CurrentProductsType,
-  CurrentPriceType,
-  ProductType,
-} from "@/types/types";
+import type { CurrentProductsType, CurrentPriceType, ProductType } from "@/types/types";
 
 type CategoryTemplateProps = {
   imageSrc: string;
@@ -36,11 +32,9 @@ const CategoryTemplate = ({
   error,
   items,
 }: CategoryTemplateProps) => {
-  const [currentPrice, setCurrentPrice] =
-    useState<CurrentPriceType>("no-sorting");
+  const [currentPrice, setCurrentPrice] = useState<CurrentPriceType>("no-sorting");
 
-  const [currentProducts, setCurrentProducts] =
-    useState<CurrentProductsType>("all-products");
+  const [currentProducts, setCurrentProducts] = useState<CurrentProductsType>("all-products");
 
   // --- Return JSX
   return (

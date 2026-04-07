@@ -190,9 +190,7 @@ const CustomStatsCard = ({
           {price ? formatCurrency(stats) : stats.toLocaleString()}
         </span>
       </div>
-      <div className="absolute top-2.5 right-2.5 text-white/45">
-        {secondIcon}
-      </div>
+      <div className="absolute top-2.5 right-2.5 text-white/45">{secondIcon}</div>
     </div>
   );
 };
@@ -204,12 +202,8 @@ const Dashboard = () => {
       {/* --- Header --- */}
       <div className="bg-white p-5 rounded-md shadow-sm mb-5 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
-          <h1 className="text-xl font-bold text-primary font-jetbrains">
-            Dashboard Overview
-          </h1>
-          <p className="text-sm text-gray-500">
-            Real-time analytics and store performance at a glance
-          </p>
+          <h1 className="text-xl font-bold text-primary font-jetbrains">Dashboard Overview</h1>
+          <p className="text-sm text-gray-500">Real-time analytics and store performance at a glance</p>
         </div>
       </div>
 
@@ -248,9 +242,7 @@ const Dashboard = () => {
           color="#FF425D"
         />
       </div>
-      <h3 className="my-5 text-xl font-jetbrains bg-white p-2.5 w-fit rounded-md shadow-sm">
-        Recent Orders
-      </h3>
+      <h3 className="my-5 text-xl font-jetbrains bg-white p-2.5 w-fit rounded-md shadow-sm">Recent Orders</h3>
 
       {/* --- Table --- */}
       <div className="flex-1 bg-white rounded-md shadow-sm flex flex-col">

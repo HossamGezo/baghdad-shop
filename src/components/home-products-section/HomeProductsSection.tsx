@@ -27,14 +27,7 @@ type HomeProductsSectionProps = React.ComponentProps<"section"> & {
 };
 
 // --- Main Component
-const HomeProductsSection = ({
-  excludeId,
-  categoryKey,
-  to,
-  title,
-  className,
-  ...rest
-}: HomeProductsSectionProps) => {
+const HomeProductsSection = ({ excludeId, categoryKey, to, title, className, ...rest }: HomeProductsSectionProps) => {
   // --- Fetch Data
   const state = useAppSelector((state) => state.products);
   const loading = state.loading;
@@ -44,8 +37,7 @@ const HomeProductsSection = ({
   // --- Dispatch
   const dispatch = useAppDispatch();
   useEffect(() => {
-    if (!loading && products.length === 0)
-      dispatch(fetchProductsByCategory(categoryKey));
+    if (!loading && products.length === 0) dispatch(fetchProductsByCategory(categoryKey));
   }, [categoryKey, dispatch, products, products.length, loading]);
 
   // --- Filtering Data
@@ -73,11 +65,7 @@ const HomeProductsSection = ({
       {!loading && !error && (
         <ProductSlider productsCount={displayProducts.length}>
           {displayProducts.map((item: ProductType) => (
-            <ProductCard
-              className="first-of-type:ml-3.75 last-of-type:mr-3.75"
-              key={item.id}
-              product={{ ...item }}
-            />
+            <ProductCard className="first-of-type:ml-3.75 last-of-type:mr-3.75" key={item.id} product={{ ...item }} />
           ))}
         </ProductSlider>
       )}

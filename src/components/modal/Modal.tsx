@@ -52,12 +52,9 @@ const Modal = ({ title, description, setIsOpen, onConfirm }: ModalProps) => {
     >
       <div className="bg-primary/85 w-[320px] sm:w-[384px] min-h-40 rounded-lg border border-gray-400/50 flex flex-col overflow-hidden">
         <div className="flex-1 p-2.5 text-white">
-          <div className="max-sm:text-[16px] mb-2.5 text-lg font-semibold">
-            {title || "Are you absolutely sure?"}
-          </div>
+          <div className="max-sm:text-[16px] mb-2.5 text-lg font-semibold">{title || "Are you absolutely sure?"}</div>
           <div className="text-[12px] sm:text-sm text-gray-300">
-            {description ||
-              "This action cannot be undone. This will permanently delete your account from our servers."}
+            {description || "This action cannot be undone. This will permanently delete your account from our servers."}
           </div>
         </div>
         <div className="bg-primary flex items-center justify-end  gap-2.5 pt-5 pb-2.5 px-2.5 border-t border-t-gray-400/50">
@@ -67,10 +64,7 @@ const Modal = ({ title, description, setIsOpen, onConfirm }: ModalProps) => {
           >
             Cancel
           </CustomButton>
-          <CustomButton
-            onClick={handleContinue}
-            className="px-2.5 sm:px-3.5 py-0.5"
-          >
+          <CustomButton onClick={handleContinue} className="px-2.5 sm:px-3.5 py-0.5">
             Continue
           </CustomButton>
         </div>

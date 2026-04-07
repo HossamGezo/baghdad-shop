@@ -11,9 +11,7 @@ import { fetchProductsByCategory } from "@features/products/productsSlice";
 // --- Main Component
 const Men = () => {
   // --- Fetching Data
-  const { loading, error, clothing, shoes } = useAppSelector(
-    (state) => state.products,
-  );
+  const { loading, error, clothing, shoes } = useAppSelector((state) => state.products);
 
   // --- Dispatch Data
   const dispatch = useAppDispatch();

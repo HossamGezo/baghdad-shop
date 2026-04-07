@@ -8,11 +8,7 @@ import ErrorHandler from "@components/error-handler/ErrorHandler";
 import Spinner from "@components/spinner/Spinner";
 
 // --- Types
-import type {
-  CurrentProductsType,
-  CurrentPriceType,
-  ProductType,
-} from "@/types/types";
+import type { CurrentProductsType, CurrentPriceType, ProductType } from "@/types/types";
 
 // --- Utils
 import { calculateDiscount } from "@utils/calculateDiscount";
@@ -38,24 +34,14 @@ const Products = ({
   const filteredProducts = useMemo(() => {
     // --- Filtering
     const result =
-      currentProducts === "all-products"
-        ? items
-        : items.filter((product) => product.category === currentProducts);
+      currentProducts === "all-products" ? items : items.filter((product) => product.category === currentProducts);
 
     // --- Sorting
     if (currentPrice === "low-to-high")
-      return result.toSorted(
-        (a, b) =>
-          calculateDiscount(a.price, a.discount) -
-          calculateDiscount(b.price, b.discount),
-      );
+      return result.toSorted((a, b) => calculateDiscount(a.price, a.discount) - calculateDiscount(b.price, b.discount));
 
     if (currentPrice === "high-to-low")
-      return result.toSorted(
-        (a, b) =>
-          calculateDiscount(b.price, b.discount) -
-          calculateDiscount(a.price, a.discount),
-      );
+      return result.toSorted((a, b) => calculateDiscount(b.price, b.discount) - calculateDiscount(a.price, a.discount));
 
     return result;
   }, [currentProducts, items, currentPrice]);
