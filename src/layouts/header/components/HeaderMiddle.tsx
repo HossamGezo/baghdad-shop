@@ -1,19 +1,65 @@
 // --- Libraries
-import { useMemo } from "react";
-import { NavLink } from "react-router";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { Link, NavLink } from "react-router";
 
 // --- React Icons
 import { GrCart } from "react-icons/gr";
 import { FaUser } from "react-icons/fa";
+import { LuUserRoundCheck } from "react-icons/lu";
+import { IoIosArrowDown } from "react-icons/io";
+import { IoIosArrowUp } from "react-icons/io";
+import { BiBasket } from "react-icons/bi";
 
-// --- Custom Hooks
-import { useAppSelector } from "@app/hooks";
+// --- RTK
+import { useAppDispatch, useAppSelector } from "@app/hooks";
+import { logout } from "@features/auth/authSlice";
+
+// --- Local Components
+import CustomButton from "@components/custom-button/CustomButton";
 
 // --- Utils
 import { cn } from "@utils/cn";
 
 // --- Main Component
 const HeaderMiddle = () => {
+  // --- Is Authenticated
+  const { user, isAuthenticated } = useAppSelector((state) => state.auth);
+  const dispatch = useAppDispatch();
+
+  // --- Drop Down Menu
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  // --- Handle Drop Down Menu Button
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+    setIsOpen((prev) => !prev);
+  };
+
+  // --- Handle Drop Down Menu Button "Click Outside Dropdown Menu"
+  const dropDownRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const handleOutsideClick = () => {
+      if (dropDownRef.current) {
+        setIsOpen(false);
+      }
+    };
+
+    if (isOpen) {
+      window.addEventListener("click", handleOutsideClick);
+    }
+
+    return () => {
+      window.removeEventListener("click", handleOutsideClick);
+    };
+  }, [isOpen]);
+
+  // --- Handle Logout
+  const handleLogout = () => {
+    dispatch(logout());
+    setIsOpen(false);
+  };
+
   // --- Handle Submit
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -43,41 +89,97 @@ const HeaderMiddle = () => {
           Search
         </button>
         <input
-          className="w-full h-full px-2.5 caret-warning outline-0 select-none"
+          className="w-full h-full px-2.5 caret-warning outline-0 select-none bg-white overflow-hidden whitespace-nowrap text-ellipsis"
           type="search"
           aria-label="Search products"
           placeholder="What are you looking for?"
         />
       </form>
+
       {/* Header Middle Login & Cart */}
       <div className="max-sm:absolute top-6 right-5 flex items-center gap-3 xl:mt-1.5">
         {/* --- Login */}
         <div>
-          <NavLink
-            to="login"
-            className={({ isActive }) =>
-              cn(
-                "flex items-center justify-center text-center text-lg sm:text-xl lg:text-xl transition-colors duration-150 cursor-pointer w-25 h-8 md:h-9 lg:h-10 rounded-md max-sm:hidden",
-                isActive
-                  ? "border-2 border-warning bg-warning text-primary"
-                  : "border-2 border-warning text-white hover:text-primary hover:bg-warning active:bg-amber-500",
-              )
-            }
-          >
-            Login
-          </NavLink>
-          <NavLink
-            to="login"
-            className={({ isActive }) =>
-              cn(
-                "text-xl transition-colors duration-150 cursor-pointer sm:hidden",
-                isActive ? "text-warning" : "text-white hover:text-warning active:text-amber-500",
-              )
-            }
-          >
-            <FaUser />
-          </NavLink>
+          {!isAuthenticated ? (
+            <NavLink
+              to="login"
+              className={({ isActive }) =>
+                cn(
+                  "flex items-center justify-center text-center text-lg sm:text-xl lg:text-xl transition-colors duration-150 cursor-pointer w-25 h-8 md:h-9 lg:h-10 rounded-md max-sm:hidden",
+                  isActive
+                    ? "border-2 border-warning bg-warning text-primary"
+                    : "border-2 border-warning text-white hover:text-primary hover:bg-warning active:bg-amber-500",
+                )
+              }
+            >
+              Login
+            </NavLink>
+          ) : (
+            <div className="relative" ref={dropDownRef}>
+              <button
+                type="button"
+                onClick={(e) => handleClick(e)}
+                className={cn(
+                  "group flex items-center gap-1 sm:gap-2.5 text-primary hover:bg-white transition-colors duration-300 px-1.5 py-0.5 rounded-md cursor-pointer",
+                  isOpen ? "bg-white" : "bg-white/85",
+                )}
+              >
+                <LuUserRoundCheck className="text-xl md:text-[30px]" />
+                <span className="truncate hidden font-semibold sm:block">{user?.fullName.split(" ")[0]}</span>
+                <span>{!isOpen ? <IoIosArrowDown /> : <IoIosArrowUp />}</span>
+              </button>
+
+              {/* Drop Down Menu */}
+              {isOpen && (
+                <div className="absolute flex flex-col top-11 max-sm:left-10 left-1/2 -translate-x-1/2 rounded-md bg-white shadow-sm w-50 h-fit overflow-hidden z-10000">
+                  {user?.role == "admin" ? (
+                    <Link
+                      to="admin"
+                      onClick={() => setIsOpen(false)}
+                      className="text-primary p-2.5 border-b border-gray-400 flex items-center gap-2.5 font-semibold hover:bg-gray-300 font-jetbrains tracking-tighter"
+                    >
+                      <FaUser size={17} /> Dashboard
+                    </Link>
+                  ) : (
+                    <div className="flex flex-col gap-2.5">
+                      <Link
+                        to="/profile"
+                        onClick={() => setIsOpen(false)}
+                        className="text-primary p-2.5 border-b border-gray-400 flex items-center gap-2.5 font-semibold hover:bg-gray-300 font-jetbrains tracking-tighter"
+                      >
+                        <FaUser size={17} /> My Profile
+                      </Link>
+                      <Link
+                        to="/profile/orders"
+                        onClick={() => setIsOpen(false)}
+                        className="text-primary p-2.5 border-b border-gray-400 flex items-center gap-2.5 font-semibold hover:bg-gray-300 font-jetbrains tracking-tighter"
+                      >
+                        <BiBasket size={17} /> My Orders
+                      </Link>
+                    </div>
+                  )}
+                  <CustomButton type="button" onClick={handleLogout} className="w-37.5 mx-auto mt-auto my-5">
+                    Logout
+                  </CustomButton>
+                </div>
+              )}
+            </div>
+          )}
+          {!isAuthenticated && (
+            <NavLink
+              to="login"
+              className={({ isActive }) =>
+                cn(
+                  "text-xl transition-colors duration-150 cursor-pointer sm:hidden",
+                  isActive ? "text-warning" : "text-white hover:text-warning active:text-amber-500",
+                )
+              }
+            >
+              <FaUser />
+            </NavLink>
+          )}
         </div>
+
         {/* --- Cart */}
         <div>
           <NavLink
