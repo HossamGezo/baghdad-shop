@@ -1746,6 +1746,18 @@
       "avatar": "/images/avatar/default.png",
       "status": "active",
       "totalOrders": 0
+    },
+    {
+      "id": "e4d5",
+      "fullName": "Hossam",
+      "email": "ha2ghossam@gmail.com",
+      "password": "11111111",
+      "confirmPassword": "11111111",
+      "role": "customer",
+      "joinDate": "2026-04-08T08:23:27.300Z",
+      "avatar": "/images/avatar/default.png",
+      "status": "active",
+      "totalOrders": 0
     }
   ],
   "orders": [

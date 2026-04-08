@@ -13,7 +13,7 @@ type ProtectedRouteProps = {
 const ProtectedRoute = ({ adminOnly = false }: ProtectedRouteProps) => {
   const { user, isAuthenticated } = useAppSelector((state) => state.auth);
 
-  if (!isAuthenticated) return <Navigate to="/login" replace />;
+  if (!isAuthenticated) return <Navigate to="/" replace />;
 
   if (adminOnly && user?.role !== "admin") {
     return <Navigate to="/" replace />;
