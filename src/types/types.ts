@@ -10,7 +10,7 @@ export type ProductType = {
   readonly discount: number;
   readonly rating: number;
   readonly reviews: number;
-  readonly category: string;
+  readonly category: CategoriesType;
   readonly description: string;
 };
 
