@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 
 // --- Reducers & Actions
 
-import products from "@features/products/productsSlice";
+import products, { addProduct, deleteProduct, updateProduct } from "@features/products/productsSlice";
 import cart, { addToCart, decreaseQuantity, increaseQuantity, removeFromCart } from "@features/cart/cartSlice";
 import users, { deleteUser, updateUserRole } from "@features/users/usersSlice";
 import auth, { loginUser, logout, registerUser, resetPassword } from "@features/auth/authSlice";
@@ -46,6 +46,8 @@ customMiddleware.startListening({
 
 // --- toast
 
+// -- Cart
+
 // - toast : add to cart
 
 customMiddleware.startListening({
@@ -64,6 +66,8 @@ customMiddleware.startListening({
   },
 });
 
+// -- User
+
 // - toast : update user
 
 customMiddleware.startListening({
@@ -81,6 +85,8 @@ customMiddleware.startListening({
     toast.error("User has been deleted");
   },
 });
+
+// -- Auth
 
 // - toast : Register
 
@@ -111,6 +117,32 @@ customMiddleware.startListening({
   matcher: isAnyOf(resetPassword.fulfilled),
   effect: (action) => {
     toast.success(action.payload as string);
+  },
+});
+
+// -- Products
+
+// - toast : add product (Admin)
+customMiddleware.startListening({
+  matcher: isAnyOf(addProduct.fulfilled),
+  effect: () => {
+    toast.success("Product has been added successfully!");
+  },
+});
+
+// - toast : update product (Admin)
+customMiddleware.startListening({
+  matcher: isAnyOf(updateProduct.fulfilled),
+  effect: () => {
+    toast.success("Product has been updated successfully!");
+  },
+});
+
+// - toast : delete product (Admin)
+customMiddleware.startListening({
+  matcher: isAnyOf(deleteProduct.fulfilled),
+  effect: () => {
+    toast.error("Product has been deleted");
   },
 });
 

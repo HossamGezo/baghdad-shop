@@ -93,6 +93,99 @@ export const fetchSingleProduct = createAsyncThunk<
   }
 });
 
+/**
+ * @desc Add New Product
+ * @route /:category
+ * @method POST
+ * @access private (admin)
+ */
+export const addProduct = createAsyncThunk<
+  ProductType,
+  {
+    title: string;
+    image: string;
+    price: string;
+    discount: string;
+    category: string;
+    description: string;
+  },
+  { rejectValue: string }
+>("products/add-product", async (product, { rejectWithValue }) => {
+  try {
+    const response = await api.post(`/${product.category}`, {
+      title: product.title,
+      description: product.description,
+      price: Number(product.price),
+      discount: Number(product.discount),
+      category: product.category,
+      firstImage: product.image,
+      secondImage: product.image,
+      images: [product.image],
+      rating: 0,
+      reviews: 0,
+    });
+    return response.data;
+  } catch (error) {
+    return rejectWithValue(errorMsg(error));
+  }
+});
+
+/**
+ * @desc Update Product
+ * @route /category/:id
+ * @method PUT
+ * @access private (admin)
+ */
+export const updateProduct = createAsyncThunk<
+  ProductType,
+  {
+    id: string;
+    category: string;
+    product: {
+      title: string;
+      image: string;
+      price: string;
+      discount: string;
+      category: string;
+      description: string;
+    };
+  },
+  { rejectValue: string }
+>("products/update-product", async ({ id, category, product }, { rejectWithValue }) => {
+  try {
+    const response = await api.put(`/${category}/${id}`, {
+      ...product,
+      price: Number(product.price),
+      discount: Number(product.discount),
+      firstImage: product.image,
+      secondImage: product.image,
+      images: [product.image],
+    });
+    return response.data;
+  } catch (error) {
+    return rejectWithValue(errorMsg(error));
+  }
+});
+
+/**
+ * @desc Delete Product
+ * @route /category/:id
+ * @method DELETE
+ * @access private (admin)
+ */
+export const deleteProduct = createAsyncThunk<
+  { id: string; category: string }, // Return Type
+  { id: string; category: string }, // Argument Type
+  { rejectValue: string }
+>("products/delete-product", async ({ id, category }, { rejectWithValue }) => {
+  try {
+    await api.delete(`/${category}/${id}`);
+    return { id, category };
+  } catch (error) {
+    return rejectWithValue(errorMsg(error));
+  }
+});
+
 // --- Products Slice
 const productsSlice = createSlice({
   name: "products",
@@ -121,17 +214,74 @@ const productsSlice = createSlice({
       state.error = "";
     });
 
-    // ----- Pending Case
-    builder.addMatcher(isAnyOf(fetchProductsByCategory.pending, fetchSingleProduct.pending), (state) => {
-      state.loading = true;
+    // --- Add Product fulfilled
+    builder.addCase(addProduct.fulfilled, (state, action) => {
+      state.loading = false;
+
+      state[action.payload.category as CategoriesType].push(action.payload);
+
       state.error = "";
     });
 
-    // ----- Rejected Case
-    builder.addMatcher(isAnyOf(fetchProductsByCategory.rejected, fetchSingleProduct.rejected), (state, action) => {
+    // --- Update Product fulfilled
+    builder.addCase(updateProduct.fulfilled, (state, action) => {
       state.loading = false;
-      state.error = action.payload || "An unexpected error occurred";
+
+      const category = action.payload.category as CategoriesType;
+
+      const updatedProduct = action.payload;
+
+      const index = state[category].findIndex((p) => p.id === updatedProduct.id);
+
+      if (index !== -1) {
+        state[category][index] = updatedProduct;
+      }
+
+      if (state.singleProduct?.id === updatedProduct.id) {
+        state.singleProduct = updatedProduct;
+      }
+
+      state.error = "";
     });
+
+    // --- Delete Product fulfilled
+    builder.addCase(deleteProduct.fulfilled, (state, action) => {
+      state.loading = false;
+
+      const { id, category } = action.payload;
+
+      state[category as CategoriesType] = state[category as CategoriesType].filter((product) => product.id != id);
+    });
+
+    // ----- Pending Case
+    builder.addMatcher(
+      isAnyOf(
+        fetchProductsByCategory.pending,
+        fetchSingleProduct.pending,
+        addProduct.pending,
+        updateProduct.pending,
+        deleteProduct.pending,
+      ),
+      (state) => {
+        state.loading = true;
+        state.error = "";
+      },
+    );
+
+    // ----- Rejected Case
+    builder.addMatcher(
+      isAnyOf(
+        fetchProductsByCategory.rejected,
+        fetchSingleProduct.rejected,
+        addProduct.rejected,
+        updateProduct.rejected,
+        deleteProduct.rejected,
+      ),
+      (state, action) => {
+        state.loading = false;
+        state.error = action.payload || "An unexpected error occurred";
+      },
+    );
   },
 });
 
