@@ -1,6 +1,6 @@
 // --- Libraries
 import { useEffect } from "react";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -12,21 +12,23 @@ import ErrorHandler from "@components/error-handler/ErrorHandler";
 
 // --- Redux
 import { useAppDispatch, useAppSelector } from "@app/hooks";
-import { fetchProductsByCategory } from "@features/products/productsSlice";
+import { addProduct, fetchProductsByCategory, updateProduct } from "@features/products/productsSlice";
 
 // --- Types
 import type { CategoriesType, ProductType } from "@/types/types";
 
-const categories = [
+const categories: CategoriesType[] = [
   "laptops",
   "mobiles",
-  "special-offers",
+  "specialOffers",
   "appliances",
   "cookware",
   "clothing",
   "shoes",
   "dresses",
   "handbags",
+  "supermarket",
+  "automotive",
 ];
 
 // --- Product Schema
@@ -42,6 +44,12 @@ type ProductSchemaType = z.infer<typeof ProductSchema>;
 
 // --- Main Component
 const AddProduct = () => {
+  // --- React Router
+  const navigate = useNavigate();
+
+  // --- RTK
+  const dispatch = useAppDispatch();
+
   // --- React Hook Form Logic
   const {
     register,
@@ -53,16 +61,8 @@ const AddProduct = () => {
     resolver: zodResolver(ProductSchema),
   });
 
-  // --- OnSubmit Function
-  const onSubmit: SubmitHandler<ProductSchemaType> = (data) => {
-    console.log(data);
-    reset();
-  };
-
   // --- Get Product Data from URL & Store
   const { category, id } = useParams();
-
-  const dispatch = useAppDispatch();
 
   const products: ProductType[] = useAppSelector((state) =>
     category ? state.products[category as CategoriesType] : [],
@@ -88,6 +88,23 @@ const AddProduct = () => {
         description: product?.description,
       });
   }, [reset, product]);
+
+  // --- OnSubmit Function
+  const onSubmit: SubmitHandler<ProductSchemaType> = async (data) => {
+    if (product) {
+      await dispatch(
+        updateProduct({
+          id: product.id,
+          category: product.category,
+          product: data,
+        }),
+      );
+    } else {
+      await dispatch(addProduct(data));
+    }
+
+    navigate("/admin/products");
+  };
 
   // --- Return JSX
   return (

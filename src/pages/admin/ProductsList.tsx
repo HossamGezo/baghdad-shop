@@ -11,7 +11,7 @@ import { cn } from "@utils/cn";
 
 // --- Custom Hooks & Actions
 import { useAppDispatch, useAppSelector } from "@app/hooks";
-import { fetchProductsByCategory } from "@features/products/productsSlice";
+import { deleteProduct, fetchProductsByCategory } from "@features/products/productsSlice";
 
 // --- Local Components
 import CustomButton from "@components/custom-button/CustomButton";
@@ -90,12 +90,15 @@ const ProductsList = () => {
 
   const onConfirm = () => {
     if (productToDelete) {
-      console.log(`" ${productToDelete.title} " Has been deleted successfully`);
+      dispatch(
+        deleteProduct({
+          id: productToDelete.id,
+          category: productToDelete.category,
+        }),
+      );
+
+      setProductToDelete(null);
     }
-
-    // Delete Logic
-
-    setProductToDelete(null);
   };
 
   // --- Return JSX
