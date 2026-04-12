@@ -49,7 +49,9 @@ const Register = () => {
 
   // --- OnSubmit Function
   const onSubmit: SubmitHandler<RegisterSchemaType> = (data) => {
-    dispatch(registerUser(data));
+    const { confirmPassword: _, ...registerData } = data;
+
+    dispatch(registerUser(registerData));
   };
 
   // --- Return JSX
