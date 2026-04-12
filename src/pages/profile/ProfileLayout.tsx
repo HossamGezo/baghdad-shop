@@ -8,11 +8,25 @@ import { NavLink, Outlet } from "react-router";
 // --- Utils
 import { cn } from "@utils/cn";
 
+// --- RTK
+import { useAppDispatch, useAppSelector } from "@app/hooks";
+import { logout } from "@features/auth/authSlice";
+
 // --- Local Components
 import CustomButton from "@components/custom-button/CustomButton";
 
 // --- Main Component
 const ProfileLayout = () => {
+  // --- RTK
+  const dispatch = useAppDispatch();
+  const { isAuthenticated } = useAppSelector((state) => state.auth);
+
+  // --- Handle Logout
+  const handleLogout = () => {
+    if (isAuthenticated) dispatch(logout());
+  };
+
+  // --- Return JSX
   return (
     <div className="grid grid-cols-4 gap-5 my-5">
       {/* Left Side */}
@@ -42,7 +56,10 @@ const ProfileLayout = () => {
             </NavLink>
           </li>
         </ul>
-        <CustomButton className="max-md:h-9.5 rounded-none px-2.5 max-lg:text-[14px] max-md:active:scale-[1] md:rounded-md md:my-5 md:w-7/10 md:mx-auto">
+        <CustomButton
+          onClick={handleLogout}
+          className="max-md:h-9.5 rounded-none px-2.5 max-lg:text-[14px] max-md:active:scale-[1] md:rounded-md md:my-5 md:w-7/10 md:mx-auto"
+        >
           Logout
         </CustomButton>
       </div>
