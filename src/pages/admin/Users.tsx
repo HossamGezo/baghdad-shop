@@ -15,7 +15,6 @@ import { deleteUser, fetchUsers } from "@features/users/usersSlice";
 // --- Local Components
 import Modal from "@components/modal/Modal";
 import ErrorHandler from "@components/error-handler/ErrorHandler";
-import Spinner from "@components/spinner/Spinner";
 
 // --- Types
 import type { UserType } from "@/types/types";
@@ -90,11 +89,7 @@ const Users = () => {
 
       {/* --- Real Data Container --- */}
       <div className="flex-1 bg-white rounded-md shadow-sm overflow-hidden flex flex-col min-h-100">
-        {loading ? (
-          <div className="flex-1 flex items-center justify-center h-full">
-            <Spinner className="w-12 h-12" />
-          </div>
-        ) : error ? (
+        {error ? (
           <div className="flex-1 flex items-center justify-center p-5">
             <ErrorHandler error={error} />
           </div>
@@ -145,7 +140,7 @@ const Users = () => {
                           <td>
                             <p className="text-[14px] font-semibold text-primary">{user.fullName}</p>
                             <p className="text-[11px] text-gray-500">{user.email}</p>
-                            <p className="text-[10px] text-gray-400 mt-0.5">{user.phone}</p>
+                            <p className="text-[10px] text-gray-400 mt-0.5">{user.address?.phone}</p>
                           </td>
 
                           {/* Role */}

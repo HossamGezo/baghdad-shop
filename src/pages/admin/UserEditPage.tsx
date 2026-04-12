@@ -134,7 +134,7 @@ const UserEditPage = () => {
             <div className="flex-1 grid grid-cols-1 lg:grid-cols-2 xxl:grid-cols-3 gap-5 shadow-sm border border-gray-200 rounded-md p-5">
               <Field title={"User Name"} description={singleUser.fullName} />
               <Field title={"Email"} description={singleUser.email} />
-              <Field title={"Phone"} description={singleUser.phone} />
+              <Field title={"Phone"} description={singleUser.address?.phone || "No Phone Number"} />
               <Field title={"Join Date"} description={singleUser.joinDate.substring(0, 10)} />
               <Field title={"Total Orders"} description={String(singleUser.totalOrders)} />
               <form onSubmit={handleSubmit(onSubmit)}>
