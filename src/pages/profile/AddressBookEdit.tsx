@@ -1,4 +1,5 @@
 // --- Libraries
+import { useEffect } from "react";
 import { useNavigate } from "react-router";
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -7,22 +8,31 @@ import { z } from "zod";
 // --- React Icons
 import { MdOutlineKeyboardBackspace } from "react-icons/md";
 
+// --- RTK
+import { useAppDispatch, useAppSelector } from "@app/hooks";
+import { updateProfile } from "@features/auth/authSlice";
+
 // --- Local Components
 import InputField from "@components/inputs/InputField";
 import CustomButton from "@components/custom-button/CustomButton";
 
 // --- Address Schema
 const AddressSchema = z.object({
-  firstName: z.string().max(21, "First Name must not exceed 21 characters").trim(),
-  lastName: z.string().max(21, "Last Name must not exceed 21 characters").trim(),
-  phoneNumber: z.string().min(11, "Phone Number must be at least 11 digits").trim(),
-  address: z.string().min(50, "Address must be at least 50 characters").trim(),
+  city: z.string().min(3, "City must be at least 3 characters").trim(),
+  area: z.string().min(3, "Area must be at least 3 characters").trim(),
+  street: z.string().min(3, "Street must be at least 3 characters").trim(),
+  phone: z.string().min(11, "Phone Number must be at least 11 digits").trim(),
 });
 type AddressSchemaType = z.infer<typeof AddressSchema>;
 
 // --- Main Component
 const AddressBookEdit = () => {
+  // --- React Router
   const navigate = useNavigate();
+
+  // --- RTK
+  const { loading, user } = useAppSelector((state) => state.auth);
+  const dispatch = useAppDispatch();
 
   // --- React Hook Form Logic
   const {
@@ -34,17 +44,31 @@ const AddressBookEdit = () => {
     mode: "onBlur",
     resolver: zodResolver(AddressSchema),
     defaultValues: {
-      firstName: "John",
-      lastName: "Doe",
-      phoneNumber: "123-456-789",
-      address: "Cairo / El-Rehab",
+      city: "",
+      area: "",
+      street: "",
+      phone: "",
     },
   });
 
+  useEffect(() => {
+    if (user?.address) {
+      reset({
+        city: user.address.city,
+        area: user.address.area,
+        street: user.address.street,
+        phone: user.address.phone,
+      });
+    }
+  }, [reset, user]);
+
   // --- OnSubmit Function
-  const onSubmit: SubmitHandler<AddressSchemaType> = (data) => {
-    console.log(data);
-    reset();
+  const onSubmit: SubmitHandler<AddressSchemaType> = async (data) => {
+    const resultAction = await dispatch(updateProfile(data));
+
+    if (updateProfile.fulfilled.match(resultAction)) {
+      navigate("/profile");
+    }
   };
 
   // --- Return JSX
@@ -61,46 +85,46 @@ const AddressBookEdit = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
             <InputField
               type="text"
-              name="firstName"
-              placeholder="Enter your first name"
+              name="city"
+              placeholder="Enter your city"
               register={register}
-              label="First Name"
-              error={errors.firstName?.message}
-              autoComplete="firstName"
+              label="City"
+              error={errors.city?.message}
+              autoComplete="address-level1"
               className="sm:w-full"
             />
             <InputField
               type="text"
-              name="lastName"
-              placeholder="Enter your last name"
+              name="area"
+              placeholder="Enter your area"
               register={register}
-              label="Last Name"
-              error={errors.lastName?.message}
-              autoComplete="lastName"
+              label="Area"
+              error={errors.area?.message}
+              autoComplete="address-level2"
+              className="sm:w-full"
+            />
+            <InputField
+              type="text"
+              name="street"
+              placeholder="Enter your street"
+              register={register}
+              label="Street"
+              error={errors.street?.message}
+              autoComplete="address-level3"
               className="sm:w-full"
             />
             <InputField
               type="tel"
-              name="phoneNumber"
+              name="phone"
               placeholder="Enter your phone number"
               register={register}
               label="Phone Number"
-              error={errors.phoneNumber?.message}
-              autoComplete="phoneNumber"
-              className="sm:w-full"
-            />
-            <InputField
-              type="text"
-              name="address"
-              placeholder="Enter your address"
-              register={register}
-              label="Address"
-              error={errors.address?.message}
-              autoComplete="address"
+              error={errors.phone?.message}
+              autoComplete="mobile tel"
               className="sm:w-full"
             />
           </div>
-          <CustomButton type="submit" aria-label="Save Changes" className="px-5 ml-auto">
+          <CustomButton isLoading={loading} type="submit" aria-label="Save Changes" className="px-5 ml-auto">
             Save
           </CustomButton>
         </form>

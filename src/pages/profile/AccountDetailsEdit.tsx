@@ -1,4 +1,5 @@
 // --- Libraries
+import { useEffect } from "react";
 import { useNavigate } from "react-router";
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -7,20 +8,29 @@ import { z } from "zod";
 // --- React Icons
 import { MdOutlineKeyboardBackspace } from "react-icons/md";
 
+// --- RTK
+import { useAppDispatch, useAppSelector } from "@app/hooks";
+import { updateProfile } from "@features/auth/authSlice";
+
 // --- Local Components
 import InputField from "@components/inputs/InputField";
 import CustomButton from "@components/custom-button/CustomButton";
 
 // --- Details Schema
 const DetailsSchema = z.object({
-  name: z.string().max(21, "Name must not exceed 21 characters").trim(),
+  fullName: z.string().max(21, "Name must not exceed 21 characters").trim(),
   email: z.string().email({ message: "Invalid Email" }).trim(),
 });
 type DetailsSchemaType = z.infer<typeof DetailsSchema>;
 
 // --- Main Component
 const AccountDetailsEdit = () => {
+  // --- React Router
   const navigate = useNavigate();
+
+  // --- RTK
+  const { loading, user } = useAppSelector((state) => state.auth);
+  const dispatch = useAppDispatch();
 
   // --- React Hook Form Logic
   const {
@@ -31,16 +41,19 @@ const AccountDetailsEdit = () => {
   } = useForm<DetailsSchemaType>({
     mode: "onBlur",
     resolver: zodResolver(DetailsSchema),
-    defaultValues: {
-      name: "John Doe",
-      email: "user@email.com",
-    },
   });
 
+  useEffect(() => {
+    if (user) reset({ fullName: user.fullName, email: user.email });
+  }, [reset, user]);
+
   // --- OnSubmit Function
-  const onSubmit: SubmitHandler<DetailsSchemaType> = (data) => {
-    console.log(data);
-    reset();
+  const onSubmit: SubmitHandler<DetailsSchemaType> = async (data) => {
+    const resultAction = await dispatch(updateProfile(data));
+
+    if (updateProfile.fulfilled.match(resultAction)) {
+      navigate("/profile");
+    }
   };
 
   // --- Return JSX
@@ -57,12 +70,12 @@ const AccountDetailsEdit = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
             <InputField
               type="text"
-              name="name"
+              name="fullName"
               placeholder="Enter your name"
               register={register}
               label="Full Name"
-              error={errors.name?.message}
-              autoComplete="firstName"
+              error={errors.fullName?.message}
+              autoComplete="name"
               className="sm:w-full"
             />
             <InputField
@@ -77,7 +90,7 @@ const AccountDetailsEdit = () => {
               readOnly
             />
           </div>
-          <CustomButton type="submit" aria-label="Save Changes" className="px-5 ml-auto">
+          <CustomButton isLoading={loading} type="submit" aria-label="Save Changes" className="px-5 ml-auto">
             Save
           </CustomButton>
         </form>

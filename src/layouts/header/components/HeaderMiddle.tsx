@@ -122,6 +122,8 @@ const HeaderMiddle = () => {
                 className={cn(
                   "group flex items-center gap-1 sm:gap-2.5 text-primary hover:bg-white transition-colors duration-300 px-1.5 py-0.5 rounded-md cursor-pointer",
                   isOpen ? "bg-white" : "bg-white/85",
+                  user?.role == "admin" &&
+                    "relative before:absolute before:-top-1 before:left-0 before:w-full before:h-1 before:bg-amber-400 before:rounded-tr-md before:rounded-tl-md rounded-tr-none rounded-tl-none",
                 )}
               >
                 <LuUserRoundCheck className="text-xl md:text-[30px]" />
@@ -132,32 +134,35 @@ const HeaderMiddle = () => {
               {/* Drop Down Menu */}
               {isOpen && (
                 <div className="absolute flex flex-col top-11 max-sm:left-10 left-1/2 -translate-x-1/2 rounded-md bg-white shadow-sm w-50 h-fit overflow-hidden z-10000">
-                  {user?.role == "admin" ? (
+                  <div className="flex flex-col gap-2.5">
+                    {/* Only for admin */}
+                    {user?.role === "admin" && (
+                      <Link
+                        to="/admin"
+                        onClick={() => setIsOpen(false)}
+                        className="text-primary p-2.5 border-b border-gray-400 flex items-center gap-2.5 font-semibold hover:bg-gray-300 font-jetbrains tracking-tighter"
+                      >
+                        <FaUser size={17} /> Dashboard
+                      </Link>
+                    )}
+
+                    {/* Shared Links */}
                     <Link
-                      to="admin"
+                      to="/profile"
                       onClick={() => setIsOpen(false)}
                       className="text-primary p-2.5 border-b border-gray-400 flex items-center gap-2.5 font-semibold hover:bg-gray-300 font-jetbrains tracking-tighter"
                     >
-                      <FaUser size={17} /> Dashboard
+                      <FaUser size={17} /> My Profile
                     </Link>
-                  ) : (
-                    <div className="flex flex-col gap-2.5">
-                      <Link
-                        to="/profile"
-                        onClick={() => setIsOpen(false)}
-                        className="text-primary p-2.5 border-b border-gray-400 flex items-center gap-2.5 font-semibold hover:bg-gray-300 font-jetbrains tracking-tighter"
-                      >
-                        <FaUser size={17} /> My Profile
-                      </Link>
-                      <Link
-                        to="/profile/orders"
-                        onClick={() => setIsOpen(false)}
-                        className="text-primary p-2.5 border-b border-gray-400 flex items-center gap-2.5 font-semibold hover:bg-gray-300 font-jetbrains tracking-tighter"
-                      >
-                        <BiBasket size={17} /> My Orders
-                      </Link>
-                    </div>
-                  )}
+                    <Link
+                      to="/profile/orders"
+                      onClick={() => setIsOpen(false)}
+                      className="text-primary p-2.5 border-b border-gray-400 flex items-center gap-2.5 font-semibold hover:bg-gray-300 font-jetbrains tracking-tighter"
+                    >
+                      <BiBasket size={17} /> My Orders
+                    </Link>
+                  </div>
+
                   <CustomButton type="button" onClick={handleLogout} className="w-37.5 mx-auto mt-auto my-5">
                     Logout
                   </CustomButton>

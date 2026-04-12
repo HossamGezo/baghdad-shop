@@ -67,17 +67,24 @@ export type CurrentProductsType =
 
 // --- User & Authentication Types
 
+export type UserAddressType = {
+  city: string;
+  area: string;
+  street: string;
+  phone: string;
+};
+
 export type UserType = {
   readonly fullName: string;
   readonly id: string;
   readonly email: string;
   readonly password: string;
-  readonly phone: string;
   readonly role: "customer" | "admin";
   readonly joinDate: string;
   readonly avatar: string;
   readonly status: string;
   readonly totalOrders: number;
+  readonly address: UserAddressType | null;
 };
 
 export type RegisterType = {
@@ -93,4 +100,29 @@ export type LoginType = {
 
 export type ResetPasswordType = {
   email: string;
+};
+
+export type UpdateProfileType = {
+  fullName?: string;
+  city?: string;
+  area?: string;
+  street?: string;
+  phone?: string;
+};
+
+// --- Order Types
+
+export type OrderStatus = "pending" | "shipped" | "delivered" | "cancelled";
+
+export type OrderType = {
+  id: string;
+  userId: string;
+  customerName: string;
+  email: string;
+  orderItems: CartType[];
+  shippingAddress: UserAddressType;
+  totalPrice: number;
+  paymentMethod: "card";
+  status: OrderStatus;
+  createdAt: string;
 };

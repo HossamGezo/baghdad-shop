@@ -15,7 +15,7 @@ const OrderSummary = () => {
 
   // --- Calculations
   const total = orders.reduce((acc, cur) => acc + cur.count * calculateDiscount(cur.price, cur.discount), 0);
-  const fees = total - (99 / 100) * total;
+  const fees = 15;
   const totalPrice = total + fees;
 
   // --- Return JSX
