@@ -50,6 +50,7 @@ const initialState: ProductsState = {
 };
 
 // --- Generic Async Thunk Pattern Or Parametric Data Fetcher
+
 /**
  * @desc Get All Products
  * @route /:category
