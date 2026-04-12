@@ -5,7 +5,8 @@ import { createAsyncThunk, createSlice, isAnyOf } from "@reduxjs/toolkit";
 import api from "@utils/api";
 
 // --- Types
-import type { LoginType, RegisterType, ResetPasswordType, UserType } from "@/types/types";
+import type { LoginType, RegisterType, ResetPasswordType, UpdateProfileType, UserType } from "@/types/types";
+import type { RootState } from "@app/store";
 
 // --- localStorage
 const storedUser = window.localStorage.getItem("user");
@@ -33,8 +34,8 @@ const initialState: AuthState = {
 };
 
 /**
- * @desc Register A New User
- * @route /register
+ * @desc Register New User
+ * @route /users
  * @method POST
  * @access public
  */
@@ -49,6 +50,7 @@ export const registerUser = createAsyncThunk<UserType, RegisterType, { rejectVal
         avatar: "/images/avatar/default.png",
         status: "active",
         totalOrders: 0,
+        address: null,
       });
       return response.data;
     } catch (error) {
@@ -59,7 +61,7 @@ export const registerUser = createAsyncThunk<UserType, RegisterType, { rejectVal
 
 /**
  * @desc Login User
- * @route /login
+ * @route /users
  * @method POST
  * @access public
  */
@@ -80,7 +82,7 @@ export const loginUser = createAsyncThunk<UserType, LoginType, { rejectValue: st
 
 /**
  * @desc Reset Password
- * @route /reset-password
+ * @route /users
  * @method POST
  * @access public
  */
@@ -96,6 +98,41 @@ export const resetPassword = createAsyncThunk<string, ResetPasswordType, { rejec
 
       if (user) return "A password reset link has been sent to your email.";
       else return rejectWithValue("This email is not registered in our store.");
+    } catch (error) {
+      return rejectWithValue(errorMsg(error));
+    }
+  },
+);
+
+/**
+ * @desc Update Profile
+ * @route /users/:id
+ * @method PUT
+ * @access private (user himself & admin)
+ */
+export const updateProfile = createAsyncThunk<UserType, UpdateProfileType, { rejectValue: string; state: RootState }>(
+  "auth/update-profile",
+  async (updateData, { rejectWithValue, getState }) => {
+    try {
+      const { user } = getState().auth;
+
+      if (!user) return rejectWithValue("No user logged in");
+
+      const updatedUser: UserType = {
+        ...user,
+        fullName: updateData.fullName || user.fullName,
+        address: updateData.city
+          ? {
+              city: updateData.city,
+              area: updateData.area || "",
+              street: updateData.street || "",
+              phone: updateData.phone || "",
+            }
+          : user.address,
+      };
+
+      const response = await api.put(`/users/${user.id}`, updatedUser);
+      return response.data;
     } catch (error) {
       return rejectWithValue(errorMsg(error));
     }
@@ -137,17 +174,32 @@ const authSlice = createSlice({
       state.error = "";
     });
 
-    // --- Pending Case
-    builder.addMatcher(isAnyOf(registerUser.pending, loginUser.pending, resetPassword.pending), (state) => {
-      state.loading = true;
+    // --- Update Profile Fullfilled
+    builder.addCase(updateProfile.fulfilled, (state, action) => {
+      state.loading = false;
+
+      state.user = action.payload;
+
       state.error = "";
     });
 
+    // --- Pending Case
+    builder.addMatcher(
+      isAnyOf(registerUser.pending, loginUser.pending, resetPassword.pending, updateProfile.pending),
+      (state) => {
+        state.loading = true;
+        state.error = "";
+      },
+    );
+
     // --- Rejected Case
-    builder.addMatcher(isAnyOf(registerUser.rejected, loginUser.rejected, resetPassword.rejected), (state, action) => {
-      state.loading = false;
-      state.error = action.payload || "An unexpected error occurred";
-    });
+    builder.addMatcher(
+      isAnyOf(registerUser.rejected, loginUser.rejected, resetPassword.rejected, updateProfile.rejected),
+      (state, action) => {
+        state.loading = false;
+        state.error = action.payload || "An unexpected error occurred";
+      },
+    );
   },
 });
 

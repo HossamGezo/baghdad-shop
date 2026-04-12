@@ -6,9 +6,16 @@ import toast from "react-hot-toast";
 // --- Reducers & Actions
 
 import products, { addProduct, deleteProduct, updateProduct } from "@features/products/productsSlice";
-import cart, { addToCart, decreaseQuantity, increaseQuantity, removeFromCart } from "@features/cart/cartSlice";
+import cart, {
+  addToCart,
+  clearCart,
+  decreaseQuantity,
+  increaseQuantity,
+  removeFromCart,
+} from "@features/cart/cartSlice";
 import users, { deleteUser, updateUserRole } from "@features/users/usersSlice";
-import auth, { loginUser, logout, registerUser, resetPassword } from "@features/auth/authSlice";
+import auth, { loginUser, logout, registerUser, resetPassword, updateProfile } from "@features/auth/authSlice";
+import orders, { createOrder } from "@features/orders/ordersSlice";
 
 // --- Custom Middlewares
 
@@ -18,7 +25,7 @@ const customMiddleware = createListenerMiddleware();
 
 // - cart
 customMiddleware.startListening({
-  matcher: isAnyOf(addToCart, increaseQuantity, decreaseQuantity, removeFromCart),
+  matcher: isAnyOf(addToCart, increaseQuantity, decreaseQuantity, removeFromCart, clearCart),
   effect: (_action, listenerApi) => {
     const state = listenerApi.getState() as RootState;
     window.localStorage.setItem("cart", JSON.stringify(state.cart.cart));
@@ -120,6 +127,34 @@ customMiddleware.startListening({
   },
 });
 
+// rejected
+customMiddleware.startListening({
+  matcher: isAnyOf(resetPassword.rejected),
+  effect: (_action, listenerApi) => {
+    const state = listenerApi.getState() as RootState;
+    toast.error(state.auth.error);
+  },
+});
+
+// - toast : Update Profile
+
+// fulfilled
+customMiddleware.startListening({
+  matcher: isAnyOf(updateProfile.fulfilled),
+  effect: () => {
+    toast.success("Your profile has been updated successfully!");
+  },
+});
+
+// rejected
+customMiddleware.startListening({
+  matcher: isAnyOf(updateProfile.rejected),
+  effect: (_action, listenerApi) => {
+    const state = listenerApi.getState() as RootState;
+    toast.error(state.auth.error);
+  },
+});
+
 // -- Products
 
 // - toast : add product (Admin)
@@ -146,12 +181,14 @@ customMiddleware.startListening({
   },
 });
 
-// rejected
+// -- Orders
+
+// - toast : create order
 customMiddleware.startListening({
-  matcher: isAnyOf(resetPassword.rejected),
+  matcher: isAnyOf(createOrder.fulfilled),
   effect: (_action, listenerApi) => {
-    const state = listenerApi.getState() as RootState;
-    toast.error(state.auth.error);
+    toast.success("Your order has been placed successfully!");
+    listenerApi.dispatch(clearCart());
   },
 });
 
@@ -163,6 +200,7 @@ const store = configureStore({
     cart,
     users,
     auth,
+    orders,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().prepend(customMiddleware.middleware),
 });
