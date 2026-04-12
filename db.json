@@ -1,7 +1,7 @@
 {
   "laptops": [
     {
-      "id": "1",
+      "id": "lap-01",
       "title": "HP EliteBook 2nd Gen",
       "firstImage": "/images/products/laptops/l1.jpg",
       "secondImage": "/images/products/laptops/l1.jpg",
@@ -14,7 +14,7 @@
       "description": "A reliable business laptop featuring a sleek design, solid performance, and long battery life—perfect for professionals and everyday productivity."
     },
     {
-      "id": "2",
+      "id": "lap-02",
       "title": "Acer Nitro 515-5 Laptop",
       "firstImage": "/images/products/laptops/l2.jpg",
       "secondImage": "/images/products/laptops/l2.jpg",
@@ -27,7 +27,7 @@
       "description": "A powerful gaming laptop built with high-performance hardware to handle demanding games and multitasking with ease."
     },
     {
-      "id": "3",
+      "id": "lap-03",
       "title": "Huawei MateBook 14 Laptop",
       "firstImage": "/images/products/laptops/l3.jpg",
       "secondImage": "/images/products/laptops/l3.jpg",
@@ -40,7 +40,7 @@
       "description": "A premium laptop with a stunning display, fast performance, and a lightweight design—ideal for work, study, and creativity."
     },
     {
-      "id": "4",
+      "id": "lap-04",
       "title": "Asus Gaming Laptop 571GT",
       "firstImage": "/images/products/laptops/l4.jpg",
       "secondImage": "/images/products/laptops/l4.jpg",
@@ -53,7 +53,7 @@
       "description": "A gaming-focused laptop delivering smooth graphics, fast processing, and immersive gameplay for serious gamers."
     },
     {
-      "id": "5",
+      "id": "lap-05",
       "title": "Asus TUF 15 Laptop",
       "firstImage": "/images/products/laptops/l1.jpg",
       "secondImage": "/images/products/laptops/l1.jpg",
@@ -66,7 +66,7 @@
       "description": "Built for durability and performance, this laptop is perfect for gaming and heavy workloads with reliable cooling and power."
     },
     {
-      "id": "6",
+      "id": "lap-06",
       "title": "Asus F15 Gaming Laptop",
       "firstImage": "/images/products/laptops/l6.jpg",
       "secondImage": "/images/products/laptops/l6.jpg",
@@ -79,7 +79,7 @@
       "description": "A high-end gaming laptop offering top-tier performance, fast refresh rates, and a bold design for competitive players."
     },
     {
-      "id": "7",
+      "id": "lap-07",
       "title": "Lenovo IdeaPad Flex 5 14\"",
       "firstImage": "/images/products/laptops/l7.jpg",
       "secondImage": "/images/products/laptops/l7.jpg",
@@ -92,7 +92,7 @@
       "description": "A versatile 2-in-1 laptop with a flexible touchscreen design, perfect for students, professionals, and everyday use."
     },
     {
-      "id": "8",
+      "id": "lap-08",
       "title": "Microsoft Surface Go 2 Touchscreen",
       "firstImage": "/images/products/laptops/l8.jpg",
       "secondImage": "/images/products/laptops/l8.jpg",
@@ -105,7 +105,7 @@
       "description": "A compact and portable touchscreen device designed for productivity on the go with a premium Microsoft experience."
     },
     {
-      "id": "9",
+      "id": "lap-09",
       "title": "Microsoft Surface Pro 8 13\"",
       "firstImage": "/images/products/laptops/l8.jpg",
       "secondImage": "/images/products/laptops/l8.jpg",
@@ -118,7 +118,7 @@
       "description": "A powerful 2-in-1 laptop combining tablet flexibility with laptop performance, ideal for work and creative tasks."
     },
     {
-      "id": "10",
+      "id": "lap-10",
       "title": "Asus VivoBook 17 Laptop",
       "firstImage": "/images/products/laptops/l10.jpg",
       "secondImage": "/images/products/laptops/l10.jpg",
@@ -133,7 +133,7 @@
   ],
   "mobiles": [
     {
-      "id": "11",
+      "id": "mob-01",
       "title": "Apple iPhone 13",
       "firstImage": "/images/products/mobiles/m1.jpg",
       "secondImage": "/images/products/mobiles/m1.jpg",
@@ -146,7 +146,7 @@
       "description": "A flagship smartphone with a powerful processor, stunning camera quality, and a sleek premium design."
     },
     {
-      "id": "12",
+      "id": "mob-02",
       "title": "Samsung Galaxy M33 Smartphone",
       "firstImage": "/images/products/mobiles/m2.jpg",
       "secondImage": "/images/products/mobiles/m2.jpg",
@@ -159,7 +159,7 @@
       "description": "A reliable smartphone offering long battery life, smooth performance, and excellent value for everyday use."
     },
     {
-      "id": "13",
+      "id": "mob-03",
       "title": "Samsung Galaxy M32 Dual SIM",
       "firstImage": "/images/products/mobiles/m3.jpg",
       "secondImage": "/images/products/mobiles/m3.jpg",
@@ -172,7 +172,7 @@
       "description": "A budget-friendly dual SIM smartphone with a vibrant display and dependable performance."
     },
     {
-      "id": "14",
+      "id": "mob-04",
       "title": "Poco X4 Pro Smartphone",
       "firstImage": "/images/products/mobiles/m4.jpg",
       "secondImage": "/images/products/mobiles/m4.jpg",
@@ -185,7 +185,7 @@
       "description": "A performance-driven smartphone featuring a smooth display, fast charging, and a modern design."
     },
     {
-      "id": "15",
+      "id": "mob-05",
       "title": "Samsung Galaxy F4 4G",
       "firstImage": "/images/products/mobiles/m5.jpg",
       "secondImage": "/images/products/mobiles/m5.jpg",
@@ -198,7 +198,7 @@
       "description": "An affordable smartphone designed for basic daily needs with a simple and practical user experience."
     },
     {
-      "id": "16",
+      "id": "mob-06",
       "title": "Vivo XDS 256GB Blue",
       "firstImage": "/images/products/mobiles/m6.jpg",
       "secondImage": "/images/products/mobiles/m6.jpg",
@@ -211,7 +211,7 @@
       "description": "A premium smartphone with large storage capacity, smooth performance, and a stylish blue finish."
     },
     {
-      "id": "17",
+      "id": "mob-07",
       "title": "Apple iPhone 12",
       "firstImage": "/images/products/mobiles/m7.jpg",
       "secondImage": "/images/products/mobiles/m7.jpg",
@@ -224,7 +224,7 @@
       "description": "A powerful iPhone featuring a sleek design, excellent camera performance, and long-term software support."
     },
     {
-      "id": "18",
+      "id": "mob-08",
       "title": "Dual SIM Smartphone",
       "firstImage": "/images/products/mobiles/m8.jpg",
       "secondImage": "/images/products/mobiles/m8.jpg",
@@ -237,7 +237,7 @@
       "description": "A practical dual SIM smartphone offering flexibility, reliable performance, and great value."
     },
     {
-      "id": "19",
+      "id": "mob-09",
       "title": "Xiaomi Poco C40",
       "firstImage": "/images/products/mobiles/m9.jpg",
       "secondImage": "/images/products/mobiles/m9.jpg",
@@ -250,7 +250,7 @@
       "description": "A budget-friendly smartphone with a large battery and smooth performance for everyday tasks."
     },
     {
-      "id": "20",
+      "id": "mob-10",
       "title": "Samsung Galaxy M52 Smartphone",
       "firstImage": "/images/products/mobiles/m10.jpg",
       "secondImage": "/images/products/mobiles/m10.jpg",
@@ -263,7 +263,7 @@
       "description": "A premium mid-range smartphone delivering excellent performance, display quality, and battery life."
     },
     {
-      "id": "21",
+      "id": "mob-11",
       "title": "Nokia A12",
       "firstImage": "/images/products/mobiles/m11.jpg",
       "secondImage": "/images/products/mobiles/m11.jpg",
@@ -276,7 +276,7 @@
       "description": "An ultra-affordable smartphone ideal for basic communication and essential daily use."
     },
     {
-      "id": "22",
+      "id": "mob-12",
       "title": "Samsung Galaxy M13 Lite",
       "firstImage": "/images/products/mobiles/m12.jpg",
       "secondImage": "/images/products/mobiles/m12.jpg",
@@ -289,7 +289,7 @@
       "description": "A stylish smartphone offering smooth performance, a clean design, and excellent user experience."
     },
     {
-      "id": "23",
+      "id": "mob-13",
       "title": "Huawei Nova 9",
       "firstImage": "/images/products/mobiles/m13.jpg",
       "secondImage": "/images/products/mobiles/m13.jpg",
@@ -302,7 +302,7 @@
       "description": "A sleek smartphone designed for photography lovers with a modern look and smooth performance."
     },
     {
-      "id": "24",
+      "id": "mob-14",
       "title": "Samsung Galaxy M32 5G Smartphone",
       "firstImage": "/images/products/mobiles/m14.jpg",
       "secondImage": "/images/products/mobiles/m14.jpg",
@@ -317,7 +317,7 @@
   ],
   "specialOffers": [
     {
-      "id": "25",
+      "id": "off-01",
       "title": "Pioneer DJ Headphones",
       "firstImage": "/images/products/special-offers/s1.jpg",
       "secondImage": "/images/products/special-offers/s2.jpg",
@@ -331,11 +331,11 @@
       "discount": 30,
       "rating": 4.1,
       "reviews": 4521,
-      "category": "special-offers",
+      "category": "specialOffers",
       "description": "Pioneer DJ Headphones are designed to deliver powerful, clear sound with deep bass, making them ideal for DJs and music lovers. They feature a comfortable over-ear design for long listening sessions and are now available with a 30% discount for a limited time."
     },
     {
-      "id": "26",
+      "id": "off-02",
       "title": "Hoco In-Ear Earphones",
       "firstImage": "/images/products/special-offers/s3.jpg",
       "secondImage": "/images/products/special-offers/s4.jpg",
@@ -349,11 +349,11 @@
       "discount": 20,
       "rating": 4.1,
       "reviews": 1870,
-      "category": "special-offers",
+      "category": "specialOffers",
       "description": "Hoco In-Ear Earphones provide clear sound with balanced audio and enhanced bass. Their lightweight, ergonomic design makes them perfect for daily use, and they are currently offered with a 20% discount for great value."
     },
     {
-      "id": "27",
+      "id": "off-03",
       "title": "Samsung Tablet",
       "firstImage": "/images/products/special-offers/s5.jpg",
       "secondImage": "/images/products/special-offers/s6.jpg",
@@ -362,11 +362,11 @@
       "discount": 40,
       "rating": 4.5,
       "reviews": 584,
-      "category": "special-offers",
+      "category": "specialOffers",
       "description": "Samsung Tablet is a versatile device for entertainment, studying, and everyday productivity. It offers a clear display, smooth performance, and long battery life, and is now available with a 40% discount for a limited-time offer."
     },
     {
-      "id": "28",
+      "id": "off-04",
       "title": "Samsung Galaxy Smartphone",
       "firstImage": "/images/products/special-offers/s7.jpg",
       "secondImage": "/images/products/special-offers/s8.jpg",
@@ -375,13 +375,13 @@
       "discount": 20,
       "rating": 4.8,
       "reviews": 8170,
-      "category": "special-offers",
+      "category": "specialOffers",
       "description": "Samsung Galaxy Smartphone delivers a premium mobile experience with a high-quality display, powerful performance, and advanced camera system. It is currently available with a 20% discount, making it an excellent choice for everyday use."
     }
   ],
   "appliances": [
     {
-      "id": "29",
+      "id": "app-01",
       "title": "Black+Decker Digital Air Fryer - 5.5L",
       "firstImage": "/images/products/kitchen/k1.jpg",
       "secondImage": "/images/products/kitchen/k1.jpg",
@@ -394,7 +394,7 @@
       "description": "Black+Decker Digital Air Fryer features a large 5.5L capacity, perfect for healthy frying with 90% less fat. Its digital touch control makes cooking your favorite meals easier than ever."
     },
     {
-      "id": "30",
+      "id": "app-02",
       "title": "Fresh Electric Kettle - 1.7L Black",
       "firstImage": "/images/products/kitchen/k2.jpg",
       "secondImage": "/images/products/kitchen/k2.jpg",
@@ -407,7 +407,7 @@
       "description": "Boil water quickly and safely with the Fresh Electric Kettle. Featuring a 1.7L capacity, automatic shut-off, and a sleek black finish to match any modern kitchen."
     },
     {
-      "id": "31",
+      "id": "app-03",
       "title": "Jamaky Espresso & Cappuccino Coffee Maker",
       "firstImage": "/images/products/kitchen/k3.jpg",
       "secondImage": "/images/products/kitchen/k3.jpg",
@@ -420,7 +420,7 @@
       "description": "Enjoy barista-quality coffee at home with the Jamaky 1200W Espresso Maker. High-pressure pump ensures rich crema for every cup of espresso or cappuccino."
     },
     {
-      "id": "32",
+      "id": "app-04",
       "title": "Mienta Turkish Immersion Blender Set - 1000W",
       "firstImage": "/images/products/kitchen/k4.jpg",
       "secondImage": "/images/products/kitchen/k4.jpg",
@@ -433,7 +433,7 @@
       "description": "A powerful 1000W immersion blender from Mienta. This versatile set includes a chopper and whisk, making it your go-to tool for soups, sauces, and smoothies."
     },
     {
-      "id": "33",
+      "id": "app-05",
       "title": "Kenwood Microwave With Grill - 42L",
       "firstImage": "/images/products/kitchen/k5.jpg",
       "secondImage": "/images/products/kitchen/k5.jpg",
@@ -446,7 +446,7 @@
       "description": "Kenwood 42L Microwave offers massive capacity with a built-in grill feature. Its digital display and precise power levels provide professional results for heating and browning."
     },
     {
-      "id": "34",
+      "id": "app-06",
       "title": "Kenwood 2-Slice Bread Toaster 900W",
       "firstImage": "/images/products/kitchen/k6.jpg",
       "secondImage": "/images/products/kitchen/k6.jpg",
@@ -459,7 +459,7 @@
       "description": "Start your morning with perfectly toasted bread. The Kenwood 2-Slice Toaster features adjustable browning control and a stylish silver finish."
     },
     {
-      "id": "35",
+      "id": "app-07",
       "title": "Braun Pureease Food Processor 800W",
       "firstImage": "/images/products/kitchen/k7.jpg",
       "secondImage": "/images/products/kitchen/k7.jpg",
@@ -472,7 +472,7 @@
       "description": "Braun Pureease Food Processor makes food prep simple. 800W power combined with various attachments allows you to chop, slice, and blend in seconds."
     },
     {
-      "id": "36",
+      "id": "app-08",
       "title": "Black & White Stand Mixer - Large Capacity",
       "firstImage": "/images/products/kitchen/k8.jpg",
       "secondImage": "/images/products/kitchen/k8.jpg",
@@ -485,7 +485,7 @@
       "description": "The Black & White Stand Mixer is every baker's dream. Multiple sizes and speeds ensure perfect dough and batter consistency for all your baking projects."
     },
     {
-      "id": "37",
+      "id": "app-09",
       "title": "Arshia Digital Rice Cooker - Large",
       "firstImage": "/images/products/kitchen/k9.jpg",
       "secondImage": "/images/products/kitchen/k9.jpg",
@@ -498,7 +498,7 @@
       "description": "Get perfect rice every time with Arshia Digital Rice Cooker. Its advanced heating technology ensures fluffy rice without burning, plus a warm-keep function."
     },
     {
-      "id": "38",
+      "id": "app-10",
       "title": "Kenwood Centrifugal Fruit Juicer 800W",
       "firstImage": "/images/products/kitchen/k10.jpg",
       "secondImage": "/images/products/kitchen/k10.jpg",
@@ -511,7 +511,7 @@
       "description": "Extract every drop of nutrients with the Kenwood 800W Juicer. Its centrifugal power handles whole fruits with ease for fresh, healthy juice daily."
     },
     {
-      "id": "39",
+      "id": "app-11",
       "title": "Kenwood Healthy Electric Grill 2000W",
       "firstImage": "/images/products/kitchen/k11.jpg",
       "secondImage": "/images/products/kitchen/k11.jpg",
@@ -524,7 +524,7 @@
       "description": "Grilled sandwiches and meats made healthy with the Kenwood 2000W Electric Grill. Aluminum coated layers ensure non-stick performance and easy cleaning."
     },
     {
-      "id": "40",
+      "id": "app-12",
       "title": "Digital Electronic Kitchen Scale - 10kg",
       "firstImage": "/images/products/kitchen/k12.jpg",
       "secondImage": "/images/products/kitchen/k12.jpg",
@@ -539,7 +539,7 @@
   ],
   "cookware": [
     {
-      "id": "41",
+      "id": "coo-01",
       "title": "Lazord Granite Pro Cookware Set - 9 Pcs",
       "firstImage": "/images/products/kitchen/k13.jpg",
       "secondImage": "/images/products/kitchen/k13.jpg",
@@ -552,7 +552,7 @@
       "description": "Lazord Granite Pro Set includes 9 essential pieces in an elegant copper finish. This premium non-stick set features various pot sizes (18/20/24/28 cm) and a 28cm frypan, designed for professional cooking results."
     },
     {
-      "id": "42",
+      "id": "coo-02",
       "title": "Al Karnak Non-Stick Frying Pans - 3 Pcs",
       "firstImage": "/images/products/kitchen/k14.jpg",
       "secondImage": "/images/products/kitchen/k14.jpg",
@@ -565,7 +565,7 @@
       "description": "A versatile set of 3 Al Karnak frying pans (18-22-26cm). Features a durable non-stick coating for healthy cooking with minimal oil and easy cleanup."
     },
     {
-      "id": "43",
+      "id": "coo-03",
       "title": "Younsteel Classic 17-Piece Stainless Steel Set",
       "firstImage": "/images/products/kitchen/k15.jpg",
       "secondImage": "/images/products/kitchen/k15.jpg",
@@ -578,7 +578,7 @@
       "description": "The ultimate Younsteel 10/18 stainless steel cookware collection. This massive 17-piece set provides everything a professional kitchen needs, from pots to saucepans, built for a lifetime of heavy use."
     },
     {
-      "id": "44",
+      "id": "coo-04",
       "title": "Kenwood 16-In-1 Electric Pressure Cooker 8L",
       "firstImage": "/images/products/kitchen/k16.jpg",
       "secondImage": "/images/products/kitchen/k16.jpg",
@@ -591,7 +591,7 @@
       "description": "Speed up your cooking with the Kenwood 8L programmable multi-cooker. 16 smart programs allow you to pressure cook, slow cook, and more with maximum safety and efficiency."
     },
     {
-      "id": "45",
+      "id": "coo-05",
       "title": "Professional Kitchen Knife Set - 6 Piece",
       "firstImage": "/images/products/kitchen/k17.jpg",
       "secondImage": "/images/products/kitchen/k17.jpg",
@@ -604,7 +604,7 @@
       "description": "Sharp, rust-resistant, and ergonomic. This 6-piece knife set includes specialized cutters for meat, fruit, and vegetables, plus a dedicated kitchen shear for all your prep needs."
     },
     {
-      "id": "46",
+      "id": "coo-06",
       "title": "Elegant Ceramic Baking Dish Set - 3 Pcs",
       "firstImage": "/images/products/kitchen/k18.jpg",
       "secondImage": "/images/products/kitchen/k18.jpg",
@@ -617,7 +617,7 @@
       "description": "Upgrade your ovenware with this elegant cream ceramic set. Ideal for lasagna and casseroles, these deep pans offer great capacity and beautiful presentation for your dinner table."
     },
     {
-      "id": "47",
+      "id": "coo-07",
       "title": "AREXOL Non-Stick Wok Pan with Lid - 30cm",
       "firstImage": "/images/products/kitchen/k19.jpg",
       "secondImage": "/images/products/kitchen/k19.jpg",
@@ -630,7 +630,7 @@
       "description": "The AREXOL 30cm Wok is perfect for stir-frying and healthy cooking. Features an ergonomic non-slip handle and a heat-resistant glass lid for precision temperature control."
     },
     {
-      "id": "48",
+      "id": "coo-08",
       "title": "YBOBK HOME Silicone Utensils Set - 12 Pcs",
       "firstImage": "/images/products/kitchen/k20.jpg",
       "secondImage": "/images/products/kitchen/k20.jpg",
@@ -643,7 +643,7 @@
       "description": "Protect your non-stick pans with this 12-piece silicone utensil set. Heat-resistant and BPA-free with elegant wooden handles, providing both style and functionality to your kitchen."
     },
     {
-      "id": "49",
+      "id": "coo-09",
       "title": "Non-Stick Pizza Baking Pans - Set of 3",
       "firstImage": "/images/products/kitchen/k21.jpg",
       "secondImage": "/images/products/kitchen/k21.jpg",
@@ -656,7 +656,7 @@
       "description": "Perfect for pizza lovers! This set includes 3 sizes of black stainless steel pans with a premium non-stick coating for easy release and perfectly crispy crusts."
     },
     {
-      "id": "50",
+      "id": "coo-10",
       "title": "Heavy-Duty Bamboo Wood Cutting Board",
       "firstImage": "/images/products/kitchen/k22.jpg",
       "secondImage": "/images/products/kitchen/k22.jpg",
@@ -669,7 +669,7 @@
       "description": "Durable and thick, this bamboo cutting board features a juice groove to keep your counters clean. Perfect for slicing meats, vegetables, or even as a charcuterie serving tray."
     },
     {
-      "id": "51",
+      "id": "coo-11",
       "title": "Complete Spice Rack Set - 18 Glass Jars",
       "firstImage": "/images/products/kitchen/k23.jpg",
       "secondImage": "/images/products/kitchen/k23.jpg",
@@ -682,7 +682,7 @@
       "description": "Organize your pantry like a pro. This 360-degree rotating spice rack includes 18 glass jars with shaker lids, pre-printed labels, and a cleaning brush set."
     },
     {
-      "id": "52",
+      "id": "coo-12",
       "title": "Generic Cast Iron Skillet with Handle - 25cm",
       "firstImage": "/images/products/kitchen/k24.jpg",
       "secondImage": "/images/products/kitchen/k24.jpg",
@@ -697,7 +697,7 @@
   ],
   "clothing": [
     {
-      "id": "53",
+      "id": "clo-01",
       "title": "Nileton Relax Fit Cotton T-shirt - Black",
       "firstImage": "/images/products/men/men1.jpg",
       "secondImage": "/images/products/men/men1.jpg",
@@ -710,7 +710,7 @@
       "description": "Premium cotton crew neck t-shirt from Nileton. Featuring a relaxed fit and soft breathable fabric, perfect for everyday comfort and casual styling."
     },
     {
-      "id": "54",
+      "id": "clo-02",
       "title": "Classic Burgundy Polo T-Shirt - Slim Fit",
       "firstImage": "/images/products/men/men2.jpg",
       "secondImage": "/images/products/men/men2.jpg",
@@ -723,7 +723,7 @@
       "description": "Essential short-sleeve polo shirt in a sophisticated burgundy color. Made from soft cotton-pique fabric for a comfortable and structured fit."
     },
     {
-      "id": "55",
+      "id": "clo-03",
       "title": "American Eagle Slim Fit Oxford Shirt",
       "firstImage": "/images/products/men/men3.jpg",
       "secondImage": "/images/products/men/men3.jpg",
@@ -736,7 +736,7 @@
       "description": "Authentic American Eagle Oxford button-up shirt. A versatile slim-fit design that transitions perfectly from office hours to evening outings."
     },
     {
-      "id": "56",
+      "id": "clo-04",
       "title": "White Rabbit Ripped Detail Denim Jacket",
       "firstImage": "/images/products/men/men4.jpg",
       "secondImage": "/images/products/men/men4.jpg",
@@ -749,7 +749,7 @@
       "description": "A rugged denim jacket from White Rabbit with stylish ripped shoulder details. A classic addition to any streetwear wardrobe."
     },
     {
-      "id": "57",
+      "id": "clo-05",
       "title": "Miza Streetwear Casual Cotton Hoodie",
       "firstImage": "/images/products/men/men5.jpg",
       "secondImage": "/images/products/men/men5.jpg",
@@ -762,7 +762,7 @@
       "description": "Comfortable cotton hoodie from Miza with a unique black graphic print. Designed for those who value both style and coziness during winter."
     },
     {
-      "id": "58",
+      "id": "clo-06",
       "title": "American Eagle EasyFlex Slim Straight Jean",
       "firstImage": "/images/products/men/men6.jpg",
       "secondImage": "/images/products/men/men6.jpg",
@@ -775,7 +775,7 @@
       "description": "High-performance jeans from American Eagle featuring EasyFlex technology and TENCEL fibers for ultimate comfort and durability."
     },
     {
-      "id": "59",
+      "id": "clo-07",
       "title": "White Eagle Premium Classic Chino Pants",
       "firstImage": "/images/products/men/men7.jpg",
       "secondImage": "/images/products/men/men7.jpg",
@@ -788,7 +788,7 @@
       "description": "Elegant beige chino pants by White Eagle. A timeless classic that provides a smart-casual look for various occasions."
     },
     {
-      "id": "60",
+      "id": "clo-08",
       "title": "Genuine Leather Bomber Jacket - Black",
       "firstImage": "/images/products/men/men8.jpg",
       "secondImage": "/images/products/men/men8.jpg",
@@ -801,7 +801,7 @@
       "description": "Luxurious genuine leather bomber jacket featuring a sleek stand collar and lined interior for warmth and premium style."
     },
     {
-      "id": "61",
+      "id": "clo-09",
       "title": "Andora Notched Lapel Casual Blazer",
       "firstImage": "/images/products/men/men9.jpg",
       "secondImage": "/images/products/men/men9.jpg",
@@ -814,7 +814,7 @@
       "description": "Andora's all-season casual blazer in beige. Features a modern notched lapel, perfect for layering over t-shirts or formal shirts."
     },
     {
-      "id": "62",
+      "id": "clo-10",
       "title": "American Eagle Linen-Blend Poolside Shirt",
       "firstImage": "/images/products/men/men10.jpg",
       "secondImage": "/images/products/men/men10.jpg",
@@ -827,7 +827,7 @@
       "description": "Lightweight linen-blend shirt from American Eagle. Designed for poolside relaxation and hot summer days with maximum breathability."
     },
     {
-      "id": "63",
+      "id": "clo-11",
       "title": "American Eagle Athletic Loose Cargo Jean",
       "firstImage": "/images/products/men/men11.jpg",
       "secondImage": "/images/products/men/men11.jpg",
@@ -840,7 +840,7 @@
       "description": "Trendy cargo-style jeans with an athletic loose fit. Features multiple utility pockets and a rugged 'Dark and Stormy' wash."
     },
     {
-      "id": "64",
+      "id": "clo-12",
       "title": "Pavone Lightweight Winter Puffer Jacket",
       "firstImage": "/images/products/men/men12.jpg",
       "secondImage": "/images/products/men/men12.jpg",
@@ -855,7 +855,7 @@
   ],
   "shoes": [
     {
-      "id": "65",
+      "id": "shs-01",
       "title": "Testa Toro M3 Premium Suede Sneakers - Navy",
       "firstImage": "/images/products/men/men13.jpg",
       "secondImage": "/images/products/men/men13.jpg",
@@ -868,7 +868,7 @@
       "description": "Testa Toro M3 offers a perfect blend of style and comfort. These premium suede sneakers feature a classic navy blue finish and a cushioned sole for comfortable everyday wear."
     },
     {
-      "id": "66",
+      "id": "shs-02",
       "title": "TOBAKO Casual Leather Half Boots - Navy",
       "firstImage": "/images/products/men/men14.jpg",
       "secondImage": "/images/products/men/men14.jpg",
@@ -881,7 +881,7 @@
       "description": "Stylish and practical, these Tobako half boots are crafted from casual leather. The navy and tan color combination makes them a versatile choice for both jeans and chinos."
     },
     {
-      "id": "67",
+      "id": "shs-03",
       "title": "Desert Store Minimalist White Lace-Up Sneakers",
       "firstImage": "/images/products/men/men15.jpg",
       "secondImage": "/images/products/men/men15.jpg",
@@ -894,7 +894,7 @@
       "description": "Upgrade your street style with these minimalist side-embroidered white sneakers. Featuring a clean lace-up design and a flat durable sole, they are a must-have for every modern wardrobe."
     },
     {
-      "id": "68",
+      "id": "shs-04",
       "title": "VINITTO Athletic Reflective Running Shoes",
       "firstImage": "/images/products/men/men16.jpg",
       "secondImage": "/images/products/men/men16.jpg",
@@ -907,7 +907,7 @@
       "description": "Perform your best with Vinitto athletic running shoes. Designed with breathable black mesh and reflective elements for safety, these sneakers provide a textured rubber sole for maximum grip."
     },
     {
-      "id": "69",
+      "id": "shs-05",
       "title": "Shamwazit Men's Leather Lace-Up Oxford Shoes",
       "firstImage": "/images/products/men/men17.jpg",
       "secondImage": "/images/products/men/men17.jpg",
@@ -920,7 +920,7 @@
       "description": "Handcrafted for elegance, the Shamwazit Oxford shoes feature premium black leather and a comfortable semi-formal design. Ideal for business meetings and special occasions."
     },
     {
-      "id": "70",
+      "id": "shs-06",
       "title": "Now Shoes Classic Slip-On Leather Loafers",
       "firstImage": "/images/products/men/men18.jpg",
       "secondImage": "/images/products/men/men18.jpg",
@@ -933,7 +933,7 @@
       "description": "Experience all-day comfort with Now Shoes leather loafers. A classic slip-on design that combines business formality with everyday ease, featuring a durable AK6 sole."
     },
     {
-      "id": "71",
+      "id": "shs-07",
       "title": "Tujoo Premium Suede Chelsea Boots - Brown",
       "firstImage": "/images/products/men/men19.jpg",
       "secondImage": "/images/products/men/men19.jpg",
@@ -946,7 +946,7 @@
       "description": "Tujoo's Suede Chelsea Boots are the epitome of sophisticated casual wear. The rich brown suede and elastic side panels provide a snug fit and a timeless look."
     },
     {
-      "id": "72",
+      "id": "shs-08",
       "title": "Genuine Casual Slip-On Canvas Sneakers",
       "firstImage": "/images/products/men/men20.jpg",
       "secondImage": "/images/products/men/men20.jpg",
@@ -959,7 +959,7 @@
       "description": "Lightweight and easy-to-wear, these genuine canvas slip-ons in gray are perfect for quick errands and casual walks. Designed for maximum breathability during summer."
     },
     {
-      "id": "73",
+      "id": "shs-09",
       "title": "ROMBA SPORT Classic Brogue Leather Shoes",
       "firstImage": "/images/products/men/men21.jpg",
       "secondImage": "/images/products/men/men21.jpg",
@@ -972,7 +972,7 @@
       "description": "Romba Sport brings you classic brogue styling in a comfortable formal shoe. Made from durable Havan-colored leather, these shoes are perfect for the office or formal events."
     },
     {
-      "id": "74",
+      "id": "shs-10",
       "title": "Vbranda Modern Sleek High-Top Sneakers",
       "firstImage": "/images/products/men/men22.jpg",
       "secondImage": "/images/products/men/men22.jpg",
@@ -985,7 +985,7 @@
       "description": "Vbranda SN-19 high-top sneakers feature a sleek dark green and white design. Modern, bold, and built for urban adventures with a durable white sole."
     },
     {
-      "id": "75",
+      "id": "shs-11",
       "title": "Men's Shock Absorption Casual Sneakers - Navy",
       "firstImage": "/images/products/men/men23.jpg",
       "secondImage": "/images/products/men/men23.jpg",
@@ -998,7 +998,7 @@
       "description": "Built for comfort and performance, these casual sneakers feature advanced shock absorption technology and breathable materials for a superior walking experience."
     },
     {
-      "id": "76",
+      "id": "shs-12",
       "title": "L800 Classic Suede Ankle Boots - Dark Brown",
       "firstImage": "/images/products/men/men24.jpg",
       "secondImage": "/images/products/men/men24.jpg",
@@ -1013,7 +1013,7 @@
   ],
   "dresses": [
     {
-      "id": "77",
+      "id": "dre-01",
       "title": "American Eagle Long-Sleeve Embroidered Midi Dress",
       "firstImage": "/images/products/women/women1.jpg",
       "secondImage": "/images/products/women/women1.jpg",
@@ -1026,7 +1026,7 @@
       "description": "Exquisite embroidered midi dress from American Eagle. Featuring long sleeves and a beautiful tiered design in cream, perfect for a bohemian chic look."
     },
     {
-      "id": "78",
+      "id": "dre-02",
       "title": "Elegant Burgundy Satin Evening Gown",
       "firstImage": "/images/products/women/women2.jpg",
       "secondImage": "/images/products/women/women2.jpg",
@@ -1039,7 +1039,7 @@
       "description": "Make an entrance with this stunning floor-length burgundy satin gown. Features a sophisticated ruched design and bow cap sleeves for your special occasions."
     },
     {
-      "id": "79",
+      "id": "dre-03",
       "title": "Luxurious Silk Button-Down Casual Blouse",
       "firstImage": "/images/products/women/women3.jpg",
       "secondImage": "/images/products/women/women3.jpg",
@@ -1052,7 +1052,7 @@
       "description": "Elevate your daily style with this breathable silk blouse. Perfect for work or parties, offering an elegant emerald green finish and a comfortable chic fit."
     },
     {
-      "id": "80",
+      "id": "dre-04",
       "title": "Teal Suede High-Waist Pleated Skirt",
       "firstImage": "/images/products/women/women4.jpg",
       "secondImage": "/images/products/women/women4.jpg",
@@ -1065,7 +1065,7 @@
       "description": "A trendy teal suede skirt featuring sharp pleats and a flattering high-waist cut. A versatile piece that pairs perfectly with boots or heels."
     },
     {
-      "id": "81",
+      "id": "dre-05",
       "title": "Mosca Long Linen Shirt Dress - Royal Blue",
       "firstImage": "/images/products/women/women5.jpg",
       "secondImage": "/images/products/women/women5.jpg",
@@ -1078,7 +1078,7 @@
       "description": "Casual comfort meets style with the Mosca linen shirt dress. Features classic long sleeves and a vibrant royal blue color, ideal for summer days."
     },
     {
-      "id": "82",
+      "id": "dre-06",
       "title": "Grey Wool Trench Coat with Belt",
       "firstImage": "/images/products/women/women6.jpg",
       "secondImage": "/images/products/women/women6.jpg",
@@ -1091,7 +1091,7 @@
       "description": "Stay warm in style with this 2025 grey wool trench coat. Includes a matching belt for a tailored fit and a classic silhouette for the winter season."
     },
     {
-      "id": "83",
+      "id": "dre-07",
       "title": "American Eagle Super High-Waisted Wide-Leg Jean",
       "firstImage": "/images/products/women/women7.jpg",
       "secondImage": "/images/products/women/women7.jpg",
@@ -1104,7 +1104,7 @@
       "description": "Premium American Eagle baggy wide-leg ankle jeans. Designed with a super high-waisted fit in a charcoal wash for ultimate comfort and modern style."
     },
     {
-      "id": "84",
+      "id": "dre-08",
       "title": "Cable Knit Turtleneck Long Sleeve Sweater",
       "firstImage": "/images/products/women/women8.jpg",
       "secondImage": "/images/products/women/women8.jpg",
@@ -1117,7 +1117,7 @@
       "description": "Cozy and chic beige turtleneck sweater. The classic cable knit pattern provides a timeless look while keeping you warm during chilly days."
     },
     {
-      "id": "85",
+      "id": "dre-09",
       "title": "Multicolored Printed Silk Satin Wrap Dress",
       "firstImage": "/images/products/women/women9.jpg",
       "secondImage": "/images/products/women/women9.jpg",
@@ -1130,7 +1130,7 @@
       "description": "Luxurious printed silk satin wrap dress. Perfect for upscale events, featuring a flattering fit and a vibrant multicolored pattern for a sophisticated look."
     },
     {
-      "id": "86",
+      "id": "dre-10",
       "title": "Oversized Graphic T-Shirt - Emoji Print",
       "firstImage": "/images/products/women/women10.jpg",
       "secondImage": "/images/products/women/women10.jpg",
@@ -1143,7 +1143,7 @@
       "description": "Express yourself with this oversized graphic white tee. Featuring a fun emoji print, it offers a relaxed streetwear vibe for your casual outfits."
     },
     {
-      "id": "87",
+      "id": "dre-11",
       "title": "Professional Tailored Black Blazer Coat",
       "firstImage": "/images/products/women/women11.jpg",
       "secondImage": "/images/products/women/women11.jpg",
@@ -1156,7 +1156,7 @@
       "description": "A must-have for the office. This long black blazer features a tailored fit and a professional business-casual style that pairs well with any outfit."
     },
     {
-      "id": "88",
+      "id": "dre-12",
       "title": "American Eagle Tiered Embroidered Dress - Blue",
       "firstImage": "/images/products/women/women12.jpg",
       "secondImage": "/images/products/women/women12.jpg",
@@ -1171,7 +1171,7 @@
   ],
   "handbags": [
     {
-      "id": "89",
+      "id": "han-01",
       "title": "Kanaz 4-Piece Premium Faux Leather Handbag Set",
       "firstImage": "/images/products/women/women13.jpg",
       "secondImage": "/images/products/women/women13.jpg",
@@ -1184,7 +1184,7 @@
       "description": "The ultimate Misha Four collection by Kanaz. This 4-piece set includes a tote, crossbody bag, clutch, and mini purse, providing a timeless fashion solution for work and travel."
     },
     {
-      "id": "90",
+      "id": "han-02",
       "title": "Luxury Corduroy Quilted Crossbody & Shoulder Bag",
       "firstImage": "/images/products/women/women14.jpg",
       "secondImage": "/images/products/women/women14.jpg",
@@ -1197,7 +1197,7 @@
       "description": "Stylish and functional corduroy hobo bag in camel. Featuring multiple pockets and a large capacity, it's the perfect lightweight choice for college or daily urban use."
     },
     {
-      "id": "91",
+      "id": "han-03",
       "title": "Elegant Croc-Patterned Leather Handbag & Clutch",
       "firstImage": "/images/products/women/women15.jpg",
       "secondImage": "/images/products/women/women15.jpg",
@@ -1210,7 +1210,7 @@
       "description": "Sophisticated red leather handbag with a contemporary croc-pattern. This compact set includes a matching clutch, ideal for evening wear and making a bold fashion statement."
     },
     {
-      "id": "92",
+      "id": "han-04",
       "title": "RG Faux Leather Mini Convertible Backpack",
       "firstImage": "/images/products/women/women16.jpg",
       "secondImage": "/images/products/women/women16.jpg",
@@ -1223,7 +1223,7 @@
       "description": "Versatile mini backpack from RG. Crafted from premium faux leather with stylish stud details, this bag easily converts to a crossbody for hands-free convenience."
     },
     {
-      "id": "93",
+      "id": "han-05",
       "title": "Large Colorblock Faux Leather Zip-Around Wallet",
       "firstImage": "/images/products/women/women17.jpg",
       "secondImage": "/images/products/women/women17.jpg",
@@ -1236,7 +1236,7 @@
       "description": "Organize your essentials in style with this 'Forever Young' colorblock wallet. Featuring eight card slots and a dedicated phone holder, it's as practical as it is chic."
     },
     {
-      "id": "94",
+      "id": "han-06",
       "title": "Kate Spade Trendy Cat-Eye Sunglasses",
       "firstImage": "/images/products/women/women18.jpg",
       "secondImage": "/images/products/women/women18.jpg",
@@ -1249,7 +1249,7 @@
       "description": "Luxury eyewear at its best. These 55mm cat-eye sunglasses by Kate Spade feature a brown gradient lens and an elegant metal frame for a glamorous summer look."
     },
     {
-      "id": "95",
+      "id": "han-07",
       "title": "Luxury Crystal Flower Watch - Rose Gold Tone",
       "firstImage": "/images/products/women/women19.jpg",
       "secondImage": "/images/products/women/women19.jpg",
@@ -1262,7 +1262,7 @@
       "description": "A masterpiece for your wrist. This luxury watch features a dazzling crystal flower dial, rose gold-tone bezel, and a comfortable burgundy silicone band."
     },
     {
-      "id": "96",
+      "id": "han-08",
       "title": "Elegant Silk Hair Scarf - Navy Blue Bow Design",
       "firstImage": "/images/products/women/women20.jpg",
       "secondImage": "/images/products/women/women20.jpg",
@@ -1275,7 +1275,7 @@
       "description": "Add a touch of vintage charm with this elegant silk scarf. Featuring a classic navy blue pattern and a decorative bow design, it's the perfect accessory for any hairstyle."
     },
     {
-      "id": "97",
+      "id": "han-09",
       "title": "Tewiky 14k Gold Plated Diamond Choker Necklace",
       "firstImage": "/images/products/women/women21.jpg",
       "secondImage": "/images/products/women/women21.jpg",
@@ -1288,7 +1288,7 @@
       "description": "Dainty and sophisticated, this 14k gold-plated lariat necklace from Tewiky features a simple CZ diamond pendant. A perfect gift that adds a sparkle to any outfit."
     },
     {
-      "id": "98",
+      "id": "han-10",
       "title": "Wide Brim Summer Sun Hat - UV Protection",
       "firstImage": "/images/products/women/women22.jpg",
       "secondImage": "/images/products/women/women22.jpg",
@@ -1301,7 +1301,7 @@
       "description": "Stay protected under the sun with this wide-brim polyester straw hat. Features vibrant summer graphics and daisy embroidery for a playful beach-ready style."
     },
     {
-      "id": "99",
+      "id": "han-11",
       "title": "Egyptian Art Canvas Tote - Historical Print",
       "firstImage": "/images/products/women/women23.jpg",
       "secondImage": "/images/products/women/women23.jpg",
@@ -1314,7 +1314,7 @@
       "description": "A cultural statement bag. This quilted cotton tote features a high-quality print of the Pyramids and ancient hieroglyphics, combining history with modern utility."
     },
     {
-      "id": "100",
+      "id": "han-12",
       "title": "Flat Opening Travel Makeup Bag - PU Leather",
       "firstImage": "/images/products/women/women24.jpg",
       "secondImage": "/images/products/women/women24.jpg",
@@ -1596,264 +1596,366 @@
       "id": "USR-002",
       "fullName": "Ahmed Ali",
       "email": "ahmed.ali@mail.com",
-      "phone": "+201000000002",
+      "password": "password123",
       "role": "admin",
       "joinDate": "2024-05-10T00:00:00Z",
       "avatar": "/images/avatar/default.png",
       "status": "active",
-      "totalOrders": 1
+      "totalOrders": 1,
+      "address": {
+        "city": "Cairo",
+        "area": "Nasr City",
+        "street": "Abbas El Akkad St.",
+        "phone": "+201000000002"
+      }
     },
     {
       "id": "USR-003",
-      "fullName": "Sara Mahmoud",
+      "fullName": "Sara Mahmoud Hassan",
       "email": "sara.m@test.com",
+      "password": "password123",
       "phone": "+201200000003",
       "role": "customer",
       "joinDate": "2024-08-22T00:00:00Z",
       "avatar": "/images/avatar/default.png",
       "status": "active",
-      "totalOrders": 5
+      "totalOrders": 5,
+      "address": {
+        "city": "Alexandria",
+        "area": "Smouha Yes",
+        "street": "Victor Emmanuel St.",
+        "phone": "+201200000003"
+      }
     },
     {
       "id": "USR-004",
       "fullName": "Mona Adel",
       "email": "mona.design@example.com",
-      "phone": "+201500000004",
+      "password": "password123",
       "role": "customer",
       "joinDate": "2024-09-01T00:00:00Z",
       "avatar": "/images/avatar/default.png",
       "status": "inactive",
-      "totalOrders": 2
+      "totalOrders": 2,
+      "address": null
     },
     {
       "id": "USR-005",
       "fullName": "Youssef Tarek",
       "email": "y.tarek@company.com",
-      "phone": "+201100000005",
+      "password": "password123",
       "role": "customer",
       "joinDate": "2024-10-05T00:00:00Z",
       "avatar": "/images/avatar/default.png",
       "status": "active",
-      "totalOrders": 8
-    },
-    {
-      "id": "USR-006",
-      "fullName": "Omar Khaled",
-      "email": "omar.khaled@mail.com",
-      "phone": "+201200000006",
-      "role": "customer",
-      "joinDate": "2024-10-15T00:00:00Z",
-      "avatar": "/images/avatar/default.png",
-      "status": "active",
-      "totalOrders": 3
-    },
-    {
-      "id": "USR-007",
-      "fullName": "Nour Hassan",
-      "email": "nour.hassan@mail.com",
-      "phone": "+201200000007",
-      "role": "customer",
-      "joinDate": "2024-11-01T00:00:00Z",
-      "avatar": "/images/avatar/default.png",
-      "status": "active",
-      "totalOrders": 6
-    },
-    {
-      "id": "USR-008",
-      "fullName": "Karim Mostafa",
-      "email": "karim.mostafa@mail.com",
-      "phone": "+201200000008",
-      "role": "customer",
-      "joinDate": "2024-11-10T00:00:00Z",
-      "avatar": "/images/avatar/default.png",
-      "status": "inactive",
-      "totalOrders": 0
-    },
-    {
-      "id": "USR-009",
-      "fullName": "Aya Ibrahim",
-      "email": "aya.ibrahim@mail.com",
-      "phone": "+201200000009",
-      "role": "customer",
-      "joinDate": "2024-11-18T00:00:00Z",
-      "avatar": "/images/avatar/default.png",
-      "status": "active",
-      "totalOrders": 4
-    },
-    {
-      "id": "USR-010",
-      "fullName": "Mahmoud Samir",
-      "email": "mahmoud.samir@mail.com",
-      "phone": "+201200000010",
-      "role": "customer",
-      "joinDate": "2024-12-01T00:00:00Z",
-      "avatar": "/images/avatar/default.png",
-      "status": "active",
-      "totalOrders": 7
-    },
-    {
-      "id": "USR-012",
-      "fullName": "Ali Hany",
-      "email": "ali.hany@mail.com",
-      "phone": "+201200000012",
-      "role": "customer",
-      "joinDate": "2024-12-20T00:00:00Z",
-      "avatar": "/images/avatar/default.png",
-      "status": "active",
-      "totalOrders": 9
-    },
-    {
-      "id": "USR-013",
-      "fullName": "Dina Fathy",
-      "email": "dina.fathy@mail.com",
-      "phone": "+201200000013",
-      "role": "customer",
-      "joinDate": "2025-01-05T00:00:00Z",
-      "avatar": "/images/avatar/default.png",
-      "status": "active",
-      "totalOrders": 5
-    },
-    {
-      "id": "USR-014",
-      "fullName": "Hassan Adel",
-      "email": "hassan.adel@mail.com",
-      "phone": "+201200000014",
-      "role": "customer",
-      "joinDate": "2025-01-15T00:00:00Z",
-      "avatar": "/images/avatar/default.png",
-      "status": "inactive",
-      "totalOrders": 1
+      "totalOrders": 8,
+      "address": {
+        "city": "Cairo",
+        "area": "Maadi",
+        "street": "Road 9",
+        "phone": "+201100000005"
+      }
     },
     {
       "id": "USR-015",
       "fullName": "Fatma Mohamed",
       "email": "fatma.mohamed@mail.com",
-      "phone": "+201200000015",
+      "password": "password123",
       "role": "customer",
       "joinDate": "2025-01-25T00:00:00Z",
       "avatar": "/images/avatar/default.png",
       "status": "active",
-      "totalOrders": 10
+      "totalOrders": 1,
+      "address": {
+        "city": "Giza",
+        "area": "Haram",
+        "street": "Faisal St.",
+        "phone": "+201200000015"
+      }
     },
     {
-      "id": "d4cd",
+      "id": "USR-016",
       "fullName": "Hossam Hassan",
       "email": "ha2ghossam10@gmail.com",
-      "password": "hossam1027",
-      "confirmPassword": "hossam1027",
+      "password": "password123",
       "role": "admin",
       "joinDate": "2026-04-07T14:55:07.918Z",
-      "avatar": "/images/avatar/default.png",
+      "avatar": "/images/avatar/avatar1.png",
       "status": "active",
-      "totalOrders": 0
+      "totalOrders": 1,
+      "address": {
+        "city": "Cairo",
+        "area": "Al Rehab",
+        "street": "Gate 6, Villa 12",
+        "phone": "+201111182665"
+      }
     },
     {
-      "id": "e4d5",
+      "id": "USR-017",
       "fullName": "Hossam",
       "email": "ha2ghossam@gmail.com",
       "password": "11111111",
-      "confirmPassword": "11111111",
       "role": "customer",
       "joinDate": "2026-04-08T08:23:27.300Z",
       "avatar": "/images/avatar/default.png",
       "status": "active",
-      "totalOrders": 0
+      "totalOrders": 0,
+      "address": null
     }
   ],
   "orders": [
     {
-      "id": "ORD-7721",
-      "customerName": "Hossam Gouda",
-      "email": "hossam@baghdad.com",
-      "date": "2025-01-27T16:39:53Z",
-      "shippingAddress": "Al Rehab 1, Cairo, Egypt",
-      "itemsCount": 2,
-      "totalAmount": 4850,
-      "paymentMethod": "Credit Card",
-      "status": "Delivered",
-      "items": [
-        {
-          "productId": "1",
-          "title": "HP EliteBook 2nd Gen",
-          "price": 750,
-          "qty": 1
-        },
-        {
-          "productId": "29",
-          "title": "Black+Decker Air Fryer",
-          "price": 4100,
-          "qty": 1
-        }
-      ]
-    },
-    {
-      "id": "ORD-8842",
+      "id": "ORD-7001",
+      "userId": "USR-002",
       "customerName": "Ahmed Ali",
       "email": "ahmed.ali@mail.com",
-      "date": "2025-02-10T12:15:00Z",
-      "shippingAddress": "Nasr City, Cairo, Egypt",
-      "itemsCount": 1,
-      "totalAmount": 1250,
-      "paymentMethod": "Cash on Delivery",
-      "status": "Pending",
-      "items": [
+      "orderItems": [
         {
-          "productId": "69",
-          "title": "Shamwazit Oxford Shoes",
-          "price": 1250,
-          "qty": 1
+          "id": "lap-01",
+          "title": "HP EliteBook 2nd Gen",
+          "price": 750,
+          "qty": 1,
+          "image": "/images/products/laptops/l1.jpg"
         }
-      ]
+      ],
+      "shippingAddress": {
+        "city": "Cairo",
+        "area": "Nasr City",
+        "street": "Abbas El Akkad St.",
+        "phone": "+201000000002"
+      },
+      "totalPrice": 750,
+      "paymentMethod": "card",
+      "status": "delivered",
+      "createdAt": "2025-02-10T12:00:00Z"
     },
     {
-      "id": "ORD-9915",
+      "id": "ORD-7002",
+      "userId": "USR-003",
       "customerName": "Sara Mahmoud",
-      "email": "sara.m22@test.com",
-      "date": "2025-02-15T09:00:00Z",
-      "shippingAddress": "Smouha, Alexandria, Egypt",
-      "itemsCount": 3,
-      "totalAmount": 8500,
-      "paymentMethod": "Credit Card",
-      "status": "Shipped",
-      "items": [
+      "email": "sara.m@test.com",
+      "orderItems": [
         {
-          "productId": "3",
-          "title": "Huawei MateBook 14",
-          "price": 800,
-          "qty": 1
-        },
-        {
-          "productId": "77",
-          "title": "American Eagle Dress",
+          "id": "dre-01",
+          "title": "American Eagle Midi Dress",
           "price": 1800,
-          "qty": 1
+          "qty": 1,
+          "image": "/images/products/women/women1.jpg"
         },
         {
-          "productId": "37",
-          "title": "Arshia Rice Cooker",
-          "price": 5900,
-          "qty": 1
+          "id": "app-01",
+          "title": "Air Fryer 5.5L",
+          "price": 4149,
+          "qty": 1,
+          "image": "/images/products/kitchen/k1.jpg"
         }
-      ]
+      ],
+      "shippingAddress": {
+        "city": "Alexandria",
+        "area": "Smouha",
+        "street": "Victor Emmanuel St.",
+        "phone": "+201200000003"
+      },
+      "totalPrice": 5949,
+      "paymentMethod": "card",
+      "status": "shipped",
+      "createdAt": "2025-03-15T15:30:00Z"
     },
     {
-      "id": "ORD-1102",
-      "customerName": "Youssef Tarek",
-      "email": "y.tarek@company.com",
-      "date": "2025-03-01T11:20:00Z",
-      "shippingAddress": "Maadi, Cairo, Egypt",
-      "itemsCount": 1,
-      "totalAmount": 3500,
-      "paymentMethod": "Cash on Delivery",
-      "status": "Cancelled",
-      "items": [
+      "id": "ORD-7003",
+      "userId": "USR-015",
+      "customerName": "Fatma Mohamed",
+      "email": "fatma.mohamed@mail.com",
+      "orderItems": [
         {
-          "productId": "58",
-          "title": "American Eagle Jeans",
-          "price": 3500,
-          "qty": 1
+          "id": "mob-01",
+          "title": "Apple iPhone 13",
+          "price": 800,
+          "qty": 1,
+          "image": "/images/products/mobiles/m1.jpg"
         }
-      ]
+      ],
+      "shippingAddress": {
+        "city": "Giza",
+        "area": "Haram",
+        "street": "Faisal St.",
+        "phone": "+201200000015"
+      },
+      "totalPrice": 800,
+      "paymentMethod": "card",
+      "status": "pending",
+      "createdAt": "2026-04-01T09:00:00Z"
+    },
+    {
+      "id": "ORD-7004",
+      "userId": "USR-016",
+      "customerName": "Hossam Hassan",
+      "email": "ha2ghossam10@gmail.com",
+      "orderItems": [
+        {
+          "id": "aut-001",
+          "title": "Synthetic Motor Oil",
+          "price": 45,
+          "qty": 2,
+          "image": "/images/products/automotive/a1.jpg"
+        }
+      ],
+      "shippingAddress": {
+        "city": "Cairo",
+        "area": "Al Rehab",
+        "street": "Gate 6, Villa 12",
+        "phone": "+201111182665"
+      },
+      "totalPrice": 90,
+      "paymentMethod": "card",
+      "status": "pending",
+      "createdAt": "2026-04-09T10:00:00Z"
+    },
+    {
+      "id": "ORD-7005",
+      "userId": "USR-003",
+      "customerName": "Sara Mahmoud",
+      "email": "sara.m@test.com",
+      "orderItems": [
+        {
+          "id": "off-04",
+          "title": "Samsung Galaxy Smartphone",
+          "price": 550,
+          "qty": 1,
+          "image": "/images/products/special-offers/s7.jpg"
+        }
+      ],
+      "shippingAddress": {
+        "city": "Alexandria",
+        "area": "Smouha",
+        "street": "Victor Emmanuel St.",
+        "phone": "+201200000003"
+      },
+      "totalPrice": 455,
+      "status": "pending",
+      "paymentMethod": "card",
+      "createdAt": "2026-04-12T06:54:09.651Z"
+    },
+    {
+      "id": "ORD-7006",
+      "userId": "USR-003",
+      "customerName": "Sara Mahmoud",
+      "email": "sara.m@test.com",
+      "orderItems": [
+        {
+          "id": "dre-02",
+          "title": "Elegant Burgundy Satin Evening Gown",
+          "price": 2500,
+          "qty": 1,
+          "image": "/images/products/women/women2.jpg"
+        }
+      ],
+      "shippingAddress": {
+        "city": "Alexandria",
+        "area": "Smouha",
+        "street": "Victor Emmanuel St.",
+        "phone": "+201200000003"
+      },
+      "totalPrice": 2515,
+      "status": "pending",
+      "paymentMethod": "card",
+      "createdAt": "2026-04-12T06:58:20.214Z"
+    },
+    {
+      "id": "5a30",
+      "userId": "USR-003",
+      "customerName": "Sara Mahmoud",
+      "email": "sara.m@test.com",
+      "orderItems": [
+        {
+          "id": "lap-02",
+          "title": "Acer Nitro 515-5 Laptop",
+          "firstImage": "/images/products/laptops/l2.jpg",
+          "secondImage": "/images/products/laptops/l2.jpg",
+          "images": ["/images/products/laptops/l2.jpg"],
+          "price": 600,
+          "discount": 0,
+          "rating": 3.8,
+          "reviews": 250,
+          "category": "laptops",
+          "description": "A powerful gaming laptop built with high-performance hardware to handle demanding games and multitasking with ease.",
+          "count": 1
+        }
+      ],
+      "shippingAddress": {
+        "city": "Alexandria",
+        "area": "Smouha",
+        "street": "Victor Emmanuel St.",
+        "phone": "+201200000003"
+      },
+      "totalPrice": 615,
+      "status": "pending",
+      "paymentMethod": "card",
+      "createdAt": "2026-04-12T07:22:28.377Z"
+    },
+    {
+      "id": "11be",
+      "userId": "USR-003",
+      "customerName": "Sara Mahmoud",
+      "email": "sara.m@test.com",
+      "orderItems": [
+        {
+          "id": "sup-003",
+          "title": "Organic Arabica Coffee Beans 250g",
+          "firstImage": "/images/products/supermarket/sup3.jpg",
+          "secondImage": "/images/products/supermarket/sup3.jpg",
+          "images": ["/images/products/supermarket/sup3.jpg"],
+          "price": 15.75,
+          "discount": 10,
+          "rating": 4.9,
+          "reviews": 85,
+          "category": "supermarket",
+          "description": "100% Organic Arabica beans, medium roasted to bring out citrus notes and a smooth chocolate finish.",
+          "count": 1
+        }
+      ],
+      "shippingAddress": {
+        "city": "Alexandria",
+        "area": "Smouha",
+        "street": "Victor Emmanuel St.",
+        "phone": "+201200000003"
+      },
+      "totalPrice": 29.175,
+      "status": "pending",
+      "paymentMethod": "card",
+      "createdAt": "2026-04-12T09:25:19.498Z"
+    },
+    {
+      "id": "45f2",
+      "userId": "USR-003",
+      "customerName": "Sara Mahmoud",
+      "email": "sara.m@test.com",
+      "orderItems": [
+        {
+          "id": "shs-02",
+          "title": "TOBAKO Casual Leather Half Boots - Navy",
+          "firstImage": "/images/products/men/men14.jpg",
+          "secondImage": "/images/products/men/men14.jpg",
+          "images": ["/images/products/men/men14.jpg"],
+          "price": 305,
+          "discount": 0,
+          "rating": 4.2,
+          "reviews": 15,
+          "category": "shoes",
+          "description": "Stylish and practical, these Tobako half boots are crafted from casual leather. The navy and tan color combination makes them a versatile choice for both jeans and chinos.",
+          "count": 1
+        }
+      ],
+      "shippingAddress": {
+        "city": "Alexandria",
+        "area": "Smouha",
+        "street": "Victor Emmanuel St.",
+        "phone": "+201200000003"
+      },
+      "totalPrice": 320,
+      "status": "pending",
+      "paymentMethod": "card",
+      "createdAt": "2026-04-12T09:28:42.946Z"
     }
   ]
 }
