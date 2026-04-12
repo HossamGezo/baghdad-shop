@@ -1,4 +1,6 @@
 // --- Libraries
+import { useEffect } from "react";
+import { useNavigate } from "react-router";
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -6,19 +8,28 @@ import { z } from "zod";
 // --- React Icons
 import { GiWrappingStar } from "react-icons/gi";
 
+// --- Utils
+import { calculateDiscount } from "@utils/calculateDiscount";
+
+// --- RTK
+import { useAppDispatch, useAppSelector } from "@app/hooks";
+import { createOrder } from "@features/orders/ordersSlice";
+import { updateProfile } from "@features/auth/authSlice";
+
 // --- Local Components
 import InputField from "@components/inputs/InputField";
 import CustomButton from "@components/custom-button/CustomButton";
 
 // --- Address Schema
 const AddressSchema = z.object({
-  firstName: z.string().max(21, "First Name must not exceed 21 characters").trim(),
-  lastName: z.string().max(21, "Last Name must not exceed 21 characters").trim(),
-  phoneNumber: z.string().min(11, "Phone Number must be at least 11 digits").trim(),
-  address: z.string().min(50, "Address must be at least 50 characters").trim(),
+  fullName: z.string().max(21, "Name must not exceed 21 characters").trim(),
+  city: z.string().min(3, "City must be at least 3 characters").trim(),
+  area: z.string().min(3, "Area must be at least 3 characters").trim(),
+  street: z.string().min(3, "Street must be at least 3 characters").trim(),
+  phone: z.string().min(11, "Phone Number must be at least 11 digits").trim(),
   cardNumber: z
     .string()
-    .regex(/[0-9\s]{13,19}/, {
+    .regex(/^[0-9\s]{13,19}$/, {
       message: "Card number must be at least 13 digits",
     })
     .trim(),
@@ -27,6 +38,15 @@ type AddressSchemaType = z.infer<typeof AddressSchema>;
 
 // --- Main Component
 const PaymentDetails = () => {
+  // --- React Router
+  const navigate = useNavigate();
+
+  // --- RTK
+  const { user } = useAppSelector((state) => state.auth);
+  const { cart } = useAppSelector((state) => state.cart);
+  const { loading } = useAppSelector((state) => state.orders);
+  const dispatch = useAppDispatch();
+
   // --- Billing Address Hook Form Logic
   const {
     register,
@@ -37,16 +57,51 @@ const PaymentDetails = () => {
     mode: "onBlur",
     resolver: zodResolver(AddressSchema),
     defaultValues: {
-      firstName: "John",
-      lastName: "Doe",
-      phoneNumber: "123-356-789",
-      address: "Cairo / El Rehab",
+      fullName: "",
+      city: "",
+      area: "",
+      street: "",
+      phone: "",
+      cardNumber: "",
     },
   });
 
-  const onSubmit: SubmitHandler<AddressSchemaType> = (data) => {
-    console.log(data);
-    reset();
+  // --- Auto-fill user form data
+  useEffect(() => {
+    if (user)
+      reset({
+        fullName: user.fullName,
+        city: user.address?.city,
+        area: user.address?.area,
+        street: user.address?.street,
+        phone: user.address?.phone,
+      });
+  }, [reset, user]);
+
+  // --- Submit Form
+  const onSubmit: SubmitHandler<AddressSchemaType> = async (data) => {
+    const { cardNumber: _, fullName, ...addressData } = data;
+
+    // --- Calculations
+    const total = cart.reduce((acc, cur) => acc + cur.count * calculateDiscount(cur.price, cur.discount), 0);
+    const fees = 15;
+    const totalPrice = total + fees;
+
+    const orderData = {
+      userId: user?.id || "",
+      customerName: fullName,
+      email: user?.email || "",
+      orderItems: cart,
+      shippingAddress: addressData,
+      totalPrice: totalPrice,
+    };
+
+    const resultAction = await dispatch(createOrder(orderData));
+
+    if (createOrder.fulfilled.match(resultAction)) {
+      dispatch(updateProfile({ fullName, ...addressData }));
+      navigate("/profile/orders");
+    }
   };
 
   // --- Return JSX
@@ -63,42 +118,52 @@ const PaymentDetails = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <InputField
             type="text"
-            name="firstName"
-            placeholder="Enter your first name"
+            name="fullName"
+            placeholder="Enter your name"
             register={register}
-            label="First Name"
-            error={errors.firstName?.message}
-            autoComplete="firstName"
+            label="Full Name"
+            error={errors.fullName?.message}
+            autoComplete="name"
             className="sm:w-full"
           />
           <InputField
             type="text"
-            name="lastName"
-            placeholder="Enter your last name"
+            name="city"
+            placeholder="Enter your city"
             register={register}
-            label="Last Name"
-            error={errors.lastName?.message}
-            autoComplete="lastName"
+            label="City"
+            error={errors.city?.message}
+            autoComplete="address-level1"
+            className="sm:w-full"
+          />
+          <InputField
+            type="text"
+            name="area"
+            placeholder="Enter your area"
+            register={register}
+            label="Area"
+            error={errors.area?.message}
+            autoComplete="address-level2"
+            className="sm:w-full"
+          />
+          <InputField
+            type="text"
+            name="street"
+            placeholder="Enter your street"
+            register={register}
+            label="Street"
+            error={errors.street?.message}
+            autoComplete="address-level3"
             className="sm:w-full"
           />
           <InputField
             type="tel"
-            name="phoneNumber"
+            name="phone"
             placeholder="Enter your phone number"
             register={register}
             label="Phone Number"
-            error={errors.phoneNumber?.message}
-            autoComplete="phoneNumber"
-            className="sm:w-full"
-          />
-          <InputField
-            type="text"
-            name="address"
-            placeholder="Enter your address"
-            register={register}
-            label="Address"
-            error={errors.address?.message}
-            autoComplete="address"
+            error={errors.phone?.message}
+            autoComplete="mobile tel"
             className="sm:w-full"
           />
         </div>
@@ -124,8 +189,9 @@ const PaymentDetails = () => {
             error={errors.cardNumber?.message}
             autoComplete="cc-number"
             className="sm:w-full"
+            maxLength={19}
           />
-          <CustomButton type="submit" aria-label="Save Changes" className="px-5 ml-auto mt-5">
+          <CustomButton isLoading={loading} type="submit" aria-label="Save Changes" className="px-5 ml-auto mt-5">
             Place In Order
           </CustomButton>
         </div>
