@@ -16,6 +16,7 @@ import { logout } from "@features/auth/authSlice";
 
 // --- Local Components
 import CustomButton from "@components/custom-button/CustomButton";
+import SearchBar from "@layouts/header/components/SearchBar";
 
 // --- Utils
 import { cn } from "@utils/cn";
@@ -60,11 +61,6 @@ const HeaderMiddle = () => {
     setIsOpen(false);
   };
 
-  // --- Handle Submit
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-  };
-
   // --- Cart
   const { cart } = useAppSelector((state) => state.cart);
 
@@ -75,29 +71,12 @@ const HeaderMiddle = () => {
 
   // --- Return JSX
   return (
-    <div className="flex items-center gap-5 md:gap-2.5">
+    <div className="middle-header flex items-center gap-5 md:gap-2.5">
       {/* --- Header Search */}
-      <form
-        onSubmit={handleSubmit}
-        className="w-full h-10 lg:h-12.5 flex items-center flex-1 bg-green-50 my-5 max-sm:my-2.5 rounded-md overflow-hidden"
-      >
-        <button
-          aria-label="Submit search"
-          className="bg-warning text-primary h-full cursor-pointer px-5 font-medium text-lg select-none hover:bg-amber-500 active:bg-amber-400 duration-300 transition-colors"
-          type="submit"
-        >
-          Search
-        </button>
-        <input
-          className="w-full h-full px-2.5 caret-warning outline-0 select-none bg-white overflow-hidden whitespace-nowrap text-ellipsis"
-          type="search"
-          aria-label="Search products"
-          placeholder="What are you looking for?"
-        />
-      </form>
+      <SearchBar />
 
       {/* Header Middle Login & Cart */}
-      <div className="max-sm:absolute top-6 right-5 flex items-center gap-3 xl:mt-1.5">
+      <div className="cart max-sm:absolute top-6 right-5 flex items-center gap-3 xl:mt-1.5">
         {/* --- Login */}
         <div>
           {!isAuthenticated ? (
@@ -121,9 +100,14 @@ const HeaderMiddle = () => {
                 onClick={(e) => handleClick(e)}
                 className={cn(
                   "group flex items-center gap-1 sm:gap-2.5 text-primary hover:bg-white transition-colors duration-300 px-1.5 py-0.5 rounded-md cursor-pointer",
-                  isOpen ? "bg-white" : "bg-white/85",
-                  user?.role == "admin" &&
-                    "relative before:absolute before:-top-1 before:left-0 before:w-full before:h-1 before:bg-amber-400 before:rounded-tr-md before:rounded-tl-md rounded-tr-none rounded-tl-none",
+                  "relative before:absolute before:-top-1 before:left-0 before:w-full before:h-1 before:rounded-tr-md before:rounded-tl-md rounded-tr-none rounded-tl-none before:transition-colors before:duration-300",
+                  user?.role === "admin"
+                    ? isOpen
+                      ? "bg-white before:bg-red-500"
+                      : "bg-white/85 before:bg-red-400 hover:before:bg-red-500"
+                    : isOpen
+                      ? "bg-white before:bg-blue-500"
+                      : "bg-white/85 before:bg-blue-400 hover:before:bg-blue-500",
                 )}
               >
                 <LuUserRoundCheck className="text-xl md:text-[30px]" />
