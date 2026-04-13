@@ -44,14 +44,17 @@ const Login = () => {
   // --- Return JSX
   return (
     <div className="custom-container flex items-center justify-center flex-col gap-5 py-5 flex-1">
+      {/* Title */}
       <h1 className="text-primary mb-2.5 font-jetbrains text-center flex flex-col">
         <span className="max-sm:text-2xl text-3xl font-bold mb-2.5">Welcome back</span>
         <p className="max-sm:text-[12px] text-[14px] font-light">Log in to continue your shopping experience</p>
       </h1>
+
+      {/* Login Form */}
       <div className="bg-white rounded-xl">
         <h2 className="text-2xl w-fit mx-auto text-primary mt-5 mb-2.5 font-jetbrains">Login</h2>
         <form
-          className="shadow-lg flex flex-col gap-5 max-sm:p-5 sm:px-10 sm:pb-10 rounded-lg min-w-86"
+          className="shadow-lg flex flex-col gap-5 max-sm:p-5 sm:px-10 sm:pb-10 rounded-lg min-w-80 sm:min-w-88"
           onSubmit={handleSubmit(onSubmit)}
         >
           <InputField
@@ -81,11 +84,31 @@ const Login = () => {
           <button
             type="button"
             aria-label="Login with Google"
-            className="border border-primary/25 text-primary py-1.5 rounded-md cursor-pointer flex items-center justify-center gap-2.5 transition-colors duration-200 hover:border-t-[#FF3D00] hover:border-r-[#1B76D2] hover:border-b-[#4CAF51] hover:border-l-[#FFC106] shadow-standard"
+            className="border border-primary/25 text-primary py-1.5 rounded-md cursor-pointer flex items-center justify-center gap-2.5 transition-colors duration-200 active:scale-[0.99] hover:border-t-[#FF3D00] hover:border-r-[#1B76D2] hover:border-b-[#4CAF51] hover:border-l-[#FFC106] shadow-standard"
           >
             <img src="/images/icons/google-icon.svg" alt="Google Icon" className="w-6" />
             Login with Google
           </button>
+
+          {/* Fast Login */}
+          <div className="flex items-center justify-center gap-2.5">
+            <CustomButton
+              type="button"
+              isLoading={loading}
+              className="px-1.5 w-22.5 text-[16px] font-normal bg-red-400 hover:bg-red-500 active:bg-red-400 text-white"
+              onClick={() => dispatch(loginUser({ email: "admin@mail.com", password: "password123" }))}
+            >
+              Admin
+            </CustomButton>
+            <CustomButton
+              type="button"
+              isLoading={loading}
+              className="px-1.5 w-22.5 text-[16px] font-normal bg-blue-400 hover:bg-blue-500 active:bg-blue-400 text-white"
+              onClick={() => dispatch(loginUser({ email: "customer@mail.com", password: "password123" }))}
+            >
+              Customer
+            </CustomButton>
+          </div>
         </form>
       </div>
       <p className="text-primary/75 select-none">

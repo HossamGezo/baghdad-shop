@@ -64,7 +64,7 @@ const Register = () => {
       <div className="bg-white rounded-xl">
         <h2 className="text-2xl w-fit mx-auto text-primary mt-5 mb-2.5 font-jetbrains">Register</h2>
         <form
-          className="shadow-lg flex flex-col gap-5 max-sm:p-5 sm:px-10 sm:pb-10 rounded-lg min-w-86"
+          className="shadow-lg flex flex-col gap-5 max-sm:p-5 sm:px-10 sm:pb-10 rounded-lg min-w-80 sm:min-w-88"
           onSubmit={handleSubmit(onSubmit)}
         >
           <InputField

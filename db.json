@@ -1594,8 +1594,8 @@
   "users": [
     {
       "id": "USR-002",
-      "fullName": "Ahmed Ali",
-      "email": "ahmed.ali@mail.com",
+      "fullName": "Admin",
+      "email": "admin@mail.com",
       "password": "password123",
       "role": "admin",
       "joinDate": "2024-05-10T00:00:00Z",
@@ -1611,8 +1611,8 @@
     },
     {
       "id": "USR-003",
-      "fullName": "Sara Mahmoud Hassan",
-      "email": "sara.m@test.com",
+      "fullName": "Customer",
+      "email": "customer@mail.com",
       "password": "password123",
       "phone": "+201200000003",
       "role": "customer",
@@ -1622,7 +1622,7 @@
       "totalOrders": 5,
       "address": {
         "city": "Alexandria",
-        "area": "Smouha Yes",
+        "area": "Smouha",
         "street": "Victor Emmanuel St.",
         "phone": "+201200000003"
       }
@@ -1704,163 +1704,6 @@
     }
   ],
   "orders": [
-    {
-      "id": "ORD-7001",
-      "userId": "USR-002",
-      "customerName": "Ahmed Ali",
-      "email": "ahmed.ali@mail.com",
-      "orderItems": [
-        {
-          "id": "lap-01",
-          "title": "HP EliteBook 2nd Gen",
-          "price": 750,
-          "qty": 1,
-          "image": "/images/products/laptops/l1.jpg"
-        }
-      ],
-      "shippingAddress": {
-        "city": "Cairo",
-        "area": "Nasr City",
-        "street": "Abbas El Akkad St.",
-        "phone": "+201000000002"
-      },
-      "totalPrice": 750,
-      "paymentMethod": "card",
-      "status": "delivered",
-      "createdAt": "2025-02-10T12:00:00Z"
-    },
-    {
-      "id": "ORD-7002",
-      "userId": "USR-003",
-      "customerName": "Sara Mahmoud",
-      "email": "sara.m@test.com",
-      "orderItems": [
-        {
-          "id": "dre-01",
-          "title": "American Eagle Midi Dress",
-          "price": 1800,
-          "qty": 1,
-          "image": "/images/products/women/women1.jpg"
-        },
-        {
-          "id": "app-01",
-          "title": "Air Fryer 5.5L",
-          "price": 4149,
-          "qty": 1,
-          "image": "/images/products/kitchen/k1.jpg"
-        }
-      ],
-      "shippingAddress": {
-        "city": "Alexandria",
-        "area": "Smouha",
-        "street": "Victor Emmanuel St.",
-        "phone": "+201200000003"
-      },
-      "totalPrice": 5949,
-      "paymentMethod": "card",
-      "status": "shipped",
-      "createdAt": "2025-03-15T15:30:00Z"
-    },
-    {
-      "id": "ORD-7003",
-      "userId": "USR-015",
-      "customerName": "Fatma Mohamed",
-      "email": "fatma.mohamed@mail.com",
-      "orderItems": [
-        {
-          "id": "mob-01",
-          "title": "Apple iPhone 13",
-          "price": 800,
-          "qty": 1,
-          "image": "/images/products/mobiles/m1.jpg"
-        }
-      ],
-      "shippingAddress": {
-        "city": "Giza",
-        "area": "Haram",
-        "street": "Faisal St.",
-        "phone": "+201200000015"
-      },
-      "totalPrice": 800,
-      "paymentMethod": "card",
-      "status": "pending",
-      "createdAt": "2026-04-01T09:00:00Z"
-    },
-    {
-      "id": "ORD-7004",
-      "userId": "USR-016",
-      "customerName": "Hossam Hassan",
-      "email": "ha2ghossam10@gmail.com",
-      "orderItems": [
-        {
-          "id": "aut-001",
-          "title": "Synthetic Motor Oil",
-          "price": 45,
-          "qty": 2,
-          "image": "/images/products/automotive/a1.jpg"
-        }
-      ],
-      "shippingAddress": {
-        "city": "Cairo",
-        "area": "Al Rehab",
-        "street": "Gate 6, Villa 12",
-        "phone": "+201111182665"
-      },
-      "totalPrice": 90,
-      "paymentMethod": "card",
-      "status": "pending",
-      "createdAt": "2026-04-09T10:00:00Z"
-    },
-    {
-      "id": "ORD-7005",
-      "userId": "USR-003",
-      "customerName": "Sara Mahmoud",
-      "email": "sara.m@test.com",
-      "orderItems": [
-        {
-          "id": "off-04",
-          "title": "Samsung Galaxy Smartphone",
-          "price": 550,
-          "qty": 1,
-          "image": "/images/products/special-offers/s7.jpg"
-        }
-      ],
-      "shippingAddress": {
-        "city": "Alexandria",
-        "area": "Smouha",
-        "street": "Victor Emmanuel St.",
-        "phone": "+201200000003"
-      },
-      "totalPrice": 455,
-      "status": "pending",
-      "paymentMethod": "card",
-      "createdAt": "2026-04-12T06:54:09.651Z"
-    },
-    {
-      "id": "ORD-7006",
-      "userId": "USR-003",
-      "customerName": "Sara Mahmoud",
-      "email": "sara.m@test.com",
-      "orderItems": [
-        {
-          "id": "dre-02",
-          "title": "Elegant Burgundy Satin Evening Gown",
-          "price": 2500,
-          "qty": 1,
-          "image": "/images/products/women/women2.jpg"
-        }
-      ],
-      "shippingAddress": {
-        "city": "Alexandria",
-        "area": "Smouha",
-        "street": "Victor Emmanuel St.",
-        "phone": "+201200000003"
-      },
-      "totalPrice": 2515,
-      "status": "pending",
-      "paymentMethod": "card",
-      "createdAt": "2026-04-12T06:58:20.214Z"
-    },
     {
       "id": "5a30",
       "userId": "USR-003",
@@ -1956,6 +1799,70 @@
       "status": "pending",
       "paymentMethod": "card",
       "createdAt": "2026-04-12T09:28:42.946Z"
+    },
+    {
+      "id": "6669",
+      "userId": "USR-003",
+      "customerName": "Customer",
+      "email": "customer@mail.com",
+      "orderItems": [
+        {
+          "id": "clo-02",
+          "title": "Classic Burgundy Polo T-Shirt - Slim Fit",
+          "firstImage": "/images/products/men/men2.jpg",
+          "secondImage": "/images/products/men/men2.jpg",
+          "images": ["/images/products/men/men2.jpg"],
+          "price": 359,
+          "discount": 0,
+          "rating": 3.6,
+          "reviews": 21,
+          "category": "clothing",
+          "description": "Essential short-sleeve polo shirt in a sophisticated burgundy color. Made from soft cotton-pique fabric for a comfortable and structured fit.",
+          "count": 1
+        }
+      ],
+      "shippingAddress": {
+        "city": "Alexandria",
+        "area": "Smouha",
+        "street": "Victor Emmanuel St.",
+        "phone": "+201200000003"
+      },
+      "totalPrice": 374,
+      "status": "pending",
+      "paymentMethod": "card",
+      "createdAt": "2026-04-12T17:08:21.583Z"
+    },
+    {
+      "id": "81a4",
+      "userId": "USR-003",
+      "customerName": "Customer",
+      "email": "customer@mail.com",
+      "orderItems": [
+        {
+          "id": "dre-02",
+          "title": "Elegant Burgundy Satin Evening Gown",
+          "firstImage": "/images/products/women/women2.jpg",
+          "secondImage": "/images/products/women/women2.jpg",
+          "images": ["/images/products/women/women2.jpg"],
+          "price": 2500,
+          "discount": 0,
+          "rating": 4.8,
+          "reviews": 45,
+          "category": "dresses",
+          "description": "Make an entrance with this stunning floor-length burgundy satin gown. Features a sophisticated ruched design and bow cap sleeves for your special occasions.",
+          "count": 1
+        }
+      ],
+      "shippingAddress": {
+        "city": "Alexandria",
+        "area": "Smouha",
+        "street": "Victor Emmanuel St",
+        "phone": "+201200000003"
+      },
+      "totalPrice": 2515,
+      "status": "pending",
+      "paymentMethod": "card",
+      "createdAt": "2026-04-12T18:47:05.639Z"
     }
   ]
 }
