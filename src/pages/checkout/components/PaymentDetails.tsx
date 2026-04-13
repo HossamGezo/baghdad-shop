@@ -42,7 +42,7 @@ const PaymentDetails = () => {
   const navigate = useNavigate();
 
   // --- RTK
-  const { user } = useAppSelector((state) => state.auth);
+  const { loading: authLoading, user } = useAppSelector((state) => state.auth);
   const { cart } = useAppSelector((state) => state.cart);
   const { loading } = useAppSelector((state) => state.orders);
   const dispatch = useAppDispatch();
@@ -51,8 +51,10 @@ const PaymentDetails = () => {
   const {
     register,
     handleSubmit,
+    trigger,
+    getValues,
     reset,
-    formState: { errors },
+    formState: { errors, dirtyFields },
   } = useForm<AddressSchemaType>({
     mode: "onBlur",
     resolver: zodResolver(AddressSchema),
@@ -99,8 +101,29 @@ const PaymentDetails = () => {
     const resultAction = await dispatch(createOrder(orderData));
 
     if (createOrder.fulfilled.match(resultAction)) {
-      dispatch(updateProfile({ fullName, ...addressData }));
       navigate("/profile/orders");
+    }
+  };
+
+  // --- Handle Update Profile
+
+  const isAddressChanged =
+    dirtyFields.fullName || dirtyFields.city || dirtyFields.area || dirtyFields.street || dirtyFields.phone;
+
+  const handleUpdateProfile = async () => {
+    const isValid = await trigger(["fullName", "city", "area", "street", "phone"]);
+
+    if (isValid) {
+      const values = getValues();
+      dispatch(
+        updateProfile({
+          fullName: values.fullName,
+          city: values.city,
+          area: values.area,
+          street: values.street,
+          phone: values.phone,
+        }),
+      );
     }
   };
 
@@ -166,6 +189,17 @@ const PaymentDetails = () => {
             autoComplete="mobile tel"
             className="sm:w-full"
           />
+          {isAddressChanged && (
+            <CustomButton
+              onClick={handleUpdateProfile}
+              isLoading={authLoading}
+              type="button"
+              aria-label="Save Changes"
+              className="px-5 ml-auto mt-5 mx-auto"
+            >
+              Save Changes
+            </CustomButton>
+          )}
         </div>
 
         {/* Horizontal Break */}
@@ -191,9 +225,11 @@ const PaymentDetails = () => {
             className="sm:w-full"
             maxLength={19}
           />
-          <CustomButton isLoading={loading} type="submit" aria-label="Save Changes" className="px-5 ml-auto mt-5">
-            Place In Order
-          </CustomButton>
+          {!isAddressChanged && (
+            <CustomButton isLoading={loading} type="submit" aria-label="Place order" className="px-5 ml-auto mt-5">
+              Place In Order
+            </CustomButton>
+          )}
         </div>
       </form>
     </div>
