@@ -1640,23 +1640,6 @@
       "address": null
     },
     {
-      "id": "USR-005",
-      "fullName": "Youssef Tarek",
-      "email": "y.tarek@company.com",
-      "password": "password123",
-      "role": "customer",
-      "joinDate": "2024-10-05T00:00:00Z",
-      "avatar": "/images/avatar/default.png",
-      "status": "active",
-      "totalOrders": 8,
-      "address": {
-        "city": "Cairo",
-        "area": "Maadi",
-        "street": "Road 9",
-        "phone": "+201100000005"
-      }
-    },
-    {
       "id": "USR-015",
       "fullName": "Fatma Mohamed",
       "email": "fatma.mohamed@mail.com",
@@ -1687,6 +1670,23 @@
         "city": "Cairo",
         "area": "Al Rehab",
         "street": "Gate 6, Villa 12",
+        "phone": "+201111182665"
+      }
+    },
+    {
+      "id": "bfec",
+      "fullName": "Hazem",
+      "email": "hazem@email.com",
+      "password": "m6*-TQa_$ZpJY..",
+      "role": "admin",
+      "joinDate": "2026-04-14T15:14:59.685Z",
+      "avatar": "/images/avatar/default.png",
+      "status": "active",
+      "totalOrders": 0,
+      "address": {
+        "city": "Bani Suef",
+        "area": "Nasser",
+        "street": "TahaBosh / El Nakhal",
         "phone": "+201111182665"
       }
     }
@@ -1848,7 +1848,7 @@
         "phone": "+201200000003"
       },
       "totalPrice": 2515,
-      "status": "cancelled",
+      "status": "delivered",
       "paymentMethod": "card",
       "createdAt": "2026-04-12T18:47:05.639Z"
     },
@@ -2142,6 +2142,127 @@
       "status": "pending",
       "paymentMethod": "card",
       "createdAt": "2026-04-14T05:55:11.944Z"
+    },
+    {
+      "id": "0759",
+      "userId": "bfec",
+      "customerName": "Hazem",
+      "email": "hazem@email.com",
+      "orderItems": [
+        {
+          "id": "off-02",
+          "title": "Hoco In-Ear Earphones",
+          "firstImage": "/images/products/special-offers/s3.jpg",
+          "secondImage": "/images/products/special-offers/s4.jpg",
+          "images": [
+            "/images/products/special-offers/s3.jpg",
+            "/images/products/special-offers/s4.jpg",
+            "/images/products/special-offers/s1.jpg",
+            "/images/products/special-offers/s2.jpg"
+          ],
+          "price": 40,
+          "discount": 20,
+          "rating": 4.1,
+          "reviews": 1870,
+          "category": "specialOffers",
+          "description": "Hoco In-Ear Earphones provide clear sound with balanced audio and enhanced bass. Their lightweight, ergonomic design makes them perfect for daily use, and they are currently offered with a 20% discount for great value.",
+          "count": 1
+        },
+        {
+          "id": "coo-04",
+          "title": "Kenwood 16-In-1 Electric Pressure Cooker 8L",
+          "firstImage": "/images/products/kitchen/k16.jpg",
+          "secondImage": "/images/products/kitchen/k16.jpg",
+          "images": ["/images/products/kitchen/k16.jpg"],
+          "price": 6840,
+          "discount": 20,
+          "rating": 4.1,
+          "reviews": 24,
+          "category": "cookware",
+          "description": "Speed up your cooking with the Kenwood 8L programmable multi-cooker. 16 smart programs allow you to pressure cook, slow cook, and more with maximum safety and efficiency.",
+          "count": 1
+        },
+        {
+          "id": "dre-03",
+          "title": "Luxurious Silk Button-Down Casual Blouse",
+          "firstImage": "/images/products/women/women3.jpg",
+          "secondImage": "/images/products/women/women3.jpg",
+          "images": ["/images/products/women/women3.jpg"],
+          "price": 500,
+          "discount": 10,
+          "rating": 4.5,
+          "reviews": 89,
+          "category": "dresses",
+          "description": "Elevate your daily style with this breathable silk blouse. Perfect for work or parties, offering an elegant emerald green finish and a comfortable chic fit.",
+          "count": 1
+        },
+        {
+          "id": "han-03",
+          "title": "Elegant Croc-Patterned Leather Handbag & Clutch",
+          "firstImage": "/images/products/women/women15.jpg",
+          "secondImage": "/images/products/women/women15.jpg",
+          "images": ["/images/products/women/women15.jpg"],
+          "price": 1585,
+          "discount": 0,
+          "rating": 4.6,
+          "reviews": 28,
+          "category": "handbags",
+          "description": "Sophisticated red leather handbag with a contemporary croc-pattern. This compact set includes a matching clutch, ideal for evening wear and making a bold fashion statement.",
+          "count": 1
+        },
+        {
+          "id": "han-05",
+          "title": "Large Colorblock Faux Leather Zip-Around Wallet",
+          "firstImage": "/images/products/women/women17.jpg",
+          "secondImage": "/images/products/women/women17.jpg",
+          "images": ["/images/products/women/women17.jpg"],
+          "price": 645,
+          "discount": 0,
+          "rating": 4.1,
+          "reviews": 10,
+          "category": "handbags",
+          "description": "Organize your essentials in style with this 'Forever Young' colorblock wallet. Featuring eight card slots and a dedicated phone holder, it's as practical as it is chic.",
+          "count": 2
+        },
+        {
+          "id": "shs-06",
+          "title": "Now Shoes Classic Slip-On Leather Loafers",
+          "firstImage": "/images/products/men/men18.jpg",
+          "secondImage": "/images/products/men/men18.jpg",
+          "images": ["/images/products/men/men18.jpg"],
+          "price": 650,
+          "discount": 0,
+          "rating": 2.4,
+          "reviews": 6,
+          "category": "shoes",
+          "description": "Experience all-day comfort with Now Shoes leather loafers. A classic slip-on design that combines business formality with everyday ease, featuring a durable AK6 sole.",
+          "count": 2
+        },
+        {
+          "id": "dre-02",
+          "title": "Elegant Burgundy Satin Evening Gown",
+          "firstImage": "/images/products/women/women2.jpg",
+          "secondImage": "/images/products/women/women2.jpg",
+          "images": ["/images/products/women/women2.jpg"],
+          "price": 2500,
+          "discount": 0,
+          "rating": 4.8,
+          "reviews": 45,
+          "category": "dresses",
+          "description": "Make an entrance with this stunning floor-length burgundy satin gown. Features a sophisticated ruched design and bow cap sleeves for your special occasions.",
+          "count": 4
+        }
+      ],
+      "shippingAddress": {
+        "city": "Bani Suef",
+        "area": "Nasser",
+        "street": "TahaBosh / El Nakhal",
+        "phone": "+201111182665"
+      },
+      "totalPrice": 20144,
+      "status": "shipped",
+      "paymentMethod": "card",
+      "createdAt": "2026-04-14T15:21:47.619Z"
     }
   ]
 }
