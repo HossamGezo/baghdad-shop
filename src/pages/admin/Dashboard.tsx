@@ -1,3 +1,6 @@
+// --- Libraries
+import { useEffect, useMemo } from "react";
+
 // --- React Icons
 import { FiUsers } from "react-icons/fi";
 import { SiSoundcharts } from "react-icons/si";
@@ -6,152 +9,17 @@ import { TbCategory2 } from "react-icons/tb";
 import { FaDollarSign } from "react-icons/fa6";
 
 // --- Utils
-import { cn } from "@utils/cn";
 import { formatCurrency } from "@utils/formatCurrency";
+import { cn } from "@utils/cn";
 
-// --- Data
-const orders = [
-  {
-    id: "1",
-    title: "HP EliteBook 2nd Gen",
-    firstImage: "/images/products/laptops/l1.jpg",
-    secondImage: "/images/products/laptops/l1.jpg",
-    images: ["/images/products/laptops/l1.jpg"],
-    price: 750,
-    discount: 0,
-    rating: 4.5,
-    reviews: 900,
-    category: "laptops",
-    description:
-      "A reliable business laptop featuring a sleek design, solid performance, and long battery life—perfect for professionals and everyday productivity.",
-  },
-  {
-    id: "2",
-    title: "Acer Nitro 515-5 Laptop",
-    firstImage: "/images/products/laptops/l2.jpg",
-    secondImage: "/images/products/laptops/l2.jpg",
-    images: ["/images/products/laptops/l2.jpg"],
-    price: 600,
-    discount: 0,
-    rating: 3.8,
-    reviews: 250,
-    category: "laptops",
-    description:
-      "A powerful gaming laptop built with high-performance hardware to handle demanding games and multitasking with ease.",
-  },
-  {
-    id: "3",
-    title: "Huawei MateBook 14 Laptop",
-    firstImage: "/images/products/laptops/l3.jpg",
-    secondImage: "/images/products/laptops/l3.jpg",
-    images: ["/images/products/laptops/l3.jpg"],
-    price: 800,
-    discount: 0,
-    rating: 4.6,
-    reviews: 1200,
-    category: "laptops",
-    description:
-      "A premium laptop with a stunning display, fast performance, and a lightweight design—ideal for work, study, and creativity.",
-  },
-  {
-    id: "4",
-    title: "Asus Gaming Laptop 571GT",
-    firstImage: "/images/products/laptops/l4.jpg",
-    secondImage: "/images/products/laptops/l4.jpg",
-    images: ["/images/products/laptops/l4.jpg"],
-    price: 950,
-    discount: 0,
-    rating: 4.1,
-    reviews: 7548,
-    category: "laptops",
-    description:
-      "A gaming-focused laptop delivering smooth graphics, fast processing, and immersive gameplay for serious gamers.",
-  },
-  {
-    id: "5",
-    title: "Asus TUF 15 Laptop",
-    firstImage: "/images/products/laptops/l1.jpg",
-    secondImage: "/images/products/laptops/l1.jpg",
-    images: ["/images/products/laptops/l1.jpg"],
-    price: 700,
-    discount: 0,
-    rating: 4.5,
-    reviews: 2200,
-    category: "laptops",
-    description:
-      "Built for durability and performance, this laptop is perfect for gaming and heavy workloads with reliable cooling and power.",
-  },
-  {
-    id: "6",
-    title: "Asus F15 Gaming Laptop",
-    firstImage: "/images/products/laptops/l6.jpg",
-    secondImage: "/images/products/laptops/l6.jpg",
-    images: ["/images/products/laptops/l6.jpg"],
-    price: 990,
-    discount: 0,
-    rating: 4.8,
-    reviews: 5500,
-    category: "laptops",
-    description:
-      "A high-end gaming laptop offering top-tier performance, fast refresh rates, and a bold design for competitive players.",
-  },
-  {
-    id: "7",
-    title: 'Lenovo IdeaPad Flex 5 14"',
-    firstImage: "/images/products/laptops/l7.jpg",
-    secondImage: "/images/products/laptops/l7.jpg",
-    images: ["/images/products/laptops/l7.jpg"],
-    price: 500,
-    discount: 0,
-    rating: 4.2,
-    reviews: 850,
-    category: "laptops",
-    description:
-      "A versatile 2-in-1 laptop with a flexible touchscreen design, perfect for students, professionals, and everyday use.",
-  },
-  {
-    id: "8",
-    title: "Microsoft Surface Go 2 Touchscreen",
-    firstImage: "/images/products/laptops/l8.jpg",
-    secondImage: "/images/products/laptops/l8.jpg",
-    images: ["/images/products/laptops/l8.jpg"],
-    price: 850,
-    discount: 0,
-    rating: 4.7,
-    reviews: 8200,
-    category: "laptops",
-    description:
-      "A compact and portable touchscreen device designed for productivity on the go with a premium Microsoft experience.",
-  },
-  {
-    id: "9",
-    title: 'Microsoft Surface Pro 8 13"',
-    firstImage: "/images/products/laptops/l8.jpg",
-    secondImage: "/images/products/laptops/l8.jpg",
-    images: ["/images/products/laptops/l8.jpg"],
-    price: 900,
-    discount: 0,
-    rating: 4.1,
-    reviews: 1895,
-    category: "laptops",
-    description:
-      "A powerful 2-in-1 laptop combining tablet flexibility with laptop performance, ideal for work and creative tasks.",
-  },
-  {
-    id: "10",
-    title: "Asus VivoBook 17 Laptop",
-    firstImage: "/images/products/laptops/l10.jpg",
-    secondImage: "/images/products/laptops/l10.jpg",
-    images: ["/images/products/laptops/l10.jpg"],
-    price: 680,
-    discount: 0,
-    rating: 3.5,
-    reviews: 8124,
-    category: "laptops",
-    description:
-      "A large-screen laptop offering comfortable viewing, solid performance, and everyday reliability for home and office use.",
-  },
-];
+// --- RTK
+import { useAppDispatch, useAppSelector } from "@app/hooks";
+import { fetchAllOrders } from "@features/orders/ordersSlice";
+import { fetchUsers } from "@features/users/usersSlice";
+
+// --- Local Components
+import SelectStatus from "@pages/admin/SelectStatus";
+import OrderImages from "@pages/admin/OrderImages";
 
 // --- CustomStatsCard
 type CustomStatsCardProps = React.ComponentProps<"div"> & {
@@ -197,6 +65,28 @@ const CustomStatsCard = ({
 
 // --- Main Component
 const Dashboard = () => {
+  // --- RTK
+  const { users } = useAppSelector((state) => state.users);
+  const { orders } = useAppSelector((state) => state.orders);
+  const productsState = useAppSelector((state) => state.products);
+  const dispatch = useAppDispatch();
+
+  // --- Fetch Recent Orders
+  useEffect(() => {
+    if (orders.length == 0) dispatch(fetchAllOrders());
+    if (users.length == 0) dispatch(fetchUsers());
+  }, [dispatch, orders.length, users.length]);
+
+  // --- Statistics
+  const totalOrdersCount = orders.length;
+  const totalRevenue = orders.reduce((acc, cur) => acc + cur.totalPrice, 0);
+
+  const categoriesCount = useMemo(() => {
+    return Object.keys(productsState).filter((key) => key !== "loading" && key !== "error" && key !== "singleProduct")
+      .length;
+  }, [productsState]);
+
+  // --- Return JSX
   return (
     <div className="flex flex-col h-full">
       {/* --- Header --- */}
@@ -207,13 +97,13 @@ const Dashboard = () => {
         </div>
       </div>
 
-      {/* Glance Statistics */}
+      {/* ---- Statistics ---- */}
       <div className="grid grid-cols-4 gap-5 xxl:gap-2.5 text-white">
         <CustomStatsCard
           firstIcon={<FaDollarSign size={30} />}
           secondIcon={<SiSoundcharts size={30} />}
           title={"Total Revenue"}
-          stats={124563}
+          stats={totalRevenue}
           price={true}
           color="#3071FB"
         />
@@ -222,7 +112,7 @@ const Dashboard = () => {
           firstIcon={<FiUsers size={30} />}
           secondIcon={<SiSoundcharts size={30} />}
           title={"Active Users"}
-          stats={8549}
+          stats={users.length}
           color="#00A47D"
         />
 
@@ -230,7 +120,7 @@ const Dashboard = () => {
           firstIcon={<BiBasket size={30} />}
           secondIcon={<SiSoundcharts size={30} />}
           title={"Total Orders"}
-          stats={2847}
+          stats={totalOrdersCount}
           color="#4A50E7"
         />
 
@@ -238,7 +128,7 @@ const Dashboard = () => {
           firstIcon={<TbCategory2 size={30} />}
           secondIcon={<SiSoundcharts size={30} />}
           title={"Total Categories"}
-          stats={8}
+          stats={categoriesCount}
           color="#FF425D"
         />
       </div>
@@ -266,24 +156,18 @@ const Dashboard = () => {
                   className="even:bg-[#EFF2F3]/75 hover:bg-gray-500/10 transition-colors duration-200 *:whitespace-nowrap *:px-3 *:py-2.5 *:text-center *:text-[12px] *:select-none"
                 >
                   <td>
-                    <div className="bg-white p-1 rounded border border-gray-100 w-12 h-12 mx-auto">
-                      <img
-                        src={order.firstImage}
-                        alt={order.title}
-                        loading="lazy"
-                        className="w-full h-full object-contain"
-                      />
-                    </div>
+                    <OrderImages orderItems={order.orderItems} />
                   </td>
-                  <td>#679769813bcea508e09858d5</td>
-                  <td>27/01/2025 16:39:53</td>
-                  <td>Cairo, Egypt</td>
-                  <td>1</td>
-                  <td>{formatCurrency(order.price)}</td>
+                  <td>{order.id}</td>
+                  <td>{new Date(order.createdAt).toLocaleDateString("en-GB")}</td>
+                  <td
+                    className="max-w-50 truncate"
+                    title={`${order.shippingAddress.street}, ${order.shippingAddress.area}, ${order.shippingAddress.city}`}
+                  >{`${order.shippingAddress.city}, ${order.shippingAddress.area}`}</td>
+                  <td>{order.orderItems.length}</td>
+                  <td>{formatCurrency(order.totalPrice)}</td>
                   <td>
-                    <span className="mx-auto flex items-center justify-center bg-green-300 text-green-900 shadow-md rounded-[5px] h-7.5 w-15">
-                      paid
-                    </span>
+                    <SelectStatus id={order.id} status={order.status} />
                   </td>
                 </tr>
               ))}
