@@ -150,27 +150,30 @@ const Dashboard = () => {
               </tr>
             </thead>
             <tbody>
-              {orders.slice(0, 7).map((order) => (
-                <tr
-                  key={order.id}
-                  className="even:bg-[#EFF2F3]/75 hover:bg-gray-500/10 transition-colors duration-200 *:whitespace-nowrap *:px-3 *:py-2.5 *:text-center *:text-[12px] *:select-none"
-                >
-                  <td>
-                    <OrderImages orderItems={order.orderItems} />
-                  </td>
-                  <td>{order.id}</td>
-                  <td>{new Date(order.createdAt).toLocaleDateString("en-GB")}</td>
-                  <td
-                    className="max-w-50 truncate"
-                    title={`${order.shippingAddress.street}, ${order.shippingAddress.area}, ${order.shippingAddress.city}`}
-                  >{`${order.shippingAddress.city}, ${order.shippingAddress.area}`}</td>
-                  <td>{order.orderItems.length}</td>
-                  <td>{formatCurrency(order.totalPrice)}</td>
-                  <td>
-                    <SelectStatus id={order.id} status={order.status} />
-                  </td>
-                </tr>
-              ))}
+              {orders
+                .toReversed()
+                .slice(0, 7)
+                .map((order) => (
+                  <tr
+                    key={order.id}
+                    className="even:bg-[#EFF2F3]/75 hover:bg-gray-500/10 transition-colors duration-200 *:whitespace-nowrap *:px-3 *:py-2.5 *:text-center *:text-[12px] *:select-none"
+                  >
+                    <td>
+                      <OrderImages orderItems={order.orderItems} />
+                    </td>
+                    <td>{order.id}</td>
+                    <td>{new Date(order.createdAt).toLocaleDateString("en-GB")}</td>
+                    <td
+                      className="max-w-50 truncate"
+                      title={`${order.shippingAddress.street}, ${order.shippingAddress.area}, ${order.shippingAddress.city}`}
+                    >{`${order.shippingAddress.city}, ${order.shippingAddress.area}`}</td>
+                    <td>{order.orderItems.length}</td>
+                    <td>{formatCurrency(order.totalPrice)}</td>
+                    <td>
+                      <SelectStatus id={order.id} status={order.status} />
+                    </td>
+                  </tr>
+                ))}
             </tbody>
           </table>
         </div>
