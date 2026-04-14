@@ -75,6 +75,24 @@ export const createOrder = createAsyncThunk<
   }
 });
 
+/**
+ * @desc Update Order Status
+ * @route /orders/:id
+ * @method PATCH
+ * @access private (admin)
+ */
+export const updateOrderStatus = createAsyncThunk<OrderType, { id: string; status: string }, { rejectValue: string }>(
+  "orders/update-status",
+  async ({ id, status }, { rejectWithValue }) => {
+    try {
+      const response = await api.patch(`/orders/${id}`, { status });
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(errorMsg(error));
+    }
+  },
+);
+
 // --- Orders Slice
 
 const ordersSlice = createSlice({
@@ -100,19 +118,35 @@ const ordersSlice = createSlice({
       state.error = "";
     });
 
+    // --- Update Order Status 'Fulfilled Case'
+
+    builder.addCase(updateOrderStatus.fulfilled, (state, action) => {
+      state.loading = false;
+
+      const index = state.orders.findIndex((order) => order.id == action.payload.id);
+      if (index != -1) {
+        state.orders[index] = action.payload;
+      }
+
+      state.error = "";
+    });
+
     // --- Pending Case
 
-    builder.addMatcher(isAnyOf(fetchAllOrders.pending, createOrder.pending), (state) => {
+    builder.addMatcher(isAnyOf(fetchAllOrders.pending, createOrder.pending, updateOrderStatus.pending), (state) => {
       state.loading = true;
       state.error = "";
     });
 
     // --- Rejected Case
 
-    builder.addMatcher(isAnyOf(fetchAllOrders.rejected, createOrder.rejected), (state, action) => {
-      state.loading = false;
-      state.error = action.payload || "An unexpected error occurred";
-    });
+    builder.addMatcher(
+      isAnyOf(fetchAllOrders.rejected, createOrder.rejected, updateOrderStatus.rejected),
+      (state, action) => {
+        state.loading = false;
+        state.error = action.payload || "An unexpected error occurred";
+      },
+    );
   },
 });
 

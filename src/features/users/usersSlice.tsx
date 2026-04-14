@@ -71,20 +71,21 @@ export const fetchUserById = createAsyncThunk<
 /**
  * @desc Update User Role
  * @route /users/:id
- * @method PUT
+ * @method PATCH
  * @access private (admin)
  */
-export const updateUserRole = createAsyncThunk<UserType, { id: string; user: UserType }, { rejectValue: string }>(
-  "users/update-role",
-  async ({ id, user }, { rejectWithValue }) => {
-    try {
-      const response = await api.put(`/users/${id}`, user);
-      return response.data;
-    } catch (error) {
-      return rejectWithValue(errorMsg(error));
-    }
-  },
-);
+export const updateUserRole = createAsyncThunk<
+  UserType,
+  { id: string; role: "admin" | "customer" },
+  { rejectValue: string }
+>("users/update-role", async ({ id, role }, { rejectWithValue }) => {
+  try {
+    const response = await api.patch(`/users/${id}`, { role });
+    return response.data;
+  } catch (error) {
+    return rejectWithValue(errorMsg(error));
+  }
+});
 
 /**
  * @desc Delete User
