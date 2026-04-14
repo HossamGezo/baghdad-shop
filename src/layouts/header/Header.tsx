@@ -1,5 +1,6 @@
 // --- Libraries
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import { useLocation } from "react-router";
 
 // --- Utils
 import { cn } from "@utils/cn";
@@ -12,9 +13,14 @@ import Logo from "@components/logo/Logo";
 
 // --- Main Component
 const Header = () => {
-  const [toggleBurger, setToggleBurger] = useState(false);
+  // --- React Router
+  const { pathname } = useLocation();
+
+  // --- Drop Down Menu
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   // --- Handle Toggle Function
+  const [toggleBurger, setToggleBurger] = useState(false);
   const handleToggle = () => {
     setToggleBurger(true);
   };
@@ -55,8 +61,11 @@ const Header = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY >= 180) setScrollTarget(true);
-      else if (window.scrollY < 180) setScrollTarget(false);
+      if (pathname == "/" && window.scrollY >= 180) setScrollTarget(true);
+      else {
+        setScrollTarget(false);
+        setIsMenuOpen(false);
+      }
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -64,11 +73,30 @@ const Header = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [pathname]);
+
+  // --- Handle Drop Down Menu Button "Click Outside Dropdown Menu"
+  const dropDownRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const handleOutsideClick = (e: MouseEvent) => {
+      if (dropDownRef.current && !dropDownRef.current.contains(e.target as Node)) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    if (isMenuOpen) {
+      window.addEventListener("click", handleOutsideClick);
+    }
+
+    return () => {
+      window.removeEventListener("click", handleOutsideClick);
+    };
+  }, [isMenuOpen, setIsMenuOpen]);
 
   // --- Return JSX
   return (
-    <header className="relative bg-primary pb-5 select-none">
+    <header ref={dropDownRef} className="relative bg-primary pb-5 select-none">
       <div className="custom-container">
         {/* Header Top */}
         <HeaderTop handleToggle={handleToggle}>
@@ -76,7 +104,7 @@ const Header = () => {
         </HeaderTop>
 
         {/* Header Middle */}
-        <HeaderMiddle />
+        <HeaderMiddle isOpen={isMenuOpen} setIsOpen={setIsMenuOpen} />
 
         {/* Sticky Header */}
         <div
@@ -93,7 +121,7 @@ const Header = () => {
             </div>
 
             <div className="w-full [&_form]:m-0">
-              <HeaderMiddle />
+              <HeaderMiddle isOpen={isMenuOpen} setIsOpen={setIsMenuOpen} />
             </div>
           </div>
         </div>

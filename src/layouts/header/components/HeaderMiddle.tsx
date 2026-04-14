@@ -1,5 +1,5 @@
 // --- Libraries
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useMemo } from "react";
 import { Link, NavLink } from "react-router";
 
 // --- React Icons
@@ -24,14 +24,17 @@ import SearchBar from "@layouts/header/components/SearchBar";
 // --- Utils
 import { cn } from "@utils/cn";
 
+// --- Types
+type HeaderMiddleProps = {
+  isOpen: boolean;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
 // --- Main Component
-const HeaderMiddle = () => {
+const HeaderMiddle = ({ isOpen, setIsOpen }: HeaderMiddleProps) => {
   // --- Is Authenticated
   const { user, isAuthenticated } = useAppSelector((state) => state.auth);
   const dispatch = useAppDispatch();
-
-  // --- Drop Down Menu
-  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   // --- Handle Drop Down Menu Button
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -39,29 +42,12 @@ const HeaderMiddle = () => {
     setIsOpen((prev) => !prev);
   };
 
-  // --- Handle Drop Down Menu Button "Click Outside Dropdown Menu"
-  const dropDownRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    const handleOutsideClick = () => {
-      if (dropDownRef.current) {
-        setIsOpen(false);
-      }
-    };
-
-    if (isOpen) {
-      window.addEventListener("click", handleOutsideClick);
-    }
-
-    return () => {
-      window.removeEventListener("click", handleOutsideClick);
-    };
-  }, [isOpen]);
-
   // --- Handle Logout
   const handleLogout = () => {
-    dispatch(logout());
-    setIsOpen(false);
+    if (isAuthenticated) {
+      dispatch(logout());
+      setIsOpen(false);
+    }
   };
 
   // --- Cart
@@ -97,7 +83,7 @@ const HeaderMiddle = () => {
               Login
             </NavLink>
           ) : (
-            <div className="relative" ref={dropDownRef}>
+            <div className="relative">
               <button
                 type="button"
                 onClick={(e) => handleClick(e)}
@@ -120,7 +106,7 @@ const HeaderMiddle = () => {
 
               {/* Drop Down Menu */}
               {isOpen && (
-                <div className="absolute flex flex-col top-11 max-sm:left-10 left-1/2 -translate-x-1/2 rounded-md bg-white shadow-sm w-50 h-fit overflow-hidden z-10000">
+                <div className="absolute flex flex-col top-11 max-sm:left-10 left-1/2 -translate-x-1/2 rounded-md bg-white shadow-sm w-50 h-fit overflow-hidden z-999">
                   <div className="flex flex-col gap-2.5">
                     {/* Only for admin */}
                     {user?.role === "admin" && (
