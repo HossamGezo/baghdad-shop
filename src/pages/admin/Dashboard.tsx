@@ -52,9 +52,9 @@ const CustomStatsCard = ({
       {...rest}
     >
       <div className="text-white/50">{firstIcon}</div>
-      <div className="flex flex-col items-center">
-        <span className="text-white/75 tracking-wider">{title}</span>
-        <span className="text-[22px] xxl:text-[20px] font-semibold">
+      <div className="mx-auto flex flex-col items-center justify-center w-50 font-jetbrains">
+        <span className="text-white/75 tracking-wider font-bold">{title}</span>
+        <span className="text-[22px] xxl:text-[20px] font-semibold flex items-center justify-center">
           {price ? formatCurrency(stats) : stats.toLocaleString()}
         </span>
       </div>

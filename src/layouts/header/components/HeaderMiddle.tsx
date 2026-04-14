@@ -6,10 +6,12 @@ import { Link, NavLink } from "react-router";
 import { GrCart } from "react-icons/gr";
 import { FaUser } from "react-icons/fa";
 import { LuUserRoundCheck } from "react-icons/lu";
+import { LuUserRound } from "react-icons/lu";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoIosArrowUp } from "react-icons/io";
 import { BiBasket } from "react-icons/bi";
 import { MdOutlineDashboard } from "react-icons/md";
+import { IoHomeOutline } from "react-icons/io5";
 
 // --- RTK
 import { useAppDispatch, useAppSelector } from "@app/hooks";
@@ -127,24 +129,31 @@ const HeaderMiddle = () => {
                         onClick={() => setIsOpen(false)}
                         className="text-primary p-2.5 border-b border-gray-400 flex items-center gap-2.5 font-semibold hover:bg-gray-300 font-jetbrains tracking-tighter"
                       >
-                        <MdOutlineDashboard size={17} /> Dashboard
+                        <MdOutlineDashboard size={18} /> Dashboard
                       </Link>
                     )}
 
                     {/* Shared Links */}
                     <Link
+                      to="/"
+                      onClick={() => setIsOpen(false)}
+                      className="text-primary p-2.5 border-b border-gray-400 flex items-center gap-2.5 font-semibold hover:bg-gray-300 font-jetbrains tracking-tighter"
+                    >
+                      <IoHomeOutline size={18} /> Home
+                    </Link>
+                    <Link
                       to="/profile"
                       onClick={() => setIsOpen(false)}
                       className="text-primary p-2.5 border-b border-gray-400 flex items-center gap-2.5 font-semibold hover:bg-gray-300 font-jetbrains tracking-tighter"
                     >
-                      <FaUser size={17} /> My Profile
+                      <LuUserRound size={18} /> My Profile
                     </Link>
                     <Link
                       to="/profile/orders"
                       onClick={() => setIsOpen(false)}
                       className="text-primary p-2.5 border-b border-gray-400 flex items-center gap-2.5 font-semibold hover:bg-gray-300 font-jetbrains tracking-tighter"
                     >
-                      <BiBasket size={17} /> My Orders
+                      <BiBasket size={18} /> My Orders
                     </Link>
                   </div>
 
