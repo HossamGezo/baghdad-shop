@@ -140,7 +140,7 @@ const AdminHeader = ({ isOpen, setIsOpen }: SidebarTypeProps) => {
 
             {/* Drop Down Menu */}
             {openDropMenu && (
-              <div className="absolute flex flex-col top-13 right-2.5 rounded-md bg-white shadow-sm w-50 h-fit overflow-hidden z-10000">
+              <div className="absolute flex flex-col top-13 right-2.5 rounded-md bg-white shadow-sm w-50 h-fit overflow-hidden z-999">
                 <div className="flex flex-col gap-2.5">
                   {/* Only for admin */}
                   <Link
@@ -152,21 +152,18 @@ const AdminHeader = ({ isOpen, setIsOpen }: SidebarTypeProps) => {
                   </Link>
                   <Link
                     to="/"
-                    onClick={() => setIsOpen(false)}
                     className="text-primary p-2.5 border-b border-gray-400 flex items-center gap-2.5 font-semibold hover:bg-gray-300 font-jetbrains tracking-tighter"
                   >
                     <IoHomeOutline size={18} /> Home
                   </Link>
                   <Link
                     to="/profile"
-                    onClick={() => setIsOpen(false)}
                     className="text-primary p-2.5 border-b border-gray-400 flex items-center gap-2.5 font-semibold hover:bg-gray-300 font-jetbrains tracking-tighter"
                   >
                     <LuUserRound size={18} /> My Profile
                   </Link>
                   <Link
                     to="/profile/orders"
-                    onClick={() => setOpenDropMenu(false)}
                     className="text-primary p-2.5 border-b border-gray-400 flex items-center gap-2.5 font-semibold hover:bg-gray-300 font-jetbrains tracking-tighter"
                   >
                     <BiBasket size={17} /> My Orders
