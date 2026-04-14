@@ -9,6 +9,7 @@ import { LuUserRoundCheck } from "react-icons/lu";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoIosArrowUp } from "react-icons/io";
 import { BiBasket } from "react-icons/bi";
+import { MdOutlineDashboard } from "react-icons/md";
 
 // --- RTK
 import { useAppDispatch, useAppSelector } from "@app/hooks";
@@ -126,7 +127,7 @@ const HeaderMiddle = () => {
                         onClick={() => setIsOpen(false)}
                         className="text-primary p-2.5 border-b border-gray-400 flex items-center gap-2.5 font-semibold hover:bg-gray-300 font-jetbrains tracking-tighter"
                       >
-                        <FaUser size={17} /> Dashboard
+                        <MdOutlineDashboard size={17} /> Dashboard
                       </Link>
                     )}
 
