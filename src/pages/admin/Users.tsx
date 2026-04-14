@@ -45,11 +45,16 @@ const Users = () => {
   // --- Logic: Filtering
   const filteredUsers = useMemo(() => {
     if (!users) return [];
-    return users.filter(
-      (user) =>
-        user.fullName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        user.email.toLowerCase().includes(searchTerm.toLowerCase()),
-    );
+    return users
+      .filter(
+        (user) =>
+          user.fullName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          user.email.toLowerCase().includes(searchTerm.toLowerCase()),
+      )
+      .toSorted((a, b) => {
+        const roleOrder = { admin: 0, customer: 1 };
+        return roleOrder[a.role] - roleOrder[b.role];
+      });
   }, [searchTerm, users]);
 
   // --- Handle Modal
@@ -131,7 +136,9 @@ const Users = () => {
                               className="w-10 h-10 object-contain rounded-full mx-auto border border-gray-200"
                               onError={(e) => {
                                 (e.target as HTMLImageElement).src =
-                                  `https://ui-avatars.com/api/?name=${user.fullName}&background=random`;
+                                  user.role == "admin"
+                                    ? `https://ui-avatars.com/api/?name=${user?.fullName}&background=0f172a&color=f87171`
+                                    : `https://ui-avatars.com/api/?name=${user.fullName}&background=random`;
                               }}
                             />
                           </td>
