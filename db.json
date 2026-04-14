@@ -1732,7 +1732,7 @@
         "phone": "+201200000003"
       },
       "totalPrice": 615,
-      "status": "pending",
+      "status": "shipped",
       "paymentMethod": "card",
       "createdAt": "2026-04-12T07:22:28.377Z"
     },
@@ -1796,7 +1796,7 @@
         "phone": "+201200000003"
       },
       "totalPrice": 320,
-      "status": "pending",
+      "status": "delivered",
       "paymentMethod": "card",
       "createdAt": "2026-04-12T09:28:42.946Z"
     },
@@ -1828,7 +1828,7 @@
         "phone": "+201200000003"
       },
       "totalPrice": 374,
-      "status": "pending",
+      "status": "shipped",
       "paymentMethod": "card",
       "createdAt": "2026-04-12T17:08:21.583Z"
     },
@@ -1860,9 +1860,129 @@
         "phone": "+201200000003"
       },
       "totalPrice": 2515,
-      "status": "pending",
+      "status": "cancelled",
       "paymentMethod": "card",
       "createdAt": "2026-04-12T18:47:05.639Z"
+    },
+    {
+      "id": "ca91",
+      "userId": "USR-002",
+      "customerName": "Admin",
+      "email": "admin@mail.com",
+      "orderItems": [
+        {
+          "id": "lap-03",
+          "title": "Huawei MateBook 14 Laptop",
+          "firstImage": "/images/products/laptops/l3.jpg",
+          "secondImage": "/images/products/laptops/l3.jpg",
+          "images": ["/images/products/laptops/l3.jpg"],
+          "price": 800,
+          "discount": 0,
+          "rating": 4.6,
+          "reviews": 1200,
+          "category": "laptops",
+          "description": "A premium laptop with a stunning display, fast performance, and a lightweight design—ideal for work, study, and creativity.",
+          "count": 1
+        }
+      ],
+      "shippingAddress": {
+        "city": "Cairo",
+        "area": "Nasr City",
+        "street": "Abbas El Akkad St.",
+        "phone": "+201000000002"
+      },
+      "totalPrice": 815,
+      "status": "pending",
+      "paymentMethod": "card",
+      "createdAt": "2026-04-13T19:23:26.144Z"
+    },
+    {
+      "id": "f038",
+      "userId": "USR-002",
+      "customerName": "Admin",
+      "email": "admin@mail.com",
+      "orderItems": [
+        {
+          "id": "dre-02",
+          "title": "Elegant Burgundy Satin Evening Gown",
+          "firstImage": "/images/products/women/women2.jpg",
+          "secondImage": "/images/products/women/women2.jpg",
+          "images": ["/images/products/women/women2.jpg"],
+          "price": 2500,
+          "discount": 0,
+          "rating": 4.8,
+          "reviews": 45,
+          "category": "dresses",
+          "description": "Make an entrance with this stunning floor-length burgundy satin gown. Features a sophisticated ruched design and bow cap sleeves for your special occasions.",
+          "count": 1
+        },
+        {
+          "id": "dre-05",
+          "title": "Mosca Long Linen Shirt Dress - Royal Blue",
+          "firstImage": "/images/products/women/women5.jpg",
+          "secondImage": "/images/products/women/women5.jpg",
+          "images": ["/images/products/women/women5.jpg"],
+          "price": 399,
+          "discount": 0,
+          "rating": 3.6,
+          "reviews": 15,
+          "category": "dresses",
+          "description": "Casual comfort meets style with the Mosca linen shirt dress. Features classic long sleeves and a vibrant royal blue color, ideal for summer days.",
+          "count": 1
+        },
+        {
+          "id": "dre-03",
+          "title": "Luxurious Silk Button-Down Casual Blouse",
+          "firstImage": "/images/products/women/women3.jpg",
+          "secondImage": "/images/products/women/women3.jpg",
+          "images": ["/images/products/women/women3.jpg"],
+          "price": 500,
+          "discount": 10,
+          "rating": 4.5,
+          "reviews": 89,
+          "category": "dresses",
+          "description": "Elevate your daily style with this breathable silk blouse. Perfect for work or parties, offering an elegant emerald green finish and a comfortable chic fit.",
+          "count": 1
+        },
+        {
+          "id": "dre-04",
+          "title": "Teal Suede High-Waist Pleated Skirt",
+          "firstImage": "/images/products/women/women4.jpg",
+          "secondImage": "/images/products/women/women4.jpg",
+          "images": ["/images/products/women/women4.jpg"],
+          "price": 689,
+          "discount": 15,
+          "rating": 4.2,
+          "reviews": 34,
+          "category": "dresses",
+          "description": "A trendy teal suede skirt featuring sharp pleats and a flattering high-waist cut. A versatile piece that pairs perfectly with boots or heels.",
+          "count": 1
+        },
+        {
+          "id": "dre-01",
+          "title": "American Eagle Long-Sleeve Embroidered Midi Dress",
+          "firstImage": "/images/products/women/women1.jpg",
+          "secondImage": "/images/products/women/women1.jpg",
+          "images": ["/images/products/women/women1.jpg"],
+          "price": 1800,
+          "discount": 0,
+          "rating": 5,
+          "reviews": 12,
+          "category": "dresses",
+          "description": "Exquisite embroidered midi dress from American Eagle. Featuring long sleeves and a beautiful tiered design in cream, perfect for a bohemian chic look.",
+          "count": 1
+        }
+      ],
+      "shippingAddress": {
+        "city": "Cairo",
+        "area": "Nasr City",
+        "street": "Abbas El Akkad St.",
+        "phone": "+201000000002"
+      },
+      "totalPrice": 5749.65,
+      "status": "pending",
+      "paymentMethod": "card",
+      "createdAt": "2026-04-13T19:24:09.154Z"
     }
   ]
 }
