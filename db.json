@@ -1611,7 +1611,7 @@
     },
     {
       "id": "USR-003",
-      "fullName": "Customer",
+      "fullName": "Eman",
       "email": "customer@mail.com",
       "password": "password123",
       "phone": "+201200000003",
@@ -1621,10 +1621,10 @@
       "status": "active",
       "totalOrders": 5,
       "address": {
-        "city": "Alexandria",
-        "area": "Smouha",
-        "street": "Victor Emmanuel St.",
-        "phone": "+201200000003"
+        "city": "Beni Suef",
+        "area": "Nasser / TahaBosh",
+        "street": "El Nakhel",
+        "phone": "+21111111111111"
       }
     },
     {
@@ -1689,18 +1689,6 @@
         "street": "Gate 6, Villa 12",
         "phone": "+201111182665"
       }
-    },
-    {
-      "id": "USR-017",
-      "fullName": "Hossam",
-      "email": "ha2ghossam@gmail.com",
-      "password": "11111111",
-      "role": "customer",
-      "joinDate": "2026-04-08T08:23:27.300Z",
-      "avatar": "/images/avatar/default.png",
-      "status": "active",
-      "totalOrders": 0,
-      "address": null
     }
   ],
   "orders": [
@@ -1983,6 +1971,177 @@
       "status": "pending",
       "paymentMethod": "card",
       "createdAt": "2026-04-13T19:24:09.154Z"
+    },
+    {
+      "id": "7384",
+      "userId": "USR-003",
+      "customerName": "Eman",
+      "email": "customer@mail.com",
+      "orderItems": [
+        {
+          "id": "han-03",
+          "title": "Elegant Croc-Patterned Leather Handbag & Clutch",
+          "firstImage": "/images/products/women/women15.jpg",
+          "secondImage": "/images/products/women/women15.jpg",
+          "images": ["/images/products/women/women15.jpg"],
+          "price": 1585,
+          "discount": 0,
+          "rating": 4.6,
+          "reviews": 28,
+          "category": "handbags",
+          "description": "Sophisticated red leather handbag with a contemporary croc-pattern. This compact set includes a matching clutch, ideal for evening wear and making a bold fashion statement.",
+          "count": 1
+        },
+        {
+          "id": "han-05",
+          "title": "Large Colorblock Faux Leather Zip-Around Wallet",
+          "firstImage": "/images/products/women/women17.jpg",
+          "secondImage": "/images/products/women/women17.jpg",
+          "images": ["/images/products/women/women17.jpg"],
+          "price": 645,
+          "discount": 0,
+          "rating": 4.1,
+          "reviews": 10,
+          "category": "handbags",
+          "description": "Organize your essentials in style with this 'Forever Young' colorblock wallet. Featuring eight card slots and a dedicated phone holder, it's as practical as it is chic.",
+          "count": 2
+        },
+        {
+          "id": "app-05",
+          "title": "Kenwood Microwave With Grill - 42L",
+          "firstImage": "/images/products/kitchen/k5.jpg",
+          "secondImage": "/images/products/kitchen/k5.jpg",
+          "images": ["/images/products/kitchen/k5.jpg"],
+          "price": 8950,
+          "discount": 6,
+          "rating": 4.6,
+          "reviews": 40,
+          "category": "appliances",
+          "description": "Kenwood 42L Microwave offers massive capacity with a built-in grill feature. Its digital display and precise power levels provide professional results for heating and browning.",
+          "count": 1
+        },
+        {
+          "id": "off-03",
+          "title": "Samsung Tablet",
+          "firstImage": "/images/products/special-offers/s5.jpg",
+          "secondImage": "/images/products/special-offers/s6.jpg",
+          "images": ["/images/products/special-offers/s5.jpg", "/images/products/special-offers/s6.jpg"],
+          "price": 200,
+          "discount": 40,
+          "rating": 4.5,
+          "reviews": 584,
+          "category": "specialOffers",
+          "description": "Samsung Tablet is a versatile device for entertainment, studying, and everyday productivity. It offers a clear display, smooth performance, and long battery life, and is now available with a 40% discount for a limited-time offer.",
+          "count": 1
+        },
+        {
+          "id": "off-01",
+          "title": "Pioneer DJ Headphones",
+          "firstImage": "/images/products/special-offers/s1.jpg",
+          "secondImage": "/images/products/special-offers/s2.jpg",
+          "images": [
+            "/images/products/special-offers/s1.jpg",
+            "/images/products/special-offers/s2.jpg",
+            "/images/products/special-offers/s3.jpg",
+            "/images/products/special-offers/s4.jpg"
+          ],
+          "price": 50,
+          "discount": 30,
+          "rating": 4.1,
+          "reviews": 4521,
+          "category": "specialOffers",
+          "description": "Pioneer DJ Headphones are designed to deliver powerful, clear sound with deep bass, making them ideal for DJs and music lovers. They feature a comfortable over-ear design for long listening sessions and are now available with a 30% discount for a limited time.",
+          "count": 1
+        }
+      ],
+      "shippingAddress": {
+        "city": "Beni Suef",
+        "area": "Nasser / TahaBosh",
+        "street": "El Nakhel",
+        "phone": "+201111182665"
+      },
+      "totalPrice": 11458,
+      "status": "shipped",
+      "paymentMethod": "card",
+      "createdAt": "2026-04-14T05:48:01.705Z"
+    },
+    {
+      "id": "c915",
+      "userId": "USR-003",
+      "customerName": "Eman",
+      "email": "customer@mail.com",
+      "orderItems": [
+        {
+          "id": "clo-03",
+          "title": "American Eagle Slim Fit Oxford Shirt",
+          "firstImage": "/images/products/men/men3.jpg",
+          "secondImage": "/images/products/men/men3.jpg",
+          "images": ["/images/products/men/men3.jpg"],
+          "price": 2660,
+          "discount": 10,
+          "rating": 5,
+          "reviews": 3,
+          "category": "clothing",
+          "description": "Authentic American Eagle Oxford button-up shirt. A versatile slim-fit design that transitions perfectly from office hours to evening outings.",
+          "count": 1
+        },
+        {
+          "id": "clo-04",
+          "title": "White Rabbit Ripped Detail Denim Jacket",
+          "firstImage": "/images/products/men/men4.jpg",
+          "secondImage": "/images/products/men/men4.jpg",
+          "images": ["/images/products/men/men4.jpg"],
+          "price": 1385,
+          "discount": 0,
+          "rating": 3.7,
+          "reviews": 3,
+          "category": "clothing",
+          "description": "A rugged denim jacket from White Rabbit with stylish ripped shoulder details. A classic addition to any streetwear wardrobe.",
+          "count": 1
+        }
+      ],
+      "shippingAddress": {
+        "city": "Beni Suef",
+        "area": "Nasser / TahaBosh",
+        "street": "El Nakhel",
+        "phone": "+21111111111111"
+      },
+      "totalPrice": 3794,
+      "status": "pending",
+      "paymentMethod": "card",
+      "createdAt": "2026-04-14T05:51:55.191Z"
+    },
+    {
+      "id": "b02f",
+      "userId": "USR-003",
+      "customerName": "Eman",
+      "email": "customer@mail.com",
+      "orderItems": [
+        {
+          "id": "dre-03",
+          "title": "Luxurious Silk Button-Down Casual Blouse",
+          "firstImage": "/images/products/women/women3.jpg",
+          "secondImage": "/images/products/women/women3.jpg",
+          "images": ["/images/products/women/women3.jpg"],
+          "price": 500,
+          "discount": 10,
+          "rating": 4.5,
+          "reviews": 89,
+          "category": "dresses",
+          "description": "Elevate your daily style with this breathable silk blouse. Perfect for work or parties, offering an elegant emerald green finish and a comfortable chic fit.",
+          "count": 1
+        }
+      ],
+      "shippingAddress": {
+        "city": "Beni Suef",
+        "area": "Nasser / TahaBosh",
+        "street": "El Nakhel",
+        "phone": "+21111111111111"
+      },
+      "totalPrice": 465,
+      "status": "pending",
+      "paymentMethod": "card",
+      "createdAt": "2026-04-14T05:55:11.944Z"
     }
   ]
 }
