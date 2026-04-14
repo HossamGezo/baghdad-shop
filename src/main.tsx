@@ -17,7 +17,13 @@ createRoot(document.getElementById("root")!).render(
   <Provider store={store}>
     <StrictMode>
       <AppRouter />
-      <Toaster />
+      <Toaster
+        toastOptions={{
+          style: {
+            maxWidth: "90vw",
+          },
+        }}
+      />
     </StrictMode>
   </Provider>,
 );

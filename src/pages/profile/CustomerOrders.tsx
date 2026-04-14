@@ -3,6 +3,7 @@ import { useEffect } from "react";
 
 // --- Local Components
 import EmptyState from "@components/empty-state/EmptyState";
+import OrderImages from "@pages/admin/OrderImages";
 
 // --- RTK
 import { fetchAllOrders } from "@features/orders/ordersSlice";
@@ -58,12 +59,7 @@ const CustomerOrders = () => {
                   className="even:bg-[#EFF2F3]/75 *:whitespace-nowrap *:px-1.5 *:py-2.5 *:text-center *:text-[11px] *:select-none"
                 >
                   <td>
-                    <img
-                      src={order.orderItems[0].firstImage}
-                      alt={order.orderItems[0].title}
-                      loading="lazy"
-                      className="w-10 h-10 object-contain mx-auto"
-                    />
+                    <OrderImages orderItems={order.orderItems} />
                   </td>
                   <td>{order.id}</td>
                   <td>{new Date(order.createdAt).toLocaleDateString("en-GB")}</td>

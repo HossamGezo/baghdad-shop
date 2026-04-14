@@ -36,7 +36,7 @@ customMiddleware.startListening({
 
 // Register & Login
 customMiddleware.startListening({
-  matcher: isAnyOf(registerUser.fulfilled, loginUser.fulfilled, updateProfile.fulfilled),
+  matcher: isAnyOf(registerUser.fulfilled, loginUser.fulfilled, updateProfile.fulfilled, updateUserRole.fulfilled),
   effect: (_action, listenerApi) => {
     const state = listenerApi.getState() as RootState;
     window.localStorage.setItem("user", JSON.stringify(state.auth.user));

@@ -1611,7 +1611,7 @@
     },
     {
       "id": "USR-003",
-      "fullName": "Customer",
+      "fullName": "Eman",
       "email": "customer@mail.com",
       "password": "password123",
       "phone": "+201200000003",
@@ -1621,10 +1621,10 @@
       "status": "active",
       "totalOrders": 5,
       "address": {
-        "city": "Alexandria",
-        "area": "Smouha",
-        "street": "Victor Emmanuel St.",
-        "phone": "+201200000003"
+        "city": "Beni Suef",
+        "area": "Nasser / TahaBosh",
+        "street": "El Nakhel",
+        "phone": "+21111111111111"
       }
     },
     {
@@ -1689,18 +1689,6 @@
         "street": "Gate 6, Villa 12",
         "phone": "+201111182665"
       }
-    },
-    {
-      "id": "USR-017",
-      "fullName": "Hossam",
-      "email": "ha2ghossam@gmail.com",
-      "password": "11111111",
-      "role": "customer",
-      "joinDate": "2026-04-08T08:23:27.300Z",
-      "avatar": "/images/avatar/default.png",
-      "status": "active",
-      "totalOrders": 0,
-      "address": null
     }
   ],
   "orders": [
@@ -1732,7 +1720,7 @@
         "phone": "+201200000003"
       },
       "totalPrice": 615,
-      "status": "pending",
+      "status": "shipped",
       "paymentMethod": "card",
       "createdAt": "2026-04-12T07:22:28.377Z"
     },
@@ -1796,7 +1784,7 @@
         "phone": "+201200000003"
       },
       "totalPrice": 320,
-      "status": "pending",
+      "status": "delivered",
       "paymentMethod": "card",
       "createdAt": "2026-04-12T09:28:42.946Z"
     },
@@ -1828,7 +1816,7 @@
         "phone": "+201200000003"
       },
       "totalPrice": 374,
-      "status": "pending",
+      "status": "shipped",
       "paymentMethod": "card",
       "createdAt": "2026-04-12T17:08:21.583Z"
     },
@@ -1860,9 +1848,300 @@
         "phone": "+201200000003"
       },
       "totalPrice": 2515,
-      "status": "pending",
+      "status": "cancelled",
       "paymentMethod": "card",
       "createdAt": "2026-04-12T18:47:05.639Z"
+    },
+    {
+      "id": "ca91",
+      "userId": "USR-002",
+      "customerName": "Admin",
+      "email": "admin@mail.com",
+      "orderItems": [
+        {
+          "id": "lap-03",
+          "title": "Huawei MateBook 14 Laptop",
+          "firstImage": "/images/products/laptops/l3.jpg",
+          "secondImage": "/images/products/laptops/l3.jpg",
+          "images": ["/images/products/laptops/l3.jpg"],
+          "price": 800,
+          "discount": 0,
+          "rating": 4.6,
+          "reviews": 1200,
+          "category": "laptops",
+          "description": "A premium laptop with a stunning display, fast performance, and a lightweight design—ideal for work, study, and creativity.",
+          "count": 1
+        }
+      ],
+      "shippingAddress": {
+        "city": "Cairo",
+        "area": "Nasr City",
+        "street": "Abbas El Akkad St.",
+        "phone": "+201000000002"
+      },
+      "totalPrice": 815,
+      "status": "pending",
+      "paymentMethod": "card",
+      "createdAt": "2026-04-13T19:23:26.144Z"
+    },
+    {
+      "id": "f038",
+      "userId": "USR-002",
+      "customerName": "Admin",
+      "email": "admin@mail.com",
+      "orderItems": [
+        {
+          "id": "dre-02",
+          "title": "Elegant Burgundy Satin Evening Gown",
+          "firstImage": "/images/products/women/women2.jpg",
+          "secondImage": "/images/products/women/women2.jpg",
+          "images": ["/images/products/women/women2.jpg"],
+          "price": 2500,
+          "discount": 0,
+          "rating": 4.8,
+          "reviews": 45,
+          "category": "dresses",
+          "description": "Make an entrance with this stunning floor-length burgundy satin gown. Features a sophisticated ruched design and bow cap sleeves for your special occasions.",
+          "count": 1
+        },
+        {
+          "id": "dre-05",
+          "title": "Mosca Long Linen Shirt Dress - Royal Blue",
+          "firstImage": "/images/products/women/women5.jpg",
+          "secondImage": "/images/products/women/women5.jpg",
+          "images": ["/images/products/women/women5.jpg"],
+          "price": 399,
+          "discount": 0,
+          "rating": 3.6,
+          "reviews": 15,
+          "category": "dresses",
+          "description": "Casual comfort meets style with the Mosca linen shirt dress. Features classic long sleeves and a vibrant royal blue color, ideal for summer days.",
+          "count": 1
+        },
+        {
+          "id": "dre-03",
+          "title": "Luxurious Silk Button-Down Casual Blouse",
+          "firstImage": "/images/products/women/women3.jpg",
+          "secondImage": "/images/products/women/women3.jpg",
+          "images": ["/images/products/women/women3.jpg"],
+          "price": 500,
+          "discount": 10,
+          "rating": 4.5,
+          "reviews": 89,
+          "category": "dresses",
+          "description": "Elevate your daily style with this breathable silk blouse. Perfect for work or parties, offering an elegant emerald green finish and a comfortable chic fit.",
+          "count": 1
+        },
+        {
+          "id": "dre-04",
+          "title": "Teal Suede High-Waist Pleated Skirt",
+          "firstImage": "/images/products/women/women4.jpg",
+          "secondImage": "/images/products/women/women4.jpg",
+          "images": ["/images/products/women/women4.jpg"],
+          "price": 689,
+          "discount": 15,
+          "rating": 4.2,
+          "reviews": 34,
+          "category": "dresses",
+          "description": "A trendy teal suede skirt featuring sharp pleats and a flattering high-waist cut. A versatile piece that pairs perfectly with boots or heels.",
+          "count": 1
+        },
+        {
+          "id": "dre-01",
+          "title": "American Eagle Long-Sleeve Embroidered Midi Dress",
+          "firstImage": "/images/products/women/women1.jpg",
+          "secondImage": "/images/products/women/women1.jpg",
+          "images": ["/images/products/women/women1.jpg"],
+          "price": 1800,
+          "discount": 0,
+          "rating": 5,
+          "reviews": 12,
+          "category": "dresses",
+          "description": "Exquisite embroidered midi dress from American Eagle. Featuring long sleeves and a beautiful tiered design in cream, perfect for a bohemian chic look.",
+          "count": 1
+        }
+      ],
+      "shippingAddress": {
+        "city": "Cairo",
+        "area": "Nasr City",
+        "street": "Abbas El Akkad St.",
+        "phone": "+201000000002"
+      },
+      "totalPrice": 5749.65,
+      "status": "pending",
+      "paymentMethod": "card",
+      "createdAt": "2026-04-13T19:24:09.154Z"
+    },
+    {
+      "id": "7384",
+      "userId": "USR-003",
+      "customerName": "Eman",
+      "email": "customer@mail.com",
+      "orderItems": [
+        {
+          "id": "han-03",
+          "title": "Elegant Croc-Patterned Leather Handbag & Clutch",
+          "firstImage": "/images/products/women/women15.jpg",
+          "secondImage": "/images/products/women/women15.jpg",
+          "images": ["/images/products/women/women15.jpg"],
+          "price": 1585,
+          "discount": 0,
+          "rating": 4.6,
+          "reviews": 28,
+          "category": "handbags",
+          "description": "Sophisticated red leather handbag with a contemporary croc-pattern. This compact set includes a matching clutch, ideal for evening wear and making a bold fashion statement.",
+          "count": 1
+        },
+        {
+          "id": "han-05",
+          "title": "Large Colorblock Faux Leather Zip-Around Wallet",
+          "firstImage": "/images/products/women/women17.jpg",
+          "secondImage": "/images/products/women/women17.jpg",
+          "images": ["/images/products/women/women17.jpg"],
+          "price": 645,
+          "discount": 0,
+          "rating": 4.1,
+          "reviews": 10,
+          "category": "handbags",
+          "description": "Organize your essentials in style with this 'Forever Young' colorblock wallet. Featuring eight card slots and a dedicated phone holder, it's as practical as it is chic.",
+          "count": 2
+        },
+        {
+          "id": "app-05",
+          "title": "Kenwood Microwave With Grill - 42L",
+          "firstImage": "/images/products/kitchen/k5.jpg",
+          "secondImage": "/images/products/kitchen/k5.jpg",
+          "images": ["/images/products/kitchen/k5.jpg"],
+          "price": 8950,
+          "discount": 6,
+          "rating": 4.6,
+          "reviews": 40,
+          "category": "appliances",
+          "description": "Kenwood 42L Microwave offers massive capacity with a built-in grill feature. Its digital display and precise power levels provide professional results for heating and browning.",
+          "count": 1
+        },
+        {
+          "id": "off-03",
+          "title": "Samsung Tablet",
+          "firstImage": "/images/products/special-offers/s5.jpg",
+          "secondImage": "/images/products/special-offers/s6.jpg",
+          "images": ["/images/products/special-offers/s5.jpg", "/images/products/special-offers/s6.jpg"],
+          "price": 200,
+          "discount": 40,
+          "rating": 4.5,
+          "reviews": 584,
+          "category": "specialOffers",
+          "description": "Samsung Tablet is a versatile device for entertainment, studying, and everyday productivity. It offers a clear display, smooth performance, and long battery life, and is now available with a 40% discount for a limited-time offer.",
+          "count": 1
+        },
+        {
+          "id": "off-01",
+          "title": "Pioneer DJ Headphones",
+          "firstImage": "/images/products/special-offers/s1.jpg",
+          "secondImage": "/images/products/special-offers/s2.jpg",
+          "images": [
+            "/images/products/special-offers/s1.jpg",
+            "/images/products/special-offers/s2.jpg",
+            "/images/products/special-offers/s3.jpg",
+            "/images/products/special-offers/s4.jpg"
+          ],
+          "price": 50,
+          "discount": 30,
+          "rating": 4.1,
+          "reviews": 4521,
+          "category": "specialOffers",
+          "description": "Pioneer DJ Headphones are designed to deliver powerful, clear sound with deep bass, making them ideal for DJs and music lovers. They feature a comfortable over-ear design for long listening sessions and are now available with a 30% discount for a limited time.",
+          "count": 1
+        }
+      ],
+      "shippingAddress": {
+        "city": "Beni Suef",
+        "area": "Nasser / TahaBosh",
+        "street": "El Nakhel",
+        "phone": "+201111182665"
+      },
+      "totalPrice": 11458,
+      "status": "shipped",
+      "paymentMethod": "card",
+      "createdAt": "2026-04-14T05:48:01.705Z"
+    },
+    {
+      "id": "c915",
+      "userId": "USR-003",
+      "customerName": "Eman",
+      "email": "customer@mail.com",
+      "orderItems": [
+        {
+          "id": "clo-03",
+          "title": "American Eagle Slim Fit Oxford Shirt",
+          "firstImage": "/images/products/men/men3.jpg",
+          "secondImage": "/images/products/men/men3.jpg",
+          "images": ["/images/products/men/men3.jpg"],
+          "price": 2660,
+          "discount": 10,
+          "rating": 5,
+          "reviews": 3,
+          "category": "clothing",
+          "description": "Authentic American Eagle Oxford button-up shirt. A versatile slim-fit design that transitions perfectly from office hours to evening outings.",
+          "count": 1
+        },
+        {
+          "id": "clo-04",
+          "title": "White Rabbit Ripped Detail Denim Jacket",
+          "firstImage": "/images/products/men/men4.jpg",
+          "secondImage": "/images/products/men/men4.jpg",
+          "images": ["/images/products/men/men4.jpg"],
+          "price": 1385,
+          "discount": 0,
+          "rating": 3.7,
+          "reviews": 3,
+          "category": "clothing",
+          "description": "A rugged denim jacket from White Rabbit with stylish ripped shoulder details. A classic addition to any streetwear wardrobe.",
+          "count": 1
+        }
+      ],
+      "shippingAddress": {
+        "city": "Beni Suef",
+        "area": "Nasser / TahaBosh",
+        "street": "El Nakhel",
+        "phone": "+21111111111111"
+      },
+      "totalPrice": 3794,
+      "status": "pending",
+      "paymentMethod": "card",
+      "createdAt": "2026-04-14T05:51:55.191Z"
+    },
+    {
+      "id": "b02f",
+      "userId": "USR-003",
+      "customerName": "Eman",
+      "email": "customer@mail.com",
+      "orderItems": [
+        {
+          "id": "dre-03",
+          "title": "Luxurious Silk Button-Down Casual Blouse",
+          "firstImage": "/images/products/women/women3.jpg",
+          "secondImage": "/images/products/women/women3.jpg",
+          "images": ["/images/products/women/women3.jpg"],
+          "price": 500,
+          "discount": 10,
+          "rating": 4.5,
+          "reviews": 89,
+          "category": "dresses",
+          "description": "Elevate your daily style with this breathable silk blouse. Perfect for work or parties, offering an elegant emerald green finish and a comfortable chic fit.",
+          "count": 1
+        }
+      ],
+      "shippingAddress": {
+        "city": "Beni Suef",
+        "area": "Nasser / TahaBosh",
+        "street": "El Nakhel",
+        "phone": "+21111111111111"
+      },
+      "totalPrice": 465,
+      "status": "pending",
+      "paymentMethod": "card",
+      "createdAt": "2026-04-14T05:55:11.944Z"
     }
   ]
 }

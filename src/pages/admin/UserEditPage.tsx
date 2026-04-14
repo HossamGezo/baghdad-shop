@@ -55,6 +55,9 @@ type EditUserSchemaType = z.infer<typeof EditUserSchema>;
 
 // --- Main Component
 const UserEditPage = () => {
+  // --- RTK
+  const { user } = useAppSelector((state) => state.auth);
+
   // --- Edit User
   const navigate = useNavigate();
   const { id } = useParams();
@@ -79,14 +82,16 @@ const UserEditPage = () => {
   // --- OnSubmit Function
   const onSubmit: SubmitHandler<EditUserSchemaType> = async (data) => {
     if (singleUser) {
-      await dispatch(
-        updateUserRole({
-          id: singleUser.id,
-          user: { ...singleUser, role: data.role },
-        }),
-      );
+      await dispatch(updateUserRole({ id: singleUser.id, role: data.role }));
 
-      navigate("/admin/users");
+      const isEditingSelf = singleUser.id === user?.id;
+      const becameCustomer = data.role === "customer";
+
+      if (isEditingSelf && becameCustomer) {
+        navigate("/", { replace: true });
+      } else {
+        navigate("/admin/users");
+      }
     }
   };
 
