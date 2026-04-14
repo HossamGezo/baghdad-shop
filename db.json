@@ -1611,7 +1611,7 @@
     },
     {
       "id": "USR-003",
-      "fullName": "Eman",
+      "fullName": "Customer",
       "email": "customer@mail.com",
       "password": "password123",
       "phone": "+201200000003",
@@ -1621,10 +1621,10 @@
       "status": "active",
       "totalOrders": 5,
       "address": {
-        "city": "Beni Suef",
-        "area": "Nasser / TahaBosh",
-        "street": "El Nakhel",
-        "phone": "+21111111111111"
+        "city": "Alexandria",
+        "area": "Smouha",
+        "street": "12 Fawzy Moaz Street",
+        "phone": "+20 10 1234 5678"
       }
     },
     {
