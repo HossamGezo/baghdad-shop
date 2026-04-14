@@ -8,6 +8,9 @@ import api from "@utils/api";
 import type { LoginType, RegisterType, ResetPasswordType, UpdateProfileType, UserType } from "@/types/types";
 import type { RootState } from "@app/store";
 
+// --- RTK
+import { updateUserRole } from "@features/users/usersSlice";
+
 // --- localStorage
 const storedUser = window.localStorage.getItem("user");
 const user: UserType | null = storedUser ? JSON.parse(storedUser) : null;
@@ -179,6 +182,15 @@ const authSlice = createSlice({
       state.loading = false;
 
       state.user = action.payload;
+
+      state.error = "";
+    });
+
+    // --- Update User Role "From Users Slice"
+    builder.addCase(updateUserRole.fulfilled, (state, action) => {
+      state.loading = false;
+
+      if (state.user?.id == action.payload.id) state.user = action.payload;
 
       state.error = "";
     });
