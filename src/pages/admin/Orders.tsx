@@ -2,7 +2,6 @@
 import { useEffect } from "react";
 
 // --- Utils
-import { getStatusStyles } from "@utils/helpers/statusColor";
 import { formatCurrency } from "@utils/formatCurrency";
 import { cn } from "@utils/cn";
 
@@ -12,6 +11,8 @@ import { fetchAllOrders } from "@features/orders/ordersSlice";
 
 // --- Local Components
 import ErrorHandler from "@components/error-handler/ErrorHandler";
+import SelectStatus from "@pages/admin/SelectStatus";
+import OrderImages from "@pages/admin/OrderImages";
 
 // --- Main Component
 const Orders = () => {
@@ -22,6 +23,7 @@ const Orders = () => {
     if (orders.length === 0) dispatch(fetchAllOrders());
   }, [dispatch, orders.length]);
 
+  // --- Return JSX
   return (
     <div className="flex flex-col h-full">
       {/* Title */}
@@ -61,14 +63,7 @@ const Orders = () => {
                     className="even:bg-[#EFF2F3]/75 hover:bg-gray-500/10 transition-colors duration-200 *:whitespace-nowrap *:px-3 *:py-2.5 *:text-center *:text-[12px] *:select-none"
                   >
                     <td>
-                      <div className="bg-white p-1 rounded border border-gray-100 w-12 h-12 mx-auto">
-                        <img
-                          src={order.orderItems[0].firstImage}
-                          alt={order.orderItems[0].title}
-                          loading="lazy"
-                          className="w-full h-full object-contain"
-                        />
-                      </div>
+                      <OrderImages orderItems={order.orderItems} />
                     </td>
                     <td className="font-bold">{order.id}</td>
                     <td>{new Date(order.createdAt).toLocaleDateString("en-GB")}</td>
@@ -79,14 +74,7 @@ const Orders = () => {
                     <td className="font-bold">{order.orderItems.length}</td>
                     <td className="font-bold text-primary">{formatCurrency(order.totalPrice)}</td>
                     <td>
-                      <span
-                        className={cn(
-                          "mx-auto flex items-center justify-center shadow-md rounded-[5px] h-7.5 w-20 text-[10px] font-bold border uppercase",
-                          getStatusStyles(order.status),
-                        )}
-                      >
-                        {order.status}
-                      </span>
+                      <SelectStatus id={order.id} status={order.status} />
                     </td>
                   </tr>
                 ))}
