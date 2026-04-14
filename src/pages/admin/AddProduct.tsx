@@ -7,7 +7,7 @@ import { z } from "zod";
 
 // --- Components
 import InputField from "@components/inputs/InputField";
-import CustomButton from "@/components/custom-button/CustomButton";
+import CustomButton from "@components/custom-button/CustomButton";
 import ErrorHandler from "@components/error-handler/ErrorHandler";
 
 // --- Redux

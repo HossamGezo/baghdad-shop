@@ -7,7 +7,7 @@ import type { ProductType } from "@/types/types";
 // --- Local Components
 import Discount from "@components/card/components/discount/Discount";
 import RatingAndViews from "@components/card/components/rating-and-reviews/RatingAndReviews";
-import { cn } from "@/utils/cn";
+import { cn } from "@utils/cn";
 
 // --- Types
 type SpecialOfferCardProps = {

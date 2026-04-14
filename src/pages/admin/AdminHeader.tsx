@@ -5,8 +5,9 @@ import { Link } from "react-router";
 // --- React Icons
 import { IoIosNotificationsOutline } from "react-icons/io";
 import { MdMenuOpen, MdOutlineDashboard, MdOutlineMenu } from "react-icons/md";
-import { FaUser } from "react-icons/fa";
 import { BiBasket } from "react-icons/bi";
+import { IoHomeOutline } from "react-icons/io5";
+import { LuUserRound } from "react-icons/lu";
 
 // --- Local Components
 import Logo from "@components/logo/Logo";
@@ -150,11 +151,18 @@ const AdminHeader = ({ isOpen, setIsOpen }: SidebarTypeProps) => {
                     <MdOutlineDashboard size={17} /> Dashboard
                   </Link>
                   <Link
-                    to="/profile"
-                    onClick={() => setOpenDropMenu(false)}
+                    to="/"
+                    onClick={() => setIsOpen(false)}
                     className="text-primary p-2.5 border-b border-gray-400 flex items-center gap-2.5 font-semibold hover:bg-gray-300 font-jetbrains tracking-tighter"
                   >
-                    <FaUser size={17} /> My Profile
+                    <IoHomeOutline size={18} /> Home
+                  </Link>
+                  <Link
+                    to="/profile"
+                    onClick={() => setIsOpen(false)}
+                    className="text-primary p-2.5 border-b border-gray-400 flex items-center gap-2.5 font-semibold hover:bg-gray-300 font-jetbrains tracking-tighter"
+                  >
+                    <LuUserRound size={18} /> My Profile
                   </Link>
                   <Link
                     to="/profile/orders"
