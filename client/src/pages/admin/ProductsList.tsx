@@ -17,8 +17,11 @@ import { deleteProduct, fetchProductsByCategory } from "@features/products/produ
 import CustomButton from "@components/custom-button/CustomButton";
 import Modal from "@components/modal/Modal";
 
+// --- Data
+import { ALL_CATEGORIES } from "@data/productCategories";
+
 // --- Types
-import type { CategoriesType, ProductType } from "@/types/types";
+import type { ProductType } from "@/types/types";
 
 // --- Main Component
 const ProductsList = () => {
@@ -30,19 +33,7 @@ const ProductsList = () => {
 
   // --- Logic: Dispatch all empty categories
   useEffect(() => {
-    const categories: CategoriesType[] = [
-      "laptops",
-      "mobiles",
-      "specialOffers",
-      "appliances",
-      "cookware",
-      "clothing",
-      "shoes",
-      "dresses",
-      "handbags",
-    ];
-
-    categories.forEach((cat) => {
+    ALL_CATEGORIES.forEach((cat) => {
       const currentCategory = state[cat];
 
       if (currentCategory.length === 0) {

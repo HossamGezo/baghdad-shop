@@ -14,22 +14,11 @@ import ErrorHandler from "@components/error-handler/ErrorHandler";
 import { useAppDispatch, useAppSelector } from "@app/hooks";
 import { addProduct, fetchProductsByCategory, updateProduct } from "@features/products/productsSlice";
 
+// --- Data
+import { ALL_CATEGORIES } from "@data/productCategories";
+
 // --- Types
 import type { CategoriesType, ProductType } from "@/types/types";
-
-const categories: CategoriesType[] = [
-  "laptops",
-  "mobiles",
-  "specialOffers",
-  "appliances",
-  "cookware",
-  "clothing",
-  "shoes",
-  "dresses",
-  "handbags",
-  "supermarket",
-  "automotive",
-];
 
 // --- Product Schema
 const ProductSchema = z.object({
@@ -37,7 +26,7 @@ const ProductSchema = z.object({
   image: z.string().trim(),
   price: z.string().trim(),
   discount: z.string().trim(),
-  category: z.enum(categories),
+  category: z.enum(ALL_CATEGORIES),
   description: z.string().trim(),
 });
 type ProductSchemaType = z.infer<typeof ProductSchema>;
@@ -202,7 +191,7 @@ const AddProduct = () => {
                   id="category"
                   className="border border-gray-300 h-12.5 rounded-md focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-[border-color,box-shadow] duration-500 ease-in-out shadow-sm"
                 >
-                  {categories.map((cat, index) => (
+                  {ALL_CATEGORIES.map((cat, index) => (
                     <option key={index} value={cat}>
                       {cat}
                     </option>

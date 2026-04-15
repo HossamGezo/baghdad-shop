@@ -1,3 +1,5 @@
+import type { CategoryName } from "@data/productCategories";
+
 // --- Product Types
 
 export type ProductType = {
@@ -29,18 +31,7 @@ export type CategoryType = {
   to: string;
 };
 
-export type CategoriesType =
-  | "laptops"
-  | "mobiles"
-  | "specialOffers"
-  | "appliances"
-  | "cookware"
-  | "clothing"
-  | "shoes"
-  | "dresses"
-  | "handbags"
-  | "supermarket"
-  | "automotive";
+export type CategoriesType = CategoryName;
 
 // --- Cart Types
 
