@@ -60,7 +60,9 @@ customMiddleware.startListening({
 customMiddleware.startListening({
   matcher: isAnyOf(addToCart),
   effect: () => {
-    toast.success("Product has been added to cart!");
+    toast.success("Product has been added to cart!", {
+      id: "cart-toast",
+    });
   },
 });
 
@@ -69,7 +71,9 @@ customMiddleware.startListening({
 customMiddleware.startListening({
   matcher: isAnyOf(removeFromCart),
   effect: () => {
-    toast.error("Product removed from cart");
+    toast.error("Product removed from cart", {
+      id: "cart-toast",
+    });
   },
 });
 
@@ -80,7 +84,9 @@ customMiddleware.startListening({
 customMiddleware.startListening({
   matcher: isAnyOf(updateUserRole.fulfilled),
   effect: () => {
-    toast.success("User has been updated successfully");
+    toast.success("User has been updated successfully", {
+      id: "user-toast",
+    });
   },
 });
 
@@ -89,7 +95,9 @@ customMiddleware.startListening({
 customMiddleware.startListening({
   matcher: isAnyOf(deleteUser.fulfilled),
   effect: () => {
-    toast.error("User has been deleted");
+    toast.error("User has been deleted", {
+      id: "user-toast",
+    });
   },
 });
 
@@ -102,7 +110,9 @@ customMiddleware.startListening({
   matcher: isAnyOf(registerUser.rejected),
   effect: (_action, listenerApi) => {
     const state = listenerApi.getState() as RootState;
-    toast.error(state.auth.error);
+    toast.error(state.auth.error, {
+      id: "register-toast",
+    });
   },
 });
 
@@ -113,7 +123,9 @@ customMiddleware.startListening({
   matcher: isAnyOf(loginUser.rejected),
   effect: (_action, listenerApi) => {
     const state = listenerApi.getState() as RootState;
-    toast.error(state.auth.error);
+    toast.error(state.auth.error, {
+      id: "login-toast",
+    });
   },
 });
 
@@ -123,7 +135,9 @@ customMiddleware.startListening({
 customMiddleware.startListening({
   matcher: isAnyOf(resetPassword.fulfilled),
   effect: (action) => {
-    toast.success(action.payload as string);
+    toast.success(action.payload as string, {
+      id: "password-toast",
+    });
   },
 });
 
@@ -132,7 +146,9 @@ customMiddleware.startListening({
   matcher: isAnyOf(resetPassword.rejected),
   effect: (_action, listenerApi) => {
     const state = listenerApi.getState() as RootState;
-    toast.error(state.auth.error);
+    toast.error(state.auth.error, {
+      id: "password-toast",
+    });
   },
 });
 
@@ -142,7 +158,9 @@ customMiddleware.startListening({
 customMiddleware.startListening({
   matcher: isAnyOf(updateProfile.fulfilled),
   effect: () => {
-    toast.success("Your profile has been updated successfully!");
+    toast.success("Your profile has been updated successfully!", {
+      id: "profile-toast",
+    });
   },
 });
 
@@ -151,7 +169,9 @@ customMiddleware.startListening({
   matcher: isAnyOf(updateProfile.rejected),
   effect: (_action, listenerApi) => {
     const state = listenerApi.getState() as RootState;
-    toast.error(state.auth.error);
+    toast.error(state.auth.error, {
+      id: "profile-toast",
+    });
   },
 });
 
@@ -161,7 +181,9 @@ customMiddleware.startListening({
 customMiddleware.startListening({
   matcher: isAnyOf(addProduct.fulfilled),
   effect: () => {
-    toast.success("Product has been added successfully!");
+    toast.success("Product has been added successfully!", {
+      id: "add-product-toast",
+    });
   },
 });
 
@@ -169,7 +191,9 @@ customMiddleware.startListening({
 customMiddleware.startListening({
   matcher: isAnyOf(updateProduct.fulfilled),
   effect: () => {
-    toast.success("Product has been updated successfully!");
+    toast.success("Product has been updated successfully!", {
+      id: "update-product-toast",
+    });
   },
 });
 
@@ -177,7 +201,9 @@ customMiddleware.startListening({
 customMiddleware.startListening({
   matcher: isAnyOf(deleteProduct.fulfilled),
   effect: () => {
-    toast.error("Product has been deleted");
+    toast.error("Product has been deleted", {
+      id: "update-product-toast",
+    });
   },
 });
 
@@ -187,7 +213,9 @@ customMiddleware.startListening({
 customMiddleware.startListening({
   matcher: isAnyOf(createOrder.fulfilled),
   effect: (_action, listenerApi) => {
-    toast.success("Your order has been placed successfully!");
+    toast.success("Your order has been placed successfully!", {
+      id: "order-toast",
+    });
     listenerApi.dispatch(clearCart());
   },
 });

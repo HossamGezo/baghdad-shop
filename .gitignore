@@ -140,5 +140,8 @@ vite.config.ts.timestamp-*
 
 # --- Custom Project Ignored Files ---
 
+# MacOS internal display files
+.DS_Store
+
 # Husky internal directory
 .husky/_/
