@@ -180,8 +180,14 @@ const HeaderMiddle = ({ isOpen, setIsOpen }: HeaderMiddleProps) => {
             <span className="text-lg lg:text-xl font-jetbrains">
               Cart
               {totalItems > 0 && (
-                <span className="absolute text-[12px] font-bold text-primary -top-3 left-2 lg:-top-2.5 lg:left-3.5 border-2 border-primary bg-warning rounded-full w-6 h-6 flex items-center justify-center">
-                  {totalItems}
+                <span className="absolute text-[12px] font-bold text-primary -top-3 left-2 lg:-top-3.5 lg:left-3.5 border-2 border-primary bg-warning rounded-full w-6 h-6 flex items-center justify-center">
+                  {totalItems > 99 ? (
+                    <span className="flex items-start text-[10px] leading-none tracking-tighter">
+                      99<span className="text-[8px] font-extrabold mt-0.5">+</span>
+                    </span>
+                  ) : (
+                    totalItems
+                  )}
                 </span>
               )}
             </span>
