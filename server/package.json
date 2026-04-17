@@ -1,18 +1,57 @@
 {
   "name": "baghdad-shop-server",
   "version": "1.0.0",
-  "description": "The backend side of Baghdad Shop. Currently running JSON Server for development and data mocking.",
-  "main": "index.js",
+  "private": true,
+  "description": "The backend side of Baghdad Shop. A robust REST API built with Node.js, Express, TypeScript, and MongoDB.",
+  "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node dist/index.js",
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "check-types": "tsc --noEmit",
+    "tree": "tree -I 'node_modules|dist'",
     "server": "json-server db.json --port 5100",
-    "tree": "tree -I 'node_modules|dist'"
+    "mongo:start": "brew services start mongodb-community",
+    "mongo:stop": "brew services stop mongodb-community"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
+  "keywords": [
+    "nodejs",
+    "typescript",
+    "express",
+    "mongodb",
+    "clean-architecture",
+    "rest-api"
+  ],
+  "author": "Hossam Gezo <ha2ghossam10@gmail.com> (https://github.com/HossamGezo)",
+  "license": "MIT",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/HossamGezo/baghdad-shop/issues"
+  },
+  "homepage": "https://github.com/HossamGezo/baghdad-shop#readme",
   "dependencies": {
-    "json-server": "^1.0.0-beta.15"
+    "compression": "^1.8.1",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "helmet": "^8.1.0",
+    "hpp": "^0.2.3",
+    "json-server": "^1.0.0-beta.15",
+    "mongoose": "^9.4.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.4",
+    "@types/compression": "^1.8.1",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/hpp": "^0.2.7",
+    "@types/node": "^25.6.0",
+    "eslint": "^9.39.4",
+    "eslint-config-prettier": "^10.1.8",
+    "tsx": "^4.21.0",
+    "typescript": "^6.0.2",
+    "typescript-eslint": "^8.58.2"
   }
 }
