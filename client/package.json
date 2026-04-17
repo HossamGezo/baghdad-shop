@@ -1,16 +1,30 @@
 {
   "name": "baghdad-shop-client",
-  "private": true,
   "version": "1.0.0",
+  "private": true,
   "description": "The front-end side of Baghdad Shop. An advanced e-commerce UI built with React 19, Redux Toolkit, and Tailwind 4.",
-  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "check-types": "tsc --noEmit"
+    "check-types": "tsc --noEmit",
+    "tree": "tree -I 'node_modules|dist'"
   },
+  "keywords": [
+    "react",
+    "redux-toolkit",
+    "tailwind-v4",
+    "typescript",
+    "ecommerce"
+  ],
+  "author": "Hossam Gezo <ha2ghossam10@gmail.com> (https://github.com/HossamGezo)",
+  "license": "MIT",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/HossamGezo/baghdad-shop/issues"
+  },
+  "homepage": "https://github.com/HossamGezo/baghdad-shop#readme",
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
     "@reduxjs/toolkit": "^2.11.2",

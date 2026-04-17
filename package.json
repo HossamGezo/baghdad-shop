@@ -2,16 +2,35 @@
   "name": "baghdad-shop-monorepo",
   "version": "1.0.0",
   "private": true,
-  "description": "Root management for Baghdad Shop (Client & Server)",
+  "description": "Baghdad Shop - A full-stack e-commerce ecosystem with React 19 Frontend and Node.js REST API Backend.",
   "scripts": {
     "dev": "concurrently -n \"SERVER,CLIENT\" -c \"magenta,blue\" \"npm run server --prefix server\" \"npm run dev --prefix client\"",
+    "dev:express": "concurrently -n \"EXPRESS,CLIENT\" -c \"green,blue\" \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
     "install-all": "npm install --prefix client && npm install --prefix server",
     "client-only": "npm run dev --prefix client",
     "server-only": "npm run server --prefix server",
     "prepare": "husky",
     "format": "prettier --write .",
+    "lint": "npm run lint --prefix client && npm run lint --prefix server",
+    "check-types": "npm run check-types --prefix client && npm run check-types --prefix server",
     "tree": "tree -I 'node_modules|dist'"
   },
+  "keywords": [
+    "mern-stack",
+    "monorepo",
+    "react-19",
+    "typescript",
+    "express-js",
+    "mongodb",
+    "ecommerce-platform",
+    "admin-dashboard"
+  ],
+  "author": "Hossam Gezo <ha2ghossam10@gmail.com> (https://github.com/HossamGezo)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/HossamGezo/baghdad-shop/issues"
+  },
+  "homepage": "https://github.com/HossamGezo/baghdad-shop#readme",
   "lint-staged": {
     "client/**/*.{ts,tsx,css}": [
       "prettier --write"
