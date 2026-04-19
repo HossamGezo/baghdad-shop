@@ -37,7 +37,10 @@
     "paths": {
       "@/*": ["./src/*"],
       "@config/*": ["./src/shared/config/*"],
-      "@middlewares/*": ["./src/shared/middlewares/*"]
+      "@middlewares/*": ["./src/shared/middlewares/*"],
+      "@data/*": ["./src/shared/data/*"],
+      "@models/*": ["./src/models/*"],
+      "@modules/*": ["./src/modules/*"]
     }
   },
   "include": ["src/**/*"],
