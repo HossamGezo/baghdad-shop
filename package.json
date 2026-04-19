@@ -13,6 +13,8 @@
     "format": "prettier --write .",
     "lint": "npm run lint --prefix client && npm run lint --prefix server",
     "check-types": "npm run check-types --prefix client && npm run check-types --prefix server",
+    "seed:users": "npm run seed:users --prefix server",
+    "delete:users": "npm run delete:users --prefix server",
     "tree": "tree -I 'node_modules|dist'"
   },
   "keywords": [
