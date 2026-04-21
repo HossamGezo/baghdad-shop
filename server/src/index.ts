@@ -19,6 +19,7 @@ import { errorHandler, notFound } from "@middlewares/error.middleware.js";
 
 // --- Router Files
 import UserRouter from "@modules/user/user.route.js";
+import AuthRouter from "@modules/auth/auth.route.js";
 
 // --- Initialize App
 const app = express();
@@ -59,6 +60,7 @@ app.use(logger);
 
 // --- API Routers
 app.use("/api/users", UserRouter);
+app.use("/api/auth", AuthRouter);
 
 // --- Error Middlewares
 app.use(notFound);
