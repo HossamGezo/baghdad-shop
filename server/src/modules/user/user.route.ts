@@ -6,22 +6,36 @@ import {
   deleteUserById,
   getAllUsers,
   getUserById,
+  getUsersCount,
   updateUserProfile,
   updateUserRole,
 } from "@modules/user/user.controller.js";
 
-// --- User Router Logic
+// --- Middlewares
+import { verifyTokenAndAdmin, verifyTokenAndUser } from "@middlewares/verifyToken.middleware.js";
+import { validateObjectId } from "@middlewares/validateObjectId.middleware.js";
+
+// --- User Routers
 
 const UserRouter = express.Router();
 
 /**
- * @desc /api/users
+ * @route /api/users
  */
-UserRouter.route("/").get(getAllUsers);
+UserRouter.route("/").get(verifyTokenAndAdmin, getAllUsers);
 
 /**
- * @desc /api/users/:id
+ * @route /api/user/count
  */
-UserRouter.route("/:id").get(getUserById).put(updateUserProfile).patch(updateUserRole).delete(deleteUserById);
+UserRouter.route("/count").get(verifyTokenAndAdmin, getUsersCount);
+
+/**
+ * @route /api/users/:id
+ */
+UserRouter.route("/:id")
+  .get(validateObjectId, verifyTokenAndUser, getUserById)
+  .put(validateObjectId, verifyTokenAndUser, updateUserProfile)
+  .patch(validateObjectId, verifyTokenAndAdmin, updateUserRole)
+  .delete(validateObjectId, verifyTokenAndAdmin, deleteUserById);
 
 export default UserRouter;
