@@ -13,7 +13,7 @@ import InputField from "@components/inputs/InputField";
 import PasswordField from "@components/inputs/PasswordField";
 import CustomButton from "@components/custom-button/CustomButton";
 
-// --- Register Schema
+// --- Login Schema
 const LoginSchema = z.object({
   email: z.string().email({ message: "Invalid Email Address" }).trim(),
   password: z.string().trim().min(8, { message: "Password must be at least 8 characters" }),

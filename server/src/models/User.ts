@@ -1,5 +1,11 @@
 // --- Libraries
-import mongoose, { type InferSchemaType } from "mongoose";
+import jwt, { type SignOptions } from "jsonwebtoken";
+import mongoose, { type InferSchemaType, type Model } from "mongoose";
+
+// --- Types
+type UserMethodsType = {
+  generateAuthToken(): string;
+};
 
 // --- Schema
 const UserSchema = new mongoose.Schema(
@@ -39,6 +45,7 @@ const UserSchema = new mongoose.Schema(
     status: {
       type: String,
       enum: ["active", "inactive"],
+      default: "active",
     },
     totalOrders: {
       type: Number,
@@ -48,19 +55,23 @@ const UserSchema = new mongoose.Schema(
       city: {
         type: String,
         trim: true,
+        default: "",
       },
       area: {
         type: String,
         trim: true,
+        default: "",
       },
       street: {
         type: String,
         trim: true,
+        default: "",
       },
       phone: {
         type: String,
         match: /^(\+201|01|00201)[0-2,5]{1}[0-9]{8}/,
         trim: true,
+        default: "",
       },
     },
   },
@@ -69,7 +80,16 @@ const UserSchema = new mongoose.Schema(
   },
 );
 
+UserSchema.methods.generateAuthToken = function () {
+  const secret = process.env.JWT_SECRET_KEY!;
+  const expires = process.env.JWT_EXPIRES_IN!;
+
+  return jwt.sign({ id: this._id, role: this.role }, secret, {
+    expiresIn: expires as Exclude<SignOptions["expiresIn"], undefined>,
+  });
+};
+
 export type UserType = InferSchemaType<typeof UserSchema>;
 
-const User = mongoose.model("User", UserSchema);
+const User = mongoose.model<UserType, Model<UserType, object, UserMethodsType>>("User", UserSchema);
 export default User;

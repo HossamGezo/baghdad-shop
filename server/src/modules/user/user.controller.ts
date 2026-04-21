@@ -28,10 +28,23 @@ export const getAllUsers = asyncHandler(async (_req: Request, res: Response) => 
 });
 
 /**
+ * @desc Get Users Count
+ * @route /api/users/count
+ * @method GET
+ * @access private (only admin)
+ */
+export const getUsersCount = asyncHandler(async (_req: Request, res: Response) => {
+  const users = await User.countDocuments();
+
+  res.status(200).json(users);
+  return;
+});
+
+/**
  * @desc Get User By Id
  * @route /api/users/:id
  * @method GET
- * @access private (only admin & user himself)
+ * @access private (only user himself)
  */
 export const getUserById = asyncHandler(async (req: Request, res: Response) => {
   const user = await User.findById(req.params.id).select("-password");
