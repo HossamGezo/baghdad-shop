@@ -36,11 +36,12 @@
     // Path Aliases for clean imports
     "paths": {
       "@/*": ["./src/*"],
+      "@models/*": ["./src/models/*"],
+      "@modules/*": ["./src/modules/*"],
       "@config/*": ["./src/shared/config/*"],
       "@middlewares/*": ["./src/shared/middlewares/*"],
       "@data/*": ["./src/shared/data/*"],
-      "@models/*": ["./src/models/*"],
-      "@modules/*": ["./src/modules/*"]
+      "@custom-types/*": ["./src/shared/types/*"]
     }
   },
   "include": ["src/**/*"],
