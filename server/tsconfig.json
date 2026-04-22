@@ -40,6 +40,7 @@
       "@modules/*": ["./src/modules/*"],
       "@config/*": ["./src/shared/config/*"],
       "@middlewares/*": ["./src/shared/middlewares/*"],
+      "@helpers/*": ["./src/shared/helpers/*"],
       "@data/*": ["./src/shared/data/*"],
       "@custom-types/*": ["./src/shared/types/*"]
     }
