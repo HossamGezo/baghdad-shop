@@ -19,7 +19,9 @@
     "delete:users": "tsx src/modules/user/user.seeder.ts -delete",
     "migrate:products": "tsx src/modules/product/product.migrator.ts",
     "seed:products": "tsx src/modules/product/product.seeder.ts -seed",
-    "delete:products": "tsx src/modules/product/product.seeder.ts -delete"
+    "delete:products": "tsx src/modules/product/product.seeder.ts -delete",
+    "seed:orders": "tsx src/modules/order/order.seeder.ts -seed",
+    "delete:orders": "tsx src/modules/order/order.seeder.ts -delete"
   },
   "keywords": [
     "nodejs",

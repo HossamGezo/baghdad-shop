@@ -6,7 +6,7 @@ import jwt from "jsonwebtoken";
 import type { UserPayload } from "@custom-types/express.js";
 
 // --- Verify Token Middleware
-const verifyToken = (req: Request, res: Response, next: NextFunction) => {
+export const verifyToken = (req: Request, res: Response, next: NextFunction) => {
   const token = req.headers.authorization?.split(" ")[1];
 
   if (!token) {
