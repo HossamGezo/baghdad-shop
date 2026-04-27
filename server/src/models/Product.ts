@@ -1,6 +1,8 @@
 // --- Libraries
 import mongoose, { type InferSchemaType } from "mongoose";
-import { ALL_CATEGORIES } from "@/shared/types/categories.js";
+
+// --- Types
+import { ALL_CATEGORIES } from "@custom-types/categories.js";
 
 // --- Product Schema
 const ProductSchema = new mongoose.Schema(
