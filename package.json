@@ -8,14 +8,21 @@
     "dev:express": "concurrently -n \"EXPRESS,CLIENT\" -c \"green,blue\" \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
     "install-all": "npm install --prefix client && npm install --prefix server",
     "client-only": "npm run dev --prefix client",
-    "server-only": "npm run server --prefix server",
+    "server-only": "npm run dev --prefix server",
     "prepare": "husky",
     "format": "prettier --write .",
     "lint": "npm run lint --prefix client && npm run lint --prefix server",
     "check-types": "npm run check-types --prefix client && npm run check-types --prefix server",
+    "tree": "tree -I 'node_modules|dist'",
+    "mongo:start": "npm run mongo:start --prefix server",
+    "mongo:stop": "npm run mongo:stop --prefix server",
     "seed:users": "npm run seed:users --prefix server",
     "delete:users": "npm run delete:users --prefix server",
-    "tree": "tree -I 'node_modules|dist'"
+    "migrate:products": "npm run migrate:products --prefix server",
+    "seed:products": "npm run seed:products --prefix server",
+    "delete:products": "npm run delete:products --prefix server",
+    "seed:orders": "npm run seed:orders --prefix server",
+    "delete:orders": "npm run delete:orders --prefix server"
   },
   "keywords": [
     "mern-stack",
