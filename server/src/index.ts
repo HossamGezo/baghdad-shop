@@ -22,6 +22,7 @@ import UserRouter from "@modules/user/user.route.js";
 import AuthRouter from "@modules/auth/auth.route.js";
 import ProductRouter from "@modules/product/product.route.js";
 import OrderRouter from "@modules/order/order.route.js";
+import StatisticsRouter from "@modules/statistics/statistics.route.js";
 
 // --- Initialize App
 const app = express();
@@ -65,6 +66,7 @@ app.use("/api/users", UserRouter);
 app.use("/api/auth", AuthRouter);
 app.use("/api/products", ProductRouter);
 app.use("/api/orders", OrderRouter);
+app.use("/api/statistics", StatisticsRouter);
 
 // --- Error Middlewares
 app.use(notFound);
