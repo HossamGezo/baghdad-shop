@@ -5,6 +5,7 @@ import bcrypt from "bcryptjs";
 
 // --- Models
 import User from "@models/User.js";
+import Order from "@models/Order.js";
 
 // --- Modules
 import {
@@ -155,6 +156,8 @@ export const deleteUserById = asyncHandler(async (req: Request, res: Response) =
     return;
   }
 
-  res.status(200).json({ message: "User has been deleted successfully!" });
+  await Order.deleteMany({ userId: req.params.id! });
+
+  res.status(200).json({ message: "User and all related orders have been deleted successfully!" });
   return;
 });
