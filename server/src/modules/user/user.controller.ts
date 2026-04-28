@@ -42,13 +42,13 @@ export const getUsersCount = asyncHandler(async (_req: Request, res: Response) =
 });
 
 /**
- * @desc Get User By Id
+ * @desc Get User Profile
  * @route /api/users/:id
  * @method GET
  * @access private (only user himself)
  */
-export const getUserById = asyncHandler(async (req: Request, res: Response) => {
-  const user = await User.findById(req.params.id).select("-password");
+export const getUserProfile = asyncHandler(async (req: Request, res: Response) => {
+  const user = await User.findById(req.params.id).select("-password").populate("orders");
 
   if (!user) {
     res.status(404).json({ message: "User Not Found" });
