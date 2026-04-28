@@ -77,9 +77,19 @@ const UserSchema = new mongoose.Schema(
   },
   {
     timestamps: true,
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
   },
 );
 
+// --- Populate Orders That Belongs To Logged In User
+UserSchema.virtual("orders", {
+  ref: "Order",
+  foreignField: "userId",
+  localField: "_id",
+});
+
+// --- Token Auto Generate When Login or Register
 UserSchema.methods.generateAuthToken = function () {
   const secret = process.env.JWT_SECRET_KEY!;
   const expires = process.env.JWT_EXPIRES_IN!;
