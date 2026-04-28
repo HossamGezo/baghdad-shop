@@ -5,7 +5,7 @@ import express from "express";
 import {
   deleteUserById,
   getAllUsers,
-  getUserById,
+  getUserProfile,
   getUsersCount,
   updateUserProfile,
   updateUserRole,
@@ -33,7 +33,7 @@ UserRouter.route("/count").get(verifyTokenAndAdmin, getUsersCount);
  * @route /api/users/:id
  */
 UserRouter.route("/:id")
-  .get(validateObjectId, verifyTokenAndUser, getUserById)
+  .get(validateObjectId, verifyTokenAndUser, getUserProfile)
   .put(validateObjectId, verifyTokenAndUser, updateUserProfile)
   .patch(validateObjectId, verifyTokenAndAdmin, updateUserRole)
   .delete(validateObjectId, verifyTokenAndAdmin, deleteUserById);
