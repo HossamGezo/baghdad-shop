@@ -1,5 +1,6 @@
 // --- Libraries
 import { createAsyncThunk, createSlice, isAnyOf } from "@reduxjs/toolkit";
+import axios from "axios";
 
 // --- Utils
 import api from "@utils/api";
@@ -9,8 +10,10 @@ import type { UserType } from "@/types/types";
 
 // --- Error Message
 const errorMsg = (error: unknown) => {
-  const message = error instanceof Error ? error.message : "Something went wrong!";
-  return message;
+  if (axios.isAxiosError(error)) {
+    return error.response?.data?.message || "Server Error";
+  }
+  return error instanceof Error ? error.message : "Something went wrong!";
 };
 
 // --- UsersState (Types)
@@ -31,48 +34,42 @@ const initialState: UsersState = {
 
 /**
  * @desc Get All Users
- * @route /users
- * @method GET
- * @access public
+ * @route /api/users
+ * @access private (admin only)
  */
-export const fetchUsers = createAsyncThunk<
-  { data: UserType[] }, // Payload/Return Type
-  void,
-  { rejectValue: string } // ThunkConfig
->("users/all-users", async (_, { rejectWithValue }) => {
-  try {
-    const response = await api.get(`/users`);
-    return { data: response.data };
-  } catch (error) {
-    return rejectWithValue(errorMsg(error));
-  }
-});
+export const fetchUsers = createAsyncThunk<UserType[], void, { rejectValue: string }>(
+  "users/all-users",
+  async (_, { rejectWithValue }) => {
+    try {
+      const response = await api.get(`/users`);
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(errorMsg(error));
+    }
+  },
+);
 
 /**
- * @desc Get User By Id
- * @route /:id
- * @method GET
- * @access public
+ * @desc Get User Profile
+ * @route /api/users/:id
+ * @access private (owner or admin)
  */
-export const fetchUserById = createAsyncThunk<
-  UserType, // Return Type
-  { id: string }, // Argument Type
-  { rejectValue: string } // ThunkConfig
->("users/single-user", async ({ id }, { rejectWithValue }) => {
-  try {
-    const response = await api.get(`/users/${id}`);
-    const user = response.data;
-    return user;
-  } catch (error) {
-    return rejectWithValue(errorMsg(error));
-  }
-});
+export const fetchUserById = createAsyncThunk<UserType, { id: string }, { rejectValue: string }>(
+  "users/single-user",
+  async ({ id }, { rejectWithValue }) => {
+    try {
+      const response = await api.get(`/users/${id}`);
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(errorMsg(error));
+    }
+  },
+);
 
 /**
  * @desc Update User Role
- * @route /users/:id
- * @method PATCH
- * @access private (admin)
+ * @route /api/users/:id
+ * @access private (admin only)
  */
 export const updateUserRole = createAsyncThunk<
   UserType,
@@ -89,22 +86,20 @@ export const updateUserRole = createAsyncThunk<
 
 /**
  * @desc Delete User
- * @route /users/:id
- * @method DELETE
- * @access private (admin)
+ * @route /api/users/:id
+ * @access private (admin only)
  */
-export const deleteUser = createAsyncThunk<
-  string, // Return Type
-  { id: string }, // Argument Type
-  { rejectValue: string }
->("users/delete-user", async ({ id }, { rejectWithValue }) => {
-  try {
-    await api.delete(`/users/${id}`);
-    return id;
-  } catch (error) {
-    return rejectWithValue(errorMsg(error));
-  }
-});
+export const deleteUser = createAsyncThunk<string, { id: string }, { rejectValue: string }>(
+  "users/delete-user",
+  async ({ id }, { rejectWithValue }) => {
+    try {
+      await api.delete(`/users/${id}`);
+      return id;
+    } catch (error) {
+      return rejectWithValue(errorMsg(error));
+    }
+  },
+);
 
 // --- Users Slice
 const usersSlice = createSlice({
@@ -113,41 +108,38 @@ const usersSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     // --- Fetch All Users
-
     builder.addCase(fetchUsers.fulfilled, (state, action) => {
       state.loading = false;
-      state.users = action.payload.data;
+      state.users = action.payload;
+      state.error = "";
     });
 
     // --- Fetch User By Id
-
     builder.addCase(fetchUserById.fulfilled, (state, action) => {
       state.loading = false;
       state.singleUser = action.payload;
+      state.error = "";
     });
 
-    // --- Update User Role By Id
-
+    // --- Update User Role
     builder.addCase(updateUserRole.fulfilled, (state, action) => {
       state.loading = false;
-
-      const index = state.users.findIndex((user) => user.id === action.payload.id);
+      const index = state.users.findIndex((user) => user._id === action.payload._id);
       if (index !== -1) {
         state.users[index] = action.payload;
       }
-
       state.singleUser = action.payload;
+      state.error = "";
     });
 
-    // --- Delete User By Id
-
+    // --- Delete User
     builder.addCase(deleteUser.fulfilled, (state, action) => {
       state.loading = false;
-      state.users = state.users.filter((user) => user.id !== action.payload);
+      state.users = state.users.filter((user) => user._id !== action.payload);
+      state.error = "";
     });
 
-    // --- Pending Case
-
+    // --- Matchers
     builder.addMatcher(
       isAnyOf(fetchUsers.pending, fetchUserById.pending, updateUserRole.pending, deleteUser.pending),
       (state) => {
@@ -155,8 +147,6 @@ const usersSlice = createSlice({
         state.error = "";
       },
     );
-
-    // --- Rejected Case
 
     builder.addMatcher(
       isAnyOf(fetchUsers.rejected, fetchUserById.rejected, updateUserRole.rejected, deleteUser.rejected),
