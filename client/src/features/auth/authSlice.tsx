@@ -1,11 +1,19 @@
 // --- Libraries
 import { createAsyncThunk, createSlice, isAnyOf } from "@reduxjs/toolkit";
+import axios from "axios";
 
 // --- Utils
 import api from "@utils/api";
 
 // --- Types
-import type { LoginType, RegisterType, ResetPasswordType, UpdateProfileType, UserType } from "@/types/types";
+import type {
+  LoginType,
+  RegisterType,
+  ResetPasswordType,
+  UpdateProfileType,
+  UserType,
+  AuthResponseType,
+} from "@/types/types";
 import type { RootState } from "@app/store";
 
 // --- RTK
@@ -13,18 +21,20 @@ import { updateUserRole } from "@features/users/usersSlice";
 
 // --- localStorage
 const storedUser = window.localStorage.getItem("user");
-const user: UserType | null = storedUser ? JSON.parse(storedUser) : null;
+const user: AuthResponseType | null = storedUser ? JSON.parse(storedUser) : null;
 
 // --- Error Message
 const errorMsg = (error: unknown) => {
-  const message = error instanceof Error ? error.message : "Something went wrong!";
-  return message;
+  if (axios.isAxiosError(error)) {
+    return error.response?.data?.message || "Server Error";
+  }
+  return error instanceof Error ? error.message : "Something went wrong!";
 };
 
 // --- State
 type AuthState = {
   loading: boolean;
-  user: UserType | null;
+  user: AuthResponseType | null;
   isAuthenticated: boolean;
   error: string;
 };
@@ -38,23 +48,15 @@ const initialState: AuthState = {
 
 /**
  * @desc Register New User
- * @route /users
+ * @route /api/auth/register
  * @method POST
  * @access public
  */
-export const registerUser = createAsyncThunk<UserType, RegisterType, { rejectValue: string }>(
+export const registerUser = createAsyncThunk<AuthResponseType, RegisterType, { rejectValue: string }>(
   "auth/register",
   async (userData, { rejectWithValue }) => {
     try {
-      const response = await api.post(`/users`, {
-        ...userData,
-        role: "customer",
-        joinDate: new Date().toISOString(),
-        avatar: "/images/avatar/default.png",
-        status: "active",
-        totalOrders: 0,
-        address: null,
-      });
+      const response = await api.post(`/auth/register`, userData);
       return response.data;
     } catch (error) {
       return rejectWithValue(errorMsg(error));
@@ -64,19 +66,16 @@ export const registerUser = createAsyncThunk<UserType, RegisterType, { rejectVal
 
 /**
  * @desc Login User
- * @route /users
+ * @route /api/auth/login
  * @method POST
  * @access public
  */
-export const loginUser = createAsyncThunk<UserType, LoginType, { rejectValue: string }>(
+export const loginUser = createAsyncThunk<AuthResponseType, LoginType, { rejectValue: string }>(
   "auth/login",
   async (userData, { rejectWithValue }) => {
     try {
-      const response = await api.get("/users");
-      const users: UserType[] = response.data;
-      const user = users.find((user) => userData.email === user.email && userData.password === user.password);
-      if (user) return user;
-      else return rejectWithValue("Invalid email or password");
+      const response = await api.post("/auth/login", userData);
+      return response.data;
     } catch (error) {
       return rejectWithValue(errorMsg(error));
     }
@@ -85,7 +84,7 @@ export const loginUser = createAsyncThunk<UserType, LoginType, { rejectValue: st
 
 /**
  * @desc Reset Password
- * @route /users
+ * @route /api/auth/reset-password
  * @method POST
  * @access public
  */
@@ -93,14 +92,8 @@ export const resetPassword = createAsyncThunk<string, ResetPasswordType, { rejec
   "auth/reset-password",
   async (userData, { rejectWithValue }) => {
     try {
-      const response = await api.get("/users");
-
-      const users: UserType[] = response.data;
-
-      const user = users.find((user) => user.email == userData.email);
-
-      if (user) return "A password reset link has been sent to your email.";
-      else return rejectWithValue("This email is not registered in our store.");
+      const response = await api.post("/auth/reset-password", userData);
+      return response.data.message;
     } catch (error) {
       return rejectWithValue(errorMsg(error));
     }
@@ -109,7 +102,7 @@ export const resetPassword = createAsyncThunk<string, ResetPasswordType, { rejec
 
 /**
  * @desc Update Profile
- * @route /users/:id
+ * @route /api/users/:id
  * @method PUT
  * @access private (user himself & admin)
  */
@@ -121,20 +114,7 @@ export const updateProfile = createAsyncThunk<UserType, UpdateProfileType, { rej
 
       if (!user) return rejectWithValue("No user logged in");
 
-      const updatedUser: UserType = {
-        ...user,
-        fullName: updateData.fullName || user.fullName,
-        address: updateData.city
-          ? {
-              city: updateData.city,
-              area: updateData.area || "",
-              street: updateData.street || "",
-              phone: updateData.phone || "",
-            }
-          : user.address,
-      };
-
-      const response = await api.put(`/users/${user.id}`, updatedUser);
+      const response = await api.put(`/users/${user._id}`, updateData);
       return response.data;
     } catch (error) {
       return rejectWithValue(errorMsg(error));
@@ -180,18 +160,24 @@ const authSlice = createSlice({
     // --- Update Profile Fullfilled
     builder.addCase(updateProfile.fulfilled, (state, action) => {
       state.loading = false;
-
-      state.user = action.payload;
-
+      if (state.user) {
+        state.user = {
+          ...action.payload,
+          token: state.user.token,
+        };
+      }
       state.error = "";
     });
 
     // --- Update User Role "From Users Slice"
     builder.addCase(updateUserRole.fulfilled, (state, action) => {
       state.loading = false;
-
-      if (state.user?.id == action.payload.id) state.user = action.payload;
-
+      if (state.user?._id == action.payload._id) {
+        state.user = {
+          ...action.payload,
+          token: state.user.token,
+        };
+      }
       state.error = "";
     });
 
