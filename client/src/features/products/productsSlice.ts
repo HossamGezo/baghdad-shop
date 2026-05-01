@@ -1,5 +1,6 @@
 // --- Libraries
 import { createAsyncThunk, createSlice, isAnyOf } from "@reduxjs/toolkit";
+import axios from "axios";
 
 // --- Utils
 import api from "@utils/api";
@@ -9,8 +10,10 @@ import type { CategoriesType, ProductType } from "@/types/types";
 
 // --- Error Message
 const errorMsg = (error: unknown) => {
-  const message = error instanceof Error ? error.message : "Something went wrong!";
-  return message;
+  if (axios.isAxiosError(error)) {
+    return error.response?.data?.message || "Server Error";
+  }
+  return error instanceof Error ? error.message : "Something went wrong!";
 };
 
 // --- ProductsState (Types)
@@ -49,21 +52,19 @@ const initialState: ProductsState = {
   error: "",
 };
 
-// --- Generic Async Thunk Pattern Or Parametric Data Fetcher
-
 /**
- * @desc Get All Products
- * @route /:category
+ * @desc Get All Products By Category
+ * @route /api/products?category
  * @method GET
  * @access public
  */
 export const fetchProductsByCategory = createAsyncThunk<
-  { data: ProductType[]; category: string }, // Payload/Return Type
-  CategoriesType, // Argument Type
-  { rejectValue: string } // ThunkConfig
+  { data: ProductType[]; category: string },
+  CategoriesType,
+  { rejectValue: string }
 >("products/category", async (category, { rejectWithValue }) => {
   try {
-    const response = await api.get(`/${category}`);
+    const response = await api.get(`/products?category=${category}`);
     return { data: response.data, category };
   } catch (error) {
     return rejectWithValue(errorMsg(error));
@@ -72,115 +73,75 @@ export const fetchProductsByCategory = createAsyncThunk<
 
 /**
  * @desc Get Product By Id
- * @route /:category/:id
+ * @route /api/products/:id
  * @method GET
  * @access public
  */
-type SingleProductType = {
-  category: string;
-  id: string;
-};
-export const fetchSingleProduct = createAsyncThunk<
-  ProductType, // Return Type
-  SingleProductType, // Argument Type
-  { rejectValue: string } // ThunkConfig
->("products/single-product", async ({ category, id }, { rejectWithValue }) => {
-  try {
-    const response = await api.get(`/${category}/${id}`);
-    const product = response.data;
-    return product;
-  } catch (error) {
-    return rejectWithValue(errorMsg(error));
-  }
-});
+export const fetchSingleProduct = createAsyncThunk<ProductType, { id: string }, { rejectValue: string }>(
+  "products/single-product",
+  async ({ id }, { rejectWithValue }) => {
+    try {
+      const response = await api.get(`/products/${id}`);
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(errorMsg(error));
+    }
+  },
+);
 
 /**
  * @desc Add New Product
- * @route /:category
+ * @route /api/products/add-product
  * @method POST
  * @access private (admin)
  */
-export const addProduct = createAsyncThunk<
-  ProductType,
-  {
-    title: string;
-    image: string;
-    price: string;
-    discount: string;
-    category: string;
-    description: string;
+export const addProduct = createAsyncThunk<ProductType, FormData, { rejectValue: string }>(
+  "products/add-product",
+  async (formData, { rejectWithValue }) => {
+    try {
+      const response = await api.post(`/products/add-product`, formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(errorMsg(error));
+    }
   },
-  { rejectValue: string }
->("products/add-product", async (product, { rejectWithValue }) => {
-  try {
-    const response = await api.post(`/${product.category}`, {
-      title: product.title,
-      description: product.description,
-      price: Number(product.price),
-      discount: Number(product.discount),
-      category: product.category,
-      firstImage: product.image,
-      secondImage: product.image,
-      images: [product.image],
-      rating: 0,
-      reviews: 0,
-    });
-    return response.data;
-  } catch (error) {
-    return rejectWithValue(errorMsg(error));
-  }
-});
+);
 
 /**
  * @desc Update Product
- * @route /category/:id
+ * @route /api/products/:id
  * @method PUT
  * @access private (admin)
  */
-export const updateProduct = createAsyncThunk<
-  ProductType,
-  {
-    id: string;
-    category: string;
-    product: {
-      title: string;
-      image: string;
-      price: string;
-      discount: string;
-      category: string;
-      description: string;
-    };
+export const updateProduct = createAsyncThunk<ProductType, { id: string; formData: FormData }, { rejectValue: string }>(
+  "products/update-product",
+  async ({ id, formData }, { rejectWithValue }) => {
+    try {
+      const response = await api.put(`/products/${id}`, formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(errorMsg(error));
+    }
   },
-  { rejectValue: string }
->("products/update-product", async ({ id, category, product }, { rejectWithValue }) => {
-  try {
-    const response = await api.put(`/${category}/${id}`, {
-      ...product,
-      price: Number(product.price),
-      discount: Number(product.discount),
-      firstImage: product.image,
-      secondImage: product.image,
-      images: [product.image],
-    });
-    return response.data;
-  } catch (error) {
-    return rejectWithValue(errorMsg(error));
-  }
-});
+);
 
 /**
  * @desc Delete Product
- * @route /category/:id
+ * @route /api/products/:id
  * @method DELETE
  * @access private (admin)
  */
 export const deleteProduct = createAsyncThunk<
-  { id: string; category: string }, // Return Type
-  { id: string; category: string }, // Argument Type
+  { id: string; category: string },
+  { id: string; category: string },
   { rejectValue: string }
 >("products/delete-product", async ({ id, category }, { rejectWithValue }) => {
   try {
-    await api.delete(`/${category}/${id}`);
+    await api.delete(`/products/${id}`);
     return { id, category };
   } catch (error) {
     return rejectWithValue(errorMsg(error));
@@ -200,10 +161,10 @@ const productsSlice = createSlice({
     // --- Fetch All Products By Category
     builder.addCase(fetchProductsByCategory.fulfilled, (state, action) => {
       state.loading = false;
-
       const { category, data } = action.payload;
 
-      state[category as CategoriesType] = data;
+      const key = category as keyof Omit<ProductsState, "loading" | "error" | "singleProduct">;
+      state[key] = data;
 
       state.error = "";
     });
@@ -219,7 +180,11 @@ const productsSlice = createSlice({
     builder.addCase(addProduct.fulfilled, (state, action) => {
       state.loading = false;
 
-      state[action.payload.category as CategoriesType].push(action.payload);
+      const key = action.payload.category as keyof Omit<ProductsState, "loading" | "error" | "singleProduct">;
+
+      if (state[key]) {
+        state[key].push(action.payload);
+      }
 
       state.error = "";
     });
@@ -228,17 +193,15 @@ const productsSlice = createSlice({
     builder.addCase(updateProduct.fulfilled, (state, action) => {
       state.loading = false;
 
-      const category = action.payload.category as CategoriesType;
-
+      const key = action.payload.category as keyof Omit<ProductsState, "loading" | "error" | "singleProduct">;
       const updatedProduct = action.payload;
 
-      const index = state[category].findIndex((p) => p.id === updatedProduct.id);
-
+      const index = state[key].findIndex((p) => p._id === updatedProduct._id);
       if (index !== -1) {
-        state[category][index] = updatedProduct;
+        state[key][index] = updatedProduct;
       }
 
-      if (state.singleProduct?.id === updatedProduct.id) {
+      if (state.singleProduct?._id === updatedProduct._id) {
         state.singleProduct = updatedProduct;
       }
 
@@ -248,13 +211,12 @@ const productsSlice = createSlice({
     // --- Delete Product fulfilled
     builder.addCase(deleteProduct.fulfilled, (state, action) => {
       state.loading = false;
-
       const { id, category } = action.payload;
-
-      state[category as CategoriesType] = state[category as CategoriesType].filter((product) => product.id != id);
+      const key = category as keyof Omit<ProductsState, "loading" | "error" | "singleProduct">;
+      state[key] = state[key].filter((product) => product._id !== id);
     });
 
-    // ----- Pending Case
+    // --- Pending Case
     builder.addMatcher(
       isAnyOf(
         fetchProductsByCategory.pending,
@@ -269,7 +231,7 @@ const productsSlice = createSlice({
       },
     );
 
-    // ----- Rejected Case
+    // --- Rejected Case
     builder.addMatcher(
       isAnyOf(
         fetchProductsByCategory.rejected,
