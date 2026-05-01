@@ -1,24 +1,22 @@
 // --- Libraries
-
 import { createAsyncThunk, createSlice, isAnyOf } from "@reduxjs/toolkit";
+import axios from "axios";
 
 // --- Utils
-
 import api from "@utils/api";
 
 // --- Types
-
 import type { OrderType } from "@/types/types";
 
 // --- Error Message
-
 const errorMsg = (error: unknown) => {
-  const message = error instanceof Error ? error.message : "Something went wrong!";
-  return message;
+  if (axios.isAxiosError(error)) {
+    return error.response?.data?.message || "Server Error";
+  }
+  return error instanceof Error ? error.message : "Something went wrong!";
 };
 
 // --- Initial State
-
 type OrdersState = {
   loading: boolean;
   orders: OrderType[];
@@ -35,7 +33,7 @@ const initialState: OrdersState = {
 
 /**
  * @desc Get All Orders
- * @route /orders
+ * @route /api/orders
  * @method GET
  * @access private (admin)
  */
@@ -52,23 +50,36 @@ export const fetchAllOrders = createAsyncThunk<OrderType[], void, { rejectValue:
 );
 
 /**
+ * @desc Get User Orders
+ * @route /api/orders/my-orders
+ * @method GET
+ * @access private (user himself)
+ */
+export const fetchUserOrders = createAsyncThunk<OrderType[], void, { rejectValue: string }>(
+  "orders/user-orders",
+  async (_, { rejectWithValue }) => {
+    try {
+      const response = await api.get("/orders/my-orders");
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(errorMsg(error));
+    }
+  },
+);
+
+/**
  * @desc Create Order
- * @route /orders
+ * @route /api/orders/add-order
  * @method POST
- * @access public
+ * @access private (logged in user)
  */
 export const createOrder = createAsyncThunk<
   OrderType,
-  Omit<OrderType, "id" | "createdAt" | "status" | "paymentMethod">,
+  Omit<OrderType, "_id" | "createdAt" | "updatedAt" | "status" | "totalPrice" | "userId">,
   { rejectValue: string }
->("orders/create-order", async (order, { rejectWithValue }) => {
+>("orders/create-order", async (orderData, { rejectWithValue }) => {
   try {
-    const response = await api.post("/orders", {
-      ...order,
-      status: "pending",
-      paymentMethod: "card",
-      createdAt: new Date().toISOString(),
-    });
+    const response = await api.post("/orders/add-order", orderData);
     return response.data;
   } catch (error) {
     return rejectWithValue(errorMsg(error));
@@ -77,7 +88,7 @@ export const createOrder = createAsyncThunk<
 
 /**
  * @desc Update Order Status
- * @route /orders/:id
+ * @route /api/orders/:id
  * @method PATCH
  * @access private (admin)
  */
@@ -94,54 +105,54 @@ export const updateOrderStatus = createAsyncThunk<OrderType, { id: string; statu
 );
 
 // --- Orders Slice
-
 const ordersSlice = createSlice({
   name: "orders",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    // --- Fetch All Orders 'Fulfilled Case'
-
+    // --- Fetch All Orders
     builder.addCase(fetchAllOrders.fulfilled, (state, action) => {
       state.loading = false;
-
       state.orders = action.payload;
-
       state.error = "";
     });
 
-    // --- Create An Order 'Fulfilled Case'
+    // --- Fetch User Orders
+    builder.addCase(fetchUserOrders.fulfilled, (state, action) => {
+      state.loading = false;
+      state.orders = action.payload;
+      state.error = "";
+    });
 
+    // --- Create An Order
     builder.addCase(createOrder.fulfilled, (state, action) => {
       state.loading = false;
       state.orders.push(action.payload);
       state.error = "";
     });
 
-    // --- Update Order Status 'Fulfilled Case'
-
+    // --- Update Order Status
     builder.addCase(updateOrderStatus.fulfilled, (state, action) => {
       state.loading = false;
-
-      const index = state.orders.findIndex((order) => order.id == action.payload.id);
-      if (index != -1) {
+      const index = state.orders.findIndex((order) => order._id === action.payload._id);
+      if (index !== -1) {
         state.orders[index] = action.payload;
       }
-
       state.error = "";
     });
 
     // --- Pending Case
-
-    builder.addMatcher(isAnyOf(fetchAllOrders.pending, createOrder.pending, updateOrderStatus.pending), (state) => {
-      state.loading = true;
-      state.error = "";
-    });
+    builder.addMatcher(
+      isAnyOf(fetchAllOrders.pending, fetchUserOrders.pending, createOrder.pending, updateOrderStatus.pending),
+      (state) => {
+        state.loading = true;
+        state.error = "";
+      },
+    );
 
     // --- Rejected Case
-
     builder.addMatcher(
-      isAnyOf(fetchAllOrders.rejected, createOrder.rejected, updateOrderStatus.rejected),
+      isAnyOf(fetchAllOrders.rejected, fetchUserOrders.rejected, createOrder.rejected, updateOrderStatus.rejected),
       (state, action) => {
         state.loading = false;
         state.error = action.payload || "An unexpected error occurred";
