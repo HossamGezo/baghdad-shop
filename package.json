@@ -4,8 +4,7 @@
   "private": true,
   "description": "Baghdad Shop - A full-stack e-commerce ecosystem with React 19 Frontend and Node.js REST API Backend.",
   "scripts": {
-    "dev": "concurrently -n \"SERVER,CLIENT\" -c \"magenta,blue\" \"npm run server --prefix server\" \"npm run dev --prefix client\"",
-    "dev:express": "concurrently -n \"EXPRESS,CLIENT\" -c \"green,blue\" \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
+    "dev": "concurrently -n \"SERVER,CLIENT\" -c \"green,blue\" \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
     "install-all": "npm install --prefix client && npm install --prefix server",
     "client-only": "npm run dev --prefix client",
     "server-only": "npm run dev --prefix server",
