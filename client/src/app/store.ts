@@ -16,6 +16,7 @@ import cart, {
 import users, { deleteUser, updateUserRole } from "@features/users/usersSlice";
 import auth, { loginUser, logout, registerUser, resetPassword, updateProfile } from "@features/auth/authSlice";
 import orders, { createOrder } from "@features/orders/ordersSlice";
+import statistics from "@features/statistics/statisticsSlice";
 
 // --- Custom Middlewares
 
@@ -229,6 +230,7 @@ const store = configureStore({
     users,
     auth,
     orders,
+    statistics,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().prepend(customMiddleware.middleware),
 });
