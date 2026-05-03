@@ -30,6 +30,8 @@ const categoryToPath: Record<string, string> = {
   shoes: "/men",
   dresses: "/women",
   handbags: "/women",
+  supermarket: "/supermarket",
+  automotive: "/automotive",
 };
 
 // --- Main Component
@@ -44,30 +46,39 @@ const ProductDetails = () => {
 
   // --- Fetch Data
   useEffect(() => {
-    dispatch(fetchSingleProduct({ category: currentCategory!, id: id! }));
+    if (id) {
+      dispatch(fetchSingleProduct({ id }));
+    }
     return () => {
       dispatch(clearSingleProduct());
     };
-  }, [dispatch, currentCategory, id]);
+  }, [dispatch, id]);
 
   // --- Add To Cart Logic
   const addToCartFunc = (product: ProductType) => {
-    dispatch(addToCart({ ...product, count: count }));
+    const cartItem = {
+      productId: product._id,
+      title: product.title,
+      image: product.images[0]?.url || "",
+      price: product.priceAfterDiscount,
+      count: count,
+      category: product.category,
+    };
+    dispatch(addToCart(cartItem));
   };
 
   // --- Handle Count Change Function
   const handleCountChange = (value: string) => {
     const num = Number(value);
-
     if (num >= 1 && num <= 25) setCount(num);
-    else setCount(1);
+    else if (value === "") setCount(1);
   };
 
   // --- Return JSX
   return (
     <div>
       {loading && (
-        <div className="flex items-center justify-center my-5">
+        <div className="flex items-center justify-center min-h-[60vh]">
           <Spinner />
         </div>
       )}
@@ -81,32 +92,27 @@ const ProductDetails = () => {
       {!loading && !error && singleProduct && (
         <div className="mb-10">
           <div className="bg-primary/10 my-5 sm:p-5 rounded-lg">
-            {/* --- Product Details Wrapper */}
             <div className="bg-white shadow-strong lg:w-3/4 mx-auto grid grid-cols-4 p-5 rounded-md">
-              {/* Product Images */}
               <ProductImages images={singleProduct.images} title={singleProduct.title} />
 
               {/* Card Details */}
               <div className="col-span-4 md:col-span-2">
-                {/* Product Description */}
                 <div>
                   <h1 className="text-primary text-[22px] font-medium underline decoration-warning mb-2.5">
                     {singleProduct.title}
                   </h1>
                   <p className="text-primary text-[14px] xl:text-base text-justify">{singleProduct.description}</p>
 
-                  {/* --- Rating And Reviews */}
-                  <RatingAndViews rating={singleProduct.rating} reviews={singleProduct.reviews} />
+                  <RatingAndViews rating={singleProduct.rating} reviews={singleProduct.reviewsCount} />
 
-                  {/* --- Price And Discount */}
                   <Discount price={singleProduct.price} discount={singleProduct.discount} />
 
                   {/* Quantity */}
                   <div className="flex items-center gap-5 mt-5">
                     <input
                       type="number"
-                      onChange={(e) => handleCountChange(e.currentTarget.value)}
-                      className="border border-primary w-20 rounded-sm p-1"
+                      onChange={(e) => handleCountChange(e.target.value)}
+                      className="border border-primary w-20 rounded-sm p-1 outline-none"
                       value={count}
                       min={1}
                       max={25}
@@ -115,7 +121,7 @@ const ProductDetails = () => {
                       type="button"
                       aria-label="Add to cart"
                       onClick={() => addToCartFunc(singleProduct)}
-                      className="bg-warning text-primary px-2 py-1 rounded-sm cursor-pointer hover:bg-amber-300 active:bg-warning active:scale-[0.98] transition-all duration-150"
+                      className="bg-warning text-primary px-4 py-1.5 rounded-sm cursor-pointer font-bold hover:bg-amber-300 active:scale-[0.98] transition-all duration-150"
                     >
                       Add to cart
                     </button>
@@ -131,7 +137,7 @@ const ProductDetails = () => {
                 title={"Recommended For You"}
                 excludeId={id}
                 categoryKey={currentCategory as CategoriesType}
-                to={categoryToPath[currentCategory as CategoriesType]}
+                to={categoryToPath[currentCategory as CategoriesType] || "/"}
               />
             )}
           </div>
