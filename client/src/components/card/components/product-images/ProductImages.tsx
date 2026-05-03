@@ -1,10 +1,14 @@
 // --- Libraries
 import { useState } from "react";
+
+// --- Utils
 import { cn } from "@utils/cn";
 
 // --- Types
+import type { ProductImageType } from "@/types/types";
+
 type ProductImagesProps = {
-  images: string[];
+  images: ProductImageType[];
   title: string;
 };
 
@@ -18,13 +22,13 @@ const ProductImages = ({ images, title }: ProductImagesProps) => {
     <div className="col-span-4 max-md:mb-5 md:col-span-2 mx-auto">
       {/* --- Main Image */}
       <div className="w-40 h-40 mb-5 sm:w-60 sm:h-60 xl:w-70 xl:h-70 mx-auto">
-        <img src={images[currentImage]} alt={title} loading="lazy" className="h-full w-full object-contain" />
+        <img src={images[currentImage]?.url} alt={title} loading="lazy" className="h-full w-full object-contain" />
       </div>
       {/* --- Product Images */}
       <div className="flex gap-0.5">
         {images.map((img, index) => (
           <img
-            src={img}
+            src={img.url}
             alt={title}
             loading="lazy"
             key={index}
