@@ -27,10 +27,7 @@ type AddressSchemaType = z.infer<typeof AddressSchema>;
 
 // --- Main Component
 const AddressBookEdit = () => {
-  // --- React Router
   const navigate = useNavigate();
-
-  // --- RTK
   const { loading, user } = useAppSelector((state) => state.auth);
   const dispatch = useAppDispatch();
 
@@ -54,17 +51,26 @@ const AddressBookEdit = () => {
   useEffect(() => {
     if (user?.address) {
       reset({
-        city: user.address.city,
-        area: user.address.area,
-        street: user.address.street,
-        phone: user.address.phone,
+        city: user.address.city || "",
+        area: user.address.area || "",
+        street: user.address.street || "",
+        phone: user.address.phone || "",
       });
     }
   }, [reset, user]);
 
   // --- OnSubmit Function
   const onSubmit: SubmitHandler<AddressSchemaType> = async (data) => {
-    const resultAction = await dispatch(updateProfile(data));
+    const updatePayload = {
+      address: {
+        city: data.city,
+        area: data.area,
+        street: data.street,
+        phone: data.phone,
+      },
+    };
+
+    const resultAction = await dispatch(updateProfile(updatePayload));
 
     if (updateProfile.fulfilled.match(resultAction)) {
       navigate("/profile");
@@ -91,7 +97,6 @@ const AddressBookEdit = () => {
               label="City"
               error={errors.city?.message}
               autoComplete="address-level1"
-              className="sm:w-full"
             />
             <InputField
               type="text"
@@ -101,7 +106,6 @@ const AddressBookEdit = () => {
               label="Area"
               error={errors.area?.message}
               autoComplete="address-level2"
-              className="sm:w-full"
             />
             <InputField
               type="text"
@@ -111,7 +115,6 @@ const AddressBookEdit = () => {
               label="Street"
               error={errors.street?.message}
               autoComplete="address-level3"
-              className="sm:w-full"
             />
             <InputField
               type="tel"
@@ -121,10 +124,9 @@ const AddressBookEdit = () => {
               label="Phone Number"
               error={errors.phone?.message}
               autoComplete="mobile tel"
-              className="sm:w-full"
             />
           </div>
-          <CustomButton isLoading={loading} type="submit" aria-label="Save Changes" className="px-5 ml-auto">
+          <CustomButton isLoading={loading} type="submit" className="px-5 ml-auto">
             Save
           </CustomButton>
         </form>
