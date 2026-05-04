@@ -17,6 +17,8 @@ type SpecialOfferCardProps = {
 
 // --- Main Component
 const SpecialOfferCard = ({ specialOffer, isOdd }: SpecialOfferCardProps) => {
+  const { _id, title, images, discount, rating, reviewsCount, price } = specialOffer;
+
   // --- Return JSX
   return (
     <div
@@ -27,40 +29,42 @@ const SpecialOfferCard = ({ specialOffer, isOdd }: SpecialOfferCardProps) => {
     >
       {/* Card Discount */}
       <div className="bg-secondary/75 text-white text-xl py-1 sm:w-37.5 text-center rounded-full sm:ml-auto">
-        {specialOffer.discount}% OFF
+        {discount}% OFF
       </div>
+
       {/* Card Details */}
       <div className="flex max-sm:flex-col items-center justify-center max-md:w-full max-lg:w-4/5 max-xl:w-3/5 mx-auto">
         {/* Product Image */}
         <div className="relative w-50 h-50 group">
-          {/* --- 1st Image */}
+          {/* --- Cloudinary */}
           <img
-            src={`${specialOffer.firstImage}`}
-            alt={`First Image : ${specialOffer.title}`}
+            src={images[0]?.url}
+            alt={`First Image : ${title}`}
             loading="lazy"
-            className="h-full w-full object-contain"
+            className="h-full w-full object-contain transition-opacity duration-500"
           />
-          {/* --- 2nd Image */}
           <img
-            src={`${specialOffer.secondImage}`}
-            alt={`Second Image : ${specialOffer.title}`}
+            src={images[1]?.url || images[0]?.url}
+            alt={`Second Image : ${title}`}
             loading="lazy"
-            className="object-contain absolute inset-0 opacity-0 group-hover:opacity-100"
+            className="object-contain absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
           />
         </div>
+
         {/* Product Description */}
         <div className="flex max-sm:items-center flex-col flex-1 xl:pl-5">
-          <h3 className="text-primary max-xl:text-xl text-2xl font-medium line-clamp-1">{specialOffer.title}</h3>
-          {/* --- Rating And Reviews */}
-          <RatingAndViews rating={specialOffer.rating} reviews={specialOffer.reviews} />
+          <h3 className="text-primary max-xl:text-xl text-2xl font-medium line-clamp-1">{title}</h3>
+          {/* --- Reviews */}
+          <RatingAndViews rating={rating} reviews={reviewsCount} />
           {/* --- Price And Discount */}
-          <Discount price={specialOffer.price} discount={specialOffer.discount} />
+          <Discount price={price} discount={discount} />
         </div>
+
         {/* --- See More Button */}
         <Link
-          aria-label={`see more about ${specialOffer.title}`}
+          aria-label={`see more about ${title}`}
           className="flex justify-center items-center bg-primary text-white w-32 h-9 rounded-tr-lg rounded-bl-lg cursor-pointer absolute bottom-3 sm:left-5 right-5 hover:bg-warning transition-colors duration-150"
-          to={`/products/special-offers/${specialOffer.id}`}
+          to={`/products/specialOffers/${_id}`}
         >
           See More ...
         </Link>
