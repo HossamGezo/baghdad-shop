@@ -49,3 +49,13 @@ export const verifyTokenAndUser = (req: Request, res: Response, next: NextFuncti
     next();
   });
 };
+
+export const verifyTokenAndAuthorization = (req: Request, res: Response, next: NextFunction) => {
+  verifyToken(req, res, () => {
+    if (req.user?.id === req.params.id || req.user?.role === "admin") {
+      next();
+    } else {
+      res.status(403).json({ message: "You are not allowed, access denied" });
+    }
+  });
+};
