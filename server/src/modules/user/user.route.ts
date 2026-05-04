@@ -12,7 +12,11 @@ import {
 } from "@modules/user/user.controller.js";
 
 // --- Middlewares
-import { verifyTokenAndAdmin, verifyTokenAndUser } from "@middlewares/verifyToken.middleware.js";
+import {
+  verifyTokenAndAdmin,
+  verifyTokenAndAuthorization,
+  verifyTokenAndUser,
+} from "@middlewares/verifyToken.middleware.js";
 import { validateObjectId } from "@middlewares/validateObjectId.middleware.js";
 
 // --- User Routers
@@ -33,7 +37,7 @@ UserRouter.route("/count").get(verifyTokenAndAdmin, getUsersCount);
  * @route /api/users/:id
  */
 UserRouter.route("/:id")
-  .get(validateObjectId, verifyTokenAndUser, getUserProfile)
+  .get(validateObjectId, verifyTokenAndAuthorization, getUserProfile)
   .put(validateObjectId, verifyTokenAndUser, updateUserProfile)
   .patch(validateObjectId, verifyTokenAndAdmin, updateUserRole)
   .delete(validateObjectId, verifyTokenAndAdmin, deleteUserById);
