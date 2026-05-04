@@ -10,10 +10,6 @@ import Spinner from "@components/spinner/Spinner";
 // --- Types
 import type { CurrentProductsType, CurrentPriceType, ProductType } from "@/types/types";
 
-// --- Utils
-import { calculateDiscount } from "@utils/calculateDiscount";
-
-// --- Types
 type ProductsProps = {
   loading: boolean;
   error: string;
@@ -32,16 +28,17 @@ const Products = ({
 }: ProductsProps) => {
   // --- Derived State (Filtering & Sorting)
   const filteredProducts = useMemo(() => {
-    // --- Filtering
+    // 1. Filtering
     const result =
-      currentProducts === "all-products" ? items : items.filter((product) => product.category === currentProducts);
+      currentProducts === "all-products"
+        ? items
+        : items.filter((product: ProductType) => product.category === currentProducts);
 
-    // --- Sorting
     if (currentPrice === "low-to-high")
-      return result.toSorted((a, b) => calculateDiscount(a.price, a.discount) - calculateDiscount(b.price, b.discount));
+      return result.toSorted((a: ProductType, b: ProductType) => a.priceAfterDiscount - b.priceAfterDiscount);
 
     if (currentPrice === "high-to-low")
-      return result.toSorted((a, b) => calculateDiscount(b.price, b.discount) - calculateDiscount(a.price, a.discount));
+      return result.toSorted((a: ProductType, b: ProductType) => b.priceAfterDiscount - a.priceAfterDiscount);
 
     return result;
   }, [currentProducts, items, currentPrice]);
@@ -70,8 +67,8 @@ const Products = ({
         <section className="lg:relative col-span-5 sm:col-span-3 lg:col-span-4">
           <>
             <div className="grid grid-cols-1 lg:grid-cols-2 xxl:grid-cols-3 gap-4 px-2.5">
-              {paginatedItems.map((product) => (
-                <ProductCard key={product.id} product={{ ...product }} />
+              {paginatedItems.map((product: ProductType) => (
+                <ProductCard key={product._id} product={{ ...product }} />
               ))}
             </div>
             <Pagination
