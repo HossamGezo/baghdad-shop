@@ -15,8 +15,8 @@ const OrderImages = ({ orderItems }: OrderImagesProps) => {
     <div className="relative p-1 w-12 h-12 mx-auto flex items-center justify-center">
       {orderItems.slice(0, 3).map((item, index) => (
         <img
-          key={item.id}
-          src={item.firstImage}
+          key={item.productId}
+          src={item.image}
           alt={item.title}
           loading="lazy"
           style={{
