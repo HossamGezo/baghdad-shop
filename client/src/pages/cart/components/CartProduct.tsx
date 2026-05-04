@@ -8,7 +8,6 @@ import { HiMinus } from "react-icons/hi";
 
 // Utils
 import { formatCurrency } from "@utils/formatCurrency";
-import { calculateDiscount } from "@utils/calculateDiscount";
 
 // --- Local Files
 import { useAppDispatch } from "@app/hooks";
@@ -44,15 +43,10 @@ const CartProduct = (product: CartType) => {
       {/* Cart Product Left */}
       <div className="flex flex-col gap-5 w-3/4 max-xl:w-3/5">
         {/* ---- Cart Left Details */}
-        <Link to={`/products/${product.category}/${product.id}`}>
+        <Link to={`/products/${product.category}/${product.productId}`}>
           <div className="flex items-center gap-2.5">
             <div className="w-18 h-18">
-              <img
-                src={product.firstImage}
-                alt={product.title}
-                loading="lazy"
-                className="w-full h-full object-contain"
-              />
+              <img src={product.image} alt={product.title} loading="lazy" className="w-full h-full object-contain" />
             </div>
             <div>
               <h4 className="font-light line-clamp-1">{product.title}</h4>
@@ -63,7 +57,7 @@ const CartProduct = (product: CartType) => {
         <button
           type="button"
           aria-label="Remove from cart"
-          onClick={() => removeFromCartFunc(product.id)}
+          onClick={() => removeFromCartFunc(product.productId)}
           className="text-warning flex items-center gap-1 font-medium cursor-pointer hover:bg-amber-400 hover:text-white w-fit p-1 pr-1.5 rounded-sm transition-colors duration-150"
         >
           <MdOutlineDeleteOutline className="text-xl" />
@@ -74,26 +68,14 @@ const CartProduct = (product: CartType) => {
       <div className="flex flex-col items-end gap-5 max-lg:mt-2.5 w-1/4 max-xl:w-2/5">
         {/* --- Price */}
         <div className="flex flex-col items-end gap-1.5">
-          {/* --- Price */}
-          <div className="text-[16px] sm:text-lg">
-            {formatCurrency(calculateDiscount(product.price, product.discount))}
-          </div>
-          {/* --- Discount */}
-          {product.discount !== 0 && (
-            <div className="flex items-center max-lg:gap-1.5 gap-2.5 max-lg:text-[14px]">
-              <span className="line-through text-[#75757A]/75">{formatCurrency(product.price)}</span>
-              <span className="bg-amber-100 text-amber-600 max-sm:w-10 w-12 h-7 flex items-center justify-center rounded-sm max-lg:text-[12px] text-[14px]">
-                -{product.discount}%
-              </span>
-            </div>
-          )}
+          <div className="text-[16px] sm:text-lg">{formatCurrency(product.price)}</div>
         </div>
         {/* --- Controllers */}
         <div className="flex items-center gap-3.5">
           <button
             type="button"
             aria-label="Decrease Quantity by 1"
-            onClick={() => decreaseQuantityFunc(product.id)}
+            onClick={() => decreaseQuantityFunc(product.productId)}
             className="bg-warning w-fit h-fit p-2 rounded-sm shadow-standard flex items-center justify-center select-none cursor-pointer hover:bg-amber-400 active:bg-warning active:scale-[0.99] transition-all duration-75 font-medium"
           >
             <HiMinus className="max-sm:text-[12px]" />
@@ -102,7 +84,7 @@ const CartProduct = (product: CartType) => {
           <button
             type="button"
             aria-label="Increase Quantity by 1"
-            onClick={() => increaseQuantityFunc(product.id)}
+            onClick={() => increaseQuantityFunc(product.productId)}
             className="bg-warning w-fit h-fit p-2 rounded-sm shadow-standard flex items-center justify-center select-none cursor-pointer hover:bg-amber-400 active:bg-warning active:scale-[0.99] transition-all duration-75 font-medium"
           >
             <HiPlus className="max-sm:text-[12px]" />
