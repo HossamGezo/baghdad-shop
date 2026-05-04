@@ -8,9 +8,6 @@ import { z } from "zod";
 // --- React Icons
 import { GiWrappingStar } from "react-icons/gi";
 
-// --- Utils
-import { calculateDiscount } from "@utils/calculateDiscount";
-
 // --- RTK
 import { useAppDispatch, useAppSelector } from "@app/hooks";
 import { createOrder } from "@features/orders/ordersSlice";
@@ -22,23 +19,20 @@ import CustomButton from "@components/custom-button/CustomButton";
 
 // --- Address Schema
 const AddressSchema = z.object({
-  fullName: z.string().max(21, "Name must not exceed 21 characters").trim(),
-  city: z.string().min(3, "City must be at least 3 characters").trim(),
-  area: z.string().min(3, "Area must be at least 3 characters").trim(),
-  street: z.string().min(3, "Street must be at least 3 characters").trim(),
-  phone: z.string().min(11, "Phone Number must be at least 11 digits").trim(),
+  fullName: z.string().trim().min(3, "Name must be at least 3 characters").max(21),
+  city: z.string().min(3, "City is required").trim(),
+  area: z.string().min(3, "Area is required").trim(),
+  street: z.string().min(3, "Street is required").trim(),
+  phone: z.string().min(11, "Phone must be at least 11 digits").trim(),
   cardNumber: z
     .string()
-    .regex(/^[0-9\s]{13,19}$/, {
-      message: "Card number must be at least 13 digits",
-    })
+    .regex(/^[0-9\s]{13,19}$/, "Invalid Card Number")
     .trim(),
 });
 type AddressSchemaType = z.infer<typeof AddressSchema>;
 
 // --- Main Component
 const PaymentDetails = () => {
-  // --- React Router
   const navigate = useNavigate();
 
   // --- RTK
@@ -73,10 +67,11 @@ const PaymentDetails = () => {
     if (user)
       reset({
         fullName: user.fullName,
-        city: user.address?.city,
-        area: user.address?.area,
-        street: user.address?.street,
-        phone: user.address?.phone,
+        city: user.address?.city || "",
+        area: user.address?.area || "",
+        street: user.address?.street || "",
+        phone: user.address?.phone || "",
+        cardNumber: "",
       });
   }, [reset, user]);
 
@@ -84,18 +79,12 @@ const PaymentDetails = () => {
   const onSubmit: SubmitHandler<AddressSchemaType> = async (data) => {
     const { cardNumber: _, fullName, ...addressData } = data;
 
-    // --- Calculations
-    const total = cart.reduce((acc, cur) => acc + cur.count * calculateDiscount(cur.price, cur.discount), 0);
-    const fees = 15;
-    const totalPrice = total + fees;
-
     const orderData = {
-      userId: user?.id || "",
       customerName: fullName,
       email: user?.email || "",
       orderItems: cart,
       shippingAddress: addressData,
-      totalPrice: totalPrice,
+      paymentMethod: "card" as const,
     };
 
     const resultAction = await dispatch(createOrder(orderData));
@@ -106,7 +95,6 @@ const PaymentDetails = () => {
   };
 
   // --- Handle Update Profile
-
   const isAddressChanged =
     dirtyFields.fullName || dirtyFields.city || dirtyFields.area || dirtyFields.street || dirtyFields.phone;
 
@@ -115,15 +103,16 @@ const PaymentDetails = () => {
 
     if (isValid) {
       const values = getValues();
-      dispatch(
-        updateProfile({
-          fullName: values.fullName,
+      const updatePayload = {
+        fullName: values.fullName,
+        address: {
           city: values.city,
           area: values.area,
           street: values.street,
           phone: values.phone,
-        }),
-      );
+        },
+      };
+      dispatch(updateProfile(updatePayload));
     }
   };
 
@@ -134,7 +123,7 @@ const PaymentDetails = () => {
         CHECKOUT
       </h2>
       <form className="max-sm:p-5 sm:px-10 sm:pb-10 rounded-lg mt-10" onSubmit={handleSubmit(onSubmit)}>
-        {/* Address */}
+        {/* 1. Address Section */}
         <h3 className="relative w-fit text-primary/60 text-lg font-jetbrains select-none mb-10 before:-bottom-1 before:absolute before:w-full before:h-0.5 before:bg-warning before:rounded-[100%]">
           1. Billing Address
         </h3>
@@ -147,7 +136,6 @@ const PaymentDetails = () => {
             label="Full Name"
             error={errors.fullName?.message}
             autoComplete="name"
-            className="sm:w-full"
           />
           <InputField
             type="text"
@@ -157,7 +145,6 @@ const PaymentDetails = () => {
             label="City"
             error={errors.city?.message}
             autoComplete="address-level1"
-            className="sm:w-full"
           />
           <InputField
             type="text"
@@ -167,7 +154,6 @@ const PaymentDetails = () => {
             label="Area"
             error={errors.area?.message}
             autoComplete="address-level2"
-            className="sm:w-full"
           />
           <InputField
             type="text"
@@ -177,7 +163,6 @@ const PaymentDetails = () => {
             label="Street"
             error={errors.street?.message}
             autoComplete="address-level3"
-            className="sm:w-full"
           />
           <InputField
             type="tel"
@@ -187,15 +172,13 @@ const PaymentDetails = () => {
             label="Phone Number"
             error={errors.phone?.message}
             autoComplete="mobile tel"
-            className="sm:w-full"
           />
           {isAddressChanged && (
             <CustomButton
               onClick={handleUpdateProfile}
               isLoading={authLoading}
               type="button"
-              aria-label="Save Changes"
-              className="px-5 ml-auto mt-5 mx-auto"
+              className="px-5 ml-auto mt-5"
             >
               Save Changes
             </CustomButton>
@@ -204,12 +187,12 @@ const PaymentDetails = () => {
 
         {/* Horizontal Break */}
         <span className="flex items-center justify-center gap-2.5 w-1/2 my-7 mx-auto">
-          <span className="w-[40%] h-px bg-gray-400/50 rounded-bl-2xl rounded-tr-2xl"></span>
+          <span className="w-[40%] h-px bg-gray-400/50"></span>
           <GiWrappingStar className="text-gray-400/50" size={15} />
-          <span className="w-[40%] h-px bg-gray-400/50 rounded-bl-2xl rounded-tr-2xl"></span>
+          <span className="w-[40%] h-px bg-gray-400/50"></span>
         </span>
 
-        {/* Payment Method */}
+        {/* 2. Payment Section */}
         <h3 className="relative w-fit text-primary/60 text-lg font-jetbrains select-none mb-10 before:-bottom-1 before:absolute before:w-full before:h-0.5 before:bg-warning before:rounded-[100%]">
           2. Payment Method
         </h3>
@@ -222,12 +205,11 @@ const PaymentDetails = () => {
             label="Card Number"
             error={errors.cardNumber?.message}
             autoComplete="cc-number"
-            className="sm:w-full"
             maxLength={19}
           />
           {!isAddressChanged && (
-            <CustomButton isLoading={loading} type="submit" aria-label="Place order" className="px-5 ml-auto mt-5">
-              Place In Order
+            <CustomButton isLoading={loading} type="submit" className="px-5 ml-auto mt-5">
+              Place Order
             </CustomButton>
           )}
         </div>
