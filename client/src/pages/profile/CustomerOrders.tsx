@@ -6,7 +6,7 @@ import EmptyState from "@components/empty-state/EmptyState";
 import OrderImages from "@pages/admin/OrderImages";
 
 // --- RTK
-import { fetchAllOrders } from "@features/orders/ordersSlice";
+import { fetchUserOrders } from "@features/orders/ordersSlice";
 import { useAppDispatch, useAppSelector } from "@app/hooks";
 
 // --- Utils
@@ -17,23 +17,20 @@ import { cn } from "@utils/cn";
 // --- Main Component
 const CustomerOrders = () => {
   // --- RTK
-  const { user } = useAppSelector((state) => state.auth);
-  const { loading, orders } = useAppSelector((state) => state.orders);
+  const { orders, loading } = useAppSelector((state) => state.orders);
   const dispatch = useAppDispatch();
-
-  // --- User Orders
-  const userOrders = orders.filter((order) => order.userId == user?.id);
 
   // --- Fetch Orders
   useEffect(() => {
-    if (orders.length == 0) dispatch(fetchAllOrders());
-  }, [dispatch, orders.length]);
+    dispatch(fetchUserOrders());
+  }, [dispatch]);
 
   // --- Return JSx
   return (
     <div>
       <h1 className="border-b p-5 border-body text-xl text-[#333] font-jetbrains font-bold">Orders</h1>
-      {userOrders.length === 0 && !loading ? (
+
+      {orders.length === 0 && !loading ? (
         <EmptyState
           title={"You have placed no orders yet!"}
           desc={"All your orders will be saved here for you to access their state anytime."}
@@ -53,15 +50,17 @@ const CustomerOrders = () => {
               </tr>
             </thead>
             <tbody>
-              {userOrders.map((order) => (
+              {orders.map((order) => (
                 <tr
-                  key={order.id}
+                  key={order._id}
                   className="even:bg-[#EFF2F3]/75 *:whitespace-nowrap *:px-1.5 *:py-2.5 *:text-center *:text-[11px] *:select-none"
                 >
                   <td>
                     <OrderImages orderItems={order.orderItems} />
                   </td>
-                  <td>{order.id}</td>
+                  <td title={order._id} className="cursor-help font-mono uppercase text-[10px]">
+                    {order._id.substring(0, 8)}...
+                  </td>
                   <td>{new Date(order.createdAt).toLocaleDateString("en-GB")}</td>
                   <td
                     className="max-w-50 truncate"
@@ -74,7 +73,7 @@ const CustomerOrders = () => {
                   <td>
                     <span
                       className={cn(
-                        "mx-auto flex items-center justify-center rounded-[5px] h-7.5 w-15",
+                        "mx-auto flex items-center justify-center rounded-[5px] h-7.5 w-18 text-[10px] font-bold uppercase",
                         getStatusStyles(order.status),
                       )}
                     >
