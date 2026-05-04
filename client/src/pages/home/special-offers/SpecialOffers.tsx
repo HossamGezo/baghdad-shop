@@ -15,6 +15,8 @@ import ErrorHandler from "@components/error-handler/ErrorHandler";
 import CustomTitle from "@components/custom-title/CustomTitle";
 
 // --- Types
+import type { ProductType } from "@/types/types";
+
 type SpecialOffersProps = React.ComponentProps<"div"> & {
   excludeId?: string;
 };
@@ -24,33 +26,39 @@ const SpecialOffers = ({ excludeId, className, ...rest }: SpecialOffersProps) =>
   // --- Fetch SpecialOffers
   const { loading, specialOffers, error } = useAppSelector((state) => state.products);
   const dispatch = useAppDispatch();
+
   useEffect(() => {
-    if (!loading && specialOffers.length === 0) dispatch(fetchProductsByCategory("specialOffers"));
+    if (!loading && specialOffers.length === 0) {
+      dispatch(fetchProductsByCategory("specialOffers"));
+    }
   }, [dispatch, specialOffers.length, loading]);
 
   const displayProducts = useMemo(() => {
-    return specialOffers.filter((item) => item.id !== excludeId);
+    return specialOffers.filter((item: ProductType) => item._id !== excludeId);
   }, [excludeId, specialOffers]);
 
   // --- Return JSX
   return (
     <div className={cn("mt-24 mb-10", className)} {...rest}>
       <CustomTitle title="Massive Deals Today – Only For 24 Hours" offer={true} className="mb-10" />
+
       {loading && (
         <div className="flex items-center justify-center my-5">
           <Spinner />
         </div>
       )}
+
       {!loading && error && (
         <div className="flex items-center justify-center my-5">
           <ErrorHandler error={error} />
         </div>
       )}
+
       {!loading && !error && (
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-5">
-          {displayProducts.map((specialOffer) => (
+          {displayProducts.map((specialOffer: ProductType) => (
             <SpecialOfferCard
-              key={specialOffer.id}
+              key={specialOffer._id}
               specialOffer={specialOffer}
               isOdd={displayProducts.length % 2 !== 0}
             />
