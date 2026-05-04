@@ -31,18 +31,20 @@ const HomeProductsSection = ({ excludeId, categoryKey, to, title, className, ...
   // --- Fetch Data
   const state = useAppSelector((state) => state.products);
   const loading = state.loading;
-  const products = state[categoryKey];
+  const products = state[categoryKey] as ProductType[];
   const error = state.error;
 
   // --- Dispatch
   const dispatch = useAppDispatch();
   useEffect(() => {
-    if (!loading && products.length === 0) dispatch(fetchProductsByCategory(categoryKey));
-  }, [categoryKey, dispatch, products, products.length, loading]);
+    if (!loading && products.length === 0) {
+      dispatch(fetchProductsByCategory(categoryKey));
+    }
+  }, [categoryKey, dispatch, products.length, loading]);
 
   // --- Filtering Data
   const displayProducts = useMemo(() => {
-    return products.filter((item) => item.id !== excludeId);
+    return products.filter((item: ProductType) => item._id !== excludeId);
   }, [excludeId, products]);
 
   // --- Return JSX
@@ -62,10 +64,10 @@ const HomeProductsSection = ({ excludeId, categoryKey, to, title, className, ...
         </div>
       )}
 
-      {!loading && !error && (
+      {!loading && !error && displayProducts.length > 0 && (
         <ProductSlider productsCount={displayProducts.length}>
           {displayProducts.map((item: ProductType) => (
-            <ProductCard className="first-of-type:ml-3.75 last-of-type:mr-3.75" key={item.id} product={{ ...item }} />
+            <ProductCard className="first-of-type:ml-3.75 last-of-type:mr-3.75" key={item._id} product={{ ...item }} />
           ))}
         </ProductSlider>
       )}
