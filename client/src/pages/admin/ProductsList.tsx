@@ -35,7 +35,6 @@ const ProductsList = () => {
   useEffect(() => {
     ALL_CATEGORIES.forEach((cat) => {
       const currentCategory = state[cat];
-
       if (currentCategory.length === 0) {
         dispatch(fetchProductsByCategory(cat));
       }
@@ -53,18 +52,10 @@ const ProductsList = () => {
       ...state.shoes,
       ...state.dresses,
       ...state.handbags,
+      ...state.supermarket,
+      ...state.automotive,
     ];
-  }, [
-    state.laptops,
-    state.mobiles,
-    state.specialOffers,
-    state.appliances,
-    state.cookware,
-    state.clothing,
-    state.shoes,
-    state.dresses,
-    state.handbags,
-  ]);
+  }, [state]);
 
   // --- Logic: Filtering
   const filteredProducts = useMemo(() => {
@@ -83,11 +74,10 @@ const ProductsList = () => {
     if (productToDelete) {
       dispatch(
         deleteProduct({
-          id: productToDelete.id,
+          id: productToDelete._id,
           category: productToDelete.category,
         }),
       );
-
       setProductToDelete(null);
     }
   };
@@ -109,11 +99,9 @@ const ProductsList = () => {
             <input
               type="text"
               placeholder="Search products or category..."
-              className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-sm transition-[border-color,box-shadow] duration-500 ease-in-out"
+              className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-primary text-sm transition-all"
               value={searchTerm}
-              onChange={(e) => {
-                setSearchTerm(e.target.value);
-              }}
+              onChange={(e) => setSearchTerm(e.target.value)}
             />
           </div>
 
@@ -138,7 +126,7 @@ const ProductsList = () => {
             )}
           >
             <thead>
-              <tr className="sticky top-0 z-10 bg-[#EFF2F3] shadow-sm text-neutral-700 *:whitespace-nowrap *:text-center *:text-[10px] *:px-3 *:py-2.5 *:flex-1 *:select-none *:not-last:border-r *:border-r-warning">
+              <tr className="sticky top-0 z-10 bg-[#EFF2F3] shadow-sm text-neutral-700 *:whitespace-nowrap *:text-center *:text-[10px] *:px-3 *:py-2.5 *:not-last:border-r *:border-r-warning">
                 <th>IMAGE</th>
                 <th>PRODUCT NAME</th>
                 <th>CATEGORY</th>
@@ -151,14 +139,14 @@ const ProductsList = () => {
               {filteredProducts.length > 0 ? (
                 filteredProducts.map((product) => (
                   <tr
-                    key={product.id}
-                    className="even:bg-[#EFF2F3]/75 hover:bg-gray-500/10 transition-colors duration-200 *:whitespace-nowrap *:px-3 *:py-2.5 *:text-center *:text-[12px] *:select-none"
+                    key={product._id}
+                    className="even:bg-[#EFF2F3]/75 hover:bg-gray-500/10 transition-colors *:whitespace-nowrap *:px-3 *:py-2.5 *:text-center *:text-[12px]"
                   >
                     {/* Image */}
                     <td>
                       <div className="bg-white p-1 rounded border border-gray-100 w-12 h-12 mx-auto">
                         <img
-                          src={product.firstImage}
+                          src={product.images[0]?.url}
                           alt={product.title}
                           loading="lazy"
                           className="w-full h-full object-contain"
@@ -195,7 +183,7 @@ const ProductsList = () => {
                     <td>
                       <div className="flex items-center justify-center gap-4">
                         <Link
-                          to={`/admin/products/edit/${product.category}/${product.id}`}
+                          to={`/admin/products/edit/${product.category}/${product._id}`}
                           className="text-blue-500 hover:text-blue-700 transition-colors p-1 hover:bg-blue-50 rounded"
                           title="Edit Product"
                         >
@@ -218,10 +206,7 @@ const ProductsList = () => {
                 ))
               ) : (
                 <tr>
-                  <td
-                    colSpan={7}
-                    className="text-center text-gray-500/75 tracking-wide font-jetbrains text-xl select-none"
-                  >
+                  <td colSpan={6} className="text-center text-gray-500/75 tracking-wide font-jetbrains text-xl">
                     No products found matching your search criteria
                   </td>
                 </tr>
