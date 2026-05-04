@@ -21,7 +21,7 @@ import { priceAfterDiscountFunc } from "@helpers/priceAfterDiscount.js";
 import { cloudinaryUploadImage, cloudinaryRemoveImage } from "@helpers/cloudinary.js";
 
 /**
- * @desc Get All Products
+ * @desc Get All Products By Category
  * @route /api/products?category
  * @method GET
  * @access public
