@@ -49,7 +49,11 @@ const AccountDetailsEdit = () => {
 
   // --- OnSubmit Function
   const onSubmit: SubmitHandler<DetailsSchemaType> = async (data) => {
-    const resultAction = await dispatch(updateProfile(data));
+    const updatePayload = {
+      fullName: data.fullName,
+    };
+
+    const resultAction = await dispatch(updateProfile(updatePayload));
 
     if (updateProfile.fulfilled.match(resultAction)) {
       navigate("/profile");
