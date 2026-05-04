@@ -21,7 +21,6 @@ import { useAppDispatch, useAppSelector } from "@app/hooks";
 import { fetchUserById, updateUserRole } from "@features/users/usersSlice";
 
 // --- Helper Components
-
 type FieldProps = {
   title: string;
   description: string;
@@ -57,18 +56,19 @@ type EditUserSchemaType = z.infer<typeof EditUserSchema>;
 const UserEditPage = () => {
   // --- RTK
   const { user } = useAppSelector((state) => state.auth);
+  const { loading, singleUser } = useAppSelector((state) => state.users);
+  const dispatch = useAppDispatch();
 
-  // --- Edit User
+  // --- Router Hooks
   const navigate = useNavigate();
   const { id } = useParams();
 
   // --- Fetch User
-  const { loading, singleUser } = useAppSelector((state) => state.users);
-  const dispatch = useAppDispatch();
-
   useEffect(() => {
-    if (id && (!singleUser || singleUser.id !== id)) dispatch(fetchUserById({ id: id }));
-  }, [dispatch, singleUser, loading, id]);
+    if (id && (!singleUser || singleUser._id !== id)) {
+      dispatch(fetchUserById({ id }));
+    }
+  }, [dispatch, singleUser, id]);
 
   // --- Hook Form
   const { register, reset, handleSubmit } = useForm<EditUserSchemaType>({
@@ -82,9 +82,9 @@ const UserEditPage = () => {
   // --- OnSubmit Function
   const onSubmit: SubmitHandler<EditUserSchemaType> = async (data) => {
     if (singleUser) {
-      await dispatch(updateUserRole({ id: singleUser.id, role: data.role }));
+      await dispatch(updateUserRole({ id: singleUser._id, role: data.role }));
 
-      const isEditingSelf = singleUser.id === user?.id;
+      const isEditingSelf = singleUser._id === user?._id;
       const becameCustomer = data.role === "customer";
 
       if (isEditingSelf && becameCustomer) {
@@ -113,6 +113,7 @@ const UserEditPage = () => {
         </button>
         Edit User
       </h1>
+
       {loading ? (
         <div className="flex-1 flex items-center justify-center h-full">
           <Spinner className="w-12 h-12" />
@@ -124,15 +125,20 @@ const UserEditPage = () => {
       ) : (
         <div className="bg-white rounded-md shadow-sm h-full p-2.5">
           <div className="flex max-sm:flex-col gap-5 sm:p-7">
-            <div className="border-2 w-fit mx-auto border-amber-400 hover:shadow-md transition-shadow duration-300 shadow-amber-500/25 rounded-full h-fit p-0.5 flex items-center justify-center">
+            <div
+              className={cn(
+                "border-2 w-fit mx-auto rounded-full h-fit p-0.5 flex items-center justify-center border-amber-400",
+              )}
+            >
               <img
                 src={singleUser.avatar}
                 alt={singleUser.fullName}
-                loading="lazy"
                 className="w-20 h-20 object-contain rounded-full"
                 onError={(e) => {
+                  const bg = singleUser.role === "admin" ? "0f172a" : "random";
+                  const color = singleUser.role === "admin" ? "f87171" : "fff";
                   (e.target as HTMLImageElement).src =
-                    `https://ui-avatars.com/api/?name=${singleUser.fullName}&background=random`;
+                    `https://ui-avatars.com/api/?name=${singleUser.fullName}&background=${bg}&color=${color}`;
                 }}
               />
             </div>
@@ -140,14 +146,13 @@ const UserEditPage = () => {
               <Field title={"User Name"} description={singleUser.fullName} />
               <Field title={"Email"} description={singleUser.email} />
               <Field title={"Phone"} description={singleUser.address?.phone || "No Phone Number"} />
-              <Field title={"Join Date"} description={singleUser.joinDate.substring(0, 10)} />
+              <Field title={"Join Date"} description={new Date(singleUser.createdAt).toLocaleDateString("en-GB")} />
               <Field title={"Total Orders"} description={String(singleUser.totalOrders)} />
+
               <form onSubmit={handleSubmit(onSubmit)}>
                 <select
                   {...register("role")}
-                  name="role"
-                  id="role"
-                  className="border w-full border-gray-300 h-12.5 rounded-md focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-[border-color,box-shadow] duration-500 ease-in-out shadow-sm"
+                  className="border w-full border-gray-300 h-12.5 rounded-md focus:border-primary outline-none shadow-sm"
                 >
                   <option value="customer">Customer</option>
                   <option value="admin">Admin</option>
