@@ -29,7 +29,8 @@ const cartSlice = createSlice({
        * When you add product add it with count property
        */
       // --- Existence
-      const product = state.cart.find((product) => product.id === action.payload.id);
+      const product = state.cart.find((item) => item.productId === action.payload.productId);
+
       // --- Logic
       if (product) {
         product.count += action.payload.count;
@@ -38,15 +39,15 @@ const cartSlice = createSlice({
       }
     },
     increaseQuantity: (state, action: PayloadAction<string>) => {
-      const product = state.cart.find((product) => product.id === action.payload);
+      const product = state.cart.find((item) => item.productId === action.payload);
       if (product) product.count++;
     },
     decreaseQuantity: (state, action: PayloadAction<string>) => {
-      const product = state.cart.find((product) => product.id === action.payload);
+      const product = state.cart.find((item) => item.productId === action.payload);
       if (product) product.count--;
     },
     removeFromCart: (state, action: PayloadAction<string>) => {
-      state.cart = state.cart.filter((product) => product.id !== action.payload);
+      state.cart = state.cart.filter((item) => item.productId !== action.payload);
     },
     clearCart: (state) => {
       state.cart = [];
