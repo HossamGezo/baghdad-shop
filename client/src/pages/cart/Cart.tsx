@@ -28,7 +28,7 @@ const Cart = () => {
         </h3>
         <div>
           {cart.map((product) => (
-            <CartProduct {...product} key={product.id} />
+            <CartProduct {...product} key={product.productId} />
           ))}
         </div>
       </div>
