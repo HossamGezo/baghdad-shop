@@ -20,8 +20,8 @@ const Orders = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    if (orders.length === 0) dispatch(fetchAllOrders());
-  }, [dispatch, orders.length]);
+    dispatch(fetchAllOrders());
+  }, [dispatch]);
 
   // --- Return JSX
   return (
@@ -59,13 +59,15 @@ const Orders = () => {
               <tbody>
                 {orders.map((order) => (
                   <tr
-                    key={order.id}
+                    key={order._id}
                     className="even:bg-[#EFF2F3]/75 hover:bg-gray-500/10 transition-colors duration-200 *:whitespace-nowrap *:px-3 *:py-2.5 *:text-center *:text-[12px] *:select-none"
                   >
                     <td>
                       <OrderImages orderItems={order.orderItems} />
                     </td>
-                    <td className="font-bold">{order.id}</td>
+                    <td title={order._id} className="font-mono uppercase text-[10px]">
+                      {order._id.substring(0, 8)}...
+                    </td>
                     <td>{new Date(order.createdAt).toLocaleDateString("en-GB")}</td>
                     <td
                       className="max-w-50 truncate"
@@ -74,7 +76,7 @@ const Orders = () => {
                     <td className="font-bold">{order.orderItems.length}</td>
                     <td className="font-bold text-primary">{formatCurrency(order.totalPrice)}</td>
                     <td>
-                      <SelectStatus id={order.id} status={order.status} />
+                      <SelectStatus id={order._id} status={order.status} />
                     </td>
                   </tr>
                 ))}
