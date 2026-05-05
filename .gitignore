@@ -148,3 +148,6 @@ vite.config.ts.timestamp-*
 
 # Server : Images
 server/images/
+
+# --- Local Assets (Migrated to Cloudinary)
+client/public/images/products/
