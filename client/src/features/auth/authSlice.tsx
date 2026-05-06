@@ -36,6 +36,7 @@ type AuthState = {
   loading: boolean;
   user: AuthResponseType | null;
   isAuthenticated: boolean;
+  isVerified: boolean;
   error: string;
 };
 
@@ -43,6 +44,7 @@ const initialState: AuthState = {
   loading: false,
   user: user,
   isAuthenticated: Boolean(user),
+  isVerified: false,
   error: "",
 };
 
@@ -52,12 +54,30 @@ const initialState: AuthState = {
  * @method POST
  * @access public
  */
-export const registerUser = createAsyncThunk<AuthResponseType, RegisterType, { rejectValue: string }>(
+export const registerUser = createAsyncThunk<string, RegisterType, { rejectValue: string }>(
   "auth/register",
   async (userData, { rejectWithValue }) => {
     try {
       const response = await api.post(`/auth/register`, userData);
-      return response.data;
+      return response.data.message;
+    } catch (error) {
+      return rejectWithValue(errorMsg(error));
+    }
+  },
+);
+
+/**
+ * @desc Verify Email Account
+ * @route /api/auth/:userId/verify/:token
+ * @method GET
+ * @access public
+ */
+export const verifyEmail = createAsyncThunk<string, { userId: string; token: string }, { rejectValue: string }>(
+  "auth/verify-email",
+  async ({ userId, token }, { rejectWithValue }) => {
+    try {
+      const response = await api.get(`/auth/${userId}/verify/${token}`);
+      return response.data.message;
     } catch (error) {
       return rejectWithValue(errorMsg(error));
     }
@@ -111,7 +131,6 @@ export const updateProfile = createAsyncThunk<UserType, UpdateProfileType, { rej
   async (updateData, { rejectWithValue, getState }) => {
     try {
       const { user } = getState().auth;
-
       if (!user) return rejectWithValue("No user logged in");
 
       const response = await api.put(`/users/${user._id}`, updateData);
@@ -131,15 +150,25 @@ const authSlice = createSlice({
       state.loading = false;
       state.user = null;
       state.isAuthenticated = false;
+      state.isVerified = false;
+      state.error = "";
+    },
+    resetAuthState: (state) => {
+      state.isVerified = false;
       state.error = "";
     },
   },
   extraReducers: (builder) => {
-    // --- Register Fulfilled
-    builder.addCase(registerUser.fulfilled, (state, action) => {
+    // --- Register Fulfilled (Success Message Only)
+    builder.addCase(registerUser.fulfilled, (state) => {
       state.loading = false;
-      state.user = action.payload;
-      state.isAuthenticated = true;
+      state.error = "";
+    });
+
+    // --- Verify Email Fulfilled
+    builder.addCase(verifyEmail.fulfilled, (state) => {
+      state.loading = false;
+      state.isVerified = true;
       state.error = "";
     });
 
@@ -161,29 +190,29 @@ const authSlice = createSlice({
     builder.addCase(updateProfile.fulfilled, (state, action) => {
       state.loading = false;
       if (state.user) {
-        state.user = {
-          ...action.payload,
-          token: state.user.token,
-        };
+        state.user = { ...action.payload, token: state.user.token };
       }
       state.error = "";
     });
 
-    // --- Update User Role "From Users Slice"
+    // --- Update User Role
     builder.addCase(updateUserRole.fulfilled, (state, action) => {
       state.loading = false;
       if (state.user?._id == action.payload._id) {
-        state.user = {
-          ...action.payload,
-          token: state.user.token,
-        };
+        state.user = { ...action.payload, token: state.user.token };
       }
       state.error = "";
     });
 
     // --- Pending Case
     builder.addMatcher(
-      isAnyOf(registerUser.pending, loginUser.pending, resetPassword.pending, updateProfile.pending),
+      isAnyOf(
+        registerUser.pending,
+        loginUser.pending,
+        resetPassword.pending,
+        updateProfile.pending,
+        verifyEmail.pending,
+      ),
       (state) => {
         state.loading = true;
         state.error = "";
@@ -192,7 +221,13 @@ const authSlice = createSlice({
 
     // --- Rejected Case
     builder.addMatcher(
-      isAnyOf(registerUser.rejected, loginUser.rejected, resetPassword.rejected, updateProfile.rejected),
+      isAnyOf(
+        registerUser.rejected,
+        loginUser.rejected,
+        resetPassword.rejected,
+        updateProfile.rejected,
+        verifyEmail.rejected,
+      ),
       (state, action) => {
         state.loading = false;
         state.error = action.payload || "An unexpected error occurred";
@@ -201,5 +236,5 @@ const authSlice = createSlice({
   },
 });
 
-export const { logout } = authSlice.actions;
+export const { logout, resetAuthState } = authSlice.actions;
 export default authSlice.reducer;
