@@ -3,6 +3,10 @@ import type { Request, Response } from "express";
 import asyncHandler from "express-async-handler";
 import bcrypt from "bcryptjs";
 
+// --- Helpers
+import sendEmail from "@helpers/sendEmail.js";
+import { getVerificationTemplate } from "@helpers/emailTemplates.js";
+
 // --- Models
 import User from "@models/User.js";
 
@@ -13,6 +17,7 @@ import {
   type LoginSchemaType,
   type RegisterSchemaType,
 } from "@modules/auth/auth.validation.js";
+import VerificationToken from "@models/VerificationToken.js";
 
 /**
  * @desc Register New User
@@ -44,15 +49,30 @@ export const registerUser = asyncHandler(async (req: Request, res: Response) => 
 
   const user = await new User(data).save();
 
-  if (!process.env.JWT_SECRET_KEY || !process.env.JWT_EXPIRES_IN) {
-    throw new Error("Missing JWT config");
-  }
+  // - Creating New VerificationToken & save it to DB
 
-  const token = user.generateAuthToken();
+  const verificationToken = new VerificationToken({
+    userId: user._id,
+    token: user.generateAuthToken(),
+  });
 
-  const { password: _password, ...otherData } = user.toObject();
+  await verificationToken.save();
 
-  res.status(201).json({ ...otherData, token });
+  // - Creating New Link
+
+  const link = `${process.env.CLIENT_URL}/auth/${verificationToken.userId}/verify/${verificationToken.token}`;
+
+  // - Putting The Link Into Html Template
+
+  const htmlTemplate = getVerificationTemplate(link);
+
+  // - Send Email To User
+
+  await sendEmail(user.email, "Verify Your Email", htmlTemplate);
+
+  // - Response
+
+  res.status(201).json({ message: "We sent to you an email, please verify your email address" });
   return;
 });
 
@@ -79,6 +99,40 @@ export const loginUser = asyncHandler(async (req: Request, res: Response) => {
     return;
   }
 
+  if (!user.isVerified) {
+    // - Verification Token
+
+    let verificationToken = await VerificationToken.findOne({
+      userId: user._id,
+    });
+
+    if (!verificationToken) {
+      await VerificationToken.deleteMany({ userId: user._id });
+
+      verificationToken = await new VerificationToken({
+        userId: user._id,
+        token: user.generateAuthToken(),
+      }).save();
+    }
+
+    // - Creating New Link
+
+    const link = `${process.env.CLIENT_URL}/auth/${verificationToken.userId}/verify/${verificationToken.token}`;
+
+    // - Putting The Link Into Html Template
+
+    const htmlTemplate = getVerificationTemplate(link);
+
+    // - Send Email To User
+
+    await sendEmail(user.email, "Verify Your Email", htmlTemplate);
+
+    // - Response
+
+    res.status(400).json({ message: "We sent to you an email, please verify your email address" });
+    return;
+  }
+
   const isPasswordMatch = await bcrypt.compare(data.password, user.password);
 
   if (!isPasswordMatch) {
@@ -87,12 +141,43 @@ export const loginUser = asyncHandler(async (req: Request, res: Response) => {
   }
 
   if (!process.env.JWT_SECRET_KEY || !process.env.JWT_EXPIRES_IN) {
-    throw new Error("Missing JWT config");
+    throw new Error("Missing JWT Config");
   }
 
   const token = user.generateAuthToken();
 
   const { password: _password, ...otherData } = user.toObject();
   res.status(200).json({ ...otherData, token });
+  return;
+});
+
+/**
+ * @desc Verify User Account
+ * @route /api/auth/:userId/verify/:token
+ * @method GET
+ * @access public
+ */
+export const verifyUserAccount = asyncHandler(async (req: Request, res: Response) => {
+  const user = await User.findById(req.params.userId);
+
+  if (!user) {
+    res.status(400).json({ message: "Invalid Link" });
+    return;
+  }
+
+  const verificationToken = await VerificationToken.findOne({ userId: req.params.userId!, token: req.params.token! });
+
+  if (!verificationToken) {
+    res.status(400).json({ message: "Invalid Link" });
+    return;
+  }
+
+  user.isVerified = true;
+
+  await user.save();
+
+  await verificationToken.deleteOne();
+
+  res.status(200).json({ message: "Your Account is Verified, Please Login" });
   return;
 });
