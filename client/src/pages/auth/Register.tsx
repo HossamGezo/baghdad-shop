@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import toast from "react-hot-toast";
 
 // --- RTK
 import { useAppDispatch, useAppSelector } from "@app/hooks";
@@ -41,6 +42,7 @@ const Register = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<RegisterSchemaType>({
     mode: "onBlur",
@@ -48,10 +50,15 @@ const Register = () => {
   });
 
   // --- OnSubmit Function
-  const onSubmit: SubmitHandler<RegisterSchemaType> = (data) => {
+  const onSubmit: SubmitHandler<RegisterSchemaType> = async (data) => {
     const { confirmPassword: _, ...registerData } = data;
 
-    dispatch(registerUser(registerData));
+    const resultAction = await dispatch(registerUser(registerData));
+
+    if (registerUser.fulfilled.match(resultAction)) {
+      toast.success(resultAction.payload as string, { duration: 6000 });
+      reset();
+    }
   };
 
   // --- Return JSX
@@ -61,6 +68,7 @@ const Register = () => {
         <span className="max-sm:text-2xl text-3xl font-bold mb-2.5">Create New Account</span>
         <p className="max-sm:text-[12px] text-[14px] font-light">Sign up to start your shopping journey</p>
       </h1>
+
       <div className="bg-white rounded-xl">
         <h2 className="text-2xl w-fit mx-auto text-primary mt-5 mb-2.5 font-jetbrains">Register</h2>
         <form
@@ -104,19 +112,21 @@ const Register = () => {
             error={errors.confirmPassword?.message}
             autoComplete="new-password"
           />
+
           <CustomButton type="submit" aria-label="Submit form" isLoading={loading}>
             Register
           </CustomButton>
+
           <button
             type="button"
-            aria-label="Continue with Google"
-            className="border border-primary/25 text-primary py-1.5 rounded-md cursor-pointer flex items-center justify-center gap-2.5 transition-colors duration-200 hover:border-t-[#FF3D00] hover:border-r-[#1B76D2] hover:border-b-[#4CAF51] hover:border-l-[#FFC106] shadow-standard"
+            className="border border-primary/25 text-primary py-1.5 rounded-md flex items-center justify-center gap-2.5 hover:bg-gray-50 transition-colors"
           >
             <img src="/images/icons/google-icon.svg" alt="Google Icon" className="w-6" />
             Continue with Google
           </button>
         </form>
       </div>
+
       <p className="text-primary/75 select-none">
         Already have an account?
         <Link to="/login" className="text-blue-600/70 hover:text-blue-600 ml-0.5 cursor-pointer">
@@ -126,4 +136,5 @@ const Register = () => {
     </div>
   );
 };
+
 export default Register;
