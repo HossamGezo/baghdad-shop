@@ -58,6 +58,7 @@ export type UserType = BaseEntityType & {
   readonly status: string;
   readonly totalOrders: number;
   readonly address: UserAddressType | null;
+  readonly isVerified: boolean;
 };
 
 export type AuthResponseType = UserType & {
