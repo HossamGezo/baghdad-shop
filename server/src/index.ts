@@ -6,6 +6,7 @@ import hpp from "hpp";
 import helmet from "helmet";
 import cors from "cors";
 import { rateLimit } from "express-rate-limit";
+import { xss } from "express-xss-sanitizer";
 
 // --- Load environment variables from .env file
 config();
@@ -55,6 +56,9 @@ app.use(compression());
 
 // --- Request Parsing Middlewares
 app.use(express.json());
+
+// --- Prevent XSS (Cross Site Scripting) Attacks
+app.use(xss());
 
 // --- Security Middlewares : HTTP Parameter Pollution
 app.use(hpp());
