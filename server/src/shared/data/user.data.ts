@@ -2,7 +2,7 @@ export const users = [
   {
     fullName: "Admin",
     email: "admin@mail.com",
-    password: "password123",
+    password: "Baghdad@2026",
     role: "admin",
     avatar: "/images/avatar/default.png",
     status: "active",
@@ -18,7 +18,7 @@ export const users = [
   {
     fullName: "Customer",
     email: "customer@mail.com",
-    password: "password123",
+    password: "Baghdad@2026",
     phone: "+201200000003",
     role: "customer",
     avatar: "/images/avatar/default.png",
