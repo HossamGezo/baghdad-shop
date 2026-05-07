@@ -38,11 +38,6 @@ export const getUserOrders = asyncHandler(async (req: Request, res: Response) =>
 
   const userOrders = await Order.find({ userId }).sort({ createdAt: -1 });
 
-  if (userOrders.length === 0) {
-    res.status(200).json({ message: "That User Doesn't have any orders" });
-    return;
-  }
-
   res.status(200).json(userOrders);
   return;
 });
