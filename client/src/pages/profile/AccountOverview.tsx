@@ -10,6 +10,8 @@ const AccountOverview = () => {
   // --- RTK
   const { user, error } = useAppSelector((state) => state.auth);
 
+  const hasAddress = user?.address && user.address.city !== "" && user.address.street !== "";
+
   // --- Return JSX
   return (
     <div>
@@ -36,7 +38,7 @@ const AccountOverview = () => {
             className="max-lg:col-span-2"
           >
             <p className="line-clamp-1">{user.fullName}</p>
-            {user.address ? (
+            {hasAddress ? (
               <>
                 <p className="line-clamp-1">
                   {user.address.area} / {user.address.city} / {user.address.street}
