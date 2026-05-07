@@ -6,14 +6,7 @@ import axios from "axios";
 import api from "@utils/api";
 
 // --- Types
-import type {
-  LoginType,
-  RegisterType,
-  ResetPasswordType,
-  UpdateProfileType,
-  UserType,
-  AuthResponseType,
-} from "@/types/types";
+import type { LoginType, RegisterType, UpdateProfileType, UserType, AuthResponseType } from "@/types/types";
 import type { RootState } from "@app/store";
 
 // --- RTK
@@ -103,22 +96,41 @@ export const loginUser = createAsyncThunk<AuthResponseType, LoginType, { rejectV
 );
 
 /**
- * @desc Reset Password
- * @route /api/auth/reset-password
+ * @desc Send Reset Password Link
+ * @route /api/password/reset-password-link
  * @method POST
  * @access public
  */
-export const resetPassword = createAsyncThunk<string, ResetPasswordType, { rejectValue: string }>(
-  "auth/reset-password",
-  async (userData, { rejectWithValue }) => {
+export const sendResetPasswordLink = createAsyncThunk<string, { email: string }, { rejectValue: string }>(
+  "auth/send-reset-link",
+  async (data, { rejectWithValue }) => {
     try {
-      const response = await api.post("/auth/reset-password", userData);
+      const response = await api.post("/password/reset-password-link", data);
       return response.data.message;
     } catch (error) {
       return rejectWithValue(errorMsg(error));
     }
   },
 );
+
+/**
+ * @desc Reset Password
+ * @route /api/password/reset-password/:userId/:token
+ * @method POST
+ * @access public
+ */
+export const resetPassword = createAsyncThunk<
+  string,
+  { userId: string; token: string; password: string },
+  { rejectValue: string }
+>("auth/reset-password", async ({ userId, token, password }, { rejectWithValue }) => {
+  try {
+    const response = await api.post(`/password/reset-password/${userId}/${token}`, { password });
+    return response.data.message;
+  } catch (error) {
+    return rejectWithValue(errorMsg(error));
+  }
+});
 
 /**
  * @desc Update Profile
@@ -204,6 +216,12 @@ const authSlice = createSlice({
       state.error = "";
     });
 
+    // --- Send Reset Password Link
+    builder.addCase(sendResetPasswordLink.fulfilled, (state) => {
+      state.loading = false;
+      state.error = "";
+    });
+
     // --- Pending Case
     builder.addMatcher(
       isAnyOf(
@@ -212,6 +230,8 @@ const authSlice = createSlice({
         resetPassword.pending,
         updateProfile.pending,
         verifyEmail.pending,
+        sendResetPasswordLink.pending,
+        resetPassword.pending,
       ),
       (state) => {
         state.loading = true;
@@ -227,6 +247,8 @@ const authSlice = createSlice({
         resetPassword.rejected,
         updateProfile.rejected,
         verifyEmail.rejected,
+        sendResetPasswordLink.rejected,
+        resetPassword.rejected,
       ),
       (state, action) => {
         state.loading = false;
