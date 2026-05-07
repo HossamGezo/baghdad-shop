@@ -27,7 +27,8 @@ const Cart = lazy(() => import("@pages/cart/Cart"));
 const Login = lazy(() => import("@pages/auth/Login"));
 const Register = lazy(() => import("@pages/auth/Register"));
 const ResetPassword = lazy(() => import("@pages/auth/ResetPassword"));
-const VerifyEmail = lazy(() => import("@pages/auth/VerifyEmailTest"));
+const VerifyEmail = lazy(() => import("@pages/auth/VerifyEmail"));
+const ResetPasswordConfirm = lazy(() => import("@pages/auth/ResetPasswordConfirm"));
 
 // - Profile Pages
 const ProfileLayout = lazy(() => import("@pages/profile/ProfileLayout"));
@@ -71,6 +72,7 @@ const router = createBrowserRouter([
           { path: "register", Component: Register },
           { path: "reset-password", Component: ResetPassword },
           { path: "auth/:id/verify/:token", Component: VerifyEmail },
+          { path: "password/reset-password/:userId/:token", Component: ResetPasswordConfirm },
         ],
       },
 
