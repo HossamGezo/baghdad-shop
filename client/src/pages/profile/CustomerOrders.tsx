@@ -50,38 +50,39 @@ const CustomerOrders = () => {
               </tr>
             </thead>
             <tbody>
-              {orders.map((order) => (
-                <tr
-                  key={order._id}
-                  className="even:bg-[#EFF2F3]/75 *:whitespace-nowrap *:px-1.5 *:py-2.5 *:text-center *:text-[11px] *:select-none"
-                >
-                  <td>
-                    <OrderImages orderItems={order.orderItems} />
-                  </td>
-                  <td title={order._id} className="cursor-help font-mono uppercase text-[10px]">
-                    {order._id.substring(0, 8)}...
-                  </td>
-                  <td>{new Date(order.createdAt).toLocaleDateString("en-GB")}</td>
-                  <td
-                    className="max-w-50 truncate"
-                    title={`${order.shippingAddress.street}, ${order.shippingAddress.area}, ${order.shippingAddress.city}`}
+              {Array.isArray(orders) &&
+                orders.map((order) => (
+                  <tr
+                    key={order._id}
+                    className="even:bg-[#EFF2F3]/75 *:whitespace-nowrap *:px-1.5 *:py-2.5 *:text-center *:text-[11px] *:select-none"
                   >
-                    {`${order.shippingAddress.city}, ${order.shippingAddress.area}`}
-                  </td>
-                  <td>{order.orderItems.length}</td>
-                  <td>{formatCurrency(order.totalPrice)}</td>
-                  <td>
-                    <span
-                      className={cn(
-                        "mx-auto flex items-center justify-center rounded-[5px] h-7.5 w-18 text-[10px] font-bold uppercase",
-                        getStatusStyles(order.status),
-                      )}
+                    <td>
+                      <OrderImages orderItems={order.orderItems} />
+                    </td>
+                    <td title={order._id} className="cursor-help font-mono uppercase text-[10px]">
+                      {order._id.substring(0, 8)}...
+                    </td>
+                    <td>{new Date(order.createdAt).toLocaleDateString("en-GB")}</td>
+                    <td
+                      className="max-w-50 truncate"
+                      title={`${order.shippingAddress.street}, ${order.shippingAddress.area}, ${order.shippingAddress.city}`}
                     >
-                      {order.status}
-                    </span>
-                  </td>
-                </tr>
-              ))}
+                      {`${order.shippingAddress.city}, ${order.shippingAddress.area}`}
+                    </td>
+                    <td>{order.orderItems.length}</td>
+                    <td>{formatCurrency(order.totalPrice)}</td>
+                    <td>
+                      <span
+                        className={cn(
+                          "mx-auto flex items-center justify-center rounded-[5px] h-7.5 w-18 text-[10px] font-bold uppercase",
+                          getStatusStyles(order.status),
+                        )}
+                      >
+                        {order.status}
+                      </span>
+                    </td>
+                  </tr>
+                ))}
             </tbody>
           </table>
         </div>
