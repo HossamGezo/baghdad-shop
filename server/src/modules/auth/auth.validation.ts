@@ -17,7 +17,7 @@ const RegisterSchema = z
   .strict();
 export type RegisterSchemaType = z.infer<typeof RegisterSchema>;
 
-// --- Login Schema
+// - Login Schema
 const LoginSchema = z
   .object({
     email: z.string().email({ message: "Invalid Email Address" }).trim(),
