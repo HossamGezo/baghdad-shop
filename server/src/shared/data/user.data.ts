@@ -32,14 +32,4 @@ export const users = [
     },
     isVerified: true,
   },
-  {
-    fullName: "Mona Adel",
-    email: "mona.design@example.com",
-    password: "password123",
-    role: "customer",
-    avatar: "/images/avatar/default.png",
-    status: "inactive",
-    totalOrders: 2,
-    address: null,
-  },
 ];
