@@ -43,14 +43,4 @@ export const orders = [
     paymentMethod: "card",
     createdAt: "2026-05-03T18:45:00.000Z",
   },
-  {
-    customerName: "Mona Adel",
-    email: "mona.design@example.com",
-    orderItems: [{ title: "Hoco In-Ear Earphones", price: 40, count: 2 }],
-    shippingAddress: { city: "Giza", area: "Haram", street: "Faisal St.", phone: "+201111182665" },
-    totalPrice: 95,
-    status: "pending",
-    paymentMethod: "card",
-    createdAt: "2026-05-04T12:00:00.000Z",
-  },
 ];
