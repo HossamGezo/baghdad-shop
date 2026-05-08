@@ -96,7 +96,7 @@ const Login = () => {
               type="button"
               isLoading={loading}
               className="px-1.5 w-22.5 text-[16px] font-normal bg-red-400 hover:bg-red-500 active:bg-red-400 text-white"
-              onClick={() => dispatch(loginUser({ email: "admin@mail.com", password: "password123" }))}
+              onClick={() => dispatch(loginUser({ email: "admin@mail.com", password: "Baghdad@2026" }))}
             >
               Admin
             </CustomButton>
@@ -104,7 +104,7 @@ const Login = () => {
               type="button"
               isLoading={loading}
               className="px-1.5 w-22.5 text-[16px] font-normal bg-blue-400 hover:bg-blue-500 active:bg-blue-400 text-white"
-              onClick={() => dispatch(loginUser({ email: "customer@mail.com", password: "password123" }))}
+              onClick={() => dispatch(loginUser({ email: "customer@mail.com", password: "Baghdad@2026" }))}
             >
               Customer
             </CustomButton>
