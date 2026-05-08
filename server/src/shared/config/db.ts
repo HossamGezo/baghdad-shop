@@ -3,13 +3,15 @@ import mongoose from "mongoose";
 
 // --- Database Connection Logic
 const connectToDB = async () => {
-  if (!process.env.MONGO_URI) {
-    throw new Error("MONGO URI is missing!");
+  const uri = process.env.NODE_ENV === "DEVELOPMENT" ? process.env.MONGO_URI : process.env.MONGO_CLOUD_URI;
+
+  if (!uri) {
+    throw new Error(`MongoDB URI for ${process.env.NODE_ENV} is missing!`);
   }
 
   try {
-    await mongoose.connect(process.env.MONGO_URI);
-    console.log("Connected to MongoDB (^_^)");
+    await mongoose.connect(uri);
+    console.log(`Connected to MongoDB (${process.env.NODE_ENV}) (^_^)`);
   } catch (error) {
     throw new Error(`Failed to connect to MongoDB ${error}`);
   }
