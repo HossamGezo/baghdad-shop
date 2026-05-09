@@ -20,7 +20,7 @@
 
 <br />
 
-[**🌐 Live Demo**](https://your-netlify-link.netlify.app)
+[**🌐 Live Demo**](https://baghdad-shop.netlify.app/)
 
 </div>
 
