@@ -10,7 +10,6 @@ import { useAppSelector } from "@app/hooks";
 
 // --- Utils
 import { formatCurrency } from "@utils/formatCurrency";
-import { calculateDiscount } from "@utils/calculateDiscount";
 
 // --- Main Component
 const CartSummary = () => {
@@ -23,7 +22,7 @@ const CartSummary = () => {
   const { cart } = useAppSelector((state) => state.cart);
 
   const total = useMemo(() => {
-    return cart.reduce((acc, cur) => acc + cur.count * calculateDiscount(cur.price, cur.discount), 0);
+    return cart.reduce((acc, cur) => acc + cur.count * cur.price, 0);
   }, [cart]);
 
   // --- Handle Checkout
