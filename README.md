@@ -178,12 +178,11 @@ npm run dev
 
 ## 👨‍💻 Connect with Me
 
-If you have any questions about this project or want to collaborate, feel free to reach out!
-
-- **LinkedIn:** [Your Profile Link]
+- **LinkedIn:** [Hossam Gouda](https://www.linkedin.com/in/hossam-gouda-software-engineer)
 - **GitHub:** [@HossamGezo](https://github.com/HossamGezo)
-- **Email:** ha2ghossam10@gmail.com
+- **Email:** hossamgouda27@gmail.com
 
 ---
 
-Developed with ❤️ by **Hossam Gouda**
+Developed with precision by **Hossam Gouda**  
+**Front-End Engineer focused on building scalable and maintainable user interfaces.**
