@@ -179,7 +179,7 @@ npm run dev
 ## 👨‍💻 Connect with Me
 
 - **LinkedIn:** [Hossam Gouda](https://www.linkedin.com/in/hossam-gouda-software-engineer)
-- **GitHub:** [@HossamGezo](https://github.com/HossamGezo)
+- **GitHub:** [Hossam Gouda](https://github.com/HossamGezo)
 - **Email:** hossamgouda27@gmail.com
 
 ---
