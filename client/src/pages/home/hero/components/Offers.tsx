@@ -3,11 +3,11 @@ import { useEffect, useRef, useState } from "react";
 
 // --- Offers Images
 const offerImages = [
-  { url: "/images/banners/offer1.png", direction: "object-left" },
-  { url: "/images/banners/offer2.png", direction: "object-right" },
-  { url: "/images/banners/offer3.png", direction: "object-right" },
-  { url: "/images/banners/offer4.png", direction: "object-center" },
-  { url: "/images/banners/offer5.png", direction: "object-right" },
+  { url: "/images/banners/offer1.webp", direction: "object-left" },
+  { url: "/images/banners/offer2.webp", direction: "object-right" },
+  { url: "/images/banners/offer3.webp", direction: "object-right" },
+  { url: "/images/banners/offer4.webp", direction: "object-center" },
+  { url: "/images/banners/offer5.webp", direction: "object-right" },
 ];
 
 // --- Main Component
@@ -34,6 +34,10 @@ const Offers = () => {
           src={offer.url}
           alt="Special offer banner"
           key={i}
+          width="1200"
+          height="500"
+          fetchPriority={i === 0 ? "high" : "low"}
+          loading={i === 0 ? "eager" : "lazy"}
           className={`w-full h-full absolute object-cover ${
             offer.direction
           } transition-opacity duration-1000 ease-in-out ${

@@ -10,7 +10,7 @@ const Sections = () => {
     <div>
       {/* 2. Kitchen Group */}
       <CategoryPoster
-        imageSrc="/images/posters/kitchen-poster.png"
+        imageSrc="/images/posters/kitchen-poster.webp"
         altText="Kitchen Poster"
         to="/kitchen"
         className={categoryPosterStyle}
@@ -20,7 +20,7 @@ const Sections = () => {
 
       {/* 3. Men Fashion Group */}
       <CategoryPoster
-        imageSrc="/images/posters/men-poster.png"
+        imageSrc="/images/posters/men-poster.webp"
         altText="Men Fashion Poster"
         to="/men"
         className={categoryPosterStyle}
@@ -30,7 +30,7 @@ const Sections = () => {
 
       {/* 4. Women Fashion Group */}
       <CategoryPoster
-        imageSrc="/images/posters/women-poster.png"
+        imageSrc="/images/posters/women-poster.webp"
         altText="Women Collection Poster"
         to="/women"
         className={categoryPosterStyle}
@@ -40,7 +40,7 @@ const Sections = () => {
 
       {/* 5. Supermarket Group */}
       <CategoryPoster
-        imageSrc="/images/posters/supermarket-poster.png"
+        imageSrc="/images/posters/supermarket-poster.webp"
         altText="Supermarket Essentials"
         to="/supermarket"
         className={categoryPosterStyle}
@@ -49,7 +49,7 @@ const Sections = () => {
 
       {/* 6. Automotive Group */}
       <CategoryPoster
-        imageSrc="/images/posters/automotive-poster.png"
+        imageSrc="/images/posters/automotive-poster.webp"
         altText="Car Accessories & Tools"
         to="/automotive"
         className={categoryPosterStyle}
