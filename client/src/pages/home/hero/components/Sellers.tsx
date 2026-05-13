@@ -33,7 +33,7 @@ const Sellers = () => {
       {/* --- Seller Christmas Gif */}
       <div className="mt-5 rounded-md overflow-hidden h-55 shadow-deep">
         <img
-          src="/images/gifs/christmas.gif"
+          src="/images/gifs/christmas.webp"
           alt="Christmas"
           draggable="false"
           className="w-full h-full object-cover object-top-right"
