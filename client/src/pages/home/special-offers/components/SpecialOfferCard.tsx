@@ -7,7 +7,10 @@ import type { ProductType } from "@/types/types";
 // --- Local Components
 import Discount from "@components/card/components/discount/Discount";
 import RatingAndViews from "@components/card/components/rating-and-reviews/RatingAndReviews";
+
+// --- Utils
 import { cn } from "@utils/cn";
+import { getOptimizedImageUrl } from "@utils/optimizeImage";
 
 // --- Types
 type SpecialOfferCardProps = {
@@ -38,13 +41,13 @@ const SpecialOfferCard = ({ specialOffer, isOdd }: SpecialOfferCardProps) => {
         <div className="relative w-50 h-50 group">
           {/* --- Cloudinary */}
           <img
-            src={images[0]?.url}
+            src={getOptimizedImageUrl(images[0]?.url, 400)}
             alt={`First Image : ${title}`}
             loading="lazy"
             className="h-full w-full object-contain transition-opacity duration-500"
           />
           <img
-            src={images[1]?.url || images[0]?.url}
+            src={getOptimizedImageUrl(images[1]?.url || images[0]?.url)}
             alt={`Second Image : ${title}`}
             loading="lazy"
             className="object-contain absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"

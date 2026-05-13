@@ -5,6 +5,7 @@ import { Link, type LinkProps } from "react-router";
 import type { ProductType } from "@/types/types";
 
 // --- Utils
+import { getOptimizedImageUrl } from "@utils/optimizeImage";
 import { formatCurrency } from "@utils/formatCurrency";
 import { cn } from "@utils/cn";
 
@@ -31,7 +32,12 @@ const ProductCard = ({ className, product, ...rest }: ProductCardProps) => {
       {...rest}
     >
       <div className="w-40 h-40 mb-5">
-        <img src={images[0]?.url} alt={title} loading="lazy" className="w-full h-full object-contain" />
+        <img
+          src={getOptimizedImageUrl(images[0]?.url, 400)}
+          alt={title}
+          loading="lazy"
+          className="w-full h-full object-contain"
+        />
       </div>
       <div className="font-medium line-clamp-1">{title}</div>
       <RatingAndViews rating={rating} reviews={reviewsCount} />

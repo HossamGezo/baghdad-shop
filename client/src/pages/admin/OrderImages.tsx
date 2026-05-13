@@ -1,4 +1,5 @@
 // --- Utils
+import { getOptimizedImageUrl } from "@utils/optimizeImage";
 import { cn } from "@utils/cn";
 
 // --- Types
@@ -16,7 +17,7 @@ const OrderImages = ({ orderItems }: OrderImagesProps) => {
       {orderItems.slice(0, 3).map((item, index) => (
         <img
           key={item.productId}
-          src={item.image}
+          src={getOptimizedImageUrl(item.image, 100)}
           alt={item.title}
           loading="lazy"
           style={{
