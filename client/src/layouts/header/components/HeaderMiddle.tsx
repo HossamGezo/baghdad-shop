@@ -71,6 +71,7 @@ const HeaderMiddle = ({ isOpen, setIsOpen }: HeaderMiddleProps) => {
           {!isAuthenticated ? (
             <NavLink
               to="login"
+              aria-label="Login"
               className={({ isActive }) =>
                 cn(
                   "flex items-center justify-center text-center text-lg sm:text-xl lg:text-xl transition-colors duration-150 cursor-pointer w-25 h-8 md:h-9 lg:h-10 rounded-md max-sm:hidden",
@@ -112,6 +113,7 @@ const HeaderMiddle = ({ isOpen, setIsOpen }: HeaderMiddleProps) => {
                     {user?.role === "admin" && (
                       <Link
                         to="/admin"
+                        aria-label="Go To Admin Dashboard"
                         onClick={() => setIsOpen(false)}
                         className="text-primary p-2.5 border-b border-gray-400 flex items-center gap-2.5 font-semibold hover:bg-gray-300 font-jetbrains tracking-tighter"
                       >
@@ -122,6 +124,7 @@ const HeaderMiddle = ({ isOpen, setIsOpen }: HeaderMiddleProps) => {
                     {/* Shared Links */}
                     <Link
                       to="/"
+                      aria-label="Go Home"
                       onClick={() => setIsOpen(false)}
                       className="text-primary p-2.5 border-b border-gray-400 flex items-center gap-2.5 font-semibold hover:bg-gray-300 font-jetbrains tracking-tighter"
                     >
@@ -129,6 +132,7 @@ const HeaderMiddle = ({ isOpen, setIsOpen }: HeaderMiddleProps) => {
                     </Link>
                     <Link
                       to="/profile"
+                      aria-label="Go To Your Profile"
                       onClick={() => setIsOpen(false)}
                       className="text-primary p-2.5 border-b border-gray-400 flex items-center gap-2.5 font-semibold hover:bg-gray-300 font-jetbrains tracking-tighter"
                     >
@@ -136,6 +140,7 @@ const HeaderMiddle = ({ isOpen, setIsOpen }: HeaderMiddleProps) => {
                     </Link>
                     <Link
                       to="/profile/orders"
+                      aria-label="Go To Your Profile Orders"
                       onClick={() => setIsOpen(false)}
                       className="text-primary p-2.5 border-b border-gray-400 flex items-center gap-2.5 font-semibold hover:bg-gray-300 font-jetbrains tracking-tighter"
                     >
@@ -143,7 +148,12 @@ const HeaderMiddle = ({ isOpen, setIsOpen }: HeaderMiddleProps) => {
                     </Link>
                   </div>
 
-                  <CustomButton type="button" onClick={handleLogout} className="w-37.5 mx-auto mt-auto my-5">
+                  <CustomButton
+                    type="button"
+                    aria-label="Logout"
+                    onClick={handleLogout}
+                    className="w-37.5 mx-auto mt-auto my-5"
+                  >
                     Logout
                   </CustomButton>
                 </div>
@@ -153,6 +163,7 @@ const HeaderMiddle = ({ isOpen, setIsOpen }: HeaderMiddleProps) => {
           {!isAuthenticated && (
             <NavLink
               to="login"
+              aria-label="Login"
               className={({ isActive }) =>
                 cn(
                   "text-xl transition-colors duration-150 cursor-pointer sm:hidden",
@@ -169,6 +180,7 @@ const HeaderMiddle = ({ isOpen, setIsOpen }: HeaderMiddleProps) => {
         <div>
           <NavLink
             to="cart"
+            aria-label="Cart"
             className={({ isActive }) =>
               cn(
                 "relative text-white flex items-end gap-1 xl:gap-0.5 cursor-pointer  border-b-2 border-dotted pb-1 hover:border-b-warning/50",

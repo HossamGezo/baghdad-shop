@@ -18,8 +18,10 @@ const Category = () => {
             <div className="flex flex-col items-center justify-center gap-2.5">
               <img
                 src={category.image}
-                alt="Category Icon"
+                alt={category.title}
                 loading="lazy"
+                width="150"
+                height="150"
                 draggable="false"
                 className="max-md:w-35 lg:w-40"
               />
