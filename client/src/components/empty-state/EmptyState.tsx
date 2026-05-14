@@ -21,6 +21,7 @@ const EmptyState = ({ title, desc }: EmptyStateProps) => {
       <p className="select-none text-sm sm:text-lg text-center">{desc}</p>
       <Link
         to="/"
+        aria-label="Go to Home Page"
         className="bg-warning w-fit h-13 px-5 rounded-md shadow-strong flex items-center justify-center select-none cursor-pointer hover:bg-amber-400 active:bg-warning active:scale-[0.99] transition-all duration-300 mt-8"
       >
         Start Shopping

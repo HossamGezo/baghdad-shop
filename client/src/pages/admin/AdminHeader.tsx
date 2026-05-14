@@ -152,6 +152,7 @@ const AdminHeader = ({ isOpen, setIsOpen }: SidebarTypeProps) => {
                   </Link>
                   <Link
                     to="/"
+                    aria-label="Go to Home Page"
                     className="text-primary p-2.5 border-b border-gray-400 flex items-center gap-2.5 font-semibold hover:bg-gray-300 font-jetbrains tracking-tighter"
                   >
                     <IoHomeOutline size={18} /> Home

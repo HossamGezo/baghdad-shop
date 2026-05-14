@@ -38,6 +38,7 @@ const Navbar = ({ toggleBurger, handleNavBarClose, handleClose }: NavbarProps) =
         <li className="header-navbar-list-item max-lg:w-full lg:h-full select-none">
           <CustomLink
             to="/"
+            aria-label="Go to Home Page"
             text="Home"
             className="max-lg:border-b lg:border-r border-amber-500 lg:rounded-tl-md lg:rounded-bl-md"
             onClick={handleClose}

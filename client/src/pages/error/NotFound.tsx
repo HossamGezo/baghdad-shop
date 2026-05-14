@@ -9,6 +9,7 @@ const NotFound = () => {
       <p className="text-4xl sm:text-5xl mb-7">Page Not Found</p>
       <Link
         to="/"
+        aria-label="Go to Home Page"
         replace={true}
         className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600 text-[13px] sm:text-[14px]"
       >

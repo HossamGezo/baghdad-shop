@@ -20,7 +20,9 @@ const FooterLinks = ({ title, productsLink }: FooterLinksProps) => {
             key={productLink}
             className="border-b border-b-transparent hover:border-b-warning pb-0.5 w-fit transition-colors duration-150 select-none"
           >
-            <Link to="/">{productLink}</Link>
+            <Link to="/" aria-label="Go to Home Page">
+              {productLink}
+            </Link>
           </li>
         ))}
       </ul>

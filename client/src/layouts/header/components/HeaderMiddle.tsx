@@ -88,6 +88,7 @@ const HeaderMiddle = ({ isOpen, setIsOpen }: HeaderMiddleProps) => {
               <button
                 type="button"
                 onClick={(e) => handleClick(e)}
+                aria-label="Toggle user menu"
                 className={cn(
                   "group flex items-center gap-1 sm:gap-2.5 text-primary hover:bg-white transition-colors duration-300 px-1.5 py-0.5 rounded-md cursor-pointer",
                   "relative before:absolute before:-top-1 before:left-0 before:w-full before:h-1 before:rounded-tr-md before:rounded-tl-md rounded-tr-none rounded-tl-none before:transition-colors before:duration-300",
@@ -124,7 +125,7 @@ const HeaderMiddle = ({ isOpen, setIsOpen }: HeaderMiddleProps) => {
                     {/* Shared Links */}
                     <Link
                       to="/"
-                      aria-label="Go Home"
+                      aria-label="Go to Home Page"
                       onClick={() => setIsOpen(false)}
                       className="text-primary p-2.5 border-b border-gray-400 flex items-center gap-2.5 font-semibold hover:bg-gray-300 font-jetbrains tracking-tighter"
                     >

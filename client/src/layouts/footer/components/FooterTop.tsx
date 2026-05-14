@@ -16,7 +16,11 @@ const TopFooter = () => {
       <div className="flex max-md:flex-col items-center justify-between gap-5 custom-container py-5">
         {/* - Logo */}
         <div onClick={toTop}>
-          <Link to="/" className="flex items-center lg:flex-col xl:flex-row max-lg:gap-2.5 xl:gap-3">
+          <Link
+            to="/"
+            aria-label="Go to Home Page"
+            className="flex items-center lg:flex-col xl:flex-row max-lg:gap-2.5 xl:gap-3"
+          >
             <span className="text-4xl font-bold font-jetbrains flex items-center text-shadow-neutral-700 text-shadow-2xs self-end">
               <span className="text-warning">Ba</span>
               <span className="text-white">ghdad</span>

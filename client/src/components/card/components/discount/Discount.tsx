@@ -21,7 +21,7 @@ const Discount = ({ price, discount }: DiscountProps) => {
           <span className="line-through text-[#75757A] text-base sm:text-[16px] xxl:text-[18px]">
             {formatCurrency(price)}
           </span>
-          <span className="bg-amber-200 text-amber-900 max-sm:w-12 w-15 max-sm:h-6 h-8 flex items-center justify-center rounded-sm max-sm:text-[14px]">
+          <span className="bg-amber-200 text-amber-900 px-2 py-1 flex items-center justify-center rounded-sm font-bold max-sm:w-12 w-15 max-sm:h-6 h-8 max-sm:text-[14px]">
             -{discount}%
           </span>
         </>

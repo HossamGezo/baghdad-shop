@@ -65,7 +65,7 @@ const SpecialOfferCard = ({ specialOffer, isOdd }: SpecialOfferCardProps) => {
 
         {/* --- See More Button */}
         <Link
-          aria-label={`see more about ${title}`}
+          aria-label={`View details for ${title}`}
           className="flex justify-center items-center bg-primary text-white w-32 h-9 rounded-tr-lg rounded-bl-lg cursor-pointer absolute bottom-3 sm:left-5 right-5 hover:bg-warning transition-colors duration-150"
           to={`/products/specialOffers/${_id}`}
         >
