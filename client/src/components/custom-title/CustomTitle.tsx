@@ -37,7 +37,7 @@ const CustomTitle = ({ to, title, offer = false, className, ...rest }: CustomTit
         <Link
           aria-label={`See all ${title}`}
           to={to}
-          className="text-white text-[16px] cursor-pointer flex items-center font-jetbrains hover:text-primary transition-colors duration-300 [word-spacing:0.5px] font-extrabold"
+          className="text-primary text-[16px] cursor-pointer flex items-center font-jetbrains hover:text-primary transition-colors duration-300 [word-spacing:0.5px] font-extrabold"
         >
           See All <MdOutlineKeyboardArrowRight size={24} />
         </Link>

@@ -18,7 +18,7 @@ const Category = () => {
             <div className="flex flex-col items-center justify-center gap-2.5">
               <img
                 src={category.image}
-                alt={category.title}
+                alt=""
                 loading="lazy"
                 width="150"
                 height="150"

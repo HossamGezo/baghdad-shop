@@ -31,7 +31,7 @@ const SpecialOfferCard = ({ specialOffer, isOdd }: SpecialOfferCardProps) => {
       )}
     >
       {/* Card Discount */}
-      <div className="bg-secondary/75 text-white text-xl py-1 sm:w-37.5 text-center rounded-full sm:ml-auto">
+      <div className="bg-secondary text-white text-xl py-1 sm:w-37.5 text-center rounded-full sm:ml-auto">
         {discount}% OFF
       </div>
 
