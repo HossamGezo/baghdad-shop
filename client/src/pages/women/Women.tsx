@@ -27,7 +27,7 @@ const Women = () => {
   return (
     <div>
       <CategoryTemplate
-        imageSrc="/images/posters/women-poster.png"
+        imageSrc="/images/posters/women-poster.webp"
         altText="Women Poster"
         title="Women's Collection"
         currentCategoryKey="women"

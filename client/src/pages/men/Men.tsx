@@ -27,7 +27,7 @@ const Men = () => {
   return (
     <div>
       <CategoryTemplate
-        imageSrc="/images/posters/men-poster.png"
+        imageSrc="/images/posters/men-poster.webp"
         altText="Men Poster"
         title="Men's Fashion"
         currentCategoryKey="men"

@@ -26,7 +26,7 @@ const Supermarket = () => {
   return (
     <div>
       <CategoryTemplate
-        imageSrc="/images/posters/supermarket-poster.png"
+        imageSrc="/images/posters/supermarket-poster.webp"
         altText="Supermarket Poster"
         title="Supermarket & Daily Essentials"
         currentCategoryKey="supermarket"

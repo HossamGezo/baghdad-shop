@@ -28,7 +28,7 @@ export const categories: CategoryType[] = [
   {
     id: "5",
     title: "Beauty",
-    image: "/images/essentials/essential05.png",
+    image: "/images/essentials/essential05.webp",
     to: "/women",
   },
   {

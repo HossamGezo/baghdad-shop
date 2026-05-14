@@ -1,7 +1,7 @@
 export const categoryConfigs = {
   electronics: {
     title: "Electronics Section",
-    poster: "/images/posters/electronics-poster.png",
+    poster: "/images/posters/electronics-poster.webp",
     subCategories: [
       { id: "all-products", label: "All Products" },
       { id: "mobiles", label: "Mobiles" },
@@ -10,7 +10,7 @@ export const categoryConfigs = {
   },
   kitchen: {
     title: "Kitchen & Dining",
-    poster: "/images/posters/kitchen-poster.png",
+    poster: "/images/posters/kitchen-poster.webp",
     subCategories: [
       { id: "all-products", label: "All Kitchen" },
       { id: "cookware", label: "Cookware" },
@@ -19,7 +19,7 @@ export const categoryConfigs = {
   },
   men: {
     title: "Men's Fashion",
-    poster: "/images/posters/men-poster.png",
+    poster: "/images/posters/men-poster.webp",
     subCategories: [
       { id: "all-products", label: "All Men's" },
       { id: "shoes", label: "Shoes" },
@@ -28,7 +28,7 @@ export const categoryConfigs = {
   },
   women: {
     title: "Women's Collection",
-    poster: "/images/posters/women-poster.png",
+    poster: "/images/posters/women-poster.webp",
     subCategories: [
       { id: "all-products", label: "All Women's" },
       { id: "handbags", label: "Handbags" },

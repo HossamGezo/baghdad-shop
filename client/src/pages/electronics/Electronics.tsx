@@ -27,7 +27,7 @@ const Electronics = () => {
   return (
     <div>
       <CategoryTemplate
-        imageSrc={"/images/posters/electronics-poster.png"}
+        imageSrc={"/images/posters/electronics-poster.webp"}
         altText={"Electronics Poster"}
         title="Electronics"
         currentCategoryKey="electronics"

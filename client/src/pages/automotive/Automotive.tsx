@@ -26,7 +26,7 @@ const Automotive = () => {
   return (
     <div>
       <CategoryTemplate
-        imageSrc="/images/posters/automotive-poster.png"
+        imageSrc="/images/posters/automotive-poster.webp"
         altText="Automotive Poster"
         title="Automotive Accessories & Tools"
         currentCategoryKey="automotive"
